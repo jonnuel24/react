@@ -1,0 +1,134 @@
+*{
+  font-family: 'DM Sans', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+}
+.main-div{
+  min-height: 100vh;
+
+}
+
+.overall-div{
+  width: 100%;
+}
+
+.right-div{
+  margin-top: 24px;
+  padding-bottom: 63px;
+  height: fit-content;
+  gap: 12px;
+  overflow-x: hidden;
+  padding-left: 24px;
+}
+
+.header{
+  color: #006838;
+font-family: Clash Display;
+font-size: 30px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.divider{
+  width: 199px;
+height: 4px;
+border-radius: var(--cart-cart, 0px);
+background: #006838;
+}
+
+.form-div{
+  margin-top: 16px;
+}
+
+.signup-img{
+  position: fixed;
+  width: auto;
+  top: 0;
+  left: 0;
+}
+
+.signup input{
+height: 50px;
+border-radius: 9.004px;
+border: 0.9px solid #000;
+}
+.country{
+  height: 50px;
+    border-radius: 9.004px;
+    border: 0.9px solid #000;
+    width: 270px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.signup div{
+  margin-bottom: -14px;
+}
+
+.divider2{
+  width: 592px;
+height: 1px;
+border-radius: var(--cart-cart, 0px);
+opacity: 0.45;
+background: #404040;
+margin-top: 40px;
+margin-bottom: 16px;
+}
+
+.form-check{
+  min-height: 1.5rem;
+  padding-left: 1.5em;
+  gap: 12px;
+  display: flex !important;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.form-check-input[type=checkbox]{
+  border: 1px solid #006838;
+  border-radius: 5rem 
+  !important;
+  width: 24px;
+  height: 24px;
+  
+
+}
+
+.form-check-input:checked{
+  background-color: #006838 !important;
+  border-color: #006838 !important;
+}
+
+.form-check a{
+  font-weight: bold;
+}
+
+.form-check label{
+  color: #000;
+font-family: DM Sans;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-top: 4px;
+}
+
+.cta{
+    gap: 12px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px !important;
+    margin-top: 24px;
+}
+
+.drop-img{
+  position: absolute;
+  z-index: 1;
+
+}

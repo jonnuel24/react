@@ -1,0 +1,107 @@
+nav{
+  width: 1440px;
+  height: 100px;
+  background: #006838;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav .container-fluid{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 72px;
+  flex-wrap: wrap;
+}
+
+.left-nav{
+  align-items: center;
+  display: flex;
+  gap: 64px;
+
+}
+
+.left-nav a img{
+  width: 143.938px;
+  height: 47px;
+
+}
+
+.search-input input{
+  background: none;
+  border: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.search-input{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    flex-direction: row;
+    border-radius: 4.84px;
+    border: 1.452px solid #DBDBDB;
+    background: #FAFAFA;
+    padding-left: 8px;
+    padding-right: 8px;
+    
+}
+
+.search{
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+form .filter{
+  display: flex;
+width: 42.594px;
+height: 42.594px;
+padding: 9.922px;
+justify-content: center;
+align-items: center;
+border-radius: 4.134px;
+border: 1.452px solid #DBDBDB;
+background: #FAFAFA;
+text-align: center;
+
+}
+
+
+.right-nav ul{
+  display: flex;
+  gap: 24px;
+  margin: 0;
+
+}
+
+.right-nav ul a{
+  text-decoration: none;
+  color: #FFF;
+text-align: center;
+font-family: 'DM Sans', sans-serif;
+font-size: 16.724px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.right-nav ul a li{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon{
+  font-weight: 600 !important;
+}

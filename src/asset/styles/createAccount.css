@@ -1,0 +1,43 @@
+.main-div{
+  min-height: 100vh;
+}
+
+.logo{
+  width:105px;
+  height: auto;
+}
+
+.btn2{
+width: 400px;
+height: 60px;
+flex-shrink: 0;
+border-radius: 14.037px;
+border: 1.404px solid rgba(0, 0, 0, 0.50);
+color: #1b1b1b;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.cta{
+  gap: 8px;
+}
+
+.div-up{
+  gap: 12px;
+}
+
+.div{
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.drop-img{
+  width: 300px;
+  height: auto;
+  z-index: 1;
+  position: absolute;
+  margin-left: 1100px;
+  margin-top: -200px;
+}

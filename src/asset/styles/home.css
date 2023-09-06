@@ -1,0 +1,52 @@
+.card1{
+  height: auto;
+  border-radius: 10px;
+  background: #dfdfdf50;
+  margin: 0px;
+}
+
+.card0{
+  display: flex;
+  align-items: center;
+  align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 16px;
+}
+
+header{
+  color: #404040;
+text-align: center;
+font-family: 'DM Sans', sans-serif;
+font-size: 28px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+header strong{
+  font-weight: 900;
+}
+
+.filter a{
+  text-decoration: none;
+  display: flex;
+padding: 8px 16px;
+align-items: flex-start;  
+border-radius: 24px;
+background: rgba(250, 250, 250, 0.98);
+color: #5A5A5A;
+text-align: center;
+font-family: 'DM Sans', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 120%; 
+width: fit-content;
+}
+
+.active{
+  background-color: #006838 !important;
+}

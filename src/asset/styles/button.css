@@ -1,0 +1,9 @@
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 458px;
+    height: 64px;
+    border-radius: 10px;
+    background: #006838;
+}

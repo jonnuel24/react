@@ -1,0 +1,60 @@
+.main-div{
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+.logo{
+  width:105px;
+  height: auto;
+}
+
+.btn1{
+width: 400px;
+height: 60px;
+flex-shrink: 0;
+border-radius: 14.037px;
+border: 1.404px solid #000;
+background: #006838;
+color: #fff;
+font-family: DM Sans;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.btn2{
+width: 400px;
+height: 60px;
+flex-shrink: 0;
+border-radius: 14.037px;
+border: 1.404px solid rgba(0, 0, 0, 0.50);
+color: #000;
+font-family: DM Sans;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.cta{
+  gap: 8px;
+}
+
+.div-up{
+  gap: 12px;
+}
+
+.div{
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.drop-img{
+  width: 300px;
+  height: auto;
+  z-index: 1;
+  position: absolute;
+  margin-left: 1100px;
+  margin-top: -200px;
+}

@@ -1,0 +1,13 @@
+.animal{
+  width: 51.71px;
+height: 51.71px;
+border-radius: 51.71px;
+border: 1.541px solid #DBDBDB;
+}
+
+.image{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
