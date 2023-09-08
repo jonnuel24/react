@@ -1,10 +1,10 @@
-import './App.css';
-import Root from './routes/root';
+import "./App.css";
+import Root from "./routes/root";
 
 function App() {
   return (
     <div className="App">
-    <Root />
+      <Root />
     </div>
   );
 }

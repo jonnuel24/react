@@ -1,36 +1,44 @@
-import React from 'react'
-import Cattle from '../asset/images/cattle.svg'
-import Farmer from '../asset/images/farmer.svg'
-import '../asset/styles/card.css'
+import React from "react";
+import Cattle from "../asset/images/cattle.svg";
+import Farmer from "../asset/images/farmer.svg";
+import "../asset/styles/card.css";
 
 function Card() {
   return (
-    <div className='flex flex-col card h-auto items-center'>
-      <div className='cattle bg-cover bg-no-repeat'>
-
+    <div className="flex flex-col card  h-auto items-center">
+      <div className="cattle bg-cover bg-no-repeat">
+        <div className="top-tag">
+          <div className="bg-[#006838] text-white">Forsale</div>
+          <div className="bg-[#F91919] text-white">New</div>
+        </div>
       </div>
 
-      <div className='flex information flex-row justify-between'>
+      <div className="flex information flex-row justify-between">
+        <div className="left-card-body">
+          <h3 className="description text-start">
+            11 Pedigree Sussex Breeding Cows with Calves at Foot
+          </h3>
+          <h1 className="price">
+            N56,000 <span>/ uniT</span>
+          </h1>
 
-        <div className='flex  flex-col items-start justify-between'>
-          <h3 className='description text-start'>11 Pedigree Sussex Breeding Cows with Calves at Foot</h3>
-          <h1 className='price'>N56,000 <span>/ uniT</span></h1>
+          <div className="flex justify-between gap-1 discount">
+            <div className="bg-[#F91919] text-white">30% off</div>
 
-          <div className='flex justify-between'>
-            <button className='btn btn-danger'>30% off</button>
-            <button className='btn btn-success'>14 months</button>
-            <button className='btn btn-secondary'>Sagamulga</button>
+            <div className="bg-[#155840] text-white">14 months</div>
+
+            <div className="bg-[#36454C] text-white">Sagamulga</div>
           </div>
         </div>
 
+        <img src={Farmer} alt="" className="bb" />
 
-        <div className='flex flex-col'>
-          <img src={Farmer} alt="" />
-          <button className='btn'>ADD TO CART</button>
+        <div className="flex flex-col right-card-body">
+          <button className="btn btn-secondary cta">ADD TO CART</button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Card;

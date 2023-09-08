@@ -26,15 +26,15 @@ function Signup() {
         <img src={SignupImg} alt="" className="h-screen signup-img" />
       </div>
 
-      <div className="flex flex-col items-start w-9/12 right-div">
+      <div className="flex flex-col items-start w-9/12 signup-right-div">
         <img src={Logo} alt="" />
-        <h1 className="header">
+        <h1 className="signup-header">
           <strong>Farmer Personal</strong> Information
         </h1>
-        <div className="divider"></div>
-        <div className="w-full pr-48 form-div">
-          <form action="w-full py-54">
-            <div className="grid gap-4 grid-cols-2 grid-rows-3 signup">
+        <div className="signup-divider"></div>
+        <div className="w-full pr-48 signup-form-div">
+          <form action="" className='signup-form'>
+            <div className="grid gap-4 grid-cols-2 grid-rows-3 signup-signup">
               <div className="flex flex-col items-start">
                 <label htmlFor="firstname">Firstname</label>
                 <input
@@ -121,7 +121,7 @@ function Signup() {
 
     {/* section 2         */}
 
-            <div className='divider2'></div>
+            <div className='signup-divider2'></div>
               <div className="grid gap-4 grid-cols-2 grid-rows-2 signup">
                 <div className="flex flex-col items-start">
                   <label htmlFor="companyRegisteredName">Company Registered Name</label>

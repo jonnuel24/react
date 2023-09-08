@@ -9,13 +9,13 @@ function home() {
   return (
     <div className='flex flex-col'>
       <Navbar />
-        <section className='flex flex-col items-start py-16 px-32'>
+        <section className='section2'>
           <header>
           Welcome <strong>Gasgos,</strong>
           </header>
 
-          <div className='flex justify-between w-full items-center'>
-            <div className='flex hover:flex-row gap-2 filter'>
+          <div className='section21'>
+            <div className='section22'>
               <a href="" className='bg-[#006838] active'><div className='text-white'>All</div></a>
               <a href=""><div>Popular</div></a>
               <a href=""><div>New in</div></a>
@@ -24,7 +24,7 @@ function home() {
               <a href=""><div>Lowest Price</div></a>
             </div>
 
-            <div className='flex gap-4'>
+            <div className='section23'>
               <AnimalProfile />
               <AnimalProfile />
               <AnimalProfile />

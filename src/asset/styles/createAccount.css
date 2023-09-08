@@ -7,7 +7,7 @@
   height: auto;
 }
 
-.btn2{
+.createAccount-btn2{
 width: 400px;
 height: 60px;
 flex-shrink: 0;
@@ -19,6 +19,14 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 }
+
+.createAccount-btn2 strong{
+  color: #1b1b1b;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  }
 
 .cta{
   gap: 8px;
@@ -40,4 +48,22 @@ line-height: normal;
   position: absolute;
   margin-left: 1100px;
   margin-top: -200px;
+}
+
+.createAccount-member{
+  color: #000;
+font-family: "DM Sans", sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.createAccount-member a{
+  color: #006838;
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
