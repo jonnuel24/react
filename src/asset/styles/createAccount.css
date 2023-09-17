@@ -1,47 +1,47 @@
-.main-div{
+.main-div {
   min-height: 100vh;
 }
 
-.logo{
-  width:105px;
+.logo {
+  width: 105px;
   height: auto;
 }
 
-.createAccount-btn2{
-width: 400px;
-height: 60px;
-flex-shrink: 0;
-border-radius: 14.037px;
-border: 1.404px solid rgba(0, 0, 0, 0.50);
-color: #1b1b1b;
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+.createAccount-btn2 {
+  width: 400px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 14.037px;
+  border: 1.404px solid rgba(0, 0, 0, 0.5);
+  color: #1b1b1b;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.createAccount-btn2 strong{
+.createAccount-btn2 strong {
   color: #1b1b1b;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  }
+}
 
-.cta{
+.cta {
   gap: 8px;
 }
 
-.div-up{
+.div-up {
   gap: 12px;
 }
 
-.div{
+.div {
   gap: 16px;
   margin-top: 40px;
 }
 
-.drop-img{
+.drop-img {
   width: 300px;
   height: auto;
   z-index: 1;
@@ -50,16 +50,18 @@ line-height: normal;
   margin-top: -200px;
 }
 
-.createAccount-member{
+.createAccount-member {
   color: #000;
-font-family: "DM Sans", sans-serif;
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex !important;
+  align-items: center !important;
 }
 
-.createAccount-member a{
+.createAccount-member a {
   color: #006838;
   font-family: "DM Sans", sans-serif;
   font-size: 20px;

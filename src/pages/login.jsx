@@ -1,28 +1,43 @@
 // import React from "react";
+import React, { useState } from "react";
 import LoginBg from "../asset/images/login_bg.svg";
 import "../asset/styles/login.css";
 import logo from "../asset/images/logo.svg";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import React, { useState } from "react";
 import accountServices from "../services/auth.service";
+import SignupImg from "../asset/images/signup-img.png";
+import axios from 'axios';
 
-function Login(props) {
-  const { handleSubmit, register } = useForm();
-  const [message, setMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const login = async (data) => {
-    setLoading(true);
-    let response = await accountServices.login(data);
-    if (response.statusCode === 200) {
-      localStorage.setItem("token", response.data.access_token);
-      localStorage.setItem("currentUser", JSON.stringify(response.data.user));
-      window.location.href = "/home";
-    } else {
-      setMessage(response.message);
-    }
-    setLoading(false);
+
+function Login() {
+  const [post, setPost] = useState({
+    email: "",
+    password: "",
+    userType: "",
+  });
+
+  const handleInput = (event) => {
+    setPost({ ...post, [event.target.name]: event.target.value });
   };
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    axios
+      .post(
+        "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/user/login",
+        post
+      )
+
+      .then((response) => console.log(response))
+      .catch((error) => {
+        console.error("AxiosError:", error);
+        if (error.response) {
+          console.error("Response Data:", error.response.data);
+        }
+      });
+  }
+
   return (
     <div className="row">
       <div className="login-div1 col col-5">
@@ -36,24 +51,46 @@ function Login(props) {
           </header>
           <div className="login-form">
             <div className="form-header">Welcome back!</div>
-            <form action="" onSubmit={handleSubmit(login)}>
+            <form action="" onClick={handleSubmit}>
               <div className="inputs">
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   name="email"
                   placeholder="Enter Email"
-                  {...register("email")}
+                  onChange={handleInput}
+                  value={post.email}
                 />
               </div>
+
               <div className="inputs">
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
                   name="password"
+                  onChange={handleInput}
                   placeholder="Enter Password "
-                  {...register("password")}
+                  value={post.password}
                 />
+              </div>
+              <div className="flex flex-col items-start">
+                <label htmlFor="country">User Type</label>
+                <select
+                  className="form-select"
+                  id="floatingSelectGrid"
+                  onChange={handleInput}
+                  name="userType"
+                  value={post.userType}
+                >
+                  <option selected>Select a User Type</option>
+                  <option value="FARMER">FARMER</option>
+                  <option value="USER">USER</option>
+                </select>
+                {/* <CountrySelector
+                  selectedCountry={selectedCountry}
+                  onChange={handleCountryChange}
+                /> */}
+                {/* <p>Selected Country: {selectedCountry ? selectedCountry.label : 'None'}</p> */}
               </div>
               <div className="forgot-password">
                 <Link to={"/#"}>Forgot Password?</Link>
@@ -73,5 +110,4 @@ function Login(props) {
     </div>
   );
 }
-
 export default Login;
