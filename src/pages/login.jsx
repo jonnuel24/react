@@ -13,7 +13,9 @@ function Login(props) {
   const [loading, setLoading] = useState(false);
   const login = async (data) => {
     setLoading(true);
+
     let response = await accountServices.login(data);
+
     if (response.statusCode === 200) {
       localStorage.setItem("token", response.data.access_token);
       localStorage.setItem("currentUser", JSON.stringify(response.data.user));
@@ -59,9 +61,9 @@ function Login(props) {
                 <Link to={"/#"}>Forgot Password?</Link>
               </div>
               <div className="flex login-div4">
-                <Link to={"/home"}>
-                  <button type="submit">Continue</button>
-                </Link>
+                {/* <Link to={"/home"}> */}
+                <button type="submit">Continue</button>
+                {/* </Link> */}
                 <div className="text-right items-end flex w-100">
                   Don’t have an account? <Link to={"/signup"}> Sign Up</Link>
                 </div>

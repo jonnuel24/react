@@ -18,7 +18,9 @@ function onboard() {
             <button className="btn1">Create an Account</button>
           </Link>
 
-          <button className="btn2">Login to Account</button>
+          <Link to="/login">
+            <button className="btn2">Login to Account</button>
+          </Link>
         </div>
       </div>
 
