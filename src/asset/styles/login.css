@@ -2,12 +2,12 @@
   font-family: "DM Sans", sans-serif !important;
 }
 .login-div1 {
-  margin-left: 32px !important;
   min-height: 100vh;
-  background-image: url(../images/login_bg.svg);
+  background-image: url(../images/signup-img.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  width: 20% !important;
 }
 
 header {

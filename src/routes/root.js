@@ -6,6 +6,7 @@ import createAccount from "../pages/createAccount";
 import home from "../pages/home";
 import { Route, Routes, Switch, BrowserRouter as Router } from "react-router-dom";
 import productDetails from "../pages/productDetails";
+import Form from "../pages/form";
 
 import cart from "../pages/cart";
 import delivery from "../pages/delivery";
@@ -28,6 +29,9 @@ function Root() {
       <Route path="/delivery" Component={delivery} />
 
       <Route path="/delivery2" Component={delivery2} />
+
+      <Route path="/form" Component={Form} />
+
     </Routes>
   );
 }
