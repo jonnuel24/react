@@ -29,10 +29,9 @@ function Login() {
   async function login() {
     let result = await accountServices.login(post);
     if (result.statusCode === 200) {
-      alert("Login successfully");
-      // localStorage.setItem("token", result.data.access_token);
-      // localStorage.setItem("currentUser", JSON.stringify(result.data.user));
-      // window.location.href = "/dashboard";
+      localStorage.setItem("token", result.data.token);
+      localStorage.setItem("currentUser", JSON.stringify(result.data));
+      navigate("/home");
     } else {
       alert(result.message);
     }
