@@ -19,6 +19,7 @@ function Signup() {
     userType: "",
     phoneNumber: "",
     password: "",
+    confirmPassword: "",
   });
 
   const handleInput = (event) => {
@@ -27,6 +28,13 @@ function Signup() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    if (post.confirmPassword !== post.password) {
+      alert("Password and Confirm Password do not match.");
+      return;
+    }else{
+      alert("success")
+    }
     axios
       .post(
         "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/signup",
@@ -199,9 +207,11 @@ function Signup() {
                 <div className="relative w-full">
                   <input
                     className="w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                    id="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
                     type={showPassword ? "text" : "password"}
                     placeholder="******************"
+                    value={post.confirmPassword}
                     onChange={handleInput}
                     required
                   />

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
+
 function Login() {
   const navigate = useNavigate();
   const [post, setPost] = useState({
@@ -33,6 +34,8 @@ function Login() {
       // localStorage.setItem("token", result.data.access_token);
       // localStorage.setItem("currentUser", JSON.stringify(result.data.user));
       // window.location.href = "/dashboard";
+
+      navigate("/home");
     } else {
       alert(result.message);
     }
@@ -69,6 +72,7 @@ function Login() {
             <form action="" onSubmit={handleSubmit(login)}>
               <div className="inputs">
                 <label htmlFor="email">Email</label>
+                <i className="fa fa-home bg-black"></i>
                 <input
                   type="email"
                   name="email"
