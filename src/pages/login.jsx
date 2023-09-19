@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
-
 function Login() {
   const navigate = useNavigate();
   const [post, setPost] = useState({
@@ -30,10 +29,10 @@ function Login() {
   async function login() {
     let result = await accountServices.login(post);
     if (result.statusCode === 200) {
-      alert("Login successfully");
-      // localStorage.setItem("token", result.data.access_token);
-      // localStorage.setItem("currentUser", JSON.stringify(result.data.user));
-      // window.location.href = "/dashboard";
+      localStorage.setItem("token", result.data.token);
+      localStorage.setItem("currentUser", JSON.stringify(result.data));
+      alert("login successful, click 'OK' to continue")
+      navigate("/home");
     } else {
       alert(result.message);
     }
@@ -70,7 +69,6 @@ function Login() {
             <form action="" onSubmit={handleSubmit(login)}>
               <div className="inputs">
                 <label htmlFor="email">Email</label>
-                <i className="fa fa-home bg-black"></i>
                 <input
                   type="email"
                   name="email"
