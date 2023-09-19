@@ -34,8 +34,6 @@ function Login() {
       // localStorage.setItem("token", result.data.access_token);
       // localStorage.setItem("currentUser", JSON.stringify(result.data.user));
       // window.location.href = "/dashboard";
-
-      navigate("/home");
     } else {
       alert(result.message);
     }
