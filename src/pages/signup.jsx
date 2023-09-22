@@ -32,22 +32,27 @@ function Signup() {
     if (post.confirmPassword !== post.password) {
       alert("Password and Confirm Password do not match.");
       return;
-    }else{
-      alert("success")
+    } else {
+      axios
+        .post(
+          "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/signup",
+          post
+        )
+        .then((response) => {
+          console.log(response);
+          if (response.message === "Signup successful"){
+            alert("Signup successful!");
+          }else{
+            alert(response.message)
+          }
+        })
+        .catch((error) => {
+          console.error("AxiosError:", error);
+          if (error.response) {
+            console.error("Response Data:", error.response.data);
+          }
+        });
     }
-    axios
-      .post(
-        "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/signup",
-        post
-      )
-
-      .then((response) => console.log(response))
-      .catch((error) => {
-        console.error("AxiosError:", error);
-        if (error.response) {
-          console.error("Response Data:", error.response.data);
-        }
-      });
   }
 
   // show and hide password
@@ -77,7 +82,7 @@ function Signup() {
         <div className="signup-divider"></div>
         <div className="w-full pr-48 signup-form-div">
           {/* formData */}
-          <form action="" onClick={handleSubmit} className="signup-form">
+          <form action="" onSubmit={handleSubmit} className="signup-form">
             <div className="grid gap-4 grid-cols-2 grid-rows-3 signup-signup">
               {/* firstname */}
               <div className="flex flex-col items-start">

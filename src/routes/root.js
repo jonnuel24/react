@@ -4,9 +4,19 @@ import signup from "../pages/signup";
 import Login from "../pages/login";
 import createAccount from "../pages/createAccount";
 import home from "../pages/home";
-import { Route, Routes, Switch, BrowserRouter as Router } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  Switch,
+  BrowserRouter as Router,
+} from "react-router-dom";
 import productDetails from "../pages/productDetails";
 import Form from "../pages/form";
+import forgotPassword from "../pages/forgotPassword";
+import resetPassword from "../pages/resetPassword";
+import verificationCode from "../pages/verificationCode";
+import CheckMail from "../pages/checkMail";
+import PasswordChanged from "../pages/passwordChanged";
 
 import cart from "../pages/cart";
 import delivery from "../pages/delivery";
@@ -31,6 +41,11 @@ function Root() {
       <Route path="/delivery2" Component={delivery2} />
 
       <Route path="/form" Component={Form} />
+      <Route path="/forgotPassword" Component={forgotPassword} />
+      <Route path="/resetPassword" Component={resetPassword} />
+      <Route path="/verificationCode" Component={verificationCode} />
+      <Route path="/checkMail" Component={CheckMail} />
+      <Route path="/passwordChanged" Component={PasswordChanged} />
 
     </Routes>
   );

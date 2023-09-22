@@ -108,7 +108,7 @@ function Login() {
                 {/* <p>Selected Country: {selectedCountry ? selectedCountry.label : 'None'}</p> */}
               </div>
               <div className="forgot-password">
-                <Link to={"/#"}>Forgot Password?</Link>
+                <Link to={"/forgotPassword"}>Forgot Password?</Link>
               </div>
               <div className="flex login-div4">
                 {/* <Link to={"/home"}> */}

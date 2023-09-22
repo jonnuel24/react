@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: 'Clash';
+  src: url(../src/asset/OTF/ClashDisplay-Regular.otf);
+}
 
 body {
   margin: 0;
