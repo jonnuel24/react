@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "../asset/styles/forgotPassword.css";
 import { Link } from "react-router-dom";
 import Logo from "../asset/images/logo.svg";
@@ -18,38 +19,33 @@ function ForgotPassword() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    // Create a JSON object to send as the request body
-    const requestBody = {
-      email: post.email,
-    };
+    axios
+      .post(
+        "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/forgot-password",
+        post
+      )
+      .then((response) => {
+        console.log(response);
 
-    // Send a POST request to the API with JSON data
-    fetch(
-      "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/forgot-password",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Set the content type to JSON
-        },
-        body: JSON.stringify(requestBody), // Convert the object to JSON string
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setMessage(data.message);
-
-        if (data.statusCode === 200) {
-          // Successful response
-          // Handle success as needed
+        if (response.status === 200) {
+          setMessage("A password reset link has been sent to your email.");
+          alert(response.message)
         } else {
-          // Handle the case where the API response indicates an error
+          setMessage("Failed to send the password reset link.");
+          alert(response.message)
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error("AxiosError:", error);
+
+        if (error.response) {
+          setMessage("Error: " + error.response.data.message);
+        } else {
+          setMessage("An error occurred while sending the request.");
+        }
       });
   };
-  
+
   return (
     <div className="flex justify-center align-middle fp-main-div">
       <form

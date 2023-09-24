@@ -11,6 +11,8 @@ function CheckMail() {
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+
+    
   };
 
   const handleFormSubmit = (event) => {
