@@ -4,8 +4,17 @@ import "../asset/styles/forgotPassword.css";
 import { Link } from "react-router-dom";
 import Logo from "../asset/images/logo.svg";
 import { Icon } from "@iconify/react";
-
+import { useForm } from "react-hook-form";
+import accountServices from "../services/auth.service";
+import { useNavigate } from "react-router-dom";
 function ForgotPassword() {
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
   const [post, setPost] = useState({
     email: "",
   });
@@ -19,30 +28,35 @@ function ForgotPassword() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    axios
-      .post(
-        "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/forgot-password",
-        post
-      )
-      .then((response) => {
-        console.log(response);
+    // Create a JSON object to send as the request body
+    const requestBody = {
+      email: post.email,
+    };
 
-        if (response.status === 200) {
-          setMessage("A password reset link has been sent to your email.");
-          alert(response.message)
+    // Send a POST request to the API with JSON data
+    fetch(
+      "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/forgot-password",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+        body: JSON.stringify(requestBody), // Convert the object to JSON string
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setMessage(data.message);
+
+        if (data.statusCode === 200) {
+          // Successful response
+          // Handle success as needed
         } else {
-          setMessage("Failed to send the password reset link.");
-          alert(response.message)
+          // Handle the case where the API response indicates an error
         }
       })
       .catch((error) => {
-        console.error("AxiosError:", error);
-
-        if (error.response) {
-          setMessage("Error: " + error.response.data.message);
-        } else {
-          setMessage("An error occurred while sending the request.");
-        }
+        console.error("Error:", error);
       });
   };
 
@@ -51,7 +65,7 @@ function ForgotPassword() {
       <form
         action=""
         className="flex flex-col fp-form"
-        onSubmit={handleFormSubmit}
+        onSubmit={handleSubmit(requestPasswordReset)}
       >
         <img src={Logo} alt="" />
         <header>Forgot Password</header>
