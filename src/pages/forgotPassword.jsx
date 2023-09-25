@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "../asset/styles/forgotPassword.css";
 import { Link } from "react-router-dom";
 import Logo from "../asset/images/logo.svg";
@@ -32,37 +33,8 @@ function ForgotPassword() {
     } else {
       alert(result.message);
     }
-    console.log(result);
-    // Create a JSON object to send as the request body
-    // const requestBody = {
-    //   email: post.email,
-    // };
 
     // Send a POST request to the API with JSON data
-    // fetch(
-    //   "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/forgot-password",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json", // Set the content type to JSON
-    //     },
-    //     body: JSON.stringify(requestBody), // Convert the object to JSON string
-    //   }
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setMessage(data.message);
-
-    //     if (data.statusCode === 200) {
-    //       // Successful response
-    //       // Handle success as needed
-    //     } else {
-    //       // Handle the case where the API response indicates an error
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
   };
 
   return (

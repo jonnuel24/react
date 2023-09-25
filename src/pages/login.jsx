@@ -11,8 +11,6 @@ function Login() {
   const navigate = useNavigate();
   const [post, setPost] = useState({
     email: "",
-    password: "",
-    userType: "",
   });
 
   const {
@@ -31,7 +29,7 @@ function Login() {
     if (result.statusCode === 200) {
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("currentUser", JSON.stringify(result.data));
-      alert("login successful, click 'OK' to continue")
+      alert("login successful, click 'OK' to continue");
       navigate("/home");
     } else {
       alert(result.message);
@@ -88,25 +86,7 @@ function Login() {
                   value={post.password}
                 />
               </div>
-              <div className="flex flex-col items-start">
-                <label htmlFor="country">User Type</label>
-                <select
-                  className="form-select"
-                  id="floatingSelectGrid"
-                  onChange={handleInput}
-                  name="userType"
-                  value={post.userType}
-                >
-                  <option selected>Select a User Type</option>
-                  <option value="FARMER">FARMER</option>
-                  <option value="USER">USER</option>
-                </select>
-                {/* <CountrySelector
-                  selectedCountry={selectedCountry}
-                  onChange={handleCountryChange}
-                /> */}
-                {/* <p>Selected Country: {selectedCountry ? selectedCountry.label : 'None'}</p> */}
-              </div>
+
               <div className="forgot-password">
                 <Link to={"/forgotPassword"}>Forgot Password?</Link>
               </div>
