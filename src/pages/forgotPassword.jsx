@@ -15,7 +15,7 @@ function ForgotPassword() {
   } = useForm();
   const navigate = useNavigate();
   const [post, setPost] = useState({
-    email: "",
+    phoneNumber: "",
   });
 
   const [message, setMessage] = useState(""); // To store the response message from the API
@@ -26,8 +26,13 @@ function ForgotPassword() {
 
   const requestPasswordReset = async () => {
     //make service calll here
-    let response = await accountServices.forgotPassword(post);
-    console.log(response);
+    let result = await accountServices.forgotPassword(post);
+    if (result.statusCode === 200) {
+      navigate("/verificationCode");
+    } else {
+      alert(result.message);
+    }
+    console.log(result);
     // Create a JSON object to send as the request body
     // const requestBody = {
     //   email: post.email,
@@ -70,15 +75,15 @@ function ForgotPassword() {
         <img src={Logo} alt="" />
         <header>Forgot Password</header>
         <div className="inputs items-start">
-          <label htmlFor="email" className="flex items-start mb-2">
-            Email
+          <label htmlFor="phoneNumber" className="flex items-start mb-2">
+            Phone Number
           </label>
           <input
-            type="email"
-            name="email"
+            type="text"
+            name="phoneNumber"
             className="mt-2"
             placeholder="Enter Email"
-            value={post.email}
+            value={post.phoneNumber}
             onChange={handleInput}
           />
         </div>
