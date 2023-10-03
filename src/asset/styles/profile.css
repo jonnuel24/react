@@ -1,0 +1,52 @@
+.p-pic {
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  overflow: hidden;
+}
+
+.p-pic-lg {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.p-div4 {
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* Profile settings container */
+.profileSettings {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.p-logout {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.p-div4-right {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.p-div4-right-nav {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.p-div4-right2 {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.p-div4-right2 button {
+  border-radius: 8.195px;
+  border: 0.819px solid #000;
+}

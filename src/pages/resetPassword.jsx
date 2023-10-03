@@ -1,6 +1,6 @@
 import React from "react";
 import "../asset/styles/resetPassword.css";
-import Logo from "../asset/images/logo.svg"
+import Logo from "../asset/images/logo.svg";
 import { Icon } from "@iconify/react";
 function resetPassword() {
   return (
@@ -8,9 +8,11 @@ function resetPassword() {
       <form action="" className="flex flex-col items-center rp-form">
         <img src={Logo} alt="" />
         <h3 htmlFor="email" className="flex items-center">
-        Set New Password 
+          Set New Password
         </h3>
-        <p>Your new password must be different from the previously used passwords</p>
+        <p>
+          Your new password must be different from the previously used passwords
+        </p>
         <div className="inputs items-start">
           <label htmlFor="password" className="flex items-start">
             New Password
@@ -20,6 +22,7 @@ function resetPassword() {
             name="password"
             className="mt-2"
             placeholder="Enter New Password"
+            maxlength="1"
           />
         </div>
 
@@ -37,7 +40,9 @@ function resetPassword() {
 
         <div className="flex login-div4 rp-btn">
           <button type="submit">Recover Password</button>
-          <div className="flex flex-row items-center gap-2 mt-4"><Icon icon="ion:chevron-back-outline" /> back to Login</div>
+          <div className="flex flex-row items-center gap-2 mt-4">
+            <Icon icon="ion:chevron-back-outline" /> back to Login
+          </div>
         </div>
       </form>
     </div>

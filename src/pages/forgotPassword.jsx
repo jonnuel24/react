@@ -40,6 +40,7 @@ function ForgotPassword() {
   return (
     <div className="flex justify-center align-middle fp-main-div">
       <form
+        method="post"
         action=""
         className="flex flex-col fp-form"
         onSubmit={handleSubmit(requestPasswordReset)}
@@ -51,10 +52,11 @@ function ForgotPassword() {
             Phone Number
           </label>
           <input
-            type="text"
+            type="tel"
             name="phoneNumber"
+            autoComplete="name"
             className="mt-2"
-            placeholder="Enter Email"
+            placeholder="Enter Phone Number"
             value={post.phoneNumber}
             onChange={handleInput}
           />

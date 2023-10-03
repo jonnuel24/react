@@ -11,6 +11,7 @@ function VerificationCode() {
     otp3: "",
     otp4: "",
     otp5: "",
+    otp6: "",
   });
 
   const handleInput = (event) => {
@@ -26,7 +27,7 @@ function VerificationCode() {
     } else {
       axios
         .post(
-          "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/verify-forgot-password-otp",
+          "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/auth/verify-forgot-password-otp",
           post
         )
         .then((response) => {
@@ -102,6 +103,16 @@ function VerificationCode() {
               name="otp5"
               onChange={handleInput}
               value={post.otp5}
+              className="mt-2 text-center"
+            />
+          </div>
+
+          <div className="inputs items-start">
+            <input
+              type="text"
+              name="otp6"
+              onChange={handleInput}
+              value={post.otp6}
               className="mt-2 text-center"
             />
           </div>
