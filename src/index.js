@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { Provider } from "react-redux";
+import store from './store/store'
 axios.interceptors.request.use(
   (request) => {
     request.headers.ContertType = "application/json";
@@ -32,11 +34,14 @@ axios.interceptors.response.use(
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
+
+  <Provider store={store}>
+        <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
+  </Provider>
+
+
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "../asset/styles/forgotPassword.css";
 import "../asset/styles/resetPassword.css"; //styling is linked to this
-import { Link } from "react-router-dom";
-import axios from "axios";
-
+import { useForm } from "react-hook-form";
+import accountServices from "../services/auth.service";
+import { useNavigate } from "react-router-dom";
 function VerificationCode() {
+  const navigate = useNavigate();
   const [post, setPost] = useState({
     otp1: "",
     otp2: "",
@@ -13,37 +14,28 @@ function VerificationCode() {
     otp5: "",
     otp6: "",
   });
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const handleInput = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
   };
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
+  async function verifyOTP() {
     if (post.otp1 === "") {
       alert("Please fill in the inputs");
       return;
     } else {
-      axios
-        .post(
-          "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/auth/verify-forgot-password-otp",
-          post
-        )
-        .then((response) => {
-          console.log(response);
-          if (response.message === "Signup successful") {
-            alert("Signup successful!");
-          } else {
-            alert(response.message);
-          }
-        })
-        .catch((error) => {
-          console.error("AxiosError:", error);
-          if (error.response) {
-            console.error("Response Data:", error.response.data);
-          }
-        });
+      const otp=post.otp1+post.otp2+post.otp3+post.otp4+post.otp5+post.otp6
+      const response=await accountServices.verificationCode({otp:otp})
+     if(response.statusCode==200){
+      localStorage.setItem('resetPasswordToken', response.data)
+      navigate('/resetPassword')
+     }
     }
   }
 
@@ -51,7 +43,7 @@ function VerificationCode() {
     <div className="flex justify-center align-middle fp-main-div">
       <form
         action=""
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(verifyOTP)}
         className="flex flex-col vc-form items-start"
       >
         <h2>Verification Code</h2>
