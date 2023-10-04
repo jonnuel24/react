@@ -18,6 +18,16 @@ const accountServices = {
     let response = await axios.post(`${baseUrls}verify-forgot-password-otp`, data);
     return response;
   },
+  createAccount:async function(data){
+    let response=await axios.post(`${baseUrls}signup`, data)
+    return response
+  },
+  resetPassword:async function (data){
+    const response=await axios.patch(`${baseUrls}reset-password`, data, {headers:{
+      'Password-Reset':localStorage.getItem('resetPasswordToken')
+    }})
+    return response
+  }
 };
 
 export default accountServices;

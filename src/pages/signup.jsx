@@ -3,12 +3,10 @@ import SignupImg from "../asset/images/signup-img.png";
 import Logo from "../asset/images/logo.svg";
 import "../asset/styles/signup.css";
 import Checkbox from "../Components/checkbox";
-import Button from "../Components/button";
-import CountrySelector from "../Components/country";
-import DropImg from "../asset/images/drop-img.svg";
-import { useForm } from "react-hook-form";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import accountServices from "../services/auth.service";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [post, setPost] = useState({
@@ -22,36 +20,33 @@ function Signup() {
     confirmPassword: "",
   });
 
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm();
+
   const handleInput = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
   };
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    if (post.confirmPassword !== post.password) {
-      alert("Password and Confirm Password do not match.");
-      return;
-    } else {
-      axios
-        .post(
-          "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/users/signup",
-          post
-        )
-        .then((response) => {
-          console.log(response);
-          if (response.message === "Signup successful"){
-            alert("Signup successful!");
-          }else{
-            alert(response.message)
-          }
-        })
-        .catch((error) => {
-          console.error("AxiosError:", error);
-          if (error.response) {
-            console.error("Response Data:", error.response.data);
-          }
-        });
+  async function signup() {
+    try {
+      if (post.confirmPassword !== post.password) {
+        alert("Password and Confirm Password do not match.");
+        return;
+      } else {
+        const response = await accountServices.createAccount(post);
+        console.log(response)
+        if (response.message === "Signup successful") {
+          alert("Signup successful!");
+        } else {
+          alert(response.message);
+        }
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -82,7 +77,11 @@ function Signup() {
         <div className="signup-divider"></div>
         <div className="w-full pr-48 signup-form-div">
           {/* formData */}
-          <form action="" onSubmit={handleSubmit} className="signup-form">
+          <form
+            action=""
+            onSubmit={handleSubmit(signup)}
+            className="signup-form"
+          >
             <div className="grid gap-4 grid-cols-2 grid-rows-3 signup-signup">
               {/* firstname */}
               <div className="flex flex-col items-start">
