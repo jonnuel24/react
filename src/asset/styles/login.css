@@ -1,5 +1,5 @@
 * {
-  font-family: "DM Sans", sans-serif !important;
+  font-family: "Clash Display", sans-serif !important;
 }
 .login-div1 {
   min-height: 100vh;
@@ -12,7 +12,7 @@
 
 header {
   color: #000;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-size: 35px;
   font-style: normal;
   font-weight: 400;
@@ -21,7 +21,7 @@ header {
 
 header strong {
   color: #006838;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-size: 35px;
   font-style: normal;
   font-weight: 700;
@@ -29,8 +29,7 @@ header strong {
 }
 
 .form-header {
-  font-family: "DM Sans", sans-serif;
-  color: #000;
+  font-family: "Clash Display", sans-serif#000;
   font-size: 25px;
   font-style: normal;
   font-weight: 400;
@@ -64,8 +63,7 @@ header strong {
 
 .inputs label {
   color: #000;
-  font-family: "DM Sans", sans-serif;
-  color: #000;
+  font-family: "Clash Display", sans-serif ;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;

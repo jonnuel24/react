@@ -18,19 +18,57 @@
   border-radius: 10px;
 }
 
+.p-div4 h3 {
+  color: #000;
+  font-size: 24.178px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 200%; /* 48.356px */
+}
+
 /* Profile settings container */
 .profileSettings {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  color: #000;
+  font-size: 24.178px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 250%; /* 60.444px */
+}
+
+.profileHead {
+  font-family: "Clash Display", sans-serif;
+  color: #000;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .p-logout {
   border: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
 }
 
 .p-div4-right {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+}
+
+.p-div4-right-nav h3 {
+  color: #000;
+  font-size: 24.178px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 200%; /* 48.356px */
+}
+
+.p-div4 h3 {
+  font-family: "Clash Display", sans-serif;
 }
 
 .p-div4-right-nav {
@@ -49,4 +87,44 @@
 .p-div4-right2 button {
   border-radius: 8.195px;
   border: 0.819px solid #000;
+}
+
+.profileSetting-div1 div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.ps-div-icon {
+  height: 32px !important;
+  width: 32px !important;
+}
+
+.pdr-table tr td {
+  color: #000;
+  font-size: 24.178px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 250%; /* 60.444px */
+}
+
+.ps-security {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100% !important;
+  padding-right: 32px;
+}
+
+.security-dropdown{
+  position: absolute;
+  top: 100%;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
