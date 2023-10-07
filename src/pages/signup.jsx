@@ -9,6 +9,7 @@ import accountServices from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
+  const navigate = useNavigate();
   const [post, setPost] = useState({
     firstName: "",
     lastName: "",
@@ -40,6 +41,7 @@ function Signup() {
         const response = await accountServices.createAccount(post);
         console.log(response)
         if (response.message === "Signup successful") {
+          navigate("/login")
           alert("Signup successful!");
         } else {
           alert(response.message);
