@@ -40,14 +40,24 @@ function Signup() {
       } else {
         const response = await accountServices.createAccount(post);
         console.log(response)
-        if (response.message === "Signup successful") {
+        if (response.status === "success") {
           navigate("/login")
-          alert("Signup successful!");
         } else {
-          alert(response.message);
+          if(response.messages){
+            const messages=Object.values(response.messages)
+            let msg=""
+            messages.forEach(e=>{
+              msg+=e+"\n"
+            })
+            alert(msg)
+          }
+          if(response.message){
+            alert(response.message);
+          }
         }
       }
     } catch (e) {
+      alert(e.message)
       console.log(e);
     }
   }
