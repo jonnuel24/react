@@ -16,8 +16,8 @@ function ProfileSidePannel() {
   };
 
   return (
-    <div className="ps-maindiv p-2">
-      <div className="flex flex-col basis-2/5 gap-4">
+    <div className="ps-maindiv p-2 w-100">
+      <div className="flex flex-col basis-2/5 w-full gap-4">
         <div className="text-left">
           <h3 className="sp-head">Customer Profile</h3>
         </div>
@@ -107,7 +107,7 @@ function ProfileSidePannel() {
               )}
             </div>
           </div>
-          <div className="p-logout pl-16 py-3 flex flex-1 w-full">
+          <Link to={"/login"} className="p-logout pl-16 py-3 flex flex-1 w-full">
             <Icon
               icon="ion:return-down-back-outline"
               color="black"
@@ -116,7 +116,7 @@ function ProfileSidePannel() {
               className="ps-div-icon"
             />
             Log out
-          </div>
+          </Link>
         </div>
       </div>
     </div>

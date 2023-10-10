@@ -10,12 +10,12 @@ function Profile() {
   return (
     <div>
       <Navbar />
-      <div className="py-4 px-32 flex flex-row">
+      <div className="py-4 px-32 flex flex-row gap-4">
         <div className="flex flex-col flex-1 basis-2/5 ">
           <ProfileSidePannel />
         </div>
         {/* right div */}
-        <div className="flex flex-col flex-1 basis-3/5 gap-4 mt-20">
+        <div className="flex flex-col flex-1 basis-3/5 gap-4 mt-24">
           <div className="p-div4-right">
             {/* p-div4-right-nav */}
             <div className="flex flex-row justify-between items-center p-div4-right-nav px-8 py-3">
