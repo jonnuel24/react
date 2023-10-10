@@ -27,7 +27,9 @@ function PasswordChanged() {
       >
         <img src={Logo} alt="" />
         <header>Password Reset</header>
-        <h6>Your password has been successfully reset. Click below to login </h6>
+        <h6>
+          Your password has been successfully reset. Click below to login{" "}
+        </h6>
         {/* <div className="inputs items-start">
           <label htmlFor="email" className="flex items-start mb-2">Email
           </label>
@@ -43,9 +45,11 @@ function PasswordChanged() {
         <div className="flex login-div4">
           <button type="submit">Ok</button>
         </div>
-        <div className="flex flex-row items-center gap-2">
-          <Icon icon="ion:chevron-back-outline" /> back to Login
-        </div>
+        <Link to={"/login"}>
+          <div className="flex flex-row items-center gap-2">
+            <Icon icon="ion:chevron-back-outline" /> back to Login
+          </div>
+        </Link>
       </form>
     </div>
   );

@@ -3,13 +3,13 @@ import SignupImg from "../asset/images/signup-img.png";
 import Logo from "../asset/images/logo.svg";
 import "../asset/styles/signup.css";
 import Checkbox from "../Components/checkbox";
+
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  const navigate = useNavigate();
   const [post, setPost] = useState({
     firstName: "",
     lastName: "",
@@ -62,6 +62,8 @@ function Signup() {
     }
   }
 
+  const navigate = useNavigate();
+
   // show and hide password
   const [showPassword, setShowPassword] = useState(false);
 
@@ -84,7 +86,7 @@ function Signup() {
       <div className="flex flex-col items-start w-9/12 signup-right-div">
         <img src={Logo} alt="" />
         <h1 className="signup-header">
-          <strong>Farmer Personal</strong> Information
+          <strong>User</strong> Information
         </h1>
         <div className="signup-divider"></div>
         <div className="w-full pr-48 signup-form-div">

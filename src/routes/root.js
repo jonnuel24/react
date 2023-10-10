@@ -18,10 +18,12 @@ import verificationCode from "../pages/verificationCode";
 import CheckMail from "../pages/checkMail";
 import PasswordChanged from "../pages/passwordChanged";
 import Profile from "../pages/profile";
+import Wishlist from "../pages/wishlist";
 
 import cart from "../pages/cart";
 import delivery from "../pages/delivery";
 import delivery2 from "../pages/delivery2";
+import Notification from "../pages/notification";
 
 function Root() {
   return (
@@ -48,6 +50,8 @@ function Root() {
       <Route path="/checkMail" Component={CheckMail} />
       <Route path="/passwordChanged" Component={PasswordChanged} />
       <Route path="/profile" Component={Profile} />
+      <Route path="/wishlist" Component={Wishlist} />
+      <Route path="/notification" Component={Notification} />
 
     </Routes>
   );

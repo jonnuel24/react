@@ -5,6 +5,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -73,8 +74,8 @@ function Navbar() {
           </a>
           <a href="">
             <li>
-              <Icon icon="iconamoon:profile" className="icon" />
-              Profile
+              <Icon icon="iconamoon:profile" className="icon" to={"/profile"} />
+              <Link to={"/profile"}>Profile</Link>
             </li>
           </a>
         </ul>
