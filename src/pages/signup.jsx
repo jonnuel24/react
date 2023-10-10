@@ -10,7 +10,6 @@ import accountServices from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  const navigate = useNavigate();
   const [post, setPost] = useState({
     firstName: "",
     lastName: "",
