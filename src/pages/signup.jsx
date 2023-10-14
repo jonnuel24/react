@@ -39,8 +39,8 @@ function Signup() {
         return;
       } else {
         const response = await accountServices.createAccount(post);
-        console.log(response)
         if (response.status === "success") {
+          alert("Registration was successful")
           navigate("/login")
         } else {
           if(response.messages){
