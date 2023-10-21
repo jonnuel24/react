@@ -24,11 +24,13 @@ import cart from "../pages/cart";
 import delivery from "../pages/delivery";
 import delivery2 from "../pages/delivery2";
 import Notification from "../pages/notification";
+import Website from "../pages/website";
 
 function Root() {
   return (
     <Routes>
-      <Route path="/" exact Component={onboard} />
+      <Route path="/" exact Component={Website} />
+      <Route path="/onboard"  Component={onboard} />
       <Route path="/signup" Component={signup} />
       <Route path="/login" Component={Login} />
       <Route path="/createAccount" Component={createAccount} />
@@ -52,6 +54,7 @@ function Root() {
       <Route path="/profile" Component={Profile} />
       <Route path="/wishlist" Component={Wishlist} />
       <Route path="/notification" Component={Notification} />
+      
 
     </Routes>
   );

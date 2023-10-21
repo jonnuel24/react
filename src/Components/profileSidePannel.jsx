@@ -15,18 +15,25 @@ function ProfileSidePannel() {
     setIsDropDownOpen(!isDropDownOpen);
   };
 
+  const linkStyle = {
+    textDecoration: "none",
+    color: "inherit",
+  };
+
   return (
     <div className="ps-maindiv p-2 w-100">
       <div className="flex flex-col basis-2/5 w-full gap-4">
         <div className="text-left">
           <h3 className="sp-head">Customer Profile</h3>
         </div>
-        <div className="flex h-fit items-center gap-2 p-div4">
-          <div className="p-pic">
-            <img src={profileImg} alt="" />
+        <Link to={'/profile'} style={linkStyle}>
+          <div className="flex h-fit items-center gap-2 p-div4">
+            <div className="p-pic">
+              <img src={profileImg} alt="" />
+            </div>
+            <h3>Blessing Gasgos</h3>
           </div>
-          <h3>Blessing Gasgos</h3>
-        </div>
+        </Link>
         <div className="profileSettings flex h-fit flex-col items-start py-4 gap-4">
           <div className="pl-16 flex flex-col items-start gap-4 profileSetting-div1 w-full">
             <div className="">
@@ -57,7 +64,9 @@ function ProfileSidePannel() {
                 height="32"
                 className="ps-div-icon"
               />{" "}
-              Notifications
+              <Link to={"/notification"} style={linkStyle}>
+                Notifications
+              </Link>
             </div>
 
             {/*toggle dropdown*/}
@@ -107,7 +116,11 @@ function ProfileSidePannel() {
               )}
             </div>
           </div>
-          <Link to={"/login"} className="p-logout pl-16 py-3 flex flex-1 w-full">
+          <Link
+            to={"/login"}
+            style={linkStyle}
+            className="p-logout pl-16 py-3 flex flex-1 w-full"
+          >
             <Icon
               icon="ion:return-down-back-outline"
               color="black"
