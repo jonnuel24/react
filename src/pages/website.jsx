@@ -16,6 +16,7 @@ import S5img4 from "../asset/images/s5-img4.png";
 import S5img5 from "../asset/images/s5-img5.png";
 import S5img6 from "../asset/images/s5-img6.png";
 import ProfileImg from "../asset/images/profile_img.png";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function Website() {
   return (
@@ -30,8 +31,12 @@ function Website() {
               Boost your sales by presenting your farm's distinctive livestock
               to our extensive network of potential buyers.
             </h2>
-            <button className="text-white bg-[#006838] hover:bg-[#145C3F] py-3 px-16">
-              for Farmers
+            <button
+              className="text-white bg-[#006838] hover:bg-[#145C3F] py-3 px-16"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Get Early Access
             </button>
             <h4 className="text-left">
               Your One-Stop Destination for Quality Livestock
@@ -59,6 +64,65 @@ function Website() {
             </div>
           </div>
         </div>
+
+        {/* modal */}
+
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id="exampleModalLabel">
+                  Join Agripeler Waitlist
+                </h1>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <form action="#" method="post" id="waitingListForm">
+                  <div className="mb-3">
+                    <label htmlFor="fullName" className="form-label">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="fullName"
+                      name="fullName"
+                      placeholder="e.g. John Doe"
+                      required
+                    />
+                  </div>
+
+                  {/* ...similar changes for the rest of the input fields... */}
+
+                  <div className="modal-footer">
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="submit" className="btn btn-success">
+                      Join Waitlist
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* section 2 */}
         <div className="flex flex-col mt-12 gap-y-8 px-32 w-full text-left website-s2 mb-24">
           <h4 className="w-96 ">

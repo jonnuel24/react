@@ -3,6 +3,7 @@ import Logo from "../asset/images/logo.svg";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import "../asset/styles/webnav.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function webnav() {
   const linkStyle = {
@@ -20,7 +21,7 @@ function webnav() {
         <Link to={"/onboard"} className="flex items-center wn-signin" style={linkStyle}>
           Sign in <Icon icon="iconoir:arrow-tr" />
         </Link>
-        <button className="flex flex-row items-center justify-center p-4 gap-4 hover:bg-[#145C3F] wn-btn">
+        <button className="flex flex-row items-center justify-center p-4 gap-4 hover:bg-[#145C3F] wn-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Get Early Access
           <Icon icon="ic:round-arrow-back-ios" rotate={2} />
         </button>
