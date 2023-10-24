@@ -88,8 +88,13 @@ function Website() {
                 ></button>
               </div>
               <div className="modal-body">
-                <form action="#" method="post" id="waitingListForm">
-                  <div className="mb-3">
+                <form
+                  action="#"
+                  method="post"
+                  id="waitingListForm"
+                  className="flex flex-col p-4"
+                >
+                  <div className="mb-3 text-left w-full">
                     <label htmlFor="fullName" className="form-label">
                       Full Name
                     </label>
@@ -102,8 +107,104 @@ function Website() {
                       required
                     />
                   </div>
+                  <div className="mb-3 text-left w-full">
+                    <label htmlFor="email" className="form-label">
+                      Email address
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="e.g. john.doe@example.com"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3 text-left w-full">
+                    <label htmlFor="phoneNumber" className="form-label">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      className="form-control"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      placeholder="e.g. +1 234 567 890"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3 text-left w-full">
+                    <label htmlFor="farm name" className="form-label">
+                      Farm Name
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="farmName"
+                      name="farmName"
+                      placeholder="e.g. paul's farm"
+                      required
+                    />
+                  </div>
 
-                  {/* ...similar changes for the rest of the input fields... */}
+                  <div className="mb-3 text-left w-full">
+                    <label htmlFor="location" className="form-label">
+                      Location
+                    </label>
+                    <select
+                      className="form-control"
+                      id="location"
+                      name="location"
+                      required
+                    >
+                      <option value="">Select a location</option>
+                      <option value="ogun">Ogun</option>
+                      <option value="ibadan">Ibadan</option>
+                      <option value="lagos">Lagos</option>
+                      <option value="abuja">Abuja</option>
+                    </select>
+                  </div>
+
+                  <div className="mb-3 text-left w-full">
+                    <label htmlFor="Product Category" className="form-label">
+                      Product Category
+                    </label>
+                    <select
+                      className="form-control"
+                      id="productCategory"
+                      name="productCategory"
+                      required
+                    >
+                      <option value="">Select a category</option>
+                      <option value="ogun">Goat</option>
+                      <option value="ibadan">Cattle</option>
+                      <option value="lagos">Snail</option>
+                      <option value="abuja">Pig</option>
+                      <option value="abuja">Poultry</option>
+                      <option value="abuja">Fish</option>
+                    </select>
+                  </div>
+
+                  <div className="mb-3 text-left w-full">
+                    <label htmlFor="Product Category" className="form-label">
+                      Product Category
+                    </label>
+                    <select
+                      className="form-control"
+                      id="productCategory"
+                      name="productCategory"
+                      required
+                    >
+                      <option value="">Type of Livestock</option>
+                      <option value="ogun">Goat</option>
+                      <option value="ibadan">Cattle</option>
+                      <option value="lagos">Snail</option>
+                      <option value="abuja">Pig</option>
+                      <option value="abuja">Poultry</option>
+                      <option value="abuja">Fish</option>
+                    </select>
+                  </div>
+
 
                   <div className="modal-footer">
                     <button
