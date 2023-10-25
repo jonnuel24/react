@@ -27,7 +27,12 @@ const accountServices = {
       'Password-Reset':localStorage.getItem('resetPasswordToken')
     }})
     return response
-  }
+  },
+
+  waitingList: async function (data) {
+    let response = await axios.post(`${baseUrls}waiting-list`, data);
+    return response;
+  },
 };
 
 export default accountServices;

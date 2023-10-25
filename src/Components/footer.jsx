@@ -2,7 +2,7 @@ import React from "react";
 import "../asset/styles/footer.css";
 import Logo from "../asset/images/Logo (white).svg";
 import { Icon } from "@iconify/react";
-import { Link } from "react-bootstrap/lib/Navbar";
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (

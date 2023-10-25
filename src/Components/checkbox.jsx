@@ -1,6 +1,6 @@
 import React from 'react';
 import '../asset/styles/signup.css';
-import { Link } from 'react-bootstrap/lib/Navbar';
+import { Link } from 'react-router-dom';
 
 function Checkbox() {
 

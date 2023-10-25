@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../asset/images/logo.svg";
 import Drop from "../asset/images/drop-img.svg";
-import { Link } from "react-bootstrap/lib/Navbar";
+import { Link } from "react-router-dom";
 
 function createAccount() {
   return (
@@ -23,10 +23,7 @@ function createAccount() {
 
         <div className="flex flex-col items-end">
           <h1 className="createAccount-member">
-            Already a member?{" "}
-            <Link className=" text-green-800">
-              Login
-            </Link>
+            Already a member? <Link className=" text-green-800">Login</Link>
           </h1>
         </div>
       </div>
