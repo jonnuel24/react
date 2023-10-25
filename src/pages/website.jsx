@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "../asset/images/logo.svg";
 import Webnav from "../Components/webnav";
 import Webfooter from "../Components/webfooter";
 import HeroImg1 from "../asset/images/Farmers-at-Work-in-their-Various-Farms.png";
