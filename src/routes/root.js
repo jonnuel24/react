@@ -7,7 +7,6 @@ import home from "../pages/home";
 import {
   Route,
   Routes,
-  Switch,
   BrowserRouter as Router,
 } from "react-router-dom";
 import productDetails from "../pages/productDetails";
