@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../Components/navbar";
-import Footer from "../Components/footer";
 import profileImg from "../asset/images/profile_img.png";
 import "../asset/styles/profileSidePannel.css";
 import { Icon } from "@iconify/react";
@@ -104,13 +102,13 @@ function ProfileSidePannel() {
                       flex flex-col items-end dropDownMenu"
                 >
                   <li>
-                    <a href="#">Change Password</a>
+                    <Link >Change Password</Link>
                   </li>
                   <li>
-                    <a href="#">Pin Settings</a>
+                    <Link >Pin Settings</Link>
                   </li>
                   <li>
-                    <a href="#">Delete Account</a>
+                    <Link >Delete Account</Link>
                   </li>
                 </ul>
               )}

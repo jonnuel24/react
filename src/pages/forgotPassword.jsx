@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "../asset/styles/forgotPassword.css";
 import { Link } from "react-router-dom";
 import Logo from "../asset/images/logo.svg";
@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 function ForgotPassword() {
   const {
     handleSubmit,
-    register,
-    reset,
+    // register,
+    // reset,
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();

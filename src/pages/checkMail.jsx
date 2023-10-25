@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
 import "../asset/styles/forgotPassword.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Logo from '../asset/images/logo.svg'
 import { Icon } from '@iconify/react';
 

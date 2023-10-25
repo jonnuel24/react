@@ -1,5 +1,4 @@
 import React from "react";
-import Cattle from "../asset/images/cattle.svg";
 import Farmer from "../asset/images/farmer.svg";
 import "../asset/styles/card.css";
 

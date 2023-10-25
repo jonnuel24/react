@@ -1,5 +1,6 @@
 import React from 'react';
 import '../asset/styles/signup.css';
+import { Link } from 'react-bootstrap/lib/Navbar';
 
 function Checkbox() {
 
@@ -7,7 +8,7 @@ function Checkbox() {
     <div className="form-check">
       <input className="form-check-input d-flex" type="checkbox" value="" id="flexCheckIndeterminate"/>
       <label className="form-check-label" for="flexCheckIndeterminate">
-       I Agree to Agripeller's Policy. <a href="" className='text-[#006838] '>Read Policies</a>
+       I Agree to Agripeller's Policy. <Link className='text-[#006838] '>Read Policies</Link>
       </label>
     </div>
   );
