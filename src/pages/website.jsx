@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Webnav from "../Components/webnav";
 import Webfooter from "../Components/webfooter";
 import HeroImg1 from "../asset/images/Farmers-at-Work-in-their-Various-Farms.png";
@@ -15,11 +15,42 @@ import S5img4 from "../asset/images/s5-img4.png";
 import S5img5 from "../asset/images/s5-img5.png";
 import S5img6 from "../asset/images/s5-img6.png";
 import ProfileImg from "../asset/images/profile_img.png";
+import { useForm } from "react-hook-form";
+import accountServices from "../services/auth.service";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function Website() {
+  const navigate = useNavigate();
+  const [post, setPost] = useState({
+    email: "",
+    fullName: "",
+    farmName: "",
+    location: "",
+    productCategory: "",
+    typesOfLivestock: [""],
+  });
 
-  
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const handleInput = (event) => {
+    setPost({ ...post, [event.target.name]: event.target.value });
+  };
+
+  const handleWaitingList=async ()=>{
+    try{
+      const result = await accountServices.waitingList(post);
+      alert(result.message)
+    }catch(e){
+      alert(e.message)
+    }
+  }
+
   return (
     <div className="h-full website">
       <Webnav />
@@ -94,6 +125,7 @@ function Website() {
                   method="post"
                   id="waitingListForm"
                   className="flex flex-col p-4"
+                  onSubmit={handleSubmit(handleWaitingList)}
                 >
                   <div className="mb-3 text-left w-full">
                     <label htmlFor="fullName" className="form-label">
@@ -105,7 +137,9 @@ function Website() {
                       id="fullName"
                       name="fullName"
                       placeholder="e.g. John Doe"
+                      onChange={handleInput}
                       required
+                      value={post.fullName}
                     />
                   </div>
                   <div className="mb-3 text-left w-full">
@@ -119,6 +153,8 @@ function Website() {
                       name="email"
                       placeholder="e.g. john.doe@example.com"
                       required
+                      onChange={handleInput}
+                      value={post.email}
                     />
                   </div>
                   <div className="mb-3 text-left w-full">
@@ -132,6 +168,7 @@ function Website() {
                       name="phoneNumber"
                       placeholder="e.g. +1 234 567 890"
                       required
+                      onChange={handleInput}
                     />
                   </div>
                   <div className="mb-3 text-left w-full">
@@ -145,6 +182,8 @@ function Website() {
                       name="farmName"
                       placeholder="e.g. paul's farm"
                       required
+                      onChange={handleInput}
+                      value={post.farmName}
                     />
                   </div>
 
@@ -157,6 +196,8 @@ function Website() {
                       id="location"
                       name="location"
                       required
+                      onChange={handleInput}
+                      value={post.location}
                     >
                       <option value="">Select a location</option>
                       <option value="ogun">Ogun</option>
@@ -175,6 +216,8 @@ function Website() {
                       id="productCategory"
                       name="productCategory"
                       required
+                      onChange={handleInput}
+                      value={post.productCategory}
                     >
                       <option value="">Select a category</option>
                       <option value="ogun">Goat</option>
@@ -188,13 +231,15 @@ function Website() {
 
                   <div className="mb-3 text-left w-full">
                     <label htmlFor="Product Category" className="form-label">
-                      Product Category
+                      Type of Livestock
                     </label>
                     <select
                       className="form-control"
-                      id="productCategory"
-                      name="productCategory"
+                      id="typesOfLivestock"
+                      name="typesOfLivestock"
                       required
+                      onChange={handleInput}
+                      value={post.typesOfLivestock}
                     >
                       <option value="">Type of Livestock</option>
                       <option value="ogun">Goat</option>
@@ -205,7 +250,6 @@ function Website() {
                       <option value="abuja">Fish</option>
                     </select>
                   </div>
-
 
                   <div className="modal-footer">
                     <button
