@@ -141,7 +141,7 @@ function Website() {
       setSelected([]);
       setTimeout(() => {
         setLoading(false);
-        alert("You have successfully joined the waitlist");
+        alert(result.message);
       }, 1000);
       //comment
     } catch (e) {
