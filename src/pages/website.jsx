@@ -19,9 +19,19 @@ import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { MultiSelect } from "react-multi-select-component";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 
+const animatedComponents = makeAnimated();
 function Website() {
   const navigate = useNavigate();
+  const [selected, setSelected] = useState([]);
+  const options = [
+    { label: "Grapes 🍇", value: "grapes" },
+    { label: "Mango 🥭", value: "mango" },
+    { label: "Strawberry 🍓", value: "strawberry" },
+  ];
   const [post, setPost] = useState({
     email: "",
     fullName: "",
@@ -39,17 +49,31 @@ function Website() {
   } = useForm();
 
   const handleInput = (event) => {
-    setPost({ ...post, [event.target.name]: event.target.value });
+  
+      setPost({ ...post, [event.target.name]: event.target.value });
+    // }
   };
 
-  const handleWaitingList=async ()=>{
-    try{
+  const handleWaitingList = async () => {
+    try {
+      setPost({...post, typesOfLivestock: selected.map(e=>e.value)})
+      // console.log(post)
+      // return;
       const result = await accountServices.waitingList(post);
-      alert(result.message)
-    }catch(e){
-      alert(e.message)
+      alert(result.message);
+      setPost({
+        email: "",
+        fullName: "",
+        farmName: "",
+        location: "",
+        productCategory: "",
+        typesOfLivestock: [""],
+      })
+      setSelected([])
+    } catch (e) {
+      alert(e.message);
     }
-  }
+  };
 
   return (
     <div className="h-full website">
@@ -137,9 +161,9 @@ function Website() {
                       id="fullName"
                       name="fullName"
                       placeholder="e.g. John Doe"
-                      onChange={handleInput}
                       required
-                      value={post.fullName}
+                     onChange={handleInput}
+                     value={post.fullName}
                     />
                   </div>
                   <div className="mb-3 text-left w-full">
@@ -167,8 +191,8 @@ function Website() {
                       id="phoneNumber"
                       name="phoneNumber"
                       placeholder="e.g. +1 234 567 890"
-                      required
-                      onChange={handleInput}
+                    
+                    
                     />
                   </div>
                   <div className="mb-3 text-left w-full">
@@ -233,22 +257,37 @@ function Website() {
                     <label htmlFor="Product Category" className="form-label">
                       Type of Livestock
                     </label>
-                    <select
+                    {/* <MultiSelect
+                      options={options}
+                      // selected={selected}
+                      onChange={setSelected}
+                      labelledBy={"Select"}
+                    /> */}
+                    <Select
+                      options={options}
+                      defaultValue={post.typesOfLivestock}
+                      components={animatedComponents}
+                      onChange={setSelected}
+                      name="typesOfLivestock"
+                      isMulti
+                    />
+                    {/* <select
                       className="form-control"
                       id="typesOfLivestock"
                       name="typesOfLivestock"
                       required
                       onChange={handleInput}
                       value={post.typesOfLivestock}
+                      multiple={true}
                     >
                       <option value="">Type of Livestock</option>
-                      <option value="ogun">Goat</option>
-                      <option value="ibadan">Cattle</option>
-                      <option value="lagos">Snail</option>
-                      <option value="abuja">Pig</option>
-                      <option value="abuja">Poultry</option>
-                      <option value="abuja">Fish</option>
-                    </select>
+                      <option value="goat">Goat</option>
+                      <option value="cattle">Cattle</option>
+                      <option value="snail">Snail</option>
+                      <option value="pig">Pig</option>
+                      <option value="poultry">Poultry</option>
+                      <option value="fish">Fish</option>
+                    </select> */}
                   </div>
 
                   <div className="modal-footer">
