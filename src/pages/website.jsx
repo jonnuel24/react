@@ -17,15 +17,14 @@ import S5img6 from "../asset/images/s5-img6.png";
 import ProfileImg from "../asset/images/profile_img.png";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { MultiSelect } from "react-multi-select-component";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
 const animatedComponents = makeAnimated();
 function Website() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
   const options = [
     { label: "Grapes 🍇", value: "grapes" },
@@ -60,7 +59,6 @@ function Website() {
       // console.log(post)
       // return;
       const result = await accountServices.waitingList(post);
-      alert(result.message);
       setPost({
         email: "",
         fullName: "",
@@ -70,6 +68,7 @@ function Website() {
         typesOfLivestock: [""],
       })
       setSelected([])
+      alert(result.message);
     } catch (e) {
       alert(e.message);
     }
