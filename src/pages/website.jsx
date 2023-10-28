@@ -59,6 +59,7 @@ function Website() {
       // console.log(post)
       // return;
       const result = await accountServices.waitingList(post);
+      console.log(result)
       setPost({
         email: "",
         fullName: "",
@@ -69,6 +70,7 @@ function Website() {
       })
       setSelected([])
       alert(result.message);
+      //comment
     } catch (e) {
       alert(e.message);
     }
