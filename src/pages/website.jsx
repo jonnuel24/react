@@ -22,15 +22,78 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
+// const animatedComponents = makeAnimated();
+// function Website() {
+//   // const navigate = useNavigate();
+//   const [selected, setSelected] = useState([]);
+//   const options = [
+//     { label: "Goat ", value: "goat" },
+//     { label: "Fish", value: "fish" },
+//     { label: "Pig", value: "pig" },
+//     { label: "Cow", value: "cow" },
+//     { label: "Chicken", value: "chicken" },
+//     { label: "Sheep", value: "sheep" },
+//     {label: "Snail", value: "snail"}
+//   ];
+//   const [post, setPost] = useState({
+//     email: "",
+//     fullName: "",
+//     farmName: "",
+//     location: "",
+//     productCategory: "",
+//     typesOfLivestock: [""],
+//   });
+
+//   const {
+//     handleSubmit,
+//     register,
+//     reset,
+//     formState: { errors },
+//   } = useForm();
+
+//   const handleInput = (event) => {
+  
+//       setPost({ ...post, [event.target.name]: event.target.value });
+//     // }
+//   };
+
+//   const handleWaitingList = async () => {
+//     try {
+//       setPost({...post, typesOfLivestock: selected.map(e=>e.value)})
+//       // console.log(post)
+//       // return;
+//       const result = await accountServices.waitingList(post);
+//       setPost({
+//         email: "",
+//         fullName: "",
+//         farmName: "",
+//         location: "",
+//         productCategory: "",
+//         typesOfLivestock: [""],
+//       })
+//       setSelected([])
+//       alert("You have successfully joined the waitlist");
+//       return;;
+//     } catch (e) {
+//       alert(e.message);
+//     }
+//   };
+
+
 const animatedComponents = makeAnimated();
+
 function Website() {
-  // const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
   const options = [
-    { label: "Grapes 🍇", value: "grapes" },
-    { label: "Mango 🥭", value: "mango" },
-    { label: "Strawberry 🍓", value: "strawberry" },
+    { label: "Goat", value: "goat" },
+    { label: "Fish", value: "fish" },
+    { label: "Pig", value: "pig" },
+    { label: "Cow", value: "cow" },
+    { label: "Chicken", value: "chicken" },
+    { label: "Sheep", value: "sheep" },
+    { label: "Snail", value: "snail" },
   ];
+
   const [post, setPost] = useState({
     email: "",
     fullName: "",
@@ -47,18 +110,25 @@ function Website() {
     formState: { errors },
   } = useForm();
 
+  const [loading, setLoading] = useState(false);
+
   const handleInput = (event) => {
-  
-      setPost({ ...post, [event.target.name]: event.target.value });
-    // }
+    setPost({ ...post, [event.target.name]: event.target.value });
   };
 
   const handleWaitingList = async () => {
+    if (loading) {
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      setPost({...post, typesOfLivestock: selected.map(e=>e.value)})
-      // console.log(post)
-      // return;
+      // Set the typesOfLivestock field with selected values
+      setPost({ ...post, typesOfLivestock: selected.map((e) => e.value) });
+
       const result = await accountServices.waitingList(post);
+
       setPost({
         email: "",
         fullName: "",
@@ -66,11 +136,14 @@ function Website() {
         location: "",
         productCategory: "",
         typesOfLivestock: [""],
-      })
-      setSelected([])
-      alert("You have successfully joined the waitlist");
-      return;;
+      });
+      setSelected([]);
+      setTimeout(() => {
+        setLoading(false);
+        alert("You have successfully joined the waitlist");
+      }, 3000);
     } catch (e) {
+      setLoading(false);
       alert(e.message);
     }
   };
@@ -314,8 +387,8 @@ function Website() {
                     >
                       Close
                     </button>
-                    <button type="submit" className="btn btn-success">
-                      Join Waitlist
+                    <button type="submit" className="btn btn-success" disabled={loading}>
+                    {loading ? "Joining..." : "Join Waitlist"}
                     </button>
                   </div>
                 </form>
