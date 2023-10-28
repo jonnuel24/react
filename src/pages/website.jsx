@@ -128,6 +128,7 @@ function Website() {
       setPost({ ...post, typesOfLivestock: selected.map((e) => e.value) });
 
       const result = await accountServices.waitingList(post);
+      console.log(result)
 
       setPost({
         email: "",
@@ -141,7 +142,8 @@ function Website() {
       setTimeout(() => {
         setLoading(false);
         alert("You have successfully joined the waitlist");
-      }, 3000);
+      }, 1000);
+      //comment
     } catch (e) {
       setLoading(false);
       alert(e.message);
