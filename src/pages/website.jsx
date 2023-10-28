@@ -45,7 +45,8 @@ function Website() {
   const handleWaitingList=async ()=>{
     try{
       const result = await accountServices.waitingList(post);
-      alert(result.message)
+      alert("You have successfully joined the waitlist");
+      return;
     }catch(e){
       alert(e.message)
     }
@@ -127,21 +128,7 @@ function Website() {
                   className="flex flex-col p-4"
                   onSubmit={handleSubmit(handleWaitingList)}
                 >
-                  <div className="mb-3 text-left w-full">
-                    <label htmlFor="fullName" className="form-label">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="fullName"
-                      name="fullName"
-                      placeholder="e.g. John Doe"
-                      onChange={handleInput}
-                      required
-                      value={post.fullName}
-                    />
-                  </div>
+                  
                   <div className="mb-3 text-left w-full">
                     <label htmlFor="email" className="form-label">
                       Email address
@@ -157,20 +144,23 @@ function Website() {
                       value={post.email}
                     />
                   </div>
+
                   <div className="mb-3 text-left w-full">
-                    <label htmlFor="phoneNumber" className="form-label">
-                      Phone Number
+                    <label htmlFor="fullName" className="form-label">
+                      Full Name
                     </label>
                     <input
-                      type="tel"
+                      type="text"
                       className="form-control"
-                      id="phoneNumber"
-                      name="phoneNumber"
-                      placeholder="e.g. +1 234 567 890"
-                      required
+                      id="fullName"
+                      name="fullName"
+                      placeholder="e.g. John Doe"
                       onChange={handleInput}
+                      required
+                      value={post.fullName}
                     />
                   </div>
+                  
                   <div className="mb-3 text-left w-full">
                     <label htmlFor="farm name" className="form-label">
                       Farm Name
@@ -207,6 +197,20 @@ function Website() {
                     </select>
                   </div>
 
+                  {/* <div className="mb-3 text-left w-full">
+                    <label htmlFor="phoneNumber" className="form-label">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      className="form-control"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      placeholder="e.g. +1 234 567 890"
+                      required
+                      onChange={handleInput}
+                    />
+                  </div> */}
                   <div className="mb-3 text-left w-full">
                     <label htmlFor="Product Category" className="form-label">
                       Product Category
@@ -220,12 +224,12 @@ function Website() {
                       value={post.productCategory}
                     >
                       <option value="">Select a category</option>
-                      <option value="ogun">Goat</option>
-                      <option value="ibadan">Cattle</option>
-                      <option value="lagos">Snail</option>
-                      <option value="abuja">Pig</option>
-                      <option value="abuja">Poultry</option>
-                      <option value="abuja">Fish</option>
+                      <option value="goat">Goat</option>
+                      <option value="cattle">Cattle</option>
+                      <option value="snail">Snail</option>
+                      <option value="pig">Pig</option>
+                      <option value="poultry">Poultry</option>
+                      <option value="fish">Fish</option>
                     </select>
                   </div>
 
@@ -241,13 +245,13 @@ function Website() {
                       onChange={handleInput}
                       value={post.typesOfLivestock}
                     >
-                      <option value="">Type of Livestock</option>
-                      <option value="ogun">Goat</option>
-                      <option value="ibadan">Cattle</option>
-                      <option value="lagos">Snail</option>
-                      <option value="abuja">Pig</option>
-                      <option value="abuja">Poultry</option>
-                      <option value="abuja">Fish</option>
+                      <option value="">Select a category</option>
+                      <option value="goat">Goat</option>
+                      <option value="cattle">Cattle</option>
+                      <option value="snail">Snail</option>
+                      <option value="pig">Pig</option>
+                      <option value="poultry">Poultry</option>
+                      <option value="fish">Fish</option>
                     </select>
                   </div>
 
