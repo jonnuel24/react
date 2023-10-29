@@ -1,5 +1,5 @@
 import React from "react";
-import Onboard from "../asset/styles/onboard.css";
+// import Onboard from "../asset/styles/onboard.css";
 import Logo from "../asset/images/logo.svg";
 import Drop from "../asset/images/drop-img.svg";
 import { Link } from "react-router-dom";

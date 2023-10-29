@@ -1,6 +1,6 @@
 // import React from "react";
 import React, { useState } from "react";
-import LoginBg from "../asset/images/login_bg.svg";
+// import LoginBg from "../asset/images/login_bg.svg";
 import "../asset/styles/login.css";
 import logo from "../asset/images/logo.svg";
 import { Link } from "react-router-dom";
@@ -15,9 +15,9 @@ function Login() {
 
   const {
     handleSubmit,
-    register,
-    reset,
-    formState: { errors },
+    // register,
+    // reset,
+    // formState: { errors },
   } = useForm();
 
   const handleInput = (event) => {
