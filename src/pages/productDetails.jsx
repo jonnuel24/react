@@ -289,10 +289,10 @@ function productDetails() {
 
             <div className="right-div04">
               <div>
-                <a href="" className="button1">
+                <a href="/" className="button1">
                   RELATED LISTINGS
                 </a>
-                <a href="" className="button2">
+                <a href="/" className="button2">
                   NEARBY LISTINGS
                 </a>
               </div>

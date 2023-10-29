@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+// import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar";
 import Footer from "../Components/footer";
 import profileImg from "../asset/images/profile_img.png";
@@ -7,7 +7,7 @@ import "../asset/styles/profile.css";
 import { Icon } from "@iconify/react";
 import ProfileSidePannel from "../Components/profileSidePannel";
 import WishlistCard from "../Components/wishlistCard";
-import Picon from "../Components/p-icon";
+// import Picon from "../Components/p-icon";
 
 function Wishlist() {
   const linkStyle = {

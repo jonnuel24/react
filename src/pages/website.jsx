@@ -105,9 +105,9 @@ function Website() {
 
   const {
     handleSubmit,
-    register,
-    reset,
-    formState: { errors },
+    // register,
+    // reset,
+    // formState: { errors },
   } = useForm();
 
   const [loading, setLoading] = useState(false);

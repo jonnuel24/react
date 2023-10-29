@@ -16,9 +16,9 @@ function VerificationCode() {
   });
   const {
     handleSubmit,
-    register,
-    reset,
-    formState: { errors },
+    // register,
+    // reset,
+    // formState: { errors },
   } = useForm();
 
   const handleInput = (event) => {
@@ -32,7 +32,7 @@ function VerificationCode() {
     } else {
       const otp=post.otp1+post.otp2+post.otp3+post.otp4+post.otp5+post.otp6
       const response=await accountServices.verificationCode({otp:otp})
-     if(response.statusCode==200){
+     if(response.statusCode===200){
       localStorage.setItem('resetPasswordToken', response.data)
       navigate('/resetPassword')
      }
@@ -115,9 +115,9 @@ function VerificationCode() {
           </button>
           <h5 className="vc-resend mt-4">
             Did not get OTP?{" "}
-            <a href="" className="text-[#006838]">
+            <button type="button" className="text-[#006838]">
               Resend
-            </a>
+            </button>
           </h5>
         </div>
       </form>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+// import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar";
 import Footer from "../Components/footer";
 import profileImg from "../asset/images/profile_img.png";

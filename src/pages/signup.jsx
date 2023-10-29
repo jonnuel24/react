@@ -23,9 +23,9 @@ function Signup() {
 
   const {
     handleSubmit,
-    register,
-    reset,
-    formState: { errors },
+    // register,
+    // reset,
+    // formState: { errors },
   } = useForm();
 
   const handleInput = (event) => {
@@ -71,11 +71,11 @@ function Signup() {
     setShowPassword(!showPassword);
   };
 
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  // const [selectedCountry, setSelectedCountry] = useState(null);
 
-  const handleCountryChange = (selectedOption) => {
-    setSelectedCountry(selectedOption);
-  };
+  // const handleCountryChange = (selectedOption) => {
+  //   setSelectedCountry(selectedOption);
+  // };
 
   return (
     <div className="flex h-screen overall-div">

@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "../asset/styles/forgotPassword.css";
 // import { Link } from "react-router-dom";
 import Logo from '../asset/images/logo.svg'
 import { Icon } from '@iconify/react';
 
 function CheckMail() {
-  const [email, setEmail] = useState("");
-  const [showMessage, setShowMessage] = useState(false);
+  // const [email, setEmail] = useState("");
+  // const [showMessage, setShowMessage] = useState(false);
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  // const handleEmailChange = (event) => {
+  //   setEmail(event.target.value);
 
     
-  };
+  // };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    setShowMessage(true);
+    // setShowMessage(true);
   }
 
  

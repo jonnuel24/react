@@ -16,12 +16,12 @@ function home() {
 
           <div className='section21'>
             <div className='section22'>
-              <a href="" className='bg-[#006838] active'><div className='text-white'>All</div></a>
-              <a href=""><div>Popular</div></a>
-              <a href=""><div>New in</div></a>
-              <a href=""><div>Best Rating</div></a>
-              <a href=""><div>highest price</div></a>
-              <a href=""><div>Lowest Price</div></a>
+              <a href="/" className='bg-[#006838] active'><div className='text-white'>All</div></a>
+              <a href="/"><div>Popular</div></a>
+              <a href="/"><div>New in</div></a>
+              <a href="/"><div>Best Rating</div></a>
+              <a href="/"><div>highest price</div></a>
+              <a href="/"><div>Lowest Price</div></a>
             </div>
 
             <div className='section23'>

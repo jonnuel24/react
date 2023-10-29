@@ -12,14 +12,14 @@ function ForgotPassword() {
     handleSubmit,
     // register,
     // reset,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
   const navigate = useNavigate();
   const [post, setPost] = useState({
     phoneNumber: "",
   });
 
-  const [message, setMessage] = useState(""); // To store the response message from the API
+  // const [message, setMessage] = useState(""); // To store the response message from the API
 
   const handleInput = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
@@ -64,7 +64,7 @@ function ForgotPassword() {
         <div className="flex login-div4">
           <button type="submit">Reset your password</button>
         </div>
-        <p>{message}</p> {/* Display the response message from the API */}
+        {/* <p>{message}</p> Display the response message from the API */}
         <Link to="/login">
           <div className="flex flex-row items-center gap-2">
             <Icon icon="ion:chevron-back-outline" /> back to Login

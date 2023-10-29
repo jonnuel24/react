@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 function  ResetPassword() {
   const {
     handleSubmit,
-    register,
-    reset,
-    formState: { errors },
+    // register,
+    // reset,
+    // formState: { errors },
   } = useForm();
   const [post, setPost] = useState({
     newPassword: "",
