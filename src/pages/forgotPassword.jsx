@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 // import axios from "axios";
 import "../asset/styles/forgotPassword.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../asset/images/logo.svg";
 import { Icon } from "@iconify/react";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
-import { useNavigate } from "react-router-dom";
 function ForgotPassword() {
   const {
     handleSubmit,

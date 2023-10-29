@@ -3,10 +3,10 @@ import React, { useState } from "react";
 // import LoginBg from "../asset/images/login_bg.svg";
 import "../asset/styles/login.css";
 import logo from "../asset/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
-import { useNavigate } from "react-router-dom";
+
 function Login() {
   const navigate = useNavigate();
   const [post, setPost] = useState({
