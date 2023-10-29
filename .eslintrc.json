@@ -1,9 +1,0 @@
-{
-  "extends": ["plugin:import/recommended", "plugin:react/recommended"],
-    "rules": {
-      // ...
-      "no-unused-vars": "off",
-      "no-unresolved":"off"
-      // ...
-    }
-  }
