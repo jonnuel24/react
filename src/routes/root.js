@@ -24,6 +24,7 @@ import delivery from "../pages/delivery";
 import delivery2 from "../pages/delivery2";
 import Notification from "../pages/notification";
 import Website from "../pages/website";
+import FNavbar from "../pages/farmers/component/farmersNavbar";
 
 function Root() {
   return (
@@ -53,6 +54,7 @@ function Root() {
       <Route path="/profile" Component={Profile} />
       <Route path="/wishlist" Component={Wishlist} />
       <Route path="/notification" Component={Notification} />
+      <Route path="/farmersdashboard" Component={FNavbar} />
       
 
     </Routes>

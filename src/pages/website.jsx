@@ -22,15 +22,78 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
+// const animatedComponents = makeAnimated();
+// function Website() {
+//   // const navigate = useNavigate();
+//   const [selected, setSelected] = useState([]);
+//   const options = [
+//     { label: "Goat ", value: "goat" },
+//     { label: "Fish", value: "fish" },
+//     { label: "Pig", value: "pig" },
+//     { label: "Cow", value: "cow" },
+//     { label: "Chicken", value: "chicken" },
+//     { label: "Sheep", value: "sheep" },
+//     {label: "Snail", value: "snail"}
+//   ];
+//   const [post, setPost] = useState({
+//     email: "",
+//     fullName: "",
+//     farmName: "",
+//     location: "",
+//     productCategory: "",
+//     typesOfLivestock: [""],
+//   });
+
+//   const {
+//     handleSubmit,
+//     register,
+//     reset,
+//     formState: { errors },
+//   } = useForm();
+
+//   const handleInput = (event) => {
+  
+//       setPost({ ...post, [event.target.name]: event.target.value });
+//     // }
+//   };
+
+//   const handleWaitingList = async () => {
+//     try {
+//       setPost({...post, typesOfLivestock: selected.map(e=>e.value)})
+//       // console.log(post)
+//       // return;
+//       const result = await accountServices.waitingList(post);
+//       setPost({
+//         email: "",
+//         fullName: "",
+//         farmName: "",
+//         location: "",
+//         productCategory: "",
+//         typesOfLivestock: [""],
+//       })
+//       setSelected([])
+//       alert("You have successfully joined the waitlist");
+//       return;;
+//     } catch (e) {
+//       alert(e.message);
+//     }
+//   };
+
+
 const animatedComponents = makeAnimated();
+
 function Website() {
-  // const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
   const options = [
-    { label: "Grapes 🍇", value: "grapes" },
-    { label: "Mango 🥭", value: "mango" },
-    { label: "Strawberry 🍓", value: "strawberry" },
+    { label: "Goat", value: "goat" },
+    { label: "Fish", value: "fish" },
+    { label: "Pig", value: "pig" },
+    { label: "Cow", value: "cow" },
+    { label: "Chicken", value: "chicken" },
+    { label: "Sheep", value: "sheep" },
+    { label: "Snail", value: "snail" },
   ];
+
   const [post, setPost] = useState({
     email: "",
     fullName: "",
@@ -47,19 +110,26 @@ function Website() {
     formState: { errors },
   } = useForm();
 
+  const [loading, setLoading] = useState(false);
+
   const handleInput = (event) => {
-  
-      setPost({ ...post, [event.target.name]: event.target.value });
-    // }
+    setPost({ ...post, [event.target.name]: event.target.value });
   };
 
   const handleWaitingList = async () => {
+    if (loading) {
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      setPost({...post, typesOfLivestock: selected.map(e=>e.value)})
-      // console.log(post)
-      // return;
+      // Set the typesOfLivestock field with selected values
+      setPost({ ...post, typesOfLivestock: selected.map((e) => e.value) });
+
       const result = await accountServices.waitingList(post);
       console.log(result)
+
       setPost({
         email: "",
         fullName: "",
@@ -67,11 +137,15 @@ function Website() {
         location: "",
         productCategory: "",
         typesOfLivestock: [""],
-      })
-      setSelected([])
-      alert(result.message);
+      });
+      setSelected([]);
+      setTimeout(() => {
+        setLoading(false);
+        alert(result.message);
+      }, 1000);
       //comment
     } catch (e) {
+      setLoading(false);
       alert(e.message);
     }
   };
@@ -182,12 +256,13 @@ function Website() {
                       value={post.email}
                     />
                   </div>
+
                   <div className="mb-3 text-left w-full">
-                    <label htmlFor="phoneNumber" className="form-label">
-                      Phone Number
+                    <label htmlFor="fullName" className="form-label">
+                      Full Name
                     </label>
                     <input
-                      type="tel"
+                      type="text"
                       className="form-control"
                       id="phoneNumber"
                       name="phoneNumber"
@@ -196,6 +271,7 @@ function Website() {
                     
                     />
                   </div>
+                  
                   <div className="mb-3 text-left w-full">
                     <label htmlFor="farm name" className="form-label">
                       Farm Name
@@ -232,6 +308,20 @@ function Website() {
                     </select>
                   </div>
 
+                  {/* <div className="mb-3 text-left w-full">
+                    <label htmlFor="phoneNumber" className="form-label">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      className="form-control"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      placeholder="e.g. +1 234 567 890"
+                      required
+                      onChange={handleInput}
+                    />
+                  </div> */}
                   <div className="mb-3 text-left w-full">
                     <label htmlFor="Product Category" className="form-label">
                       Product Category
@@ -245,12 +335,12 @@ function Website() {
                       value={post.productCategory}
                     >
                       <option value="">Select a category</option>
-                      <option value="ogun">Goat</option>
-                      <option value="ibadan">Cattle</option>
-                      <option value="lagos">Snail</option>
-                      <option value="abuja">Pig</option>
-                      <option value="abuja">Poultry</option>
-                      <option value="abuja">Fish</option>
+                      <option value="goat">Goat</option>
+                      <option value="cattle">Cattle</option>
+                      <option value="snail">Snail</option>
+                      <option value="pig">Pig</option>
+                      <option value="poultry">Poultry</option>
+                      <option value="fish">Fish</option>
                     </select>
                   </div>
 
@@ -299,8 +389,8 @@ function Website() {
                     >
                       Close
                     </button>
-                    <button type="submit" className="btn btn-success">
-                      Join Waitlist
+                    <button type="submit" className="btn btn-success" disabled={loading}>
+                    {loading ? "Joining..." : "Join Waitlist"}
                     </button>
                   </div>
                 </form>
