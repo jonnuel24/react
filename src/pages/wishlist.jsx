@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React from "react";
 // import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar";
@@ -44,7 +45,7 @@ function Wishlist() {
             <h3>Wishlist</h3>
           </div>
           <div>
-            <table class="w-full table-fixed border border-spacing-y-4">
+            <table className="w-full table-fixed border border-spacing-y-4">
               <thead className="text-left">
                 <tr className="border border-slate-600 ...">
                   <th className="px-6 py-4">Product</th>

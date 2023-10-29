@@ -1,13 +1,13 @@
+/* eslint-disable import/no-unresolved */
 import React, { useState } from "react";
 import SignupImg from "../asset/images/signup-img.png";
 import Logo from "../asset/images/logo.svg";
 import "../asset/styles/signup.css";
 import Checkbox from "../Components/checkbox";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import accountServices from "../services/auth.service";
-import { useNavigate } from "react-router-dom";
+import accountServices from "../services/auth.service";;
 
 function Signup() {
   const [post, setPost] = useState({

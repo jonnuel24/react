@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react'
 import Navbar from '../Components/navbar'
 import Footer from '../Components/footer'

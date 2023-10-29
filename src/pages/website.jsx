@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React, { useState } from "react";
 import Webnav from "../Components/webnav";
 import Webfooter from "../Components/webfooter";
