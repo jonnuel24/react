@@ -6,11 +6,11 @@ import "../asset/styles/webnav.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function webnav() {
-  const linkStyle = {
-    textDecoration: "none",
-    color: "inherit",
-  };
-  return (
+  // const linkStyle = {
+  //   textDecoration: "none",
+  //   color: "inherit",
+  // };
+  // return (
     <div className="flex flex-row items-center justify-between w-full py-12 px-24 mx-auto wnav">
       <div>
         <img src={Logo} alt="" className="w-full" />
