@@ -6,3 +6,15 @@
   font-weight: 500;
   line-height: normal;
 }
+
+.webfooter-divider{
+  border-radius: var(--cart-cart, 0px);
+background: #FFF;
+width: 100%;
+height: var(--cart-cart, 1px);
+}
+
+.social{
+  text-decoration: none;
+  color: #fff;
+}
