@@ -10,7 +10,7 @@ function webnav() {
   //   textDecoration: "none",
   //   color: "inherit",
   // };
-  // return (
+  return (
     <div className="flex flex-row items-center justify-between w-full py-12 px-24 mx-auto wnav">
       <div>
         <img src={Logo} alt="" className="w-full" />
