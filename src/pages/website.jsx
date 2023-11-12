@@ -410,7 +410,7 @@ function Website() {
         </div>
 
         {/* section 2 */}
-        <div className="flex flex-row px-32 w-full justify-center gap-56 ">
+        <div className="flex flex-row px-32 w-full justify-center gap-56 " id="websiteAbout">
           {/* section2-left-div*/}
           <div className="w-1/3 flex flex-col gap-32 items-center">
             <div className="w-[440px]">
