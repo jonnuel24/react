@@ -153,28 +153,38 @@ function Website() {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
+  const [isOpen4, setIsOpen4] = useState(false);
+  const [isOpen5, setIsOpen5] = useState(false);
+  const [isOpen6, setIsOpen6] = useState(false);
 
   return (
-    <div className="h-full website">
+    <div className="h-full website w-full overflow-x-hidden">
       <Webnav />
-      <div className="py-16 pb-32 h-fit  flex flex-col gap-24 website-body">
+      <div className="py-0 sm:py-16  pb-32 h-fit  flex flex-col gap-8 sm:gap-24 website-body">
         {/* hero-section */}
-        <div className="flex flex-col px-32 py-12 sm:flex-row justify-between website-hero">
+        <div className="flex flex-col py-12 lg:flex-row justify-between website-hero px-[16px] lg:px-[64px]">
           {/* hero-left-div */}
-          <div className="flex flex-col items-start w-2/3 gap-8 w-fit website-hld">
-            <h6>Creating Farming Solutions, One Byte at a Time</h6>
-            <h2 className="text-left w-fit ">
-              <span className="text-[#145C3F]">AGRIPELLER -</span>
+          <div className="flex flex-col items-start w-full  gap-4 sm:gap-8 website-hld">
+            <h6 className="text-[12px] sm:text-[16px]">
+              Creating Farming Solutions, One Byte at a Time
+            </h6>
+            <h2 className="text-left w-fit text-[32px] sm:text-[64px] ">
+              <span className="text-[#145C3F] text-[32px] sm:text-[64px]">
+                AGRIPELLER -
+              </span>
               <br />
               Agric E-commerce & Farm Management Software
             </h2>
-            <h4 className="text-left">
+            <h4 className="text-left text-[20px] sm:text-[30px] w-full">
               Gain access to a wholesome suite of livestock management,
               e-commerce and B2B solutions—specifically designed for the
               agricultural industry.
             </h4>
             <button
-              className="text-white bg-[#006838] hover:bg-[#145C3F] py-3 px-16"
+              className="text-white bg-[#006838] hover:bg-[#145C3F] py-3 px-16 w-full md:w-fit mb-[24px] md:mb-[24px] sm:mb-[0]"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
@@ -183,22 +193,28 @@ function Website() {
           </div>
 
           {/* hero-right-div */}
-          <div className="flex flex-row gap-8 justify-center w-1/3">
+          <div className="flex flex-row sm:flex-col  gap-4 sm:gap-8 justify-center w-full ">
             <div className="flex flex-col gap-8">
-              <div className="heroImg1">
-                <img src={HeroImg1} alt="" />
+              <div className="heroImg1 w-[185px] sm:w-[301.995px] h-[209px] sm:h-[340.126px]">
+                <img src={HeroImg1} alt="" className="w-full" />
               </div>
-              <div className="heroImg2">
-                <img src={HeroImg2} alt="" />
+              <div className="heroImg2 w-[185px] sm:w-[312.394px] h-[140px] sm:h-[236.662px]">
+                <img src={HeroImg2} alt="" className="w-full" />
               </div>
             </div>
 
-            <div className="flex flex-col gap-8 heroimgRight">
-              <div className="heroImg2">
-                <img src={HeroImg3} className="w-full" alt="" />
+            <div className="flex flex-col gap-8 heroimgRight mt-0 sm:mt-[-44px]">
+              <div className="heroImg2 w-[185px] sm:w-[312.394px] h-[140px] sm:h-[236.662px]">
+                <img
+                  src={HeroImg3}
+                  classN
+                  className="w-full"
+                  ame="w-full"
+                  alt=""
+                />
               </div>
-              <div className="heroImg1">
-                <img src={HeroImg4} alt="" />
+              <div className="heroImg1 w-[185px] sm:w-[301.995px] h-[209px] sm:h-[340.126px]">
+                <img src={HeroImg4} alt="" className="w-full" />
               </div>
             </div>
           </div>
@@ -410,19 +426,24 @@ function Website() {
         </div>
 
         {/* section 2 */}
-        <div className="flex flex-row px-32 w-full justify-center gap-56 " id="websiteAbout">
+        <div
+          className="flex flex-col md:flex-row px-[16px] sm:px-[64px] w-full items-center sm:items-start gap-[132px] sm:gap-[64px}] "
+          id="websiteAbout"
+        >
           {/* section2-left-div*/}
-          <div className="w-1/3 flex flex-col gap-32 items-center">
-            <div className="w-[440px]">
-              <h4 className="website-s2-about-h4">About Us</h4>
-              <p className="website-s2-about-p">
+          <div className="w-full  flex flex-col gap-32 sm:gap-64 items-center ">
+            <div className="w-full sm:w-[440px] flex flex-col items-start sm:items-center">
+              <h4 className="website-s2-about-h4 sm:text-left text-[32px] sm:text-[40px]">
+                About Us
+              </h4>
+              <p className="website-s2-about-p text-left sm:text-center text-[16px] sm:text-[20px] w-full">
                 “Empowering Livestock Industry with <br /> Transparency,
                 Sustainability, and Innovation”
               </p>
             </div>
-            <div className="s4-bg1">
-              <div className="s4-bg2">
-                <div className="s4-bg3">
+            <div className="s4-bg1 w-[397px] sm:w-[505px] h-[397px] sm:h-[505px] grid justify-center content-center">
+              <div className="s4-bg2 w-[340px] sm:w-[433px] h-[340px] sm:h-[433px] grid justify-center content-center">
+                <div className="s4-bg3 w-[300px] sm:w-[363px] h-[300px] sm:h-[363px] grid justify-center content-center px-[16px]">
                   <img src={S2ldimg} alt="" />
                 </div>
               </div>
@@ -431,20 +452,20 @@ function Website() {
 
           {/* section2-right-div*/}
 
-          <div className="flex flex-col gap-24 w-2/3 items-center">
-            <div className="flex flex-row section2-card p-4">
-              <div className="w-[48px] h-auto">
+          <div className="flex flex-col gap-8 sm:gap-24 w-full items-center">
+            <div className="flex flex-row section2-card p-4 ">
+              <div className="h-auto">
                 <Icon
                   icon="mdi:eye-outline"
                   color="black"
                   width="24"
                   height="24"
-                  className="website-s2-card-icon"
+                  className="website-s2-card-icon mt-0 sm:mt-2 mr-0 sm:mr-4"
                 />
               </div>
-              <div className="flex flex-col items-start gap-2 s4-c-text">
-                <h2>Vision</h2>
-                <h5 className="text-left">
+              <div className="flex flex-col items-start gap-2 s4-c-text ">
+                <h2 className="text-[20px] sm:text-[40px]">Vision</h2>
+                <h5 className="text-left text-[16px] sm:text-[20px]">
                   We are dedicated to streamlining the day-to-day farmer tasks
                   and connecting buyers with quality farm produce through our
                   one-stop-shop  e-commerce and livestock record keeping
@@ -459,12 +480,12 @@ function Website() {
                   color="black"
                   width="26"
                   height="26"
-                  className="website-s2-card-icon"
+                  className="website-s2-card-icon mt-0 sm:mt-2 mr-0 sm:mr-4"
                 />
               </div>
               <div className="flex flex-col items-start gap-2 s4-c-text">
-                <h2>Mission</h2>
-                <h5 className="text-left">
+                <h2 className="text-[20px] sm:text-[40px]">Mission</h2>
+                <h5 className="text-left text-[20px]">
                   Our mission is to make the livestock industry more efficient,
                   sustainable, and transparent. To help livestock farmers
                   connect with buyers, manage their inventory, and track their
@@ -480,11 +501,11 @@ function Website() {
                   color="black"
                   width="24"
                   height="24"
-                  className="website-s2-card-icon"
+                  className="website-s2-card-icon mt-0 sm:mt-2 mr-0 sm:mr-4"
                 />
               </div>
               <div className="flex flex-col items-start gap-2 s4-c-text">
-                <h2>Core Values</h2>
+                <h2 className="text-[20px] sm:text-[40px]">Core Values</h2>
                 <div>
                   <div>
                     <h6 className="text-left font-[Clash Display] text-[#4D4D4D] font-medium text-[20px] leading-normal">
@@ -531,68 +552,66 @@ function Website() {
         {/* end of section 2 */}
 
         {/* section 3 */}
-        <div className="website-s3 py-8 px-32 flex flex-col items-center gap-12 mb-24">
-          <div className="s3-img"></div>
+        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 mb-24 h-fit rounded-none ">
+          <div className="hidden sm:block s3-img"></div>
+          <div className="sm:hidden block s3-img-sm rounded-none"></div>
         </div>
         {/* end of section 3 */}
 
         {/* section 4 */}
-        <div className="flex flex-col items-center gap-[64px] website-s4">
-          <div>
-            <h4 className="text-[#000000] font-medium text-[40px]">Services</h4>
+        <div className="flex flex-col items-center gap-[64px] website-s4 px-[16px] sm:px-[64px]">
+          <div className="items-start sm:items-center">
+            <h4 className="text-[#000000] font-medium text-[40px] text-left sm:text-center">Services</h4>
             <p className=" text-[#145C3F] font-medium text-[20px]">
               How Agripeller Makes Your Life Easier
             </p>
           </div>
 
           {/* section 4 div2 */}
-          <div className="flex flex-row justify-center gap-[45px]">
-            <div className="flex flex-col items-center w-[375px] px=12 py-4 gap-[20px]">
+          <div className="flex flex-col sm:flex-row gap-[45px] w-full items-start ">
+            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[20px]">
               <div>
                 <img src={WebsiteS4Icon1} alt="" />
               </div>
-              <h4 className="text-black  font-medium text-[24px] leading-normal">
+              <h4 className="text-black  font-medium text-[24px] leading-normal text-left sm:text-center">
                 Livestock Inventory <br /> Management
               </h4>
-              <p className="text-[#4D4D4D] leading-normal font-medium text-[18px]">
-                At Agripeller, we help farmers manage <br /> their inventory
-                more effectively with our <br /> software management system
+              <p className="text-[#4D4D4D] leading-normal font-medium text-[18px] text-left sm:text-center">
+                At Agripeller, we help farmers manage their inventory
+                more effectively with our software management system
               </p>
             </div>
-            <div className="flex flex-col items-center w-[375px] px=12 py-4 gap-[20px]">
+            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[20px]">
               <div>
                 <img src={WebsiteS4Icon2} alt="" />
               </div>
-              <h4 className="text-black  font-medium text-[24px] leading-normal">
-                Livestock Inventory <br /> Management
+              <h4 className="text-black  font-medium text-[24px] leading-normal text-left sm:text-center">
+              Shipment Tracking
               </h4>
-              <p className="text-[#4D4D4D] leading-normal font-medium text-[18px]">
-                At Agripeller, we help farmers manage <br /> their inventory
-                more effectively with our <br /> software management system
+              <p className="text-[#4D4D4D] leading-normal font-medium text-[18px] text-left sm:text-center">
+              We help farmers and buyers with shipment tracking to ensure that products are delivered on time and in optimal condition.
               </p>
             </div>
-            <div className="flex flex-col items-center w-[375px] px=12 py-4 gap-[20px]">
+            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[20px]">
               <div>
                 <img src={WebsiteS4Icon3} alt="" />
               </div>
-              <h4 className="text-black  font-medium text-[24px] leading-normal">
-                Livestock Inventory <br /> Management
+              <h4 className="text-black  font-medium text-[24px] leading-normal text-left sm:text-center">
+              E-commerce for Farmers & Livestock lovers
               </h4>
-              <p className="text-[#4D4D4D] leading-normal font-medium text-[18px]">
-                At Agripeller, we help farmers manage <br /> their inventory
-                more effectively with our <br /> software management system
+              <p className="text-[#4D4D4D] leading-normal font-medium text-[18px] text-left sm:text-center">
+              Our online farmers market software connects farmers with potential customers, thereby reducing promotional expenses and increasing revenue.
               </p>
             </div>
-            <div className="flex flex-col items-center w-[375px] px=12 py-4 gap-[20px]">
+            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[20px]">
               <div>
                 <img src={WebsiteS4Icon4} alt="" />
               </div>
-              <h4 className="text-black  font-medium text-[24px] leading-normal">
-                Livestock Inventory <br /> Management
+              <h4 className="text-black  font-medium text-[24px] leading-normal text-left sm:text-center">
+                Farming Reources
               </h4>
-              <p className="text-[#4D4D4D] leading-normal font-medium text-[18px]">
-                At Agripeller, we help farmers manage <br /> their inventory
-                more effectively with our <br /> software management system
+              <p className="text-[#4D4D4D] leading-normal font-medium text-[18px] text-left sm:text-center">
+              Our online farmers market software connects farmers with potential customers, thereby reducing promotional expenses and increasing revenue.
               </p>
             </div>
           </div>
@@ -673,23 +692,24 @@ function Website() {
                 <button
                   className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
                   data-dropdown-toggle="dropdown"
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={() => setIsOpen1(!isOpen1)}
                 >
-                  What is Agripeller ?
+                  Why should I use Agripeller ?
                   <Icon
                     icon="ic:round-arrow-back-ios"
                     color="black"
-                    rotate={isOpen ? 1 : 3}
+                    rotate={isOpen1 ? 1 : 3}
                   />
                 </button>
 
                 {/* modal */}
-                {isOpen && (
+                {isOpen1 && (
                   <div className="w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
-                      Agripeller is a cutting-edge platform in the Nigerian
-                      livestock industry. It is a digital marketplace for
-                      livestock farmers and buyers.
+                      You should use Agripeller if you want to automate the
+                      livestock buying and selling process. You get to save time
+                      and money and have your livestock delivered to your
+                      doorstep in no time.
                     </p>
                   </div>
                 )}
@@ -700,23 +720,25 @@ function Website() {
                 <button
                   className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
                   data-dropdown-toggle="dropdown"
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={() => setIsOpen2(!isOpen2)}
                 >
-                  What is Agripeller ?
+                  How does the Agripeller platform work ?
                   <Icon
                     icon="ic:round-arrow-back-ios"
                     color="black"
-                    rotate={isOpen ? 1 : 3}
+                    rotate={isOpen2 ? 1 : 3}
                   />
                 </button>
 
                 {/* modal */}
-                {isOpen && (
+                {isOpen2 && (
                   <div className="w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
-                      Agripeller is a cutting-edge platform in the Nigerian
-                      livestock industry. It is a digital marketplace for
-                      livestock farmers and buyers.
+                      Farmers create a profile and an online stall on the
+                      website to showcase the variety of livestock they have
+                      available for sale. Once you’ve created an account, you
+                      can start using the platform to connect with buyers,
+                      manage inventory, track your shipment, and more.
                     </p>
                   </div>
                 )}
@@ -727,23 +749,22 @@ function Website() {
                 <button
                   className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
                   data-dropdown-toggle="dropdown"
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={() => setIsOpen3(!isOpen3)}
                 >
-                  What is Agripeller ?
+                  Is the platform secure ?
                   <Icon
                     icon="ic:round-arrow-back-ios"
                     color="black"
-                    rotate={isOpen ? 1 : 3}
+                    rotate={isOpen3 ? 1 : 3}
                   />
                 </button>
 
                 {/* modal */}
-                {isOpen && (
+                {isOpen3 && (
                   <div className="w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
-                      Agripeller is a cutting-edge platform in the Nigerian
-                      livestock industry. It is a digital marketplace for
-                      livestock farmers and buyers.
+                      Yes, the platform is secure. We use a variety of security
+                      measures to protect the data of our users.
                     </p>
                   </div>
                 )}
@@ -755,23 +776,21 @@ function Website() {
                 <button
                   className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
                   data-dropdown-toggle="dropdown"
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={() => setIsOpen4(!isOpen4)}
                 >
-                  What is Agripeller ?
+                  How do I signup as a farmer ?
                   <Icon
                     icon="ic:round-arrow-back-ios"
                     color="black"
-                    rotate={isOpen ? 1 : 3}
+                    rotate={isOpen4 ? 1 : 3}
                   />
                 </button>
 
                 {/* modal */}
-                {isOpen && (
+                {isOpen4 && (
                   <div className="w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
-                      Agripeller is a cutting-edge platform in the Nigerian
-                      livestock industry. It is a digital marketplace for
-                      livestock farmers and buyers.
+                      To get started, simply join the waitlist.
                     </p>
                   </div>
                 )}
@@ -782,23 +801,49 @@ function Website() {
                 <button
                   className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
                   data-dropdown-toggle="dropdown"
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={() => setIsOpen5(!isOpen5)}
                 >
-                  What is Agripeller ?
+                  Do I need to pay to join the waitlist ?
                   <Icon
                     icon="ic:round-arrow-back-ios"
                     color="black"
-                    rotate={isOpen ? 1 : 3}
+                    rotate={isOpen5 ? 1 : 3}
                   />
                 </button>
 
                 {/* modal */}
-                {isOpen && (
+                {isOpen5 && (
                   <div className="w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
-                      Agripeller is a cutting-edge platform in the Nigerian
-                      livestock industry. It is a digital marketplace for
-                      livestock farmers and buyers.
+                      No, it's free to join the waitlist. You do not have to pay
+                      any fee.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* 07 */}
+              <div>
+                <button
+                  className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
+                  data-dropdown-toggle="dropdown"
+                  onClick={() => setIsOpen6(!isOpen6)}
+                >
+                  Can I order from anywhere in Nigeria ?
+                  <Icon
+                    icon="ic:round-arrow-back-ios"
+                    color="black"
+                    rotate={isOpen6 ? 1 : 3}
+                  />
+                </button>
+
+                {/* modal */}
+                {isOpen6 && (
+                  <div className="w-[705px] py-[16px] pr-[32px]">
+                    <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
+                      No, we’re currently only operating within Lagos, Ogun,
+                      Ibadan and Abuja. We’re working on expansion very soon, so
+                      keep your fingers crossed.
                     </p>
                   </div>
                 )}
@@ -1110,7 +1155,9 @@ function Website() {
         <div className="flex items-center justify-center website-s9">
           <div className="website-s9-div px-[101px] pt-[54px] pb-[90px]">
             <div className="w-[570px] flex flex-col gap-[19px]">
-              <h3 className="text-white text-[40px] font-medium">News Letter</h3>
+              <h3 className="text-white text-[40px] font-medium">
+                News Letter
+              </h3>
               <h6 className="text-white text-[20px] font-normal">
                 Join our vibrant community of users and be a part of the future
                 of livestock farming today!
@@ -1118,9 +1165,19 @@ function Website() {
             </div>
             <div className="w-full">
               <form action="">
-                <input type="text" name="" id="" className="w-full website-newsletter-input"  placeholder="enter your email"/>
-                <button type="submit" className="w-[167px] website-newsletter-btn text-[20px] font-medium text-black leadinf-normal">Subscribe Now</button>
-              
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  className="w-full website-newsletter-input"
+                  placeholder="enter your email"
+                />
+                <button
+                  type="submit"
+                  className="w-[167px] website-newsletter-btn text-[20px] font-medium text-black leadinf-normal"
+                >
+                  Subscribe Now
+                </button>
               </form>
             </div>
           </div>
