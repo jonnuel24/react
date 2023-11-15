@@ -163,7 +163,7 @@
   border-radius: var(--cart-cart, 0px);
   background: linear-gradient(180deg, rgba(226, 255, 231, 0) 0%, #e2ffe7 100%);
   width: 100%;
-  height: 896px;
+  height: 100%;
 }
 
 .s4-bg1{
@@ -184,8 +184,8 @@ background: #3DB54A;
 /* section 5 */
 .website-s5 {
   background-image: url(../images/website-s5-img.svg);
-  width: 1335px;
-  height: 293px;
+  /* width: 1335px; */
+  /* height: 293px; */
   border-radius: 30px;
 }
 
@@ -198,11 +198,8 @@ background: #3DB54A;
 .website-form-faq div input,
 textarea {
   display: flex;
-  width: 538px;
-  padding: var(--cart-cart, 14px) var(--cart-cart, 423px) var(--cart-cart, 13px)
-    var(--cart-cart, 10px);
+  /* width: 538px; */
   align-items: center;
-  gap: var(--cart-cart, 0px);
   border-radius: var(--cart-cart, 0px);
   border: 1px solid rgba(77, 77, 77, 0.4);
 }
@@ -217,6 +214,15 @@ textarea {
   background-repeat: no-repeat;
   background-size: cover;
   height: 1654px;
+  width: 100%;
+}
+/* mobile */
+.website-s7-mobile {
+  background-image: url(../images/website-s7-mobile-bg.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: fit-content;
   width: 100%;
 }
 

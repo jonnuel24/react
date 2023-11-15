@@ -552,24 +552,26 @@ function Website() {
         {/* end of section 2 */}
 
         {/* section 3 */}
-        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 mb-24 h-fit rounded-none ">
+        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 h-fit rounded-none ">
           <div className="hidden sm:block s3-img"></div>
           <div className="sm:hidden block s3-img-sm rounded-none"></div>
         </div>
         {/* end of section 3 */}
 
         {/* section 4 */}
-        <div className="flex flex-col items-center gap-[64px] website-s4 px-[16px] sm:px-[64px]">
+        <div className="flex flex-col items-center gap-[2px] sm:gap-[64px] website-s4 px-[16px] sm:px-[64px]">
           <div className="items-start sm:items-center">
-            <h4 className="text-[#000000] font-medium text-[40px] text-left sm:text-center">Services</h4>
+            <h4 className="text-[#000000] font-medium text-[40px] text-left sm:text-center">
+              Services
+            </h4>
             <p className=" text-[#145C3F] font-medium text-[20px]">
               How Agripeller Makes Your Life Easier
             </p>
           </div>
 
           {/* section 4 div2 */}
-          <div className="flex flex-col sm:flex-row gap-[45px] w-full items-start ">
-            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[20px]">
+          <div className="flex flex-col sm:flex-row gap-[0px] sm:gap-[45px] w-full items-start">
+            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[2px] sm:gap-[20px]">
               <div>
                 <img src={WebsiteS4Icon1} alt="" />
               </div>
@@ -577,33 +579,39 @@ function Website() {
                 Livestock Inventory <br /> Management
               </h4>
               <p className="text-[#4D4D4D] leading-normal font-medium text-[18px] text-left sm:text-center">
-                At Agripeller, we help farmers manage their inventory
-                more effectively with our software management system
+                At Agripeller, we help farmers manage their inventory more
+                effectively with our software management system
               </p>
             </div>
-            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[20px]">
+
+            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[2px] sm:gap-[20px]">
               <div>
                 <img src={WebsiteS4Icon2} alt="" />
               </div>
               <h4 className="text-black  font-medium text-[24px] leading-normal text-left sm:text-center">
-              Shipment Tracking
+                Shipment Tracking
               </h4>
               <p className="text-[#4D4D4D] leading-normal font-medium text-[18px] text-left sm:text-center">
-              We help farmers and buyers with shipment tracking to ensure that products are delivered on time and in optimal condition.
+                We help farmers and buyers with shipment tracking to ensure that
+                products are delivered on time and in optimal condition.
               </p>
             </div>
-            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[20px]">
+
+            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[2px] sm:gap-[20px]">
               <div>
                 <img src={WebsiteS4Icon3} alt="" />
               </div>
               <h4 className="text-black  font-medium text-[24px] leading-normal text-left sm:text-center">
-              E-commerce for Farmers & Livestock lovers
+                E-commerce for Farmers & Livestock lovers
               </h4>
               <p className="text-[#4D4D4D] leading-normal font-medium text-[18px] text-left sm:text-center">
-              Our online farmers market software connects farmers with potential customers, thereby reducing promotional expenses and increasing revenue.
+                Our online farmers market software connects farmers with
+                potential customers, thereby reducing promotional expenses and
+                increasing revenue.
               </p>
             </div>
-            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[20px]">
+
+            <div className="flex flex-col items-start sm:items-center w-[375px] px=12 py-4 gap-[2px] sm:gap-[20px]">
               <div>
                 <img src={WebsiteS4Icon4} alt="" />
               </div>
@@ -611,12 +619,14 @@ function Website() {
                 Farming Reources
               </h4>
               <p className="text-[#4D4D4D] leading-normal font-medium text-[18px] text-left sm:text-center">
-              Our online farmers market software connects farmers with potential customers, thereby reducing promotional expenses and increasing revenue.
+                Our online farmers market software connects farmers with
+                potential customers, thereby reducing promotional expenses and
+                increasing revenue.
               </p>
             </div>
           </div>
           <div>
-            <h4 className=" leading-normal text-[#145C3F] font-medium  text-[50px]">
+            <h4 className=" leading-normal text-[#145C3F] font-medium text-left sm:text-center text-[30px] sm:text-[50px] mb-64 sm:mb0">
               "Empower Your Livestock Sales with our Ongoing <br /> Growth –
               Your Business Prospers as Expertise Expands."
             </h4>
@@ -625,14 +635,13 @@ function Website() {
 
         {/* section 5 */}
 
-        <div className="flex justify-center items-center mt-[-213px]">
-          <div className="website-s5 flex justify-center item-center">
+        <div className="flex justify-center items-center mt-[-220px] sm:mt-[-280px] ">
+          <div className="website-s5 flex justify-center item-center w-[392px] sm:w-[1335px] h-[293px] sm:h-[293px]">
             <div className="flex items-center justify-center flex-col">
               <div>
                 <h4 className="text-white">Join Our Waitlist.</h4>
-                <p className="text-white">
-                  Join our waitlist today and be the first to revolutionize your{" "}
-                  <br />
+                <p className="text-white w-full sm:w-[500px]">
+                  Join our waitlist today and be the first to revolutionize your
                   livestock business with our innovative platform!
                 </p>
               </div>
@@ -650,8 +659,8 @@ function Website() {
 
         {/* section 6 */}
 
-        <div className="px-32 flex flex-col gap-[64px]">
-          <div>
+        <div className="px-4 sm:px-32 flex flex-col gap-[24px] sm:gap-[64px]">
+          <div className="flex flex-col items-start sm:items-center">
             <h4 className="text-[40px] font-medium leading-normal text-black">
               FAQ
             </h4>
@@ -659,12 +668,13 @@ function Website() {
               Frequently Asked Questions
             </h5>
           </div>
-          <div className="flex flex-row gap-[64px]">
-            <div className="w-1/2 flex flex-col items-start gap-[24px] justify-start">
+
+          <div className="flex flex-col sm:mx-auto sm:flex-row gap-[64px] sm:gap-[64px] sm:justify-center w-full">
+            <div className="flex flex-col items-start gap-[24px] justify-start">
               {/* 01 */}
-              <div>
+              <div className="w-full">
                 <button
-                  className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
+                  className="flex flex-row justify-between items-center w-full sm:w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown text-left"
                   data-dropdown-toggle="dropdown"
                   onClick={() => setIsOpen(!isOpen)}
                 >
@@ -678,7 +688,7 @@ function Website() {
 
                 {/* modal */}
                 {isOpen && (
-                  <div className="w-[705px] py-[16px] pr-[32px]">
+                  <div className="w-full sm:w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
                       Agripeller is a cutting-edge platform in the Nigerian
                       livestock industry. It is a digital marketplace for
@@ -688,9 +698,9 @@ function Website() {
                 )}
               </div>
               {/* 02 */}
-              <div>
+              <div className="w-full">
                 <button
-                  className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
+                  className="flex flex-row justify-between items-center w-full sm:w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
                   data-dropdown-toggle="dropdown"
                   onClick={() => setIsOpen1(!isOpen1)}
                 >
@@ -704,7 +714,7 @@ function Website() {
 
                 {/* modal */}
                 {isOpen1 && (
-                  <div className="w-[705px] py-[16px] pr-[32px]">
+                  <div className="w-full sm:w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
                       You should use Agripeller if you want to automate the
                       livestock buying and selling process. You get to save time
@@ -716,9 +726,9 @@ function Website() {
               </div>
 
               {/* 03 */}
-              <div>
+              <div className="w-full">
                 <button
-                  className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
+                  className="flex flex-row justify-between items-center w-full sm:w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown text-left"
                   data-dropdown-toggle="dropdown"
                   onClick={() => setIsOpen2(!isOpen2)}
                 >
@@ -732,7 +742,7 @@ function Website() {
 
                 {/* modal */}
                 {isOpen2 && (
-                  <div className="w-[705px] py-[16px] pr-[32px]">
+                  <div className="w-full sm:w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
                       Farmers create a profile and an online stall on the
                       website to showcase the variety of livestock they have
@@ -745,9 +755,9 @@ function Website() {
               </div>
 
               {/* 04 */}
-              <div>
+              <div className="w-full">
                 <button
-                  className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
+                  className="flex flex-row justify-between items-center w-full sm:w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown text-left"
                   data-dropdown-toggle="dropdown"
                   onClick={() => setIsOpen3(!isOpen3)}
                 >
@@ -761,7 +771,7 @@ function Website() {
 
                 {/* modal */}
                 {isOpen3 && (
-                  <div className="w-[705px] py-[16px] pr-[32px]">
+                  <div className="w-full sm:w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
                       Yes, the platform is secure. We use a variety of security
                       measures to protect the data of our users.
@@ -772,9 +782,9 @@ function Website() {
 
               {/* 05 */}
 
-              <div>
+              <div className="w-full">
                 <button
-                  className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
+                  className="flex flex-row justify-between items-center w-full sm:w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown text-left"
                   data-dropdown-toggle="dropdown"
                   onClick={() => setIsOpen4(!isOpen4)}
                 >
@@ -788,7 +798,7 @@ function Website() {
 
                 {/* modal */}
                 {isOpen4 && (
-                  <div className="w-[705px] py-[16px] pr-[32px]">
+                  <div className="w-full sm:w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
                       To get started, simply join the waitlist.
                     </p>
@@ -797,9 +807,9 @@ function Website() {
               </div>
 
               {/* 06 */}
-              <div>
+              <div className="w-full">
                 <button
-                  className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
+                  className="flex flex-row justify-between items-center w-full sm:w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown text-left"
                   data-dropdown-toggle="dropdown"
                   onClick={() => setIsOpen5(!isOpen5)}
                 >
@@ -813,7 +823,7 @@ function Website() {
 
                 {/* modal */}
                 {isOpen5 && (
-                  <div className="w-[705px] py-[16px] pr-[32px]">
+                  <div className="w-full sm:w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
                       No, it's free to join the waitlist. You do not have to pay
                       any fee.
@@ -823,9 +833,9 @@ function Website() {
               </div>
 
               {/* 07 */}
-              <div>
+              <div className="w-full">
                 <button
-                  className="flex flex-row justify-between items-center w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown"
+                  className="flex flex-row justify-between items-center w-full sm:w-[705px] py-[16px] pr-[32px] text-[#4D4D4D] leading-normal font-medium text-[20px] website-s6-dropdown text-left"
                   data-dropdown-toggle="dropdown"
                   onClick={() => setIsOpen6(!isOpen6)}
                 >
@@ -839,7 +849,7 @@ function Website() {
 
                 {/* modal */}
                 {isOpen6 && (
-                  <div className="w-[705px] py-[16px] pr-[32px]">
+                  <div className="w-full sm:w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
                       No, we’re currently only operating within Lagos, Ogun,
                       Ibadan and Abuja. We’re working on expansion very soon, so
@@ -850,35 +860,43 @@ function Website() {
               </div>
             </div>
 
-            <div className="flex flex-col items-start justify-start gap-[16px] ">
+            <div className="flex flex-col items-start justify-center gap-[16px] w-fit ">
               <div>
-                <h5 className="text-left text-[32px] text-[#145C3F] font-medium leading-normal">
+                <h5 className="text-left text-[30px] sm:text-[32px] text-[#145C3F] font-medium leading-normal">
                   Ask a different question
                 </h5>
               </div>
               <form
                 action=""
-                className="flex flex-col items-start website-form-faq"
+                className="flex flex-col items-start website-form-faq w-full sm:w-[538px]"
               >
-                <div className="flex flex-col items-start">
+                <div className="flex flex-col items-start w-full">
                   <label
                     htmlFor=""
                     className="text-[#4d4d4d] font-medium text-[20px] leading-normal"
                   >
                     Name
                   </label>
-                  <input type="text" placeholder />
+                  <input
+                    type="text"
+                    placeholder="enter your name"
+                    className="w-full"
+                  />
                 </div>
-                <div className="flex flex-col items-start">
+                <div className="flex flex-col items-start w-full">
                   <label
                     htmlFor=""
                     className="text-[#4d4d4d] font-medium text-[20px] leading-normal"
                   >
                     Email
                   </label>
-                  <input type="text" placeholder />
+                  <input
+                    type="text"
+                    placeholder="example@mail.com"
+                    className="w-full"
+                  />
                 </div>
-                <div className="flex flex-col items-start">
+                <div className="flex flex-col items-start w-full">
                   <label
                     htmlFor=""
                     className="text-[#4d4d4d] font-medium text-[20px] leading-normal"
@@ -890,7 +908,7 @@ function Website() {
                     id=""
                     cols="30"
                     rows="10"
-                    className="h-[200px]"
+                    className="h-[200px] w-full"
                   ></textarea>
                 </div>
 
@@ -913,7 +931,7 @@ function Website() {
 
         {/* section 7 */}
 
-        <div className="website-s7 py-24 px-32 gap-[24px] flex flex-col items-center ">
+        <div className="website-s7 py-24 px-32 gap-[24px] hidden lg:flex flex-col items-center ">
           <h6 className="w-[1143px] font-medium leading-normal text-[40px] text-white">
             Agripeller Overview
           </h6>
@@ -943,12 +961,48 @@ function Website() {
             </p>
           </div>
         </div>
-        <div className="px-64 flex flex-col gap-[168px] items-center">
-          <div className="flex flex-col gap-[48px]">
-            <h4 className="text-[#4d4d4d] text-[40px] font-medium leading-normal">
+
+        {/* mobile */}
+        <div className="lg:hidden  website-s7-mobile py-[32px] px-[16px] gap-[8px] flex flex-col items-start ">
+          <h6 className="font-medium leading-normal text-[32px] text-white">
+            Agripeller Overview
+          </h6>
+          <div className="flex flex-col gap-4 items-start w-full">
+            <h3 className="w-full font-normal leading-normal text-[18px] text-white text-left">
+              "NIGERIA’s TRUSTED  DIGITAL LIVESTOCK MARKETPLACE."
+            </h3>
+
+            <p className="w-full font-normal leading-normal text-left text-[16px] text-white">
+              Agripeller is a digital marketplace that helps automate and
+              simplify the retailing process of livestock. We are the first
+              innovative, user-friendly web app that helps farmers to double
+              their sales and reduce cost while connecting with thousands of
+              buyers who get quality livestock in return. 
+              <br />
+              <br /> Our team of experts are dedicated to revolutionizing the
+              Nigerian livestock sector with data analytics. By closely
+              monitoring livestock production, consumption, and market trends,
+              we aim to generate comprehensive data that can empower farmers,
+              buyers, and policymakers with valuable insights. 
+              <br />
+              <br /> With our online farmers market tool, we're confident that
+              we can build a thriving tech solution for agriculture in Nigeria.
+              We're thrilled at the potential of our platform to make a positive
+              impact on the agricultural industry in Nigeria and look forward to
+              working with stakeholders to drive this ambitious goal forward.
+            </p>
+          </div>
+        </div>
+
+        {/* end mobile */}
+
+        {/* section 7 b */}
+        <div className="p-[16px] sm:px-16 flex flex-col gap-[8px] sm:gap-[32px] items-center">
+          <div className="flex flex-col gap-[16px] sm:gap-[48px] w-full">
+            <h4 className="text-[#4d4d4d] text-[24px] sm:text-[40px] font-medium leading-normal sm:w-full text-left sm:text-center">
               Farmers Value Proposition
             </h4>
-            <div className="flex flex-row gap-[160px]">
+            <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[160px]">
               {/* =================== */}
               <div className="flex flex-col gap-[48px] website-s7-div2">
                 <div className="flex flex-row justify-start items-center gap-[16px]">
@@ -959,7 +1013,7 @@ function Website() {
                     height="48"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Connect with a wide range of prospective buyers
                   </h6>
                 </div>
@@ -969,7 +1023,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Manage your inventory more effectively
                   </h6>
                 </div>
@@ -979,7 +1033,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Track your shipment, from farm to buyer
                   </h6>
                 </div>
@@ -989,7 +1043,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Get access to market information and trends.
                   </h6>
                 </div>
@@ -999,7 +1053,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Easily navigated website
                   </h6>
                 </div>
@@ -1009,7 +1063,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Exemplary customer support team.
                   </h6>
                 </div>
@@ -1019,7 +1073,7 @@ function Website() {
                 <img src={WebsiteS7Img1} alt="" />
                 <label
                   htmlFor=""
-                  className="text-left text-[32px] font-medium leading-normal text-[#4d4d4d] w-[512px]"
+                  className="text-left text-[20px] sm:text-[32px] font-medium leading-normal text-[#4d4d4d] w-[512px]"
                 >
                   Join our community of vibrant, like-minded farmers today
                 </label>
@@ -1028,13 +1082,13 @@ function Website() {
           </div>
           {/* section 7 - div 3 */}
 
-          <div className="flex flex-col gap-[48px]">
-            <h4 className="text-[#4d4d4d] text-[40px] font-medium leading-normal">
+          <div className="flex flex-col gap-[48px] w-full">
+            <h4 className="text-[#4d4d4d] text-[24px] sm:text-[40px] font-medium leading-normal sm:w-full text-left sm:text-center">
               Users Value Proposition
             </h4>
-            <div className="flex flex-row gap-[160px]">
+            <div className="flex flex-col sm:flex-row gap-[160px]">
               {/* ======== */}
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col order-last sm:order-first items-start">
                 <img src={WebsiteS7Img2} alt="" />
                 <label
                   htmlFor=""
@@ -1044,7 +1098,7 @@ function Website() {
                 </label>
               </div>
               {/* =================== */}
-              <div className="flex flex-col gap-[48px] website-s7-div2">
+              <div className="flex flex-col order-first sm:order-last gap-[48px] website-s7-div2">
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="cil:find-in-page"
@@ -1053,7 +1107,7 @@ function Website() {
                     height="48"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Find fresh, high-quality meat at great prices
                   </h6>
                 </div>
@@ -1063,7 +1117,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Fast, trackable delivery of your order
                   </h6>
                 </div>
@@ -1073,7 +1127,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Stress-free and easy shopping experience
                   </h6>
                 </div>
@@ -1083,7 +1137,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Easily Navigated Website
                   </h6>
                 </div>
@@ -1093,7 +1147,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Quick, secure, and convenient online payments
                   </h6>
                 </div>
@@ -1103,7 +1157,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal">
+                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Exemplary customer support team.
                   </h6>
                 </div>
