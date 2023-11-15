@@ -452,7 +452,7 @@ function Website() {
 
           {/* section2-right-div*/}
 
-          <div className="flex flex-col gap-8 sm:gap-24 w-full items-center">
+          <div className="flex flex-col gap-8 sm:gap-8 w-full items-center">
             <div className="flex flex-row section2-card p-4 ">
               <div className="h-auto">
                 <Icon
