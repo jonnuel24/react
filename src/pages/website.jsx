@@ -997,23 +997,23 @@ function Website() {
         {/* end mobile */}
 
         {/* section 7 b */}
-        <div className="p-[16px] sm:px-16 flex flex-col gap-[8px] sm:gap-[32px] items-center">
+        <div className="p-[16px] sm:px-16 flex flex-col gap-[32px] sm:gap-[32px] items-center">
           <div className="flex flex-col gap-[16px] sm:gap-[48px] w-full">
             <h4 className="text-[#4d4d4d] text-[24px] sm:text-[40px] font-medium leading-normal sm:w-full text-left sm:text-center">
               Farmers Value Proposition
             </h4>
             <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[160px]">
               {/* =================== */}
-              <div className="flex flex-col gap-[48px] website-s7-div2">
+              <div className="flex flex-col gap-[16px] sm:gap-[48px] website-s7-div2">
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="grommet-icons:connect"
                     color="#48A928"
                     width="48"
                     height="48"
-                    className="website-s7-div2-icon"
+                    className="website-s7-div2-icon w-[24px] sm:w-[48px] h-[24px] sm:h-[24px]"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Connect with a wide range of prospective buyers
                   </h6>
                 </div>
@@ -1021,9 +1021,9 @@ function Website() {
                   <Icon
                     icon="material-symbols:folder-managed-outline"
                     color="#48A928"
-                    className="website-s7-div2-icon"
+                    className="website-s7-div2-icon w-[24px] sm:w-[48px] h-[24px] sm:h-[24px]"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Manage your inventory more effectively
                   </h6>
                 </div>
@@ -1031,9 +1031,9 @@ function Website() {
                   <Icon
                     icon="material-symbols:my-location"
                     color="#48A928"
-                    className="website-s7-div2-icon"
+                    className="website-s7-div2-icon w-[24px] sm:w-[48px] h-[24px] sm:h-[24px]"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Track your shipment, from farm to buyer
                   </h6>
                 </div>
@@ -1043,7 +1043,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Get access to market information and trends.
                   </h6>
                 </div>
@@ -1051,9 +1051,9 @@ function Website() {
                   <Icon
                     icon="grommet-icons:navigate"
                     color="#48A928"
-                    className="website-s7-div2-icon"
+                    className="website-s7-div2-icon w-[24px] sm:w-[48px] h-[24px] sm:h-[24px]"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Easily navigated website
                   </h6>
                 </div>
@@ -1061,15 +1061,15 @@ function Website() {
                   <Icon
                     icon="ic:baseline-support-agent"
                     color="#48A928"
-                    className="website-s7-div2-icon"
+                    className="website-s7-div2-icon w-[32px] sm:w-[48px] h-[32px] sm:h-[48px]"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Exemplary customer support team.
                   </h6>
                 </div>
               </div>
               {/* ======== */}
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-start lg:mb-4">
                 <img src={WebsiteS7Img1} alt="" />
                 <label
                   htmlFor=""
@@ -1082,23 +1082,23 @@ function Website() {
           </div>
           {/* section 7 - div 3 */}
 
-          <div className="flex flex-col gap-[48px] w-full">
+          <div className="flex flex-col gap-[8px] sm:gap-[32px] w-full">
             <h4 className="text-[#4d4d4d] text-[24px] sm:text-[40px] font-medium leading-normal sm:w-full text-left sm:text-center">
               Users Value Proposition
             </h4>
-            <div className="flex flex-col sm:flex-row gap-[160px]">
+            <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[160px]">
               {/* ======== */}
-              <div className="flex flex-col order-last sm:order-first items-start">
+              <div className="flex flex-col order-last items-start">
                 <img src={WebsiteS7Img2} alt="" />
                 <label
                   htmlFor=""
-                  className="text-left text-[32px] font-medium leading-normal text-[#4d4d4d] w-[512px]"
+                  className="text-left text-[20px] sm:text-[32px] font-medium leading-normal text-[#4d4d4d] w-[512px]"
                 >
                   Join our community of vibrant, like-minded farmers today
                 </label>
               </div>
               {/* =================== */}
-              <div className="flex flex-col order-first sm:order-last gap-[48px] website-s7-div2">
+              <div className="flex flex-col order-first sm:order-last gap-[16px] sm:gap-[48px] website-s7-div2">
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="cil:find-in-page"
@@ -1107,7 +1107,7 @@ function Website() {
                     height="48"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Find fresh, high-quality meat at great prices
                   </h6>
                 </div>
@@ -1117,7 +1117,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Fast, trackable delivery of your order
                   </h6>
                 </div>
@@ -1127,7 +1127,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Stress-free and easy shopping experience
                   </h6>
                 </div>
@@ -1137,7 +1137,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Easily Navigated Website
                   </h6>
                 </div>
@@ -1147,7 +1147,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Quick, secure, and convenient online payments
                   </h6>
                 </div>
@@ -1157,7 +1157,7 @@ function Website() {
                     color="#48A928"
                     className="website-s7-div2-icon"
                   />
-                  <h6 className="text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
+                  <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
                     Exemplary customer support team.
                   </h6>
                 </div>
