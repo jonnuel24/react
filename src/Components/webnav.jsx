@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Logo from "../asset/images/logo.svg";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
@@ -17,15 +17,15 @@ function Webnav() {
     setMenuOpen(!menuOpen);
   };
 
-  const handleBackgroundClick = (event) => {
-    // Check if the clicked element is the close icon
-    const closeIconClass = "ant-design:close-outlined"; // Replace with the correct class name of your close icon
-    const isCloseIcon = event.target.classList.contains(closeIconClass);
+  // const handleBackgroundClick = (event) => {
+  //   // Check if the clicked element is the close icon
+  //   const closeIconClass = "ant-design:close-outlined"; // Replace with the correct class name of your close icon
+  //   const isCloseIcon = event.target.classList.contains(closeIconClass);
 
-    if (menuOpen && !isCloseIcon) {
-      toggleMenu();
-    }
-  };
+  //   if (menuOpen && !isCloseIcon) {
+  //     toggleMenu();
+  //   }
+  // };
 
 
   return (
