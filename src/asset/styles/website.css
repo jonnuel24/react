@@ -136,7 +136,7 @@
   height: auto;
 } */
 
-.website-menu-icon{
+.website-menu-icon {
   height: 40px;
   width: 53px;
 }
@@ -166,19 +166,19 @@
   height: 100%;
 }
 
-.s4-bg1{
+.s4-bg1 {
   border-radius: var(--cart-cart, 100%);
-background: #3DB54A;
+  background: #3db54a;
 }
 
-.s4-bg2{
+.s4-bg2 {
   border-radius: var(--cart-cart, 100%);
-  background: #29EA3E;
+  background: #29ea3e;
 }
 
-.s4-bg3{
+.s4-bg3 {
   border-radius: var(--cart-cart, 100%);
-  background: linear-gradient(180deg, #006838, rgba(0, 104, 56, 0.00) 100%);
+  background: linear-gradient(180deg, #006838, rgba(0, 104, 56, 0) 100%);
 }
 
 /* section 5 */
@@ -244,13 +244,13 @@ textarea {
     #48a928 73.96%,
     rgba(0, 104, 56, 0.99) 100%
   );
-  width: 100%;
-  height: 960px;
+  /* width: 100%;
+  height: 960px; */
 }
 
 .website-s8-pic {
-  width: 403px;
-  height: 403px;
+  /* width: 403px;
+  height: 403px; */
   flex-shrink: 0;
   border-radius: var(--cart-cart, 403px);
   border: 12px solid rgba(255, 255, 255, 0.3);
@@ -267,33 +267,31 @@ textarea {
     #f25c05 100%
   );
   display: inline-flex;
-  padding: var(--cart-cart, 54px) var(--cart-cart, 191.632px)
-    var(--cart-cart, 93px) var(--cart-cart, 191px);
+  /* padding: 64px; */
   flex-direction: column;
   align-items: center;
   gap: var(--cart-cart, 43px);
-
 }
 
-.website-newsletter-btn{
+.website-newsletter-btn {
   display: flex;
-width: 200px;
-height: 52px;
-padding: var(--cart-cart, 0px);
-justify-content: center;
-align-items: center;
-gap: 14.575px;
-border-radius: var(--cart-cart, 0px);
-border: 2px solid var(--color-primary-60, #FFF);
-background: #FFC700;
+  width: 200px;
+  height: 52px;
+  padding: var(--cart-cart, 0px);
+  justify-content: center;
+  align-items: center;
+  gap: 14.575px;
+  border-radius: var(--cart-cart, 0px);
+  border: 2px solid var(--color-primary-60, #fff);
+  background: #ffc700;
 }
 
-.website-newsletter-input{
+.website-newsletter-input {
   display: flex;
-width: 538px;
-padding: var(--cart-cart, 13px) var(--cart-cart, 358px) var(--cart-cart, 14px) var(--cart-cart, 21px);
-align-items: center;
-gap: var(--cart-cart, 0px);
-border-radius: var(--cart-cart, 0px);
-background: var(--color-primary-60, #FFF);
+  /* width: 538px; */
+  padding: var(--cart-cart, 13px);
+  align-items: center;
+  gap: var(--cart-cart, 0px);
+  border-radius: var(--cart-cart, 0px);
+  background: var(--color-primary-60, #fff);
 }

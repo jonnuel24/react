@@ -425,7 +425,7 @@ function Website() {
           </div>
         </div>
 
-        {/* section 2 */}
+        {/* section 2  About us Section*/}
         <div
           className="flex flex-col md:flex-row px-[16px] sm:px-[64px] w-full items-center sm:items-start gap-[132px] sm:gap-[64px}] "
           id="websiteAbout"
@@ -552,7 +552,7 @@ function Website() {
         {/* end of section 2 */}
 
         {/* section 3 */}
-        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 h-fit rounded-none ">
+        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 h-fit rounded-none " id="services">
           <div className="hidden sm:block s3-img"></div>
           <div className="sm:hidden block s3-img-sm rounded-none"></div>
         </div>
@@ -1169,13 +1169,13 @@ function Website() {
         {/* end of section 7 */}
 
         {/* start section 8 */}
-        <div className="website-s8-bg flex flex-col gap-24 items-center py-24 px- first-letter:48">
-          <h3 className="text-[40px] text-white font-medium leading-normal">
+        <div className="website-s8-bg flex flex-col gap-8 sm:gap-16 w-full h-fit items-center justify-center p-[24px] sm:p-[64px]">
+          <h3 className="text-medium sm:text-[40px] text-white font-medium leading-normal">
             About Our Founder
           </h3>
-          <div className="flex flex-row items-center justify-between w-[1470px]">
-            <div>
-              <div className="website-s8-pic">
+          <div className="flex flex-col sm:flex-row items-center gap-8 sm:justify-between w-full">
+            <div className="">
+              <div className="website-s8-pic w-[250px] sm:w-[350px] h-auto">
                 <img src={WebsiteS8Founder} alt="" className="h-auto w-full" />
               </div>
               <div>
@@ -1190,8 +1190,8 @@ function Website() {
                 </label>
               </div>
             </div>
-            <div>
-              <h6 className="text-white text-[24px] font-normal italic leading-[64px] text-left w-[960px]">
+            <div className="lg:w-full">
+              <h6 className="text-white text-[18px] sm:text-[24px] font-normal italic leading-[32px] sm:leading-[64px] text-left w-full">
                 Paul Nnadalu is the CEO and founder of Agripeller. He is a
                 passionate advocate for the livestock sector in Nigeria and is
                 committed to using technology to improve the lives of farmers in
@@ -1206,19 +1206,19 @@ function Website() {
         {/* end section 8 */}
 
         {/* start section 9 */}
-        <div className="flex items-center justify-center website-s9">
-          <div className="website-s9-div px-[101px] pt-[54px] pb-[90px]">
-            <div className="w-[570px] flex flex-col gap-[19px]">
+        <div className="flex items-center justify-center px-4 sm:px-[128px] website-s9 mb-8 sm:mb-24">
+          <div className="website-s9-div px-[16px]  sm:px-[101px] pt-[54px] pb-[90px] w-full sm:w-[1000px]">
+            <div className="sm:w-[570px] flex flex-col gap-[19px] w-full">
               <h3 className="text-white text-[40px] font-medium">
                 News Letter
               </h3>
-              <h6 className="text-white text-[20px] font-normal">
+              <h6 className="text-white text-[20px] font-normal w-full">
                 Join our vibrant community of users and be a part of the future
                 of livestock farming today!
               </h6>
             </div>
             <div className="w-full">
-              <form action="">
+              <form action="" className="w-full flex flex-col sm:flex-row items-end sm:items-center">
                 <input
                   type="text"
                   name=""

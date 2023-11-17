@@ -6,18 +6,18 @@ import { Link } from "react-router-dom";
 
 function Webfooter() {
   return (
-    <div className="bg-black py-[125px] px-[148px] gap-24  h-auto  flex flex-col sm:flex-col justify-start">
-      <div className="flex flex-row justify-between w-full ">
-        <div className="flex flex-col  items-start w-[960px]">
+    <div className="bg-black py-[125px] px-[16px] sm:px-[148px] gap-16 sm:gap-24  h-auto  flex flex-col justify-start">
+      <div className="flex flex-col sm:flex-row gap-8 sm:justify-between w-full ">
+        <div className="flex flex-col  items-start w-full sm:w-[960px]">
           <img src={Logo} alt="" className="mb-8" />
-          <h4 className="text-white text-left wf-text">
+          <h4 className="text-white text-left text-[20px] font-normal sm:font-medium sm:text-[24px] w-full">
             Agripeller is committed to simplifying the process of livestock
             orders, enabling users to conveniently place orders from the comfort
             of their homes. Our devotion to farming drives us to empower
             farmers, ensuring their sales success.
           </h4>
         </div>
-        <div className="flex flex-col  gap-6 items-start">
+        <div className="flex flex-col  gap3 sm:gap-6 items-start">
           <h4 className="text-white text-[24px] font-medium leading-normal">
             Company
           </h4>
@@ -31,7 +31,7 @@ function Webfooter() {
             FAQ
           </Link>
         </div>
-        <div className="flex flex-col gap-6 items-start">
+        <div className="flex flex-col gap-3 sm:gap-6 items-start">
           <h4 className="text-white text-[24px] font-medium leading-normal">
             Socials
           </h4>

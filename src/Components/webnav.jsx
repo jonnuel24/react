@@ -4,41 +4,29 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import "../asset/styles/webnav.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { Link as ScrollLink } from "react-scroll";
 
 function Webnav() {
-  // const linkStyle = {
-  //   textDecoration: "none",
-  //   color: "inherit",
-  // };
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Ref to the menu button for detecting clicks outside the menu
   const menuButtonRef = useRef(null);
 
-  useEffect(() => {
-    // Add event listener to close the menu when clicking outside of it
-    const handleOutsideClick = (event) => {
-      if (
-        menuButtonRef.current &&
-        !menuButtonRef.current.contains(event.target)
-      ) {
-        setMenuOpen(false);
-      }
-    };
-
-    // Add event listener when the component mounts
-    document.addEventListener("mousedown", handleOutsideClick);
-
-    // Remove event listener when the component unmounts
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const handleBackgroundClick = (event) => {
+    // Check if the clicked element is the close icon
+    const closeIconClass = "ant-design:close-outlined"; // Replace with the correct class name of your close icon
+    const isCloseIcon = event.target.classList.contains(closeIconClass);
+
+    if (menuOpen && !isCloseIcon) {
+      toggleMenu();
+    }
+  };
+
 
   return (
     <div className="flex flex-row items-center justify-between w-full py-4 px-[16px] sm:px-[64px] mx-auto wnav relative">
@@ -93,9 +81,15 @@ function Webnav() {
             onClick={toggleMenu}
           ></div>
           <ul className="lg:hidden flex flex-col items-center absolute top-24 right-4 w-[90%] bg-white py-[32px] px-[16px]  gap-12 mb-0 webnav-list z-20">
-            <Link className="wl-link">
-              <li>About Us</li>
-            </Link>
+            <ScrollLink
+              to="services"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={5000}
+            >
+              <li className="wl-link">About Us</li>
+            </ScrollLink>
             <Link className="wl-link">
               <li>Services</li>
             </Link>
