@@ -34,18 +34,18 @@ function Webnav() {
         <img src={Logo} alt="" className="w-full" />
       </div>
       <ul className="hidden md:flex flex-row items-center justify-center gap-12 mb-0 webnav-list">
-        <Link className="wl-link">
+        <a href="#websiteAbout" className="wl-link">
           <li>About Us</li>
-        </Link>
-        <Link className="wl-link">
+        </a>
+        <a href="#services" className="wl-link">
           <li>Services</li>
-        </Link>
-        <Link className="wl-link">
+        </a>
+        <a href="#faqs" className="wl-link">
           <li>FAQ</li>
-        </Link>
-        <Link className="wl-link">
+        </a>
+        <a href="#contact" className="wl-link">
           <li>Contact Us</li>
-        </Link>
+        </a>
       </ul>
 
       <button
