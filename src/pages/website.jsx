@@ -574,10 +574,7 @@ function Website() {
         {/* end of section 3 */}
 
         {/* section 4 */}
-        <div
-          className="flex flex-col items-center gap-[2px] sm:gap-[64px] website-s4 px-[16px] sm:px-[64px]"
-          id="websiteServices"
-        >
+        <div className="flex flex-col items-center gap-[2px] sm:gap-[64px] website-s4 px-[16px] sm:px-[64px]" id="services">
           <div className="items-start sm:items-center">
             <h4 className="text-[#000000] font-medium text-[40px] text-left sm:text-center">
               Services
@@ -677,7 +674,7 @@ function Website() {
 
         {/* section 6 */}
 
-        <div className="px-4 sm:px-32 flex flex-col gap-[24px] sm:gap-[64px]">
+        <div className="px-4 sm:px-32 flex flex-col gap-[24px] sm:gap-[64px]" id="faqs">
           <div className="flex flex-col items-start sm:items-center">
             <h4 className="text-[40px] font-medium leading-normal text-black">
               FAQ
