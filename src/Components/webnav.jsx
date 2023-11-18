@@ -6,6 +6,7 @@ import "../asset/styles/webnav.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link as ScrollLink } from "react-scroll";
 
+
 function Webnav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -34,7 +35,7 @@ function Webnav() {
         <img src={Logo} alt="" className="w-full" />
       </div>
       <ul className="hidden md:flex flex-row items-center justify-center gap-12 mb-0 webnav-list">
-        <Link className="wl-link">
+        <Link to="section1" className="wl-link">
           <li>About Us</li>
         </Link>
         <Link className="wl-link">

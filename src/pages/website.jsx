@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import Logo from "../asset/images/logo.svg";
 import Webnav from "../Components/webnav";
 import Webfooter from "../Components/webfooter";
 import HeroImg1 from "../asset/images/website_hero_img1.svg";
@@ -160,9 +161,23 @@ function Website() {
   const [isOpen5, setIsOpen5] = useState(false);
   const [isOpen6, setIsOpen6] = useState(false);
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Ref to the menu button for detecting clicks outside the menu
+  const menuButtonRef = useRef(null);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className="h-full website w-full overflow-x-hidden">
       <Webnav />
+
+      {/* ==================start of navbar============== */}
+
+     
+      {/* =========end of navbar================ */}
       <div className="py-0 sm:py-16  pb-32 h-fit  flex flex-col gap-8 sm:gap-24 website-body">
         {/* hero-section */}
         <div className="flex flex-col py-12 lg:flex-row justify-between website-hero px-[16px] lg:px-[64px]">
@@ -552,14 +567,17 @@ function Website() {
         {/* end of section 2 */}
 
         {/* section 3 */}
-        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 h-fit rounded-none " id="services">
+        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 h-fit rounded-none ">
           <div className="hidden sm:block s3-img"></div>
           <div className="sm:hidden block s3-img-sm rounded-none"></div>
         </div>
         {/* end of section 3 */}
 
         {/* section 4 */}
-        <div className="flex flex-col items-center gap-[2px] sm:gap-[64px] website-s4 px-[16px] sm:px-[64px]">
+        <div
+          className="flex flex-col items-center gap-[2px] sm:gap-[64px] website-s4 px-[16px] sm:px-[64px]"
+          id="websiteServices"
+        >
           <div className="items-start sm:items-center">
             <h4 className="text-[#000000] font-medium text-[40px] text-left sm:text-center">
               Services
@@ -1218,7 +1236,10 @@ function Website() {
               </h6>
             </div>
             <div className="w-full">
-              <form action="" className="w-full flex flex-col sm:flex-row items-end sm:items-center">
+              <form
+                action=""
+                className="w-full flex flex-col sm:flex-row items-end sm:items-center"
+              >
                 <input
                   type="text"
                   name=""
