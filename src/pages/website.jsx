@@ -178,7 +178,7 @@ function Website() {
       {/* =========end of navbar================ */}
       <div className="py-0 sm:py-16  pb-32 h-fit  flex flex-col gap-8 sm:gap-24 website-body">
         {/* hero-section */}
-        <div className="flex flex-col py-12 lg:flex-row justify-between website-hero px-[16px] lg:px-[64px]  pt-[120px] mt-[-120px]" id="websiteHeroSection">
+        <div className="flex flex-col py-12 lg:flex-row justify-between website-hero px-[16px] lg:px-[64px]  pt-[120px] mt-[-95px]" id="websiteHeroSection">
           {/* hero-left-div */}
           <div className="flex flex-col items-start w-full  gap-4 sm:gap-8 website-hld">
             <h6 className="text-[12px] sm:text-[16px]">

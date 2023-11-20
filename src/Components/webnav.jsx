@@ -27,7 +27,7 @@ function Webnav() {
   // };
 
   return (
-    <div className="flex flex-row items-center justify-between w-full py-4 px-[16px] sm:px-[64px] mx-auto wnav sticky top-0 shadow-md z-40 bg-white bg-opacity-75 background-blur-lg">
+    <div className="flex flex-row items-center justify-between w-full py-4 px-[16px] sm:px-[64px] mx-auto wnav sticky top-0 shadow-md z-40 bg-white  ">
       <div>
         <img src={Logo} alt="" className="w-full" />
       </div>
