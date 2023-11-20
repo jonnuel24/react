@@ -6,13 +6,11 @@ import "../asset/styles/webnav.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link as ScrollLink } from "react-scroll";
 
-
 function Webnav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Ref to the menu button for detecting clicks outside the menu
   const menuButtonRef = useRef(null);
-
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -28,18 +26,16 @@ function Webnav() {
   //   }
   // };
 
-
   return (
-    <div className="flex flex-row items-center justify-between w-full py-4 px-[16px] sm:px-[64px] mx-auto wnav relative">
+    <div className="flex flex-row items-center justify-between w-full py-4 px-[16px] sm:px-[64px] mx-auto wnav sticky top-0 shadow-md z-40 bg-white bg-opacity-75 background-blur-lg">
       <div>
         <img src={Logo} alt="" className="w-full" />
       </div>
       <ul className="hidden md:flex flex-row items-center justify-center gap-12 mb-0 webnav-list">
-<<<<<<< HEAD
-        <Link to="section1" className="wl-link">
-=======
+        <a href="#websiteHeroSection" className="wl-link">
+          <li>Home</li>
+        </a>
         <a href="#websiteAbout" className="wl-link">
->>>>>>> 0561fb5879d6bbe912e1fdbc219da15edd0a3a32
           <li>About Us</li>
         </a>
         <a href="#services" className="wl-link">
@@ -47,9 +43,6 @@ function Webnav() {
         </a>
         <a href="#faqs" className="wl-link">
           <li>FAQ</li>
-        </a>
-        <a href="#contact" className="wl-link">
-          <li>Contact Us</li>
         </a>
       </ul>
 
@@ -86,24 +79,18 @@ function Webnav() {
             onClick={toggleMenu}
           ></div>
           <ul className="lg:hidden flex flex-col items-center absolute top-24 right-4 w-[90%] bg-white py-[32px] px-[16px]  gap-12 mb-0 webnav-list z-20">
-            <ScrollLink
-              to="services"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={5000}
-            >
-              <li className="wl-link">About Us</li>
-            </ScrollLink>
-            <Link className="wl-link">
+            <a href="#websiteHeroSection" className="wl-link">
+              <li>Home</li>
+            </a>
+            <a href="#websiteAbout" className="wl-link">
+              <li>About Us</li>
+            </a>
+            <a href="#services" className="wl-link">
               <li>Services</li>
-            </Link>
-            <Link className="wl-link">
+            </a>
+            <a href="#faqs" className="wl-link">
               <li>FAQ</li>
-            </Link>
-            <Link className="wl-link">
-              <li>Contact Us</li>
-            </Link>
+            </a>
           </ul>
         </>
       )}

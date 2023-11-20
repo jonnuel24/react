@@ -21,7 +21,23 @@ function Webfooter() {
           <h4 className="text-white text-[24px] font-medium leading-normal">
             Company
           </h4>
-          <Link className="no-underline text-white text-[20px] font-normal leading-normal">
+
+          <ul className="decoration-none flex flex-col items-start leading-medium gap-2 m-0 p-0">
+            <a href="#websiteHeroSection" className="wl-link">
+              <li className="text-white">Home</li>
+            </a>
+            <a href="#websiteAbout" className="wl-link">
+              <li className="text-white">About Us</li>
+            </a>
+            <a href="#services" className="wl-link">
+              <li className="text-white">Services</li>
+            </a>
+            <a href="#faqs" className="wl-link">
+              <li className="text-white">FAQ</li>
+            </a>
+          </ul>
+
+          {/* <Link className="no-underline text-white text-[20px] font-normal leading-normal">
             About
           </Link>
           <Link className="no-underline text-white text-[20px] font-normal leading-normal">
@@ -29,7 +45,7 @@ function Webfooter() {
           </Link>
           <Link className="no-underline text-white text-[20px] font-normal leading-normal">
             FAQ
-          </Link>
+          </Link> */}
         </div>
         <div className="flex flex-col gap-3 sm:gap-6 items-start">
           <h4 className="text-white text-[24px] font-medium leading-normal">

@@ -172,15 +172,13 @@ function Website() {
 
   return (
     <div className="h-full website w-full overflow-x-hidden">
-      <Webnav />
-
       {/* ==================start of navbar============== */}
 
-     
+      <Webnav />
       {/* =========end of navbar================ */}
       <div className="py-0 sm:py-16  pb-32 h-fit  flex flex-col gap-8 sm:gap-24 website-body">
         {/* hero-section */}
-        <div className="flex flex-col py-12 lg:flex-row justify-between website-hero px-[16px] lg:px-[64px]">
+        <div className="flex flex-col py-12 lg:flex-row justify-between website-hero px-[16px] lg:px-[64px]  pt-[120px] mt-[-120px]" id="websiteHeroSection">
           {/* hero-left-div */}
           <div className="flex flex-col items-start w-full  gap-4 sm:gap-8 website-hld">
             <h6 className="text-[12px] sm:text-[16px]">
@@ -440,10 +438,11 @@ function Website() {
           </div>
         </div>
 
-        {/* section 2  About us Section*/}
+        {/*Start of section 2  About us Section*/}
         <div
-          className="flex flex-col md:flex-row px-[16px] sm:px-[64px] w-full items-center sm:items-start gap-[132px] sm:gap-[64px}] "
+          className="flex flex-col md:flex-row px-[16px] sm:px-[64px] w-full items-center sm:items-start gap-[132px] sm:gap-[64px}] pt-[120px] mt-[-120px]"
           id="websiteAbout"
+          data-scroll-index="1"
         >
           {/* section2-left-div*/}
           <div className="w-full  flex flex-col gap-32 sm:gap-64 items-center ">
@@ -563,18 +562,20 @@ function Website() {
             </div>
           </div>
         </div>
+        {/* end of section 2 About Us */}
 
-        {/* end of section 2 */}
-
-        {/* section 3 */}
-        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 h-fit rounded-none ">
+        {/*Start of section 3 */}
+        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 h-fit rounded-none">
           <div className="hidden sm:block s3-img"></div>
           <div className="sm:hidden block s3-img-sm rounded-none"></div>
         </div>
         {/* end of section 3 */}
 
-        {/* section 4 */}
-        <div className="flex flex-col items-center gap-[2px] sm:gap-[64px] website-s4 px-[16px] sm:px-[64px]" id="services">
+        {/* Start of section 4 Services */}
+        <div
+          className="flex flex-col items-center gap-[2px] sm:gap-[64px] website-s4 px-[16px] sm:px-[64px] pt-[120px] mt-[-120px]"
+          id="services"
+        >
           <div className="items-start sm:items-center">
             <h4 className="text-[#000000] font-medium text-[40px] text-left sm:text-center">
               Services
@@ -647,9 +648,9 @@ function Website() {
             </h4>
           </div>
         </div>
+        {/* End of section 4 Services */}
 
-        {/* section 5 */}
-
+        {/* Start of section 5 */}
         <div className="flex justify-center items-center mt-[-220px] sm:mt-[-280px] ">
           <div className="website-s5 flex justify-center item-center w-[392px] sm:w-[1335px] h-[293px] sm:h-[293px]">
             <div className="flex items-center justify-center flex-col">
@@ -671,10 +672,13 @@ function Website() {
             </div>
           </div>
         </div>
+        {/* End of section 5 */}
 
-        {/* section 6 */}
-
-        <div className="px-4 sm:px-32 flex flex-col gap-[24px] sm:gap-[64px]" id="faqs">
+        {/* Start of section 6 FAQ */}
+        <div
+          className="px-4 sm:px-32 flex flex-col gap-[24px] sm:gap-[64px] pt-[120px] mt-[-120px]"
+          id="faqs"
+        >
           <div className="flex flex-col items-start sm:items-center">
             <h4 className="text-[40px] font-medium leading-normal text-black">
               FAQ
@@ -943,9 +947,9 @@ function Website() {
             </div>
           </div>
         </div>
+        {/* End of section 6 FAQ */}
 
-        {/* section 7 */}
-
+        {/* Start of section 7 Agripeller Overview */}
         <div className="website-s7 py-24 px-32 gap-[24px] hidden lg:flex flex-col items-center ">
           <h6 className="w-[1143px] font-medium leading-normal text-[40px] text-white">
             Agripeller Overview
@@ -976,6 +980,7 @@ function Website() {
             </p>
           </div>
         </div>
+        {/* End of section 7 Agripeller Overview */}
 
         {/* mobile */}
         <div className="lg:hidden  website-s7-mobile py-[32px] px-[16px] gap-[8px] flex flex-col items-start ">
