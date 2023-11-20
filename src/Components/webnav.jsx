@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
 import Logo from "../asset/images/logo.svg";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import "../asset/styles/webnav.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Link as ScrollLink } from "react-scroll";
+//import { Link as ScrollLink } from "react-scroll";
 
 function Webnav() {
   const [menuOpen, setMenuOpen] = useState(false);

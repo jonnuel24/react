@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React, { useState, useRef } from "react";
-import Logo from "../asset/images/logo.svg";
+//import Logo from "../asset/images/logo.svg";
 import Webnav from "../Components/webnav";
 import Webfooter from "../Components/webfooter";
 import HeroImg1 from "../asset/images/website_hero_img1.svg";
@@ -161,14 +161,14 @@ function Website() {
   const [isOpen5, setIsOpen5] = useState(false);
   const [isOpen6, setIsOpen6] = useState(false);
 
-  const [menuOpen, setMenuOpen] = useState(false);
+  //const [menuOpen, setMenuOpen] = useState(false);
 
   // Ref to the menu button for detecting clicks outside the menu
-  const menuButtonRef = useRef(null);
+  //const menuButtonRef = useRef(null);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  //const toggleMenu = () => {
+  //  setMenuOpen(!menuOpen);
+  //};
 
   return (
     <div className="h-full website w-full overflow-x-hidden">
