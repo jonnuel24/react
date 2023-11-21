@@ -632,7 +632,7 @@ function Website() {
                 <img src={WebsiteS4Icon4} alt="" />
               </div>
               <h4 className="text-black  font-medium text-[24px] leading-normal text-left sm:text-center">
-                Farming Reources
+                Farming Resources
               </h4>
               <p className="text-[#4D4D4D] leading-normal font-medium text-[18px] text-left sm:text-center">
                 Our online farmers market software connects farmers with
