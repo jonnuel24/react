@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../asset/images/logo_light.svg";
 import { Icon } from "@iconify/react";
 import "../asset/styles/webfooter.css";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 function Webfooter() {
   return (
@@ -51,21 +51,26 @@ function Webfooter() {
           <h4 className="text-white text-[24px] font-medium leading-normal">
             Socials
           </h4>
-          <Link className="flex flex-row gap-2 items-center no-underline text-white text-[20px] font-normal leading-normal">
+          <a href="https://twitter.com/agripeller?s=21&t=nCV6XILsYcUMBMgtxGqqSw" className="flex flex-row gap-2 items-center no-underline text-white text-[20px] font-normal leading-normal">
             {" "}
             <Icon icon="lucide:twitter" color="white" width="48" height="48" />
             Twitter
-          </Link>
-          <Link className="flex flex-row gap-2 items-center no-underline text-white text-[20px] font-normal leading-normal">
+          </a>
+          <a href="https://instagram.com/agripeller.ng?igshid=NGVhN2U2NjQ0Yg==" className="flex flex-row gap-2 items-center no-underline text-white text-[20px] font-normal leading-normal">
             {" "}
             <Icon icon="bi:instagram" color="white" width="48" height="48" />
             Instagram
-          </Link>
-          <Link className="flex flex-row gap-2 items-center no-underline text-white text-[20px] font-normal leading-normal">
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100093535113236&mibextid=LQQJ4d" className="flex flex-row gap-2 items-center no-underline text-white text-[20px] font-normal leading-normal">
             {" "}
             <Icon icon="mingcute:facebook-line" color="white" />
             Facebook
-          </Link>
+          </a>
+          <a href="https://www.linkedin.com/company/agripeller-com/" className="flex flex-row gap-2 items-center no-underline text-white text-[20px] font-normal leading-normal">
+            {" "}
+            <Icon icon="mingcute:linkedin-line" color="white" />
+            Linkedin
+          </a>
         </div>
       </div>
       <div className="webfooter-divider w-full"></div>
