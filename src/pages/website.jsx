@@ -3,10 +3,12 @@ import React, { useState } from "react";
 //import Logo from "../asset/images/logo.svg";
 import Webnav from "../Components/webnav";
 import Webfooter from "../Components/webfooter";
-import HeroImg1 from "../asset/images/website_hero_img1.svg";
-import HeroImg2 from "../asset/images/website_hero_img2.png";
-import HeroImg3 from "../asset/images/website_hero_img2.svg";
-import HeroImg4 from "../asset/images/website_hero_img4.png";
+// import HeroImg1 from "../asset/images/website_hero_img1.svg";
+// import HeroImg2 from "../asset/images/website_hero_img2.png";
+// import HeroImg3 from "../asset/images/website_hero_img2.svg";
+// import HeroImg4 from "../asset/images/website_hero_img4.png";
+//import Websitebgdrop from "../asset/images/website-bg-drop.svg";
+import HeroImg from "../asset/images/new-hero-img.png";
 import "../asset/styles/website.css";
 import { Icon } from "@iconify/react";
 // import Ws4Img from "../asset/images/website_s4.svg";
@@ -23,9 +25,9 @@ import WebsiteS4Icon2 from "../asset/images/website-s4-icon2.svg";
 import WebsiteS4Icon3 from "../asset/images/website-s4-icon3.svg";
 import WebsiteS4Icon4 from "../asset/images/website-s4-icon4.svg";
 // import WebsiteS6FormImg from "../asset/images/website-s6-form-img.svg";
-import WebsiteS7Img1 from "../asset/images/website-s7-img1.svg";
-import WebsiteS7Img2 from "../asset/images/website-s7-img2.svg";
-import WebsiteS8Founder from "../asset/images/website-s8-founder.jpeg";
+import WebsiteS7Img1 from "../asset/images/Mask group.png";
+import WebsiteS7Img2 from "../asset/images/mask group 2.png";
+//import WebsiteS8Founder from "../asset/images/website-s8-founder.jpeg";
 // const animatedComponents = makeAnimated();
 // function Website() {
 //   // const navigate = useNavigate();
@@ -179,22 +181,26 @@ function Website() {
 
       <Webnav />
       {/* =========end of navbar================ */}
-      <div className="py-0 sm:py-16  pb-32 h-fit  flex flex-col gap-8 sm:gap-24 website-body">
+      <div className="py-0 sm:py-16  pb-32 h-fit  flex flex-col gap-8 sm:gap-24 website-body mt-24">
         {/* hero-section */}
-        <div className="flex flex-col py-12 lg:flex-row justify-between website-hero px-[16px] lg:px-[64px]  pt-[120px] mt-[-95px]" id="websiteHeroSection">
+        <div
+          className="flex flex-col py-12 lg:flex-row gap-2 website-hero px-[16px] lg:px-[128px]  pt-[120px] mt-[-145px]"
+          id="websiteHeroSection"
+        >
+          {/* <img src={Websitebgdrop} alt="" className=" absolute inset-0 z-0 websitebgdrop" /> */}
           {/* hero-left-div */}
-          <div className="flex flex-col items-start w-full  gap-4 sm:gap-8 website-hld">
+          <div className=" flex flex-col items-start w-full lg:w-1/2  gap-4 sm:gap-8 website-hld">
             <h6 className="text-[12px] sm:text-[16px]">
               Creating Farming Solutions, One Byte at a Time
             </h6>
-            <h2 className="text-left w-fit text-[32px] sm:text-[64px] ">
-              <span className="text-[#145C3F] text-[32px] sm:text-[64px]">
+            <h2 className="text-left w-fit text-[32px] sm:text-[48px] ">
+              <span className="text-[#145C3F] text-[32px] sm:text-[48px]">
                 AGRIPELLER -
               </span>
               <br />
               Agric E-commerce & Farm Management Software
             </h2>
-            <h4 className="text-left text-[20px] sm:text-[30px] w-full">
+            <h4 className="text-left text-[20px] sm:text-[24px] w-full">
               Gain access to a wholesome suite of livestock management,
               e-commerce and B2B solutions—specifically designed for the
               agricultural industry.
@@ -209,7 +215,15 @@ function Website() {
           </div>
 
           {/* hero-right-div */}
-          <div className="flex flex-row sm:flex-col  gap-4 sm:gap-8 justify-center w-full ">
+
+          <div className=" w-full p-8 lg:w-1/2 ">
+            <div className="website-rh-bg  w-[100%] ml-[107px] mt-[-40px]">
+              <img src={HeroImg} alt="" className="website-rh-img" />
+              <div className="wrhi-shadow"></div>
+            </div>
+          </div>
+
+          {/* <div className="flex flex-row sm:flex-col  gap-4 sm:gap-8 justify-center w-full ">
             <div className="flex flex-col gap-8">
               <div className="heroImg1 w-[185px] sm:w-[301.995px] h-[209px] sm:h-[340.126px]">
                 <img src={HeroImg1} alt="" className="w-full" />
@@ -233,11 +247,9 @@ function Website() {
                 <img src={HeroImg4} alt="" className="w-full" />
               </div>
             </div>
-          </div>
-        </div>
-
+          </div> */}
+        </div>{" "}
         {/* modal */}
-
         <div
           className="modal fade"
           id="exampleModal"
@@ -441,140 +453,122 @@ function Website() {
             </div>
           </div>
         </div>
-
         {/*Start of section 2  About us Section*/}
         <div
-          className="flex flex-col md:flex-row px-[16px] sm:px-[64px] w-full items-center sm:items-start gap-[132px] sm:gap-[64px}] pt-[120px] mt-[-120px]"
+          className="flex flex-col px-[16px] sm:px-[64px] w-full items-center sm:items-start gap-[64px] sm:gap-[32px] pt-[120px] mt-[-120px]"
           id="websiteAbout"
           data-scroll-index="1"
         >
           {/* section2-left-div*/}
-          <div className="w-full  flex flex-col gap-32 sm:gap-64 items-center ">
-            <div className="w-full sm:w-[440px] flex flex-col items-start sm:items-center">
-              <h4 className="website-s2-about-h4 sm:text-left text-[32px] sm:text-[40px]">
-                About Us
-              </h4>
-              <p className="website-s2-about-p text-left sm:text-center text-[16px] sm:text-[20px] w-full">
-                “Empowering Livestock Industry with <br /> Transparency,
-                Sustainability, and Innovation”
-              </p>
-            </div>
-            <div className="s4-bg1 w-[397px] sm:w-[505px] h-[397px] sm:h-[505px] grid justify-center content-center">
-              <div className="s4-bg2 w-[340px] sm:w-[433px] h-[340px] sm:h-[433px] grid justify-center content-center">
-                <div className="s4-bg3 w-[300px] sm:w-[363px] h-[300px] sm:h-[363px] grid justify-center content-center px-[16px]">
-                  <img src={S2ldimg} alt="" />
+          <div className="w-full h-[700px]  flex flex-col sm:flex-row gap-16 sm:gap-32 items-center ">
+            <div>
+              <div className="s4-bg1 w-[397px] sm:w-[505px] h-[397px] sm:h-[505px] grid justify-center content-center">
+                <div className="s4-bg2 w-[340px] sm:w-[433px] h-[340px] sm:h-[433px] grid justify-center content-center">
+                  <div className="s4-bg3 w-[300px] sm:w-[363px] h-[300px] sm:h-[363px] grid justify-center content-center px-[16px]">
+                    <img src={S2ldimg} alt="" />
+                  </div>
                 </div>
               </div>
+            </div>
+
+            {/* section2-right-div*/}
+
+            <div className="flex flex-col gap-8 sm:gap-8 w-full items-start">
+              <h5 className="text-[40px] text-[#4D4D4D] leading-normal font-normal ">About Us</h5>
+              <h3 className="text-left text-[#690D00] text-[48px] font-bold leading-normal">
+                "NIGERIA’s TRUSTED  DIGITAL LIVESTOCK MARKETPLACE."
+              </h3>
+              <p className="text-left">
+                Agripeller is a digital marketplace that helps automate and
+                simplify the retailing process of livestock. We are the first
+                innovative, user-friendly web app that helps farmers to double
+                their sales and reduce cost while connecting with thousands of
+                buyers who get quality livestock in return. 
+                <br />
+                Our team of experts are dedicated to revolutionizing the
+                Nigerian livestock sector with data analytics. By closely
+                monitoring livestock production, consumption, and market trends,
+                we aim to generate comprehensive data that can empower farmers,
+                buyers, and policymakers with valuable insights. 
+                <br />
+                With our online farmers market tool, we're confident that we can
+                build a thriving tech solution for agriculture in Nigeria. We're
+                thrilled at the potential of our platform to make a positive
+                impact on the agricultural industry in Nigeria and look forward
+                to working with stakeholders to drive this ambitious goal
+                forward.
+              </p>
             </div>
           </div>
 
-          {/* section2-right-div*/}
-
-          <div className="flex flex-col gap-8 sm:gap-8 w-full items-center">
-            <div className="flex flex-row section2-card p-4 ">
-              <div className="h-auto">
-                <Icon
-                  icon="mdi:eye-outline"
-                  color="black"
-                  width="24"
-                  height="24"
-                  className="website-s2-card-icon mt-0 sm:mt-2 mr-0 sm:mr-4"
-                />
-              </div>
-              <div className="flex flex-col items-start gap-2 s4-c-text ">
-                <h2 className="text-[20px] sm:text-[40px]">Vision</h2>
-                <h5 className="text-left text-[16px] sm:text-[20px]">
-                  We are dedicated to streamlining the day-to-day farmer tasks
-                  and connecting buyers with quality farm produce through our
-                  one-stop-shop  e-commerce and livestock record keeping
-                  software.
-                </h5>
-              </div>
+          <div className="flex flex-row gap-[32px] justify-center w-full mt-4">
+            <div>
+              <h5 className="text-[#006838] text-[32px]">Our Mission</h5>
+              <p className="w-[600px]">
+                Our mission is to make the livestock industry more efficient,
+                sustainable, and transparent. To help livestock farmers connect
+                with buyers, manage their inventory, and track their shipments.
+                We aim to help business owners and end users procure fresh,
+                healthy, high-quality livestock.
+              </p>
             </div>
-            <div className="flex flex-row section2-card p-4">
-              <div className="w-[48px] h-auto">
-                <Icon
-                  icon="tabler:target"
-                  color="black"
-                  width="26"
-                  height="26"
-                  className="website-s2-card-icon mt-0 sm:mt-2 mr-0 sm:mr-4"
-                />
-              </div>
-              <div className="flex flex-col items-start gap-2 s4-c-text">
-                <h2 className="text-[20px] sm:text-[40px]">Mission</h2>
-                <h5 className="text-left text-[20px]">
-                  Our mission is to make the livestock industry more efficient,
-                  sustainable, and transparent. To help livestock farmers
-                  connect with buyers, manage their inventory, and track their
-                  shipments. We aim to help business owners and end users
-                  procure fresh, healthy, high-quality livestock..
-                </h5>
-              </div>
-            </div>
-            <div className="flex flex-row section2-card p-4">
-              <div className="flex  w-[48px] h-auto">
-                <Icon
-                  icon="ri:coreos-line"
-                  color="black"
-                  width="24"
-                  height="24"
-                  className="website-s2-card-icon mt-0 sm:mt-2 mr-0 sm:mr-4"
-                />
-              </div>
-              <div className="flex flex-col items-start gap-2 s4-c-text">
-                <h2 className="text-[20px] sm:text-[40px]">Core Values</h2>
-                <div>
-                  <div>
-                    <h6 className="text-left font-[Clash Display] text-[#4D4D4D] font-medium text-[20px] leading-normal">
-                      -Transparency
-                    </h6>
-                    <p className="text-left text-[#4D4D4D] font-normal text-[20px] leading-normal">
-                      We’re committed to making the livestock retail process a
-                      transparent one.
-                    </p>
-                  </div>
-                  <div>
-                    <h6 className="text-left font-[Clash Display] text-[#4D4D4D] font-medium text-[20px] leading-normal">
-                      -Sustainability
-                    </h6>
-                    <p className="text-left text-[#4D4D4D] font-normal text-[20px] leading-normal">
-                       We strongly believe in promoting sustainable practices in
-                      the livestock industry.
-                    </p>
-                  </div>
-                  <div>
-                    <h6 className="text-left font-[Clash Display] text-[#4D4D4D] font-medium text-[20px] leading-normal">
-                      -Quality
-                    </h6>
-                    <p className="text-left text-[#4D4D4D] font-normal text-[20px] leading-normal">
-                      We are dedicated to providing businesses and end users the
-                      highest quality of livestock.
-                    </p>
-                  </div>
-                  <div>
-                    <h6 className="text-left font-[Clash Display] text-[#4D4D4D] font-medium text-[20px] leading-normal">
-                      -Innovation
-                    </h6>
-                    <p className="text-left text-[#4D4D4D] font-normal text-[20px] leading-normal">
-                      We are constantly looking for ways to improve the
-                      livestock sector in Nigeria through technology.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="w-[0.5px] h-[143px] bg-black"></div>
+            <div className="">
+              <h5 className="text-[#006838] text-[32px]">Company's Vision</h5>
+              <p className="w-[600px]">
+                We are dedicated to streamlining the day-to-day farmer tasks and
+                connecting buyers with quality farm produce through our
+                one-stop-shop  e-commerce and livestock record keeping software
+              </p>
             </div>
           </div>
         </div>
         {/* end of section 2 About Us */}
-
         {/*Start of section 3 */}
-        <div className="website-s3 py-8 px-[0px] sm:px-16 flex flex-col items-center gap-12 h-fit rounded-none">
-          <div className="hidden sm:block s3-img"></div>
-          <div className="sm:hidden block s3-img-sm rounded-none"></div>
+        <div className=" flex flex-col px-[105px] pt-[113px] pb-[96px] bg-[#235628] gap-[113px] website-s3">
+          <div>
+            <h4 className="text-white text-[32px] ">Core Values</h4>
+          </div>
+          <div className="flex flex-row gap-[50px] ">
+            {/* 01 */}
+            <div className="flex flex-col gap-[18px] items-center justify-start w-[345px] h-[296px] px-[24px] py-[38px] ws3-card">
+              <Icon icon="heroicons:cube-transparent-solid" color="#6ABD45" className="ws3-icon" />
+              <h5 className="">Transparency</h5>
+              <p>
+                 We’re committed to making the livestock retail process a
+                transparent one.
+              </p>
+            </div>
+            {/* 02 */}
+            <div className="flex flex-col justify-start w-[345px] h-[296px] px-[24px] py-[38px] gap-[8px] items-center ws3-card">
+              <Icon icon="carbon:sustainability" color="#5591EB" className="ws3-icon"/>
+              <h5>Sustainability</h5>
+              <p>
+                  We strongly believe in promoting sustainable practices in the
+                livestock industry.
+              </p>
+            </div>
+            {/* 03 */}
+            <div className="flex flex-col items-center justify-start w-[345px] h-[296px] px-[24px] py-[38px] gap-[18px] ws3-card">
+              <Icon icon="lucide:focus" color="#C0764B" className="ws3-icon"/>
+              <h5>Quality</h5>
+              <p>
+                 We are dedicated to providing businesses and end users the
+                highest quality of livestock.
+              </p>
+            </div>
+            {/* 04 */}
+            <div className="flex flex-col items-center justify-start w-[345px] h-[296px] px-[24px] py-[38px] gap-[8px] ws3-card">
+              <Icon icon="ri:edge-new-line" color="#EAEE22AA" className="ws3-icon"/>
+              <h5>Innovation</h5>
+              <p>
+                We are constantly looking for ways to improve the livestock
+                sector in Nigeria through technology.
+              </p>
+            </div>
+          </div>
         </div>
         {/* end of section 3 */}
-
         {/* Start of section 4 Services */}
         <div
           className="flex flex-col items-center gap-[2px] sm:gap-[64px] website-s4 px-[16px] sm:px-[64px] pt-[120px] mt-[-120px]"
@@ -653,7 +647,6 @@ function Website() {
           </div>
         </div>
         {/* End of section 4 Services */}
-
         {/* Start of section 5 */}
         <div className="flex justify-center items-center mt-[-220px] sm:mt-[-280px] ">
           <div className="website-s5 flex justify-center item-center w-[392px] sm:w-[1335px] h-[293px] sm:h-[293px]">
@@ -677,7 +670,6 @@ function Website() {
           </div>
         </div>
         {/* End of section 5 */}
-
         {/* Start of section 6 FAQ */}
         <div
           className="px-4 sm:px-32 flex flex-col gap-[24px] sm:gap-[64px] pt-[120px] mt-[-120px]"
@@ -952,83 +944,15 @@ function Website() {
           </div>
         </div>
         {/* End of section 6 FAQ */}
-
-        {/* Start of section 7 Agripeller Overview */}
-        <div className="website-s7 py-24 px-32 gap-[24px] hidden lg:flex flex-col items-center ">
-          <h6 className="w-[1143px] font-medium leading-normal text-[40px] text-white">
-            Agripeller Overview
-          </h6>
-          <div className="flex flex-col gap-32 items-start">
-            <h3 className="w-[1143px] font-bold leading-normal text-[64px] text-white text-start">
-              "NIGERIA’s TRUSTED  DIGITAL LIVESTOCK MARKETPLACE."
-            </h3>
-
-            <p className="w-[1130px] font-normal leading-[60px] text-left text-[32px] text-white">
-              Agripeller is a digital marketplace that helps automate and
-              simplify the retailing process of livestock. We are the first
-              innovative, user-friendly web app that helps farmers to double
-              their sales and reduce cost while connecting with thousands of
-              buyers who get quality livestock in return. 
-              <br />
-              <br /> Our team of experts are dedicated to revolutionizing the
-              Nigerian livestock sector with data analytics. By closely
-              monitoring livestock production, consumption, and market trends,
-              we aim to generate comprehensive data that can empower farmers,
-              buyers, and policymakers with valuable insights. 
-              <br />
-              <br /> With our online farmers market tool, we're confident that
-              we can build a thriving tech solution for agriculture in Nigeria.
-              We're thrilled at the potential of our platform to make a positive
-              impact on the agricultural industry in Nigeria and look forward to
-              working with stakeholders to drive this ambitious goal forward.
-            </p>
-          </div>
-        </div>
-        {/* End of section 7 Agripeller Overview */}
-
-        {/* mobile */}
-        <div className="lg:hidden  website-s7-mobile py-[32px] px-[16px] gap-[8px] flex flex-col items-start ">
-          <h6 className="font-medium leading-normal text-[32px] text-white">
-            Agripeller Overview
-          </h6>
-          <div className="flex flex-col gap-4 items-start w-full">
-            <h3 className="w-full font-normal leading-normal text-[18px] text-white text-left">
-              "NIGERIA’s TRUSTED  DIGITAL LIVESTOCK MARKETPLACE."
-            </h3>
-
-            <p className="w-full font-normal leading-normal text-left text-[16px] text-white">
-              Agripeller is a digital marketplace that helps automate and
-              simplify the retailing process of livestock. We are the first
-              innovative, user-friendly web app that helps farmers to double
-              their sales and reduce cost while connecting with thousands of
-              buyers who get quality livestock in return. 
-              <br />
-              <br /> Our team of experts are dedicated to revolutionizing the
-              Nigerian livestock sector with data analytics. By closely
-              monitoring livestock production, consumption, and market trends,
-              we aim to generate comprehensive data that can empower farmers,
-              buyers, and policymakers with valuable insights. 
-              <br />
-              <br /> With our online farmers market tool, we're confident that
-              we can build a thriving tech solution for agriculture in Nigeria.
-              We're thrilled at the potential of our platform to make a positive
-              impact on the agricultural industry in Nigeria and look forward to
-              working with stakeholders to drive this ambitious goal forward.
-            </p>
-          </div>
-        </div>
-
-        {/* end mobile */}
-
-        {/* section 7 b */}
-        <div className="p-[16px] sm:px-16 flex flex-col gap-[32px] sm:gap-[32px] items-center">
+  
+        {/* section 7 Value Proposition*/}
+        <div className="p-[16px] sm:px-16 flex  flex-row gap-[32px] sm:gap-[32px] items-start">
           <div className="flex flex-col gap-[16px] sm:gap-[48px] w-full">
-            <h4 className="text-[#4d4d4d] text-[24px] sm:text-[40px] font-medium leading-normal sm:w-full text-left sm:text-center">
-              Farmers Value Proposition
-            </h4>
-            <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[160px]">
-              {/* =================== */}
-              <div className="flex flex-col gap-[16px] sm:gap-[48px] website-s7-div2">
+            
+            <div className="flex flex-col gap-[8px] sm:gap-[40px]">
+              {/* ========Farmer Proposition=========== */}
+              <div className="flex flex-col gap-[16px] sm:gap-[48px] website-s7-div2 items-start bg-[#00683826] px-[46px] py-[64px]">
+                <h4>Farmers Value Proposition</h4>
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="grommet-icons:connect"
@@ -1095,38 +1019,27 @@ function Website() {
               {/* ======== */}
               <div className="flex flex-col items-start lg:mb-4">
                 <img src={WebsiteS7Img1} alt="" />
-                <label
-                  htmlFor=""
-                  className="text-left text-[20px] sm:text-[32px] font-medium leading-normal text-[#4d4d4d] w-[512px]"
-                >
-                  Join our community of vibrant, like-minded farmers today
-                </label>
+                
               </div>
             </div>
           </div>
           {/* section 7 - div 3 */}
 
           <div className="flex flex-col gap-[8px] sm:gap-[32px] w-full">
-            <h4 className="text-[#4d4d4d] text-[24px] sm:text-[40px] font-medium leading-normal sm:w-full text-left sm:text-center">
-              Users Value Proposition
-            </h4>
-            <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[160px]">
+            
+            <div className="flex flex-col gap-[8px] sm:gap-[40px]">
               {/* ======== */}
-              <div className="flex flex-col order-last items-start">
+              <div className="flex flex-col order-first items-start">
                 <img src={WebsiteS7Img2} alt="" />
-                <label
-                  htmlFor=""
-                  className="text-left text-[20px] sm:text-[32px] font-medium leading-normal text-[#4d4d4d] w-[512px]"
-                >
-                  Join our community of vibrant, like-minded farmers today
-                </label>
+                
               </div>
               {/* =================== */}
-              <div className="flex flex-col order-first sm:order-last gap-[16px] sm:gap-[48px] website-s7-div2">
+              <div className="flex flex-col order-first sm:order-last gap-[16px] sm:gap-[48px] website-s7-div2 items-start px-[46px] py-[64px] bg-[#F25C0526]">
+                <h4>User Value Proposition</h4>
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="cil:find-in-page"
-                    color="#48A928"
+                    color="#F25C05"
                     width="48"
                     height="48"
                     className="website-s7-div2-icon"
@@ -1138,7 +1051,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="material-symbols:my-location"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
@@ -1148,7 +1061,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="simple-icons:easyeda"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
@@ -1158,7 +1071,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="grommet-icons:navigate"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
@@ -1168,7 +1081,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="grommet-icons:secure"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
@@ -1178,7 +1091,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="ic:baseline-support-agent"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
@@ -1189,47 +1102,9 @@ function Website() {
             </div>
           </div>
         </div>
-
         {/* end of section 7 */}
-
+       
         {/* start section 8 */}
-        <div className="website-s8-bg flex flex-col gap-8 sm:gap-16 w-full h-fit items-center justify-center p-[24px] sm:p-[64px]">
-          <h3 className="text-medium sm:text-[40px] text-white font-medium leading-normal">
-            About Our Founder
-          </h3>
-          <div className="flex flex-col sm:flex-row items-center gap-8 sm:justify-between w-full">
-            <div className="">
-              <div className="website-s8-pic w-[250px] sm:w-[350px] h-auto">
-                <img src={WebsiteS8Founder} alt="" className="h-auto w-full" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-[32px] text-white leading-normal">
-                  Founder
-                </h4>
-                <label
-                  htmlFor=""
-                  className="font-normal text-[24px] text-white leading-normal"
-                >
-                  Paul Anyaorha
-                </label>
-              </div>
-            </div>
-            <div className="lg:w-full">
-              <h6 className="text-white text-[18px] sm:text-[24px] font-normal italic leading-[32px] sm:leading-[64px] text-left w-full">
-                Paul Nnadalu is the CEO and founder of Agripeller. He is a
-                passionate advocate for the livestock sector in Nigeria and is
-                committed to using technology to improve the lives of farmers in
-                Nigeria. Paul Nnadalu is a visionary leader with an in-depth
-                understanding of the challenges and opportunities in the
-                livestock sector in Nigeria. He is committed to improving the
-                livestock industry, one technological solution at a time.{" "}
-              </h6>
-            </div>
-          </div>
-        </div>
-        {/* end section 8 */}
-
-        {/* start section 9 */}
         <div className="flex items-center justify-center px-4 sm:px-[128px] website-s9 mb-8 sm:mb-24">
           <div className="website-s9-div px-[16px]  sm:px-[101px] pt-[54px] pb-[90px] w-full sm:w-[1000px]">
             <div className="sm:w-[570px] flex flex-col gap-[19px] w-full">
@@ -1263,7 +1138,7 @@ function Website() {
             </div>
           </div>
         </div>
-        {/* end section 9 */}
+        {/* end section 8 */}
       </div>
       <Webfooter />
     </div>
