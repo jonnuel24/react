@@ -7,7 +7,7 @@ import Webfooter from "../Components/webfooter";
 // import HeroImg2 from "../asset/images/website_hero_img2.png";
 // import HeroImg3 from "../asset/images/website_hero_img2.svg";
 // import HeroImg4 from "../asset/images/website_hero_img4.png";
-import Websitebgdrop from "../asset/images/website-bg-drop.svg";
+//import Websitebgdrop from "../asset/images/website-bg-drop.svg";
 import HeroImg from "../asset/images/new-hero-img.png";
 import "../asset/styles/website.css";
 import { Icon } from "@iconify/react";
@@ -27,7 +27,7 @@ import WebsiteS4Icon4 from "../asset/images/website-s4-icon4.svg";
 // import WebsiteS6FormImg from "../asset/images/website-s6-form-img.svg";
 import WebsiteS7Img1 from "../asset/images/Mask group.png";
 import WebsiteS7Img2 from "../asset/images/mask group 2.png";
-import WebsiteS8Founder from "../asset/images/website-s8-founder.jpeg";
+//import WebsiteS8Founder from "../asset/images/website-s8-founder.jpeg";
 // const animatedComponents = makeAnimated();
 // function Website() {
 //   // const navigate = useNavigate();
