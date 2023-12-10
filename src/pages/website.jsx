@@ -133,8 +133,7 @@ function Website() {
       setPost({ ...post, typesOfLivestock: selected.map((e) => e.value) });
 
       const result = await accountServices.waitingList(post);
-      console.log(result);
-
+      
       setPost({
         email: "",
         fullName: "",
@@ -148,11 +147,15 @@ function Website() {
         setLoading(false);
         alert(result.message);
       }, 1000);
+
       //comment
     } catch (e) {
       setLoading(false);
       alert(e.message);
     }
+    document.getElementById('btn-close').click(true)
+    // document.getElementById('exampleModal').classList.remove("show")
+    // document.click()
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -263,6 +266,7 @@ function Website() {
                 <button
                   type="button"
                   className="btn-close"
+                  id="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
