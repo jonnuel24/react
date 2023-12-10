@@ -1,30 +1,13 @@
-.heroImg1 {
-  /* width: 301.995px;
-  height: 340.126px; */
-  border-radius: 10px;
-  background: #d9d9d9;
-  overflow: hidden;
-}
-
 .website {
   height: 100vh;
-}
-
-.heroImg2 {
-  /* width: 312.394px;
-  height: 236.662px; */
-  border-radius: 10px;
-  background: #d9d9d9;
-  overflow: hidden;
 }
 
 .website-hero {
   width: 100%;
   height: fit-content;
   justify-content: center;
+  /* z-index: 1; */
 }
-
-
 
 .website-hld h2 {
   color: #000;
@@ -48,6 +31,37 @@
   line-height: normal;
   height: auto;
 }
+
+.website-rh-bg {
+  background-image: url(../images/New-hero-bg.svg);
+  background-repeat: no-repeat;
+}
+
+.wrhi-shadow {
+  width: 620px;
+  height: 96px;
+  border-radius: 620px;
+  background: #000;
+  filter: blur(75px);
+}
+
+.website-rh-img {
+  height: 475px;
+  width: 370px;
+  z-index: 2;
+  margin-left: 55px !important;
+}
+
+/* .websitebgdrop {
+  width: 624px;
+  height: auto;
+  
+  margin-top: 400px;
+  margin-left: -259px;
+  z-index: -1;
+  top: 0;
+  left: 0;
+} */
 
 /* section 2 */
 .s2-ld-bg {
@@ -88,33 +102,6 @@
   );
 }
 
-.website-s3 {
-  width: 100%;
-  /* height: 802.297px; */
-  /* border-radius: 10px; */
-  overflow: hidden;
-}
-
-.s3-img {
-  background-image: url(../images//website_section3.png);
-  width: 100%;
-  height: 802.297px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 30px;
-}
-
-.s3-img-sm {
-  background-image: url(../images//website_section3_mobile.svg);
-  width: 100%;
-  height: 225.464px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 0px;
-}
-
 .section2-card {
   align-items: flex-start;
   justify-content: flex-start;
@@ -133,6 +120,39 @@
   width: 80px;
   height: auto;
 } */
+
+/* section 3 */
+.website-s3 h5 {
+  color: var(--color-primary-60, #fff);
+  font-family: Clash Display;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.website-s3 p {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  font-family: Clash Display;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ws3-card {
+  border-radius: var(--cart-cart, 0px);
+  background: rgba(255, 255, 255, 0.15);
+  width: 345px;
+  height: 260px;
+}
+
+.ws3-icon {
+  width: 80px;
+  height: 80px;
+  opacity: 0.6;
+}
 
 .website-menu-icon {
   height: 40px;
