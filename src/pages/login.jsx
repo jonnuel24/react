@@ -26,11 +26,19 @@ function Login() {
 
   async function login() {
     let result = await accountServices.login(post);
+    if (typeof result === 'string') {
+      alert(result)
+      return;
+    }
     if (result.statusCode === 200) {
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("currentUser", JSON.stringify(result.data));
       alert("login successful, click 'OK' to continue");
-      navigate("/home");
+      if(result.data.userType=='USER'){
+        navigate("/user");
+      }else{
+        navigate('/farmer')
+      }
     } else {
       alert(result.message);
     }
