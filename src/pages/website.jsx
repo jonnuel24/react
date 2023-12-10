@@ -527,7 +527,7 @@ function Website() {
         {/*Start of section 3 */}
         <div className=" flex flex-col px-[105px] pt-[113px] pb-[96px] bg-[#235628] gap-[113px] website-s3">
           <div>
-            <h4 className="text-white ">Core Values</h4>
+            <h4 className="text-white text-[32px] ">Core Values</h4>
           </div>
           <div className="flex flex-row gap-[50px] ">
             {/* 01 */}
@@ -1039,7 +1039,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="cil:find-in-page"
-                    color="#48A928"
+                    color="#F25C05"
                     width="48"
                     height="48"
                     className="website-s7-div2-icon"
@@ -1051,7 +1051,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="material-symbols:my-location"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
@@ -1061,7 +1061,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="simple-icons:easyeda"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
@@ -1071,7 +1071,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="grommet-icons:navigate"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
@@ -1081,7 +1081,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="grommet-icons:secure"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
@@ -1091,7 +1091,7 @@ function Website() {
                 <div className="flex flex-row justify-start items-center gap-[16px]">
                   <Icon
                     icon="ic:baseline-support-agent"
-                    color="#48A928"
+                    color="#F25C05"
                     className="website-s7-div2-icon"
                   />
                   <h6 className="text-[18px] sm:text-[24px] font-normal text-[#4d4d4d] leading-normal text-left">
