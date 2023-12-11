@@ -35,7 +35,7 @@ function Root() {
       <Route path="/login" Component={Login} />
       <Route path="/createAccount" Component={createAccount} />
 
-      <Route path="/home" Component={home} />
+      <Route path="/user" Component={home} />
 
       <Route path="/productDetails" Component={productDetails} />
 
@@ -54,7 +54,7 @@ function Root() {
       <Route path="/profile" Component={Profile} />
       <Route path="/wishlist" Component={Wishlist} />
       <Route path="/notification" Component={Notification} />
-      <Route path="/farmersdashboard" Component={Dashboard} />
+      <Route path="/farmer" Component={Dashboard} />
       
 
     </Routes>
