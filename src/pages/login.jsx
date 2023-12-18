@@ -34,7 +34,7 @@ function Login() {
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("currentUser", JSON.stringify(result.data));
       alert("login successful, click 'OK' to continue");
-      if(result.data.userType=='USER'){
+      if(result.data.userType==='USER'){
         navigate("/user");
       }else{
         navigate('/farmer')

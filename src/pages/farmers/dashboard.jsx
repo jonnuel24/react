@@ -5,15 +5,15 @@ import "../../asset/styles/farmersdashboard.css";
 
 function Dashboard() {
 
-  const YearSelector = () => {
-    // Generate an array of years from 2001 to the current year
-    const startYear = 2001;
-    const currentYear = new Date().getFullYear();
-    const years = Array.from(
-      { length: currentYear - startYear + 1 },
-      (_, index) => startYear + index
-    ).reverse();
-  };
+  // const YearSelector = () => {
+  //   // Generate an array of years from 2001 to the current year
+  //   const startYear = 2001;
+  //   const currentYear = new Date().getFullYear();
+  //   const years = Array.from(
+  //     { length: currentYear - startYear + 1 },
+  //     (_, index) => startYear + index
+  //   ).reverse();
+  // };
   return (
     <div>
       <FNavbar />
