@@ -24,6 +24,7 @@ import delivery2 from "../pages/delivery2";
 import Notification from "../pages/notification";
 import Website from "../pages/website";
 import Dashboard from "../pages/farmers/dashboard";
+import Addproduct from "../pages/farmers/addproduct"
 
 
 function Root() {
@@ -55,6 +56,7 @@ function Root() {
       <Route path="/wishlist" Component={Wishlist} />
       <Route path="/notification" Component={Notification} />
       <Route path="/farmer" Component={Dashboard} />
+      <Route path="/addproduct" Component={Addproduct} />
       
 
     </Routes>
