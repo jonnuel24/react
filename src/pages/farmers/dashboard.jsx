@@ -187,11 +187,11 @@ function Dashboard() {
                 <div>
                   <label htmlFor="yearSelector">Select Year:</label>
                   <select id="yearSelect">
-                    {years.map((year) => (
+                    {/* {years.map((year) => (
                       <option key={year} value={year}>
                         {year}
                       </option>
-                    ))}
+                    ))} */}
                   </select>
                 </div>
                 <div></div>
