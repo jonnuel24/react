@@ -3,11 +3,7 @@ import React, { useState } from "react";
 //import Logo from "../asset/images/logo.svg";
 import Webnav from "../Components/webnav";
 import Webfooter from "../Components/webfooter";
-// import HeroImg1 from "../asset/images/website_hero_img1.svg";
-// import HeroImg2 from "../asset/images/website_hero_img2.png";
-// import HeroImg3 from "../asset/images/website_hero_img2.svg";
-// import HeroImg4 from "../asset/images/website_hero_img4.png";
-//import Websitebgdrop from "../asset/images/website-bg-drop.svg";
+import HeroImg1 from "../asset/images/mobile-hero-img.png";
 import HeroImg from "../asset/images/new-hero-img.png";
 import "../asset/styles/website.css";
 import { Icon } from "@iconify/react";
@@ -214,40 +210,23 @@ function Website() {
             </button>
           </div>
 
-          {/* hero-right-div */}
+          {/* hero-right-div desktop */}
 
           <div className=" w-full p-8 lg:w-1/2 ">
-            <div className="website-rh-bg  w-[100%] ml-[107px] mt-[-40px]">
+            <div className="website-rh-bg  w-[100%] ml-[107px] mt-[-40px] hidden lg:block ">
               <img src={HeroImg} alt="" className="website-rh-img" />
               <div className="wrhi-shadow"></div>
             </div>
+
+            {/* mobile */}
+            <div className="lg:hidden grid place-content-center ">
+              <img src={HeroImg1} alt="" className="website-rh-img-mobile w-[400px] h-auto" />
+            </div>
+
+            
           </div>
 
-          {/* <div className="flex flex-row sm:flex-col  gap-4 sm:gap-8 justify-center w-full ">
-            <div className="flex flex-col gap-8">
-              <div className="heroImg1 w-[185px] sm:w-[301.995px] h-[209px] sm:h-[340.126px]">
-                <img src={HeroImg1} alt="" className="w-full" />
-              </div>
-              <div className="heroImg2 w-[185px] sm:w-[312.394px] h-[140px] sm:h-[236.662px]">
-                <img src={HeroImg2} alt="" className="w-full" />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-8 heroimgRight mt-0 sm:mt-[-44px]">
-              <div className="heroImg2 w-[185px] sm:w-[312.394px] h-[140px] sm:h-[236.662px]">
-                <img
-                  src={HeroImg3}
-                  classN
-                  className="w-full"
-                  ame="w-full"
-                  alt=""
-                />
-              </div>
-              <div className="heroImg1 w-[185px] sm:w-[301.995px] h-[209px] sm:h-[340.126px]">
-                <img src={HeroImg4} alt="" className="w-full" />
-              </div>
-            </div>
-          </div> */}
+          
         </div>{" "}
         {/* modal */}
         <div
@@ -455,14 +434,14 @@ function Website() {
         </div>
         {/*Start of section 2  About us Section*/}
         <div
-          className="flex flex-col px-[16px] sm:px-[64px] w-full items-center sm:items-start gap-[64px] sm:gap-[32px] pt-[120px] mt-[-120px]"
+          className="flex flex-col  px-[16px] sm:px-[64px] w-full items-center sm:items-start gap-[16px] sm:gap-[32px] pt-[40px] sm:pt-[120px] mt-[-120px]"
           id="websiteAbout"
           data-scroll-index="1"
         >
           {/* section2-left-div*/}
-          <div className="w-full h-[700px]  flex flex-col sm:flex-row gap-16 sm:gap-32 items-center ">
-            <div>
-              <div className="s4-bg1 w-[397px] sm:w-[505px] h-[397px] sm:h-[505px] grid justify-center content-center">
+          <div className="w-full h-fit sm:h-[700px]  flex flex-col-reverse sm:flex-row gap-16 sm:gap-32 items-center  ">
+            <div className="mt-[48px] sm:mt-0">
+              <div className="s4-bg1 w-[397px] sm:w-[505px] h-[397px] sm:h-[505px] grid justify-center content-center sm:order-2">
                 <div className="s4-bg2 w-[340px] sm:w-[433px] h-[340px] sm:h-[433px] grid justify-center content-center">
                   <div className="s4-bg3 w-[300px] sm:w-[363px] h-[300px] sm:h-[363px] grid justify-center content-center px-[16px]">
                     <img src={S2ldimg} alt="" />
@@ -473,12 +452,12 @@ function Website() {
 
             {/* section2-right-div*/}
 
-            <div className="flex flex-col gap-8 sm:gap-8 w-full items-start">
-              <h5 className="text-[40px] text-[#4D4D4D] leading-normal font-normal ">About Us</h5>
-              <h3 className="text-left text-[#690D00] text-[48px] font-bold leading-normal">
+            <div className="flex flex-col gap-2 sm:gap-8 w-full items-start mt-[8px] lg:mb-24">
+              <h5 className="text-[32px] sm:text-[40px] text-[#4D4D4D] leading-normal font-medium ">About Us</h5>
+              <h3 className="text-left text-[#690D00] text-[24px] sm:text-[48px] font-semibold sm:font-bold leading-normal">
                 "NIGERIA’s TRUSTED  DIGITAL LIVESTOCK MARKETPLACE."
               </h3>
-              <p className="text-left">
+              <p className="text-left text-[16px] sm:text-[20px]">
                 Agripeller is a digital marketplace that helps automate and
                 simplify the retailing process of livestock. We are the first
                 innovative, user-friendly web app that helps farmers to double
@@ -501,10 +480,10 @@ function Website() {
             </div>
           </div>
 
-          <div className="flex flex-row gap-[32px] justify-center w-full mt-4">
+          <div className="flex flex-col sm:flex-row gap-[32px] justify-center w-full mt-24 sm:mt-4">
             <div>
-              <h5 className="text-[#006838] text-[32px]">Our Mission</h5>
-              <p className="w-[600px]">
+              <h5 className="text-[#006838] text-[24px] sm:text-[32px] lg:font-normal text-left">Our Mission</h5>
+              <p className="w-full sm:w-[600px] text-left">
                 Our mission is to make the livestock industry more efficient,
                 sustainable, and transparent. To help livestock farmers connect
                 with buyers, manage their inventory, and track their shipments.
@@ -512,10 +491,10 @@ function Website() {
                 healthy, high-quality livestock.
               </p>
             </div>
-            <div className="w-[0.5px] h-[143px] bg-black"></div>
+            <div className="w-[0.5px] h-[143px] bg-black hidden lg:block"></div>
             <div className="">
-              <h5 className="text-[#006838] text-[32px]">Company's Vision</h5>
-              <p className="w-[600px]">
+              <h5 className="text-[#006838] text-[24px] sm:text-[32px] lg:font-normal text-left">Company's Vision</h5>
+              <p className="w-full sm:w-[600px] text-left">
                 We are dedicated to streamlining the day-to-day farmer tasks and
                 connecting buyers with quality farm produce through our
                 one-stop-shop  e-commerce and livestock record keeping software
@@ -525,11 +504,11 @@ function Website() {
         </div>
         {/* end of section 2 About Us */}
         {/*Start of section 3 */}
-        <div className=" flex flex-col px-[105px] pt-[113px] pb-[96px] bg-[#235628] gap-[113px] website-s3">
+        <div className=" flex flex-col px-[32px] sm:px-[105px] pt-[113px] pb-[96px] bg-[#235628] gap-[32px] sm:gap-[113px] website-s3">
           <div>
             <h4 className="text-white text-[32px] ">Core Values</h4>
           </div>
-          <div className="flex flex-row gap-[50px] ">
+          <div className="flex flex-col sm:flex-row gap-[50px] ">
             {/* 01 */}
             <div className="flex flex-col gap-[18px] items-center justify-start w-[345px] h-[296px] px-[24px] py-[38px] ws3-card">
               <Icon icon="heroicons:cube-transparent-solid" color="#6ABD45" className="ws3-icon" />
@@ -946,10 +925,10 @@ function Website() {
         {/* End of section 6 FAQ */}
   
         {/* section 7 Value Proposition*/}
-        <div className="p-[16px] sm:px-16 flex  flex-row gap-[32px] sm:gap-[32px] items-start">
-          <div className="flex flex-col gap-[16px] sm:gap-[48px] w-full">
+        <div className="p-[16px] sm:px-16 flex  flex-col sm:flex-row gap-[48px] sm:gap-[32px] items-start">
+          <div className="flex flex-col gap-[32px] sm:gap-[48px] w-full">
             
-            <div className="flex flex-col gap-[8px] sm:gap-[40px]">
+            <div className="flex flex-col-reverse sm:flex-col  gap-[8px] sm:gap-[40px]">
               {/* ========Farmer Proposition=========== */}
               <div className="flex flex-col gap-[16px] sm:gap-[48px] website-s7-div2 items-start bg-[#00683826] px-[46px] py-[64px]">
                 <h4>Farmers Value Proposition</h4>

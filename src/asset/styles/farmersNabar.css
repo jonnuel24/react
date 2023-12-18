@@ -1,3 +1,17 @@
 .fnav{
 height: 106px;
 }
+
+.fn-icon{
+  width: 21px;
+height: 21px;
+color: #FFFFFF;
+}
+
+.fn-profile{
+  width: 41.91px;
+height: 39.675px;
+border-radius: 100px;
+background: #D9D9D9;
+overflow: hidden;
+}

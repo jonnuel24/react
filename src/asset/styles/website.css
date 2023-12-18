@@ -63,6 +63,11 @@
   left: 0;
 } */
 
+.website-rh-img-mobile{
+  width: 400px !important;
+  max-width: 500px;
+}
+
 /* section 2 */
 .s2-ld-bg {
   background-image: url(../images/s2-ld-bg.svg);
