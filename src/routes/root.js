@@ -4,10 +4,7 @@ import signup from "../pages/signup";
 import Login from "../pages/login";
 import createAccount from "../pages/createAccount";
 import home from "../pages/home";
-import {
-  Route,
-  Routes,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import productDetails from "../pages/productDetails";
 import Form from "../pages/form";
 import forgotPassword from "../pages/forgotPassword";
@@ -24,14 +21,15 @@ import delivery2 from "../pages/delivery2";
 import Notification from "../pages/notification";
 import Website from "../pages/website";
 import Dashboard from "../pages/farmers/dashboard";
-import Addproduct from "../pages/farmers/addproduct"
-
+import Addproduct from "../pages/farmers/addproduct";
+import MyProduct from "../pages/farmers/myProduct";
+import ManageOrders from "../pages/farmers/manageOrders";
 
 function Root() {
   return (
     <Routes>
       <Route path="/" exact Component={Website} />
-      <Route path="/onboard"  Component={onboard} />
+      <Route path="/onboard" Component={onboard} />
       <Route path="/signup" Component={signup} />
       <Route path="/login" Component={Login} />
       <Route path="/createAccount" Component={createAccount} />
@@ -55,10 +53,12 @@ function Root() {
       <Route path="/profile" Component={Profile} />
       <Route path="/wishlist" Component={Wishlist} />
       <Route path="/notification" Component={Notification} />
+
+      {/* Farmer */}
       <Route path="/farmer" Component={Dashboard} />
       <Route path="/addproduct" Component={Addproduct} />
-      
-
+      <Route path="/myProduct" Component={MyProduct} />
+      <Route path="/manageOrders" Component={ManageOrders} />
     </Routes>
   );
 }

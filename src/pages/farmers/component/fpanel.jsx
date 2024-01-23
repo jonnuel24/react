@@ -76,7 +76,9 @@ function Fpanel() {
                   htmlFor=""
                   className="text-[16px] font-normal leading-normal text-black"
                 >
-                  My Products
+                  <Link to={"/myProduct"} style={linkStyle}>
+                    My Products
+                  </Link>
                 </label>
               </div>
               {/*  */}
@@ -86,7 +88,9 @@ function Fpanel() {
                   htmlFor=""
                   className="text-[16px] font-normal leading-normal text-black"
                 >
-                  Manage Orders
+                  <Link to={"/manageOrders"} style={linkStyle}>
+                    Manage Orders
+                  </Link>
                 </label>
               </div>
               {/*  */}
