@@ -3,18 +3,19 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { Provider } from "react-redux";
 import store from './store/store'
+
 axios.interceptors.request.use(
   (request) => {
     request.headers.ContertType = "application/json";
     request.headers.Accept = "application/json";
-    // if (request.url.includes("api")) {
-    //   request.headers.Authorization = "Bearer " + localStorage.getItem("token");
-    // }
+    if (!request.url.includes("login") && !request.url.includes("auth")) {
+      request.headers.Authorization = "Bearer " + localStorage.getItem("token");
+    }
     return request;
   },
   (error) => {
@@ -27,7 +28,16 @@ axios.interceptors.response.use(
     return response.data;
   },
   (error) => {
-    error.response.data.statusCode = error.response.status;
+    if(error.response.status===403){
+      alert(error.response.status)
+      const navigate = useNavigate();
+      navigate("/login")
+    }
+    if(typeof error.response.data == 'object'){
+      error.response.data.statusCode = error.response.status;
+    }else{
+      error.response.data={statusCode:error.response.status, message:error.response.data}
+    }
     return error.response.data;
   }
 );

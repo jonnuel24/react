@@ -1,13 +1,20 @@
 /* eslint-disable import/no-unresolved */
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../Components/navbar'
 import Footer from '../Components/footer'
 import AnimalProfile from '../Components/animalProfile'
 import '../asset/styles/home.css'
 import Card from '../Components/card'
+import { productServices } from '../services/product.service'
 
-function home() {
+const Home=()=> {
+  useEffect(()=>{
+    productServices.all()
+    console.log("Hello Badmous")
+  }, [])
   return (
+
+   
     <div className='flex flex-col'>
       <Navbar />
         <section className='section2'>
@@ -50,11 +57,11 @@ function home() {
             <Card />
             <Card />
           </div>
-        </section>
-
+        </section>             
+     
       <Footer />
     </div>
   );
-}
+};
 
-export default home;
+export default Home;

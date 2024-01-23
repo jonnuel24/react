@@ -26,7 +26,8 @@ function Login() {
 
   async function login() {
     let result = await accountServices.login(post);
-    if (typeof result === 'string') {
+    console.log('result', result)
+    if (typeof result == 'string' || result == null || result === "") {
       alert(result)
       return;
     }
