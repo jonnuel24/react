@@ -1,0 +1,11 @@
+.sb-outline{
+  display: flex;
+width: 303.964px;
+padding: var(--Cart-cart, 0px);
+justify-content: center;
+align-items: center;
+gap: var(--Cart-cart, 0px);
+border-radius: 4.84px;
+border: 1.452px solid #DBDBDB;
+background:#FAFAFA;
+}

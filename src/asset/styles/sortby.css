@@ -1,0 +1,29 @@
+.sortby {
+  display: inline-flex;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 12px;
+
+  border-radius: 8px;
+  border: 1px solid #E7E7E7;
+  background: #fff;
+  box-shadow: 2px 2px 8px 1px rgba(30, 138, 94, 0.15);
+}
+
+.addProduct-rd{
+  border-radius: 10px;
+border: 1px solid rgba(32, 32, 32, 0.34);
+}
+
+.f-product-list-head{
+  display: flex;
+padding: 12px 32px;
+justify-content: space-between;
+align-items: center;
+border-radius: 0px;
+background:  #EDEDED;
+}
+
+.f-product-list-head th{
+  background-color: none;
+}
