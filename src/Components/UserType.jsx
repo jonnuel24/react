@@ -22,7 +22,7 @@ function UserType({ setType }) {
           className="w-full  border border-black py-8 px-3 leading-tight focus:outline-none focus:shadow-outline"
           placeholder="Firstname"
           value="User"
-          onClick={()=>handleUserTypeSelection("uSER")}
+          onClick={()=>handleUserTypeSelection("USER")}
           required
         />
       </div>

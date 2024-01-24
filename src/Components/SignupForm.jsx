@@ -1,10 +1,11 @@
 import Checkbox from "../Components/checkbox";
-import React, { useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 
-function SignUpForm({type}) {
+function SignUpForm({ type }) {
+  const [step, setStep] = useState(0);
   const navigate = useNavigate();
   const [post, setPost] = useState({
     firstName: "",
@@ -14,7 +15,16 @@ function SignUpForm({type}) {
     userType: type,
     phoneNumber: "",
     password: "",
-    confirmPassword: "",
+    country: "",
+    state: "",
+    city: "",
+    street: "",
+    localGovtArea: "",
+    placeId: "64cy-u8df940u-7899e6cd",
+    farmName: "",
+    dateOfEstablishment: "",
+    noOfEmployees: 0,
+    addresses: [],
   });
   const {
     handleSubmit,
@@ -71,223 +81,270 @@ function SignUpForm({type}) {
         {/* formData */}
         <form action="" onSubmit={handleSubmit(signup)} className="signup-form">
           <div className="grid gap-4 grid-cols-2 grid-rows-3 signup-signup">
-            {/* firstname */}
-            <div className="flex flex-col items-start">
-              <label htmlFor="firstname">Firstname</label>
-              <input
-                name="firstName"
-                type="text"
-                className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Firstname"
-                value={post.firstName}
-                onChange={handleInput}
-                required
-              />
-            </div>
-            {/* lastname */}
-            <div className="flex flex-col items-start">
-              <label htmlFor="lastname">Lastname</label>
-              <input
-                name="lastName"
-                type="text"
-                className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Lastname"
-                value={post.lastName}
-                onChange={handleInput}
-                required
-              />
-            </div>
-            {/* email */}
-            <div className="flex flex-col items-start">
-              <label htmlFor="email">Email</label>
-              <input
-                name="email"
-                type="email"
-                className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Email"
-                value={post.email}
-                onChange={handleInput}
-                required
-              />
-            </div>
+            {(type === "FARMER" && step === 0) || type === "USER" ? (
+              <>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="firstname">Firstname</label>
+                  <input
+                    name="firstName"
+                    type="text"
+                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Firstname"
+                    value={post.firstName}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
+                {/* lastname */}
+                <div className="flex flex-col items-start">
+                  <label htmlFor="lastname">Lastname</label>
+                  <input
+                    name="lastName"
+                    type="text"
+                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Lastname"
+                    value={post.lastName}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
+                {/* email */}
+                <div className="flex flex-col items-start">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    name="email"
+                    type="email"
+                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Email"
+                    value={post.email}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
 
-            {/* gender */}
+                {/* gender */}
 
-            <div className="flex flex-col items-start">
-              <label htmlFor="country">Select A Gender</label>
-              <select
-                className="form-select"
-                id="floatingSelectGrid"
-                onChange={handleInput}
-                name="gender"
-                value={post.gender}
-              >
-                <option selected>Select Gender</option>
-                <option value="MALE">MALE</option>
-                <option value="FEMALE">FEMALE</option>
-                <option value="OTHERS">OTHERS</option>
-              </select>
-              {/* <CountrySelector
-                  selectedCountry={selectedCountry}
-                  onChange={handleCountryChange}
-                /> */}
-              {/* <p>Selected Country: {selectedCountry ? selectedCountry.label : 'None'}</p> */}
-            </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="country">Select A Gender</label>
+                  <select
+                    className="form-select"
+                    id="floatingSelectGrid"
+                    onChange={handleInput}
+                    name="gender"
+                    value={post.gender}
+                  >
+                    <option selected>Select Gender</option>
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
+                    <option value="OTHERS">OTHERS</option>
+                  </select>
+                </div>
 
-            {/* userType */}
-            {/* Phone Number */}
-            <div className="flex flex-col items-start">
-              <label htmlFor="phoneNumber">Phone Number</label>
-              <input
-                name="phoneNumber"
-                type="tel"
-                className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Phone Number"
-                value={post.phoneNumber}
-                onChange={handleInput}
-                required
-              />
-            </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="phoneNumber">Phone Number</label>
+                  <input
+                    name="phoneNumber"
+                    type="tel"
+                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Phone Number"
+                    value={post.phoneNumber}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="phoneNumber">User Type</label>
+                  <input
+                    name="phoneNumber"
+                    type="tel"
+                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Phone Number"
+                    value={post.userType}
+                    onChange={handleInput}
+                    readOnly
+                  />
+                </div>
 
-            {/* password */}
+                {/* password */}
 
-            <div className="flex flex-col items-start">
-              <label htmlFor="password">Password</label>
-              <div className="relative w-full">
-                <input
-                  name="password"
-                  className="w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="******************"
-                  value={post.password}
-                  onChange={handleInput}
-                  required
-                />
-                <button
-                  className="absolute right-0 top-0 mt-3 mr-3 text-gray-600"
-                  onClick={togglePasswordVisibility}
-                  type="button"
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </button>
-              </div>
-            </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="password">Password</label>
+                  <div className="relative w-full">
+                    <input
+                      name="password"
+                      className="w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="******************"
+                      value={post.password}
+                      onChange={handleInput}
+                      required
+                    />
+                    <button
+                      className="absolute right-0 top-0 mt-3 mr-3 text-gray-600"
+                      onClick={togglePasswordVisibility}
+                      type="button"
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </button>
+                  </div>
+                </div>
 
-            <div className="flex flex-col items-start">
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <div className="relative w-full">
-                <input
-                  className="w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="******************"
-                  value={post.confirmPassword}
-                  onChange={handleInput}
-                  required
-                />
-                <button
-                  className="absolute right-0 top-0 mt-3 mr-3 text-gray-600"
-                  onClick={togglePasswordVisibility}
-                  type="button"
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </button>
-              </div>
-            </div>
-            
-            <div className="flex flex-col items-start">
-              <label htmlFor="country">Company Name</label>
-              <input
-                name="phoneNumber"
-                type="tel"
-                className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Phone Number"
-                value={post.phoneNumber}
-                onChange={handleInput}
-                required
-              />
-            </div>
-            <div className="flex flex-col items-start">
-              <label htmlFor="country">Location</label>
-              <select
-                className="form-select"
-                id="floatingSelectGrid"
-                onChange={handleInput}
-                name="userType"
-                value={post.userType}
-              >
-                <option selected>Select a User Type</option>
-                <option value="FARMER">FARMER</option>
-                <option value="USER">USER</option>
-              </select>
-              {/* <CountrySelector
-                  selectedCountry={selectedCountry}
-                  onChange={handleCountryChange}
-                /> */}
-              {/* <p>Selected Country: {selectedCountry ? selectedCountry.label : 'None'}</p> */}
-            </div>
-            <div className="flex flex-col items-start">
-              <label htmlFor="country">Address 1 (Residential)</label>
-              <select
-                className="form-select"
-                id="floatingSelectGrid"
-                onChange={handleInput}
-                name="userType"
-                value={post.userType}
-              >
-                <option selected>Select a User Type</option>
-                <option value="FARMER">FARMER</option>
-                <option value="USER">USER</option>
-              </select>
-              {/* <CountrySelector
-                  selectedCountry={selectedCountry}
-                  onChange={handleCountryChange}
-                /> */}
-              {/* <p>Selected Country: {selectedCountry ? selectedCountry.label : 'None'}</p> */}
-            </div>
-            <div className="flex flex-col items-start">
-              <label htmlFor="country">Farm Name</label>
-              <select
-                className="form-select"
-                id="floatingSelectGrid"
-                onChange={handleInput}
-                name="userType"
-                value={post.userType}
-              >
-                <option selected>Select a User Type</option>
-                <option value="FARMER">FARMER</option>
-                <option value="USER">USER</option>
-              </select>
-              {/* <CountrySelector
-                  selectedCountry={selectedCountry}
-                  onChange={handleCountryChange}
-                /> */}
-              {/* <p>Selected Country: {selectedCountry ? selectedCountry.label : 'None'}</p> */}
-            </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="confirmPassword">Confirm Password</label>
+                  <div className="relative w-full">
+                    <input
+                      className="w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="******************"
+                      value={post.confirmPassword}
+                      onChange={handleInput}
+                      required
+                    />
+                    <button
+                      className="absolute right-0 top-0 mt-3 mr-3 text-gray-600"
+                      onClick={togglePasswordVisibility}
+                      type="button"
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </button>
+                  </div>
+                </div>
+              </>
+            ) : null}
+
+            {type === "FARMER" && step === 1 && (
+              <>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="country">Country</label>
+                  <input
+                    name="country"
+                    type="tel"
+                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Phone Number"
+                    value={post.country}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="country">State</label>
+                  <input
+                    type="text"
+                    className="form-select"
+                    id="state"
+                    onChange={handleInput}
+                    name="state"
+                    value={post.state}
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="country">city</label>
+                  <input
+                    type="text"
+                    className="form-select"
+                    id="city"
+                    onChange={handleInput}
+                    name="city"
+                    value={post.city}
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="country">Street</label>
+                  <input
+                    className="form-select"
+                    id="street"
+                    onChange={handleInput}
+                    name="street"
+                    value={post.street}
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="country">Local Government Area</label>
+                  <input
+                    className="form-select"
+                    id="localGovtArea"
+                    onChange={handleInput}
+                    name="localGovtArea"
+                    value={post.localGovtArea}
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="country">Farm Name</label>
+                  <input
+                    className="form-select"
+                    id="farmName"
+                    onChange={handleInput}
+                    name="farmName"
+                    value={post.farmName}
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="country">Date of Establishment</label>
+                  <input
+                    type="date"
+                    className="form-select"
+                    id="dateOfEstablishment"
+                    onChange={handleInput}
+                    name="dateOfEstablishment"
+                    value={post.dateOfEstablishment}
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="country">Number of Employees</label>
+                  <input
+                    type="number"
+                    className="form-select"
+                    id="noOfEmployees"
+                    onChange={handleInput}
+                    name="noOfEmployees"
+                    value={post.noOfEmployees}
+                  />
+                </div>
+              </>
+            )}
           </div>
+          {(type === "FARMER" && step === 1) || type === "USER" ? (
+            <div className="cta">
+              <div>
+                <Checkbox />
+              </div>
 
-          {/* section 3 */}
-          <div className="cta">
-            <div>
-              <Checkbox />
+              <div className="flex flex-start">
+                <button
+                  onClick={() => setStep(0)}
+                  className="mr-10 btn btn-success btn-lg button"
+                  type="button"
+                >
+                  Previous
+                </button>
+                <button className="btn btn-success btn-lg button" type="submit">
+                  Signup
+                </button>
+              </div>
+              <div className="flex flex-row w-full items-center justify-end">
+                <h5>
+                  Already have an Account?{" "}
+                  <Link to="/login" className="text-[green]">
+                    Login.
+                  </Link>
+                </h5>
+              </div>
             </div>
-
-            <div className="flex flex-start">
-              <button className="btn btn-success btn-lg button" type="submit">
-                Signup
+          ) : null}
+          {type === "FARMER" && step === 0 && (
+            <div className="flex flex-start mt-10">
+              <button
+                onClick={() => setStep(1)}
+                className="btn btn-success btn-lg button"
+                type="button"
+              >
+                Next
               </button>
             </div>
-            <div className="flex flex-row w-full items-center justify-end">
-              <h5>
-                Already have an Account?{" "}
-                <Link to="/login" className="text-[green]">
-                  Login.
-                </Link>
-              </h5>
-            </div>
-          </div>
+          )}
         </form>
         {/* {response && <div>Response from API: {response}</div>} */}
       </div>
