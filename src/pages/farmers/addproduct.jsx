@@ -1,10 +1,43 @@
+/* eslint-disable no-restricted-globals */
 import React from "react";
 import Fpanel from "./component/fpanel";
 import { Icon } from "@iconify/react";
 import FNavbar from "./component/farmersNavbar";
 import "../../asset/styles/addproduct.css";
-
+import axios from "axios";
 function Addproduct() {
+  const uploadImages = [null, null, null, null, null];
+  const triggerFileSelect = (id) => {
+    document.getElementById(id).click();
+  };
+  const setImage = (index) => (event) => {
+    uploadImages[index] = event.target.files[0];
+    console.log(uploadImages);
+  };
+
+  const cloudUpload = () => {
+    try {
+      console.log(process.env)
+    uploadImages.forEach(e=>{
+      if(e!=null) cloudinaryUpload(e);
+    })
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const cloudinaryUpload = async (file) => {
+    try {
+      const formData=new FormData();
+      formData.append('file', file)
+      formData.append('upload_preset', 'ngr3h9mm')
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/dzbbob9gb/upload`,
+        formData
+      );
+      console.log(response)
+    } catch (e) {}
+  };
   return (
     <div>
       <FNavbar />
@@ -27,54 +60,107 @@ function Addproduct() {
 
             <div className="addproductdiv w-full h-fit p-4 rounded-[10px] flex flex-row justify-around items-center">
               {/* 01 */}
-              <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
+              <div
+                onClick={() => triggerFileSelect(0)}
+                className="addproductcardbg cursor-pointer flex flex-col justify-center items-center gap-2 rounded-[8px]"
+              >
                 <button className="faddpbtn grid place-content-center items-center">
                   <Icon icon="ion:add-outline" color="#6ABD45" />
                 </button>
                 <label htmlFor="" className="text-white text-opacity-60">
                   Add an image
                 </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="0"
+                  onChange={setImage(0)}
+                  style={{ display: "none" }}
+                />
               </div>
               {/* 02 */}
-              <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
+              <div
+                onClick={() => triggerFileSelect(1)}
+                className="addproductcardbg cursor-pointer flex flex-col justify-center items-center gap-2 rounded-[8px]"
+              >
                 <button className="faddpbtn grid place-content-center items-center">
                   <Icon icon="ion:add-outline" color="#6ABD45" />
                 </button>
                 <label htmlFor="" className="text-white text-opacity-60">
                   Add an image
                 </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="1"
+                  onChange={setImage(1)}
+                  style={{ display: "none" }}
+                />
               </div>
               {/* 03 */}
-              <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
+              <div
+                onClick={() => triggerFileSelect(2)}
+                className="addproductcardbg cursor-pointer flex flex-col justify-center items-center gap-2 rounded-[8px]"
+              >
                 <button className="faddpbtn grid place-content-center items-center">
                   <Icon icon="ion:add-outline" color="#6ABD45" />
                 </button>
                 <label htmlFor="" className="text-white text-opacity-60">
                   Add an image
                 </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="2"
+                  onChange={setImage(2)}
+                  style={{ display: "none" }}
+                />
               </div>
               {/* 04 */}
-              <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
+              <div
+                onClick={() => triggerFileSelect(3)}
+                className="addproductcardbg cursor-pointer flex flex-col justify-center items-center gap-2 rounded-[8px]"
+              >
                 <button className="faddpbtn grid place-content-center items-center">
                   <Icon icon="ion:add-outline" color="#6ABD45" />
                 </button>
                 <label htmlFor="" className="text-white text-opacity-60">
                   Add an image
                 </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="3"
+                  onChange={setImage(3)}
+                  style={{ display: "none" }}
+                />
               </div>
               {/* 05 */}
-              <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
+              <div
+                onClick={() => triggerFileSelect(4)}
+                className="addproductcardbg cursor-pointer flex flex-col justify-center items-center gap-2 rounded-[8px]"
+              >
                 <button className="faddpbtn grid place-content-center items-center">
                   <Icon icon="ion:add-outline" color="#6ABD45" />
                 </button>
                 <label htmlFor="" className="text-white text-opacity-60">
                   Add an image
                 </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="4"
+                  onChange={setImage(4)}
+                  style={{ display: "none" }}
+                />
               </div>
             </div>
 
             {/* end of card */}
-            <button className="w-[170px] h-[50px] bg-[#6ABD45] text-white rounded-md">
+            <button
+              onClick={() => cloudUpload()}
+              className="w-[170px] h-[50px] bg-[#6ABD45] text-white rounded-md"
+            >
               Upload
             </button>
           </div>
