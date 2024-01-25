@@ -5,6 +5,12 @@ import FNavbar from "./component/farmersNavbar";
 import "../../asset/styles/addproduct.css";
 
 function Addproduct() {
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    // Perform any additional logic with the selected file if needed
+    console.log("Selected File:", selectedFile);
+  };
+
   return (
     <div>
       <FNavbar />
@@ -28,48 +34,121 @@ function Addproduct() {
             <div className="addproductdiv w-full h-fit p-4 rounded-[10px] flex flex-row justify-around items-center">
               {/* 01 */}
               <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
+                <label
+                  htmlFor="fileInput"
+                  className="faddpbtn grid place-content-center items-center"
+                >
+                  <Icon icon="ion:add-outline" color="#6ABD45" />
+                  <input
+                    type="file"
+                    id="fileInput"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    accept="image/*" // Specify accepted file types (optional)
+                  />
+                </label>
+                <p className="text-white text-opacity-60">Add an image</p>
+              </div>
+              {/* <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
                 <button className="faddpbtn grid place-content-center items-center">
                   <Icon icon="ion:add-outline" color="#6ABD45" />
                 </button>
                 <label htmlFor="" className="text-white text-opacity-60">
                   Add an image
                 </label>
-              </div>
+              </div> */}
               {/* 02 */}
+
               <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
+                <label
+                  htmlFor="fileInput"
+                  className="faddpbtn grid place-content-center items-center"
+                >
+                  <Icon icon="ion:add-outline" color="#6ABD45" />
+                  <input
+                    type="file"
+                    id="fileInput"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    accept="image/*" // Specify accepted file types (optional)
+                  />
+                </label>
+                <p className="text-white text-opacity-60">Add an image</p>
+              </div>
+              {/* <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
                 <button className="faddpbtn grid place-content-center items-center">
                   <Icon icon="ion:add-outline" color="#6ABD45" />
                 </button>
                 <label htmlFor="" className="text-white text-opacity-60">
                   Add an image
                 </label>
-              </div>
+              </div> */}
               {/* 03 */}
               <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
+                <label
+                  htmlFor="fileInput"
+                  className="faddpbtn grid place-content-center items-center"
+                >
+                  <Icon icon="ion:add-outline" color="#6ABD45" />
+                  <input
+                    type="file"
+                    id="fileInput"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    accept="image/*" // Specify accepted file types (optional)
+                  />
+                </label>
+                <p className="text-white text-opacity-60">Add an image</p>
+              </div>
+              {/* <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
                 <button className="faddpbtn grid place-content-center items-center">
                   <Icon icon="ion:add-outline" color="#6ABD45" />
                 </button>
                 <label htmlFor="" className="text-white text-opacity-60">
                   Add an image
                 </label>
-              </div>
+              </div> */}
               {/* 04 */}
               <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
+                <label
+                  htmlFor="fileInput"
+                  className="faddpbtn grid place-content-center items-center"
+                >
+                  <Icon icon="ion:add-outline" color="#6ABD45" />
+                  <input
+                    type="file"
+                    id="fileInput"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    accept="image/*" // Specify accepted file types (optional)
+                  />
+                </label>
+                <p className="text-white text-opacity-60">Add an image</p>
+              </div>
+              {/* <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
                 <button className="faddpbtn grid place-content-center items-center">
                   <Icon icon="ion:add-outline" color="#6ABD45" />
                 </button>
                 <label htmlFor="" className="text-white text-opacity-60">
                   Add an image
                 </label>
-              </div>
+              </div> */}
               {/* 05 */}
               <div className="addproductcardbg flex flex-col justify-center items-center gap-2 rounded-[8px]">
-                <button className="faddpbtn grid place-content-center items-center">
+                <label
+                  htmlFor="fileInput"
+                  className="faddpbtn grid place-content-center items-center"
+                >
                   <Icon icon="ion:add-outline" color="#6ABD45" />
-                </button>
-                <label htmlFor="" className="text-white text-opacity-60">
-                  Add an image
+                  <input
+                    type="file"
+                    id="fileInput"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    accept="image/*" // Specify accepted file types (optional)
+                  />
                 </label>
+                <p className="text-white text-opacity-60">Add an image</p>
               </div>
             </div>
 
