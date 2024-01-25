@@ -74,7 +74,7 @@ function Addproduct() {
                     onChange={handleFileChange}
                     accept="image/*" // Specify accepted file types (optional)
                   />
-                </label>
+                  </button>
               </div>
             </div>
 
