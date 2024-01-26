@@ -82,7 +82,7 @@ function Addproduct() {
       const response = await productServices.add(product);
       if(response.statusCode===200){
         alert("Product added successfully")
-        navigate("/myProduct");
+        navigate("/product");
       }
       console.log(response);
     } catch (e) {}

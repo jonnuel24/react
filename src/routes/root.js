@@ -56,8 +56,8 @@ function Root() {
 
       {/* Farmer */}
       <Route path="/farmer" Component={Dashboard} />
-      <Route path="/addproduct" Component={Addproduct} />
-      <Route path="/myProduct" Component={MyProduct} />
+      <Route path="/product/create" Component={Addproduct} />
+      <Route path="/product" Component={MyProduct} />
       <Route path="/manageOrders" Component={ManageOrders} />
     </Routes>
   );

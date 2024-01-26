@@ -60,7 +60,7 @@ function Fpanel() {
                   htmlFor=""
                   className="text-[16px] font-normal leading-normal text-black"
                 >
-                  <Link to={"/addproduct"} style={linkStyle}>
+                  <Link to={"/product/create"} style={linkStyle}>
                     Add Product
                   </Link>
                 </label>
@@ -76,7 +76,7 @@ function Fpanel() {
                   htmlFor=""
                   className="text-[16px] font-normal leading-normal text-black"
                 >
-                  <Link to={"/myProduct"} style={linkStyle}>
+                  <Link to={"/product"} style={linkStyle}>
                     My Products
                   </Link>
                 </label>
