@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Fpanel from "./component/fpanel";
 import { Icon } from "@iconify/react";
 import FNavbar from "./component/farmersNavbar";
@@ -6,8 +6,24 @@ import Searchbar from "./component/searchbar";
 import Sortby from "./component/sortBy";
 import "../../asset/styles/myProduct.css";
 import Option from "./component/optionMyProduct";
+import { productServices } from "../../services/product.service";
 
 function MyProduct() {
+  const [farmProducts, setFarmProducts]=useState([]);
+  useEffect(()=>{
+    fetchProducts()
+  }, [])
+
+  const fetchProducts=async ()=>{
+    try{
+      const products=await productServices.farmProduct('65ab506f37eb0b56b32e6261');
+      console.log(products);
+      setFarmProducts(products.farmProducts)
+      console.log('farm products',farmProducts)
+    }catch(e){
+      console.log(e);
+    }
+  }
   return (
     <div>
       <FNavbar />
@@ -46,26 +62,28 @@ function MyProduct() {
                   </thead>
                   <tbody>
                     {/* 01 */}
+                    {farmProducts.map((p)=>(
                     <tr>
                       <td className="">
                         <div className="fn-profile">
                           <img
-                            src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
+                            src={p.images.length ? p.images[0] : ""}
                             alt=""
                             className="animal"
                           />
                         </div>
                       </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
+                      <td>{p.name}</td>
+                      <td>{p.category}</td>
+                      <td>{p.quantity}</td>
+                      <td>₦{p.price}</td>
                       <td>
                         <Option />
                       </td>
                     </tr>
+                    ))}
                     {/* 02 */}
-                    <tr>
+                    {/* <tr>
                       <td className="">
                         <div className="fn-profile">
                           <img
@@ -88,9 +106,9 @@ function MyProduct() {
                           rotate={1}
                         />
                       </td>
-                    </tr>
+                    </tr> */}
                     {/* 03 */}
-                    <tr>
+                    {/* <tr>
                       <td className="">
                         <div className="fn-profile">
                           <img
@@ -113,9 +131,9 @@ function MyProduct() {
                           rotate={1}
                         />
                       </td>
-                    </tr>
+                    </tr> */}
                     {/* 04 */}
-                    <tr>
+                    {/* <tr>
                       <td className="">
                         <div className="fn-profile">
                           <img
@@ -138,9 +156,9 @@ function MyProduct() {
                           rotate={1}
                         />
                       </td>
-                    </tr>
+                    </tr> */}
                     {/* 05 */}
-                    <tr>
+                    {/* <tr>
                       <td className="">
                         <div className="fn-profile">
                           <img
@@ -163,9 +181,9 @@ function MyProduct() {
                           rotate={1}
                         />
                       </td>
-                    </tr>
+                    </tr> */}
                     {/* 06 */}
-                    <tr>
+                    {/* <tr>
                       <td className="">
                         <div className="fn-profile">
                           <img
@@ -188,7 +206,7 @@ function MyProduct() {
                           rotate={1}
                         />
                       </td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table>
                 {/*  */}
