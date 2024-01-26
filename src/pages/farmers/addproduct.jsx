@@ -71,7 +71,7 @@ function Addproduct() {
                     type="file"
                     id="fileInput"
                     className="hidden"
-                    onChange={handleFileChange}
+                    // onChange={handleFileChange}
                     accept="image/*" // Specify accepted file types (optional)
                   />
                   </button>
