@@ -36,11 +36,45 @@ gap: 4px;
 th:nth-child(2) {
   width: 300px;
 }
+th:first-child{
+  width: auto !important;
+}
 
 th:last-child {
   width: 24px;
 }
 
+td:nth-child(2){
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+td:nth-child(4){
+  display: flex;
+padding: 8px 16px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 100px;
+background: #FFF3D6;
+width: 130px;
+
+/* text */
+color: #D69600;
+text-align: center;
+font-family: "Open Sans";
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+td{
+  font-size: 16px;
+  
+}
 /* pagination */
 .mp-pagination {
   color: #3d3d3d;

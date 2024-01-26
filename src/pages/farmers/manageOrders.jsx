@@ -36,79 +36,20 @@ function ManageOrders() {
                 <table className="mb-[32px]">
                   <thead>
                     <tr className="">
-                      <th className="thFirstChild">
-                        Order no{" "}
-                        <Icon
-                          icon="ri:expand-up-down-fill"
-                          color="black"
-                          width="16"
-                          height="16"
-                          rotate={2}
-                          className="mOTableExpand"
-                        />
-                      </th>
-                      <th className="thFirstChild">
-                        Customer name{" "}
-                        <Icon
-                          icon="ri:expand-up-down-fill"
-                          color="black"
-                          width="16"
-                          height="16"
-                          rotate={2}
-                          className="mOTableExpand"
-                        />
-                      </th>
-                      <th className="thFirstChild">
-                        Order status{" "}
-                        <Icon
-                          icon="ri:expand-up-down-fill"
-                          color="black"
-                          width="16"
-                          height="16"
-                          rotate={2}
-                          className="mOTableExpand"
-                        />
-                      </th>
-                      <th>
-                        Delivery{" "}
-                        <Icon
-                          icon="ri:expand-up-down-fill"
-                          color="black"
-                          width="16"
-                          height="16"
-                          rotate={2}
-                          className="mOTableExpand"
-                        />
-                      </th>
-                      <th>
-                        Date{" "}
-                        <Icon
-                          icon="ri:expand-up-down-fill"
-                          color="black"
-                          width="16"
-                          height="16"
-                          rotate={2}
-                          className="mOTableExpand"
-                        />
-                      </th>
-
-                      <th>
-                        Price{" "}
-                        <Icon
-                          icon="ri:expand-up-down-fill"
-                          color="black"
-                          width="16"
-                          height="16"
-                          rotate={2}
-                          className="mOTableExpand"
-                        />
-                      </th>
+                      <th className="">Order no</th>
+                      <th className="">Customer name</th>
+                      <th className="">Order status</th>
+                      <th>Delivery</th>
+                      <th>Date</th>
+                      <th>Price</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     {/* 01 */}
                     <tr>
-                      <td className="">
+                      <td className="">102938</td>
+                      <td>
                         <div className="fn-profile">
                           <img
                             src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
@@ -116,18 +57,42 @@ function ManageOrders() {
                             className="animal"
                           />
                         </div>
+                        Sarah Johnson
                       </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
+                      <td>Processing</td>
+                      <td>pending</td>
+                      <td>In transit</td>
+                      <td>24-01-24</td>
                       <td>
                         <Option />
                       </td>
                     </tr>
+                    {/* drop down */}
+                    <div className="flex flex-row items-center gap-[24px]">
+                      <div className="flex flex-col items-start">
+                        <h5>Product</h5>
+                        <div className="flex flex-row items-center gap-[8px]">
+                          <div className="fn-profile">
+                            <img
+                              src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
+                              alt=""
+                              className="animal"
+                            />
+                          </div>
+                          Sarah Johnson
+                        </div>
+                      </div>
+                      {/* divider */}
+                      <div></div>
+                      <div className="flex flex-col items-start">
+                        <h5>Product</h5>
+                        <p className="mb-0">Sarah Johnson</p>
+                      </div>
+                    </div>
                     {/* 02 */}
                     <tr>
-                      <td className="">
+                      <td className="">102938</td>
+                      <td>
                         <div className="fn-profile">
                           <img
                             src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
@@ -135,24 +100,20 @@ function ManageOrders() {
                             className="animal"
                           />
                         </div>
+                        Sarah Johnson
                       </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
+                      <td>Processing</td>
+                      <td>pending</td>
+                      <td>In transit</td>
+                      <td>24-01-24</td>
                       <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
+                        <Option />
                       </td>
                     </tr>
                     {/* 03 */}
                     <tr>
-                      <td className="">
+                      <td className="">102938</td>
+                      <td>
                         <div className="fn-profile">
                           <img
                             src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
@@ -160,24 +121,20 @@ function ManageOrders() {
                             className="animal"
                           />
                         </div>
+                        Sarah Johnson
                       </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
+                      <td>Processing</td>
+                      <td>pending</td>
+                      <td>In transit</td>
+                      <td>24-01-24</td>
                       <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
+                        <Option />
                       </td>
                     </tr>
                     {/* 04 */}
                     <tr>
-                      <td className="">
+                      <td className="">102938</td>
+                      <td>
                         <div className="fn-profile">
                           <img
                             src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
@@ -185,24 +142,20 @@ function ManageOrders() {
                             className="animal"
                           />
                         </div>
+                        Sarah Johnson
                       </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
+                      <td>Processing</td>
+                      <td>pending</td>
+                      <td>In transit</td>
+                      <td>24-01-24</td>
                       <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
+                        <Option />
                       </td>
                     </tr>
                     {/* 05 */}
                     <tr>
-                      <td className="">
+                      <td className="">102938</td>
+                      <td>
                         <div className="fn-profile">
                           <img
                             src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
@@ -210,24 +163,20 @@ function ManageOrders() {
                             className="animal"
                           />
                         </div>
+                        Sarah Johnson
                       </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
+                      <td>Processing</td>
+                      <td>pending</td>
+                      <td>In transit</td>
+                      <td>24-01-24</td>
                       <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
+                        <Option />
                       </td>
                     </tr>
                     {/* 06 */}
                     <tr>
-                      <td className="">
+                      <td className="">102938</td>
+                      <td>
                         <div className="fn-profile">
                           <img
                             src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
@@ -235,19 +184,14 @@ function ManageOrders() {
                             className="animal"
                           />
                         </div>
+                        Sarah Johnson
                       </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
+                      <td>Processing</td>
+                      <td className="">pending</td>
+                      <td>In transit</td>
+                      <td>24-01-24</td>
                       <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
+                        <Option />
                       </td>
                     </tr>
                   </tbody>

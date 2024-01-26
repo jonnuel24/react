@@ -93,7 +93,7 @@ function Addproduct() {
       <div className="pl-[64px] flex flex-row">
         <Fpanel className="" />
         {/* divider */}
-        <div className="fd-divider ml-4 h-full"></div>
+        <div className="fd-divider ml-4 h-auto"></div>
         {/* diider end */}
         <div className="py-[64px] w-full h-full flex flex-col">
           {/* description start */}
