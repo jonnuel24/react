@@ -8,7 +8,14 @@ import UploadCard from "../../Components/uploadCard";
 import { productServices } from "../../services/product.service";
 import { useNavigate } from "react-router-dom";
 function Addproduct() {
-  let imagesURL = [];
+  const [images, setImages] = useState([]);
+  // Function to update images array
+  const addImage = async (image) => {
+    // Create a new product object with updated images array
+    console.log("image url", image);
+    product.images.push(image)
+    console.log(product)
+  };
   const uploadImages = [null, null, null, null, null];
   const navigate = useNavigate();
   const handleInput = (event) => {
@@ -19,8 +26,8 @@ function Addproduct() {
     if (user) {
       // user = JSON.stringify(user);
       user = JSON.parse(user);
-      // setProduct({ ...product, farmId: user?.id });
-      console.log(user);
+      // console.log(user)
+      setProduct({...product, farmId : user.farm.id})
     }
   }, []);
   const [product, setProduct] = useState({
@@ -33,7 +40,7 @@ function Addproduct() {
     price: 0.0,
     weight: 0,
     description: null,
-    farmId: '65ab506f37eb0b56b32e6261',
+    farmId: null,
     unit: null,
   });
   const setImage = (index, file) => {
@@ -44,9 +51,9 @@ function Addproduct() {
   const cloudUpload = () => {
     try {
       console.log(process.env);
-      imagesURL = [];
-      uploadImages.forEach((e) => {
-        if (e != null) cloudinaryUpload(e);
+      setImages([]);
+      uploadImages.forEach(async (e) => {
+        if (e != null) await cloudinaryUpload(e);
       });
     } catch (e) {
       console.log(e);
@@ -59,7 +66,6 @@ function Addproduct() {
       formData.append("file", file);
       formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
       formData.append("cloud_name", process.env.REACT_APP_CLOUD_NAME);
-      // const contentRange = `bytes ${start}-${end - 1}/${file.size}`;
       const response = await fetch(
         `${process.env.REACT_APP_CLOUDINARY_BASEURL}${process.env.REACT_APP_CLOUD_NAME}/image/upload`,
         {
@@ -68,9 +74,8 @@ function Addproduct() {
         }
       );
       let res = await response.json();
-      imagesURL.push(res.secure_url);
-      console.log(res);
-      console.log(imagesURL);
+      await addImage(res.secure_url);
+      // console.log(imagesURL);
     } catch (e) {
       console.log(e);
     }
@@ -78,10 +83,16 @@ function Addproduct() {
 
   const createProduct = async () => {
     try {
-      setProduct({ ...product, 'images': imagesURL });
+      // await setProduct({ ...product, images: images });
+
+      // product.images=imagesURL
+      // console.log(imagesURL)
+      console.log("images before submissions", product.images);
+      // return
+      // let payload = { ...product, images };
       const response = await productServices.add(product);
-      if(response.statusCode===200){
-        alert("Product added successfully")
+      if (response.statusCode === 200) {
+        alert("Product added successfully");
         navigate("/product");
       }
       console.log(response);
@@ -245,6 +256,7 @@ function Addproduct() {
               </form>
             </div>
             <button
+              id="create-button"
               onClick={createProduct}
               className="w-[170px] h-[50px] bg-black text-white rounded-md"
             >

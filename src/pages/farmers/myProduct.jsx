@@ -11,12 +11,19 @@ import { productServices } from "../../services/product.service";
 function MyProduct() {
   const [farmProducts, setFarmProducts]=useState([]);
   useEffect(()=>{
-    fetchProducts()
+
+      let user = localStorage.getItem("currentUser");
+      if (user) {
+        // user = JSON.stringify(user);
+        user = JSON.parse(user);
+        // console.log(user)
+        fetchProducts(user.farm.id)
+      }
   }, [])
 
-  const fetchProducts=async ()=>{
+  const fetchProducts=async (farmId)=>{
     try{
-      const products=await productServices.farmProduct('65ab506f37eb0b56b32e6261');
+      const products=await productServices.farmProduct(farmId);
       console.log(products);
       setFarmProducts(products.farmProducts)
       console.log('farm products',farmProducts)
