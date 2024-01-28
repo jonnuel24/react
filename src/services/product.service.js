@@ -1,7 +1,7 @@
 import axios from "axios";
-let baseUrl = `${process.env.REACT_APP_BASEURL}producer/`;
+let baseUrl = `${process.env.REACT_APP_BASEURL}product/`;
 export const productServices={
-    all:async(page, size)=>{
+    all:async(page=1, size=20)=>{
         try{
             let response = await axios.get(`${baseUrl}all?page=${page}&limit=${size}`);
             return response;
@@ -30,9 +30,9 @@ export const productServices={
 
         }
     },
-    farmProduct:async(farmId)=>{
+    farmProduct:async(farmId, page=1, size=20)=>{
         try{
-            let response = await axios.get(`${baseUrl}farm/${farmId}`);
+            let response = await axios.get(`${baseUrl}farm/${farmId}?page=${page}&limit=${size}`);
             return response;
         }catch(e){
 
