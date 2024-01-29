@@ -6,8 +6,12 @@ import logo from "../asset/images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/actions/userActions";
+import { setFarm, setToken } from "../store/reducers/userReducer";
 
 function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [post, setPost] = useState({
     email: "",
@@ -26,38 +30,27 @@ function Login() {
 
   async function login() {
     let result = await accountServices.login(post);
-    console.log('result', result)
-    if (typeof result == 'string' || result == null || result === "") {
-      alert(result)
+    console.log("result", result);
+    if (typeof result == "string" || result == null || result === "") {
+      alert(result);
       return;
     }
     if (result.statusCode === 200) {
+      const { farm, token, ...rest } = result.data;
+      dispatch(setUser({...rest}));
+      dispatch(setFarm(farm))
+      dispatch(setToken(token))
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("currentUser", JSON.stringify(result.data));
       alert("login successful, click 'OK' to continue");
-      if(result.data.userType==='USER'){
+      if (result.data.userType === "USER") {
         navigate("/user");
-      }else{
-        navigate('/farmer')
+      } else {
+        navigate("/farmer");
       }
     } else {
       alert(result.message);
     }
-
-    console.log(result);
-    // event.preventDefault();
-    // axios
-    //   .post(
-    //     "https://agripeller-backend-dev-7bcb6df4bb3f.herokuapp.com/user/login",
-    //     post
-    //   )
-    //   .then((response) => console.log(response))
-    //   .catch((error) => {
-    //     console.error("AxiosError:", error);
-    //     if (error.response) {
-    //       console.error("Response Data:", error.response.data);
-    //     }
-    //   });
   }
 
   return (
