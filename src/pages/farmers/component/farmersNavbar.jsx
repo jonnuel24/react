@@ -3,8 +3,16 @@ import Logo from "../../../asset/images/Logo (white).svg";
 import "../../../asset/styles/farmersNabar.css";
 import { Icon } from "@iconify/react";
 import pic from '../../../asset/images/animal_profile.png';
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function FNavbar() {
+  const navigate=useNavigate();
+  const user=useSelector(state=>state.user?.currentUser)
+  const isAuthenticated=useSelector(state=>state.user?.isAuthenticated)
+  if(!isAuthenticated){
+    navigate("/login")
+  }
   return (
     <div>
       <div className="fnav bg-[#000000] px-16 py-6 w-full flex flex-row justify-between">
@@ -17,7 +25,7 @@ function FNavbar() {
                 <img src={pic} alt="" className="animal" />
             </div>
             <div className="flex flex-row items-center gap-[4px]">
-              <label htmlFor="" className="text-white text-[20px] font-medium leading-normal">Paul</label>
+              <label htmlFor="" className="text-white text-[20px] font-medium leading-normal">{user?.firstName}</label>
               <Icon icon="majesticons:chevron-down" color="white" width="24px" height="21px"/>
             </div>
           </div>

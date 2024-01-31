@@ -1,8 +1,11 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../../store/reducers/userReducer";
 
 function Fpanel() {
+  const dispatch = useDispatch();
   const linkStyle = {
     textDecoration: "none",
     color: "inherit",
@@ -136,7 +139,7 @@ function Fpanel() {
                 </label>
               </div>
               {/*  */}
-              <div className="flex flex-row items-center gap-[14px]">
+              <div onClick={()=>dispatch(logOut())} className="flex flex-row items-center gap-[14px]">
                 <Icon
                   icon="solar:logout-2-outline"
                   className="fd-leftdiv-icon"

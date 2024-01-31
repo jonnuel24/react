@@ -7,7 +7,10 @@ import { BrowserRouter, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { Provider } from "react-redux";
-import store from './store/store'
+import store from "./store/store";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+let persistor = persistStore(store);
 
 axios.interceptors.request.use(
   (request) => {
@@ -28,15 +31,34 @@ axios.interceptors.response.use(
     return response.data;
   },
   (error) => {
-    if(error.response.status===403){
-      alert(error.response.status)
-      const navigate = useNavigate();
-      navigate("/login")
+    if (error === null) {
+      error = {
+        response: {
+          data: {
+            statusCode: 500,
+            message: "Something went wrong",
+          },
+        },
+      };
     }
-    if(typeof error.response.data == 'object'){
+    if (typeof error?.response?.data == "object") {
+      console.log(error.response);
       error.response.data.statusCode = error.response.status;
-    }else{
-      error.response.data={statusCode:error.response.status, message:error.response.data}
+    } else {
+      error = {
+        response: {
+          data: {
+            statusCode: 500,
+            message: "Something went wrong",
+          },
+        },
+      };
+    }
+
+    if (error.response.status === 403) {
+      const navigate = useNavigate();
+      navigate("/login");
+      return;
     }
     return error.response.data;
   }
@@ -44,14 +66,13 @@ axios.interceptors.response.use(
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-
   <Provider store={store}>
-        <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </PersistGate>
   </Provider>
-
-
 );
 
 // If you want to start measuring performance in your app, pass a function
