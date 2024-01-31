@@ -7,8 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 import { useDispatch } from "react-redux";
-import { setUser } from "../store/actions/userActions";
-import { setFarm, setToken } from "../store/reducers/userReducer";
+import { setFarm, setToken, setCurrentUser } from "../store/reducers/userReducer";
 
 function Login() {
   const dispatch = useDispatch();
@@ -33,11 +32,9 @@ function Login() {
     console.log("result", result);
     if (typeof result == "string" || result == null || result === "") {
       alert(result);
-      return;
-    }
-    if (result.statusCode === 200) {
+    }else if (result.statusCode === 200) {
       const { farm, token, ...rest } = result.data;
-      dispatch(setUser({...rest}));
+      dispatch(setCurrentUser(rest))
       dispatch(setFarm(farm))
       dispatch(setToken(token))
       localStorage.setItem("token", result.data.token);
@@ -49,7 +46,7 @@ function Login() {
         navigate("/farmer");
       }
     } else {
-      alert(result.message);
+      alert(result?.message);
     }
   }
 
