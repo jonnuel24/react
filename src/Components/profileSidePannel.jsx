@@ -4,7 +4,7 @@ import profileImg from "../asset/images/profile_img.png";
 import "../asset/styles/profileSidePannel.css";
 import { Icon } from "@iconify/react";
 
-function ProfileSidePannel() {
+function ProfileSidePannel({user}) {
   // Initialize state to track whether the dropdown is open or closed
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
@@ -29,7 +29,7 @@ function ProfileSidePannel() {
             <div className="p-pic">
               <img src={profileImg} alt="" />
             </div>
-            <h3>Blessing Gasgos</h3>
+            <h3>{user?.firstName} {user?.lastName}</h3>
           </div>
         </Link>
         <div className="profileSettings flex h-fit flex-col items-start py-4 gap-4">
