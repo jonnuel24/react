@@ -7,17 +7,14 @@ import Sortby from "./component/sortBy";
 import "../../asset/styles/myProduct.css";
 import Option from "./component/optionMyProduct";
 import { productServices } from "../../services/product.service";
-
+import { useSelector } from "react-redux";
 function MyProduct() {
   const [farmProducts, setFarmProducts] = useState([]);
+  const user = useSelector((state) => state.user?.currentUser);
+  const farm = useSelector((state) => state.user?.farm);
+  console.log("farmers farm", farm);
   useEffect(() => {
-    let user = localStorage.getItem("currentUser");
-    if (user) {
-      // user = JSON.stringify(user);
-      user = JSON.parse(user);
-      // console.log(user)
-      fetchProducts(user.farm.id);
-    }
+    fetchProducts(farm.id);
   }, []);
 
   const fetchProducts = async (farmId) => {
@@ -34,23 +31,23 @@ function MyProduct() {
     <div>
       <FNavbar />
       <div className="pl-[64px] pr-[32px] flex flex-row">
-        {/* side panel */}
+        /* side panel */
         <div>
           <Fpanel />
         </div>
 
-        {/* divider */}
+        /* divider */
         <div className="fd-divider ml-4 h-full"></div>
-        {/* body */}
+        /* body */
         <div className="p-[24px] flex flex-col items-start w-full gap-[64px]">
           <h2 className="text-left">My products</h2>
           <div className="w-full h-fit">
             <h5 className="text-left">120 items</h5>
             <div className="addProduct-rd w-full h-full">
               <div className="flex gap-[16px] p-[16px]">
-                {/* search bar */}
+                /* search bar */
                 <Searchbar />
-                {/* sortby */}
+                /* sortby */
                 <Sortby />
               </div>
 

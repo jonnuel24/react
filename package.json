@@ -72,5 +72,10 @@
     "postcss": "^8.4.31",
     "react-scripts": "^5.0.1",
     "tailwindcss": "^3.3.3"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }

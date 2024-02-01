@@ -1,17 +1,33 @@
 /* eslint-disable import/no-unresolved */
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/navbar'
 import Footer from '../Components/footer'
 import AnimalProfile from '../Components/animalProfile'
 import '../asset/styles/home.css'
 import Card from '../Components/card'
 import { productServices } from '../services/product.service'
+import { useSelector } from 'react-redux'
 
 const Home=()=> {
+  const [farmProducts, setFarmProducts] = useState([]);
+  const [page, setPage]=useState(1);
+  const [size, setSize]=useState(10);
+  const user = useSelector((state) => state.user?.currentUser);
   useEffect(()=>{
-    productServices.all()
+    fetchProducts();
     console.log("Hello Badmous")
-  }, [])
+  }, [page, size])
+
+  const fetchProducts = async () => {
+    try {
+      const products = await productServices.all(page,size);
+      console.log(products.products);
+      setFarmProducts(products.products);
+      console.log("farm products", farmProducts);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
 
    
@@ -19,7 +35,7 @@ const Home=()=> {
       <Navbar />
         <section className='section2'>
           <header>
-          Welcome <strong>Gasgos,</strong>
+          Welcome <strong>{user.firstName},</strong>
           </header>
 
           <div className='section21'>
@@ -47,15 +63,17 @@ const Home=()=> {
 
         <section className='card0'>
           <div className='flex flex-wrap card1'>
+          {farmProducts.map((p) => (
+            <Card product={p}/>
+          ))}
+            {/* <Card />
             <Card />
             <Card />
             <Card />
             <Card />
             <Card />
             <Card />
-            <Card />
-            <Card />
-            <Card />
+            <Card /> */}
           </div>
         </section>             
      
