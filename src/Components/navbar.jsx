@@ -6,8 +6,10 @@ import "../asset/styles/navbar.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+
   return (
     <nav className="w-full">
       <div className="left-nav">

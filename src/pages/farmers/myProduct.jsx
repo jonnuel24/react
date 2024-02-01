@@ -7,30 +7,26 @@ import Sortby from "./component/sortBy";
 import "../../asset/styles/myProduct.css";
 import Option from "./component/optionMyProduct";
 import { productServices } from "../../services/product.service";
-
+import { useSelector } from "react-redux";
 function MyProduct() {
-  const [farmProducts, setFarmProducts]=useState([]);
-  useEffect(()=>{
+  const [farmProducts, setFarmProducts] = useState([]);
+  const user = useSelector((state) => state.user?.currentUser);
+  const farm = useSelector((state) => state.user?.farm);
+  console.log("farmers farm", farm);
+  useEffect(() => {
+    fetchProducts(farm.id);
+  }, []);
 
-      let user = localStorage.getItem("currentUser");
-      if (user) {
-        // user = JSON.stringify(user);
-        user = JSON.parse(user);
-        // console.log(user)
-        fetchProducts(user.farm.id)
-      }
-  }, [])
-
-  const fetchProducts=async (farmId)=>{
-    try{
-      const products=await productServices.farmProduct(farmId);
+  const fetchProducts = async (farmId) => {
+    try {
+      const products = await productServices.farmProduct(farmId);
       console.log(products);
-      setFarmProducts(products.farmProducts)
-      console.log('farm products',farmProducts)
-    }catch(e){
+      setFarmProducts(products.farmProducts);
+      console.log("farm products", farmProducts);
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
   return (
     <div>
       <FNavbar />
@@ -69,25 +65,25 @@ function MyProduct() {
                   </thead>
                   <tbody>
                     {/* 01 */}
-                    {farmProducts.map((p)=>(
-                    <tr>
-                      <td className="">
-                        <div className="fn-profile">
-                          <img
-                            src={p.images.length ? p.images[0] : ""}
-                            alt=""
-                            className="animal"
-                          />
-                        </div>
-                      </td>
-                      <td>{p.name}</td>
-                      <td>{p.category}</td>
-                      <td>{p.quantity}</td>
-                      <td>₦{p.price}</td>
-                      <td>
-                        <Option />
-                      </td>
-                    </tr>
+                    {farmProducts.map((p) => (
+                      <tr>
+                        <td className="">
+                          <div className="fn-profile">
+                            <img
+                              src={p.images.length ? p.images[0] : ""}
+                              alt=""
+                              className="animal"
+                            />
+                          </div>
+                        </td>
+                        <td>{p.name}</td>
+                        <td>{p.category}</td>
+                        <td>{p.quantity}</td>
+                        <td>₦{p.price}</td>
+                        <td>
+                          <Option />
+                        </td>
+                      </tr>
                     ))}
                     {/* 02 */}
                     {/* <tr>

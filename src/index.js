@@ -31,6 +31,7 @@ axios.interceptors.response.use(
     return response.data;
   },
   (error) => {
+    console.log(error);
     if (error === null) {
       error = {
         response: {

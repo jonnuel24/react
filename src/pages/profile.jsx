@@ -6,7 +6,11 @@ import profileImg from "../asset/images/profile_img.png";
 import "../asset/styles/profile.css";
 import { Icon } from "@iconify/react";
 import ProfileSidePannel from "../Components/profileSidePannel";
+import { useSelector } from "react-redux";
 function Profile() {
+  const user=useSelector(state=>state.user?.currentUser)
+
+  console.log(user);
   return (
     <div>
       <Navbar />
@@ -32,27 +36,27 @@ function Profile() {
                 <tbody className="text-left">
                   <tr className="">
                     <td className=" px-4">First Name:</td>
-                    <td className=" px-4 ml-2">Blessing</td>
+                    <td className=" px-4 ml-2">{user?.firstName}</td>
                   </tr>
                   <tr>
                     <td className=" px-4">Last Name:</td>
-                    <td className=" px-4 ml-2">Gasgos</td>
+                    <td className=" px-4 ml-2">{user?.lastName}</td>
                   </tr>
                   <tr>
                     <td className=" px-4">Email:</td>
-                    <td className=" px-4 ml-2">BlessingGeorge@gmail.com</td>
+                    <td className=" px-4 ml-2">{user?.email}</td>
                   </tr>
                   <tr>
                     <td className=" px-4">Birthday:</td>
-                    <td className=" px-4 ml-2">19 March 1995</td>
+                    <td className=" px-4 ml-2">{user?.dateOfBirth}</td>
                   </tr>
                   <tr>
                     <td className=" px-4">Phone Number:</td>
-                    <td className=" px-4 ml-2">08168134671</td>
+                    <td className=" px-4 ml-2">{user?.phoneNumber}</td>
                   </tr>
                   <tr>
                     <td className=" px-4">Gender:</td>
-                    <td className=" px-4 ml-2">Female</td>
+                    <td className=" px-4 ml-2">{user?.gender}</td>
                   </tr>
                 </tbody>
               </table>
