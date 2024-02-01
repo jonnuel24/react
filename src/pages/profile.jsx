@@ -16,7 +16,7 @@ function Profile() {
       <Navbar />
       <div className="py-4 px-32 flex flex-row gap-4">
         <div className="flex flex-col flex-1 basis-2/5 ">
-          <ProfileSidePannel />
+          <ProfileSidePannel user={user}/>
         </div>
         {/* right div */}
         <div className="flex flex-col flex-1 basis-3/5 gap-4 mt-24">
