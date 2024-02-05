@@ -139,14 +139,14 @@ function Fpanel() {
                 </label>
               </div>
               {/*  */}
-              <div onClick={()=>dispatch(logOut())} className="flex flex-row items-center gap-[14px]">
+              <div onClick={()=>dispatch(logOut())} className="cursor-pointer flex flex-row items-center gap-[14px]">
                 <Icon
                   icon="solar:logout-2-outline"
                   className="fd-leftdiv-icon"
                 />
                 <label
                   htmlFor=""
-                  className="text-[16px] font-normal leading-normal text-black"
+                  className="cursor-pointer text-[16px] font-normal leading-normal text-black"
                 >
                   Logout
                 </label>

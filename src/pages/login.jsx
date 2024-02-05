@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 import { useDispatch } from "react-redux";
-import { setFarm, setToken, setCurrentUser } from "../store/reducers/userReducer";
+import { setFarm, setToken, setCurrentUser, setIsAuthenticated } from "../store/reducers/userReducer";
 
 function Login() {
   const dispatch = useDispatch();
@@ -37,6 +37,7 @@ function Login() {
       dispatch(setCurrentUser(rest))
       dispatch(setFarm(farm))
       dispatch(setToken(token))
+      dispatch(setIsAuthenticated(true))
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("currentUser", JSON.stringify(result.data));
       alert("login successful, click 'OK' to continue");

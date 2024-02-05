@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import profileImg from "../asset/images/profile_img.png";
 import "../asset/styles/profileSidePannel.css";
 import { Icon } from "@iconify/react";
+import { useDispatch } from "react-redux";
+import { logOut } from "../store/reducers/userReducer";
 
 function ProfileSidePannel({user}) {
   // Initialize state to track whether the dropdown is open or closed
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-
+  const dispatch = useDispatch();
   // Function to toggle the dropdown
   const toggleDropDown = (event) => {
     setIsDropDownOpen(!isDropDownOpen);
@@ -114,20 +116,20 @@ function ProfileSidePannel({user}) {
               )}
             </div>
           </div>
-          <Link
-            to={"/login"}
+          <div
+            onClick={()=>dispatch(logOut())}
             style={linkStyle}
-            className="p-logout pl-16 py-3 flex flex-1 w-full"
+            className="cursor-pointer p-logout pl-16 py-3 flex flex-1 w-full"
           >
             <Icon
               icon="ion:return-down-back-outline"
               color="black"
               width="32"
               height="32"
-              className="ps-div-icon"
+              className="ps-div-icon cursor-pointer"
             />
             Log out
-          </Link>
+          </div>
         </div>
       </div>
     </div>
