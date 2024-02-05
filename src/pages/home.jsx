@@ -38,7 +38,7 @@ const Home=()=> {
           Welcome <strong>{user.firstName},</strong>
           </header>
 
-          <div className='section21'>
+          <div className='section21 mt-[56px]'>
             <div className='section22'>
               <a href="/" className='bg-[#006838] active'><div className='text-white'>All</div></a>
               <a href="/"><div>Popular</div></a>
@@ -48,7 +48,7 @@ const Home=()=> {
               <a href="/"><div>Lowest Price</div></a>
             </div>
 
-            <div className='section23'>
+            {/* <div className='section23'>
               <AnimalProfile />
               <AnimalProfile />
               <AnimalProfile />
@@ -56,13 +56,13 @@ const Home=()=> {
               <AnimalProfile />
               <AnimalProfile />
               
-            </div>
+            </div> */}
           </div>
         </section>
           
 
         <section className='card0'>
-          <div className='flex flex-wrap card1'>
+          <div className='flex flex-wrap card1 justify-center'>
           {farmProducts.map((p) => (
             <Card product={p}/>
           ))}

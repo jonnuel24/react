@@ -31,23 +31,23 @@ function MyProduct() {
     <div>
       <FNavbar />
       <div className="pl-[64px] pr-[32px] flex flex-row">
-        /* side panel */
+        {/* side panel */}
         <div>
           <Fpanel />
         </div>
 
-        /* divider */
+        {/* divider */}
         <div className="fd-divider ml-4 h-full"></div>
-        /* body */
+        {/* body */}
         <div className="p-[24px] flex flex-col items-start w-full gap-[64px]">
           <h2 className="text-left">My products</h2>
           <div className="w-full h-fit">
             <h5 className="text-left">120 items</h5>
             <div className="addProduct-rd w-full h-full">
               <div className="flex gap-[16px] p-[16px]">
-                /* search bar */
+                {/* search bar */}
                 <Searchbar />
-                /* sortby */
+                {/* sortby */}
                 <Sortby />
               </div>
 
@@ -59,7 +59,7 @@ function MyProduct() {
                       <th>Product name</th>
                       <th>Category</th>
                       <th>In stock</th>
-                      <th>Price</th>
+                      <th>Price (₦)</th>
                       <th className=""></th>
                     </tr>
                   </thead>
