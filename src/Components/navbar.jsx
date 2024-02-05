@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../asset/images/logo_light.svg";
 import "../asset/styles/navbar.css";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
 // import { faFilter } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-
+  const navigate=useNavigate()
+  const user=useSelector(state=>state.user?.currentUser)
+  const isAuthenticated=useSelector(state=>state.user?.isAuthenticated);
+  useEffect(()=>{
+    if(isAuthenticated===false) {
+      navigate("/login")
+    }
+  }, [user, isAuthenticated, navigate])
   return (
     <nav className="w-full">
       <div className="left-nav">

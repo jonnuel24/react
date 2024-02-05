@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../../asset/images/Logo (white).svg";
 import "../../../asset/styles/farmersNabar.css";
 import { Icon } from "@iconify/react";
 import pic from '../../../asset/images/animal_profile.png';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../../store/reducers/userReducer";
+import { useNavigate } from "react-router-dom";
 
 function FNavbar() {
+  const navigate=useNavigate()
   const user=useSelector(state=>state.user?.currentUser)
-
-  console.log(user);
+  const isAuthenticated=useSelector(state=>state.user?.isAuthenticated);
+  useEffect(()=>{
+    if(isAuthenticated===false) {
+      navigate("/login")
+    }
+  }, [user, isAuthenticated, navigate])
   return (
     <div>
       <div className="fnav bg-[#000000] px-16 py-6 w-full flex flex-row justify-between">
