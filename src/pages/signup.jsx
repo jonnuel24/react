@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import SignupImg from "../asset/images/signup-img.png";
 import Logo from "../asset/images/logo.svg";
 import "../asset/styles/signup.css";
-import Checkbox from "../Components/checkbox";
+// import Checkbox from "../Components/checkbox";
 
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import accountServices from "../services/auth.service";
+// import { Link, useNavigate } from "react-router-dom";
+// import { useForm } from "react-hook-form";
+// import accountServices from "../services/auth.service";
 import UserType from "../Components/UserType";
 import SignUpForm from "../Components/SignupForm";
 
