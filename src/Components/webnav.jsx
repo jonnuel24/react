@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import "../asset/styles/webnav.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 //import { Link as ScrollLink } from "react-scroll";
+import { Link, useNavigate } from "react-router-dom";
 
 function Webnav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,14 +47,31 @@ function Webnav() {
         </a>
       </ul>
 
-      <button
+      {/* <button
         className="hidden md:flex flex-row items-center justify-center p-2 gap-4 hover:bg-[#145C3F] wn-btn"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
         Get Early Access
         <Icon icon="ic:round-arrow-back-ios" rotate={2} />
-      </button>
+      </button> */}
+      <div className="hidden md:flex flex-row items-center gap-4">
+        
+        <Link to={"/login"}>
+          {" "}
+          <button className="wn-btn-2 text-[20px] font-bold hover:text-[#145C3F] hover:bg-[#4aa76148]">
+          Login
+        </button>
+        </Link>
+
+        <Link to={"/signup"}>
+          {" "}
+          <button className="hidden md:flex flex-row items-center justify-center p-2 gap-4 hover:bg-[#145C3F] wn-btn">
+            Get Started
+            <Icon icon="ic:round-arrow-back-ios" rotate={2} />
+          </button>
+        </Link>
+      </div>
 
       {/* menu button:sm */}
       <button
@@ -78,7 +96,7 @@ function Webnav() {
             className="lg:hidden fixed inset-0 bg-black opacity-50 z-10"
             onClick={toggleMenu}
           ></div>
-          <ul className="lg:hidden flex flex-col items-center absolute top-24 right-4 w-[90%] bg-white py-[32px] px-[16px]  gap-12 mb-0 webnav-list z-20">
+          <ul className="lg:hidden flex flex-col items-start absolute top-24 right-4 w-[90%] bg-white py-[32px] px-[16px]  gap-12 mb-0 webnav-list z-20">
             <a href="#websiteHeroSection" className="wl-link">
               <li>Home</li>
             </a>
@@ -91,6 +109,18 @@ function Webnav() {
             <a href="#faqs" className="wl-link">
               <li>FAQ</li>
             </a>
+
+            <button className="wn-btn-2 text-[20px] font-bold hover:text-[#145C3F] hover:bg-[#4aa76148]">
+              Login
+            </button>
+            <button
+              className="flex flex-row items-center justify-center p-2 gap-4 hover:bg-[#145C3F] wn-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Get Started
+              <Icon icon="ic:round-arrow-back-ios" rotate={2} />
+            </button>
           </ul>
         </>
       )}
