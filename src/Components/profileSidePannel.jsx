@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import profileImg from "../asset/images/profile_img.png";
 import "../asset/styles/profileSidePannel.css";
 import { Icon } from "@iconify/react";

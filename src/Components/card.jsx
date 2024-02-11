@@ -1,5 +1,5 @@
 import React from "react";
-import Farmer from "../asset/images/farmer.svg";
+// import Farmer from "../asset/images/farmer.svg";
 import "../asset/styles/card.css";
 
 function Card({ product }) {
