@@ -59,6 +59,9 @@ function Root() {
       <Route path="/product/create" Component={Addproduct} />
       <Route path="/product" Component={MyProduct} />
       <Route path="/manageOrders" Component={ManageOrders} />
+
+      {/* website */}
+      <Route path="/website" Component={Website} />
     </Routes>
   );
 }
