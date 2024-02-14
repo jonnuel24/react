@@ -12,6 +12,9 @@ function Navbar() {
   const navigate=useNavigate()
   const user=useSelector(state=>state.user?.currentUser)
   const isAuthenticated=useSelector(state=>state.user?.isAuthenticated);
+  const cartCount=useSelector(state=>state.cart?.cartCount)
+  const cartItems=useSelector(state=>state.cart?.cartItems)
+  console.log('cart products',cartItems);
   useEffect(()=>{
     if(isAuthenticated===false) {
       navigate("/login")
@@ -70,9 +73,10 @@ function Navbar() {
             </li>
           </a>
           <a href="/">
-            <li>
+            <li className="relative">
               <Icon icon="lucide:shopping-cart" className="icon" />
-              Cart
+              Cart 
+              <span className={`absolute ${cartItems ? 'bg-red-600 text-red-100' : 'bg-green-700 text-white'} px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3`}>{cartItems ? cartItems?.length: 0}</span>
             </li>
           </a>
           <a href="/">
