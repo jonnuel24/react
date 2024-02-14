@@ -24,6 +24,7 @@ import Dashboard from "../pages/farmers/dashboard";
 import Addproduct from "../pages/farmers/addproduct";
 import MyProduct from "../pages/farmers/myProduct";
 import ManageOrders from "../pages/farmers/manageOrders";
+import Payment from "../pages/payment";
 
 function Root() {
   return (
@@ -53,6 +54,7 @@ function Root() {
       <Route path="/profile" Component={Profile} />
       <Route path="/wishlist" Component={Wishlist} />
       <Route path="/notification" Component={Notification} />
+      <Route path="/payment" Component={Payment} />
 
       {/* Farmer */}
       <Route path="/farmer" Component={Dashboard} />
@@ -62,6 +64,7 @@ function Root() {
 
       {/* website */}
       <Route path="/website" Component={Website} />
+
     </Routes>
   );
 }

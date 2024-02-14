@@ -7,6 +7,7 @@ import '../asset/styles/home.css'
 import Card from '../Components/card'
 import { productServices } from '../services/product.service'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const Home=()=> {
   const [farmProducts, setFarmProducts] = useState([]);
@@ -65,6 +66,7 @@ const Home=()=> {
           <div className='flex flex-wrap card1 justify-center'>
           {farmProducts.map((p) => (
             <Card product={p}/>
+            
           ))}
             {/* <Card />
             <Card />

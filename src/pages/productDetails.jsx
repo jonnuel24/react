@@ -305,6 +305,7 @@ function productDetails() {
               <Card className="right-div-img pd-card"/>
               <Card />
               <Card />
+              
             </div>
           </div>
         </div>
