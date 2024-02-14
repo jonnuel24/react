@@ -1,8 +1,35 @@
 import React from "react";
 // import Farmer from "../asset/images/farmer.svg";
 import "../asset/styles/card.css";
+import { useDispatch, useSelector } from "react-redux";
+import { increaseCartCount, setCartItems, setCartSummary } from "../store/reducers/cartReducer";
+import { userServices } from "../services/user.service";
 
 function Card({ product }) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user?.currentUser);
+  const products=useSelector(state=>state.cart?.cartItems)
+  const addToCart = async (productId) => {
+    let cartProducts=products
+    try {
+   
+      const payload={
+        userId: user.id,
+        productId: productId,
+        quantity: 1,
+      }
+      const response=await userServices.addToCart(payload)
+      alert(response?.message)
+      dispatch(
+        setCartItems(response.data?.cartItems)
+      );
+      dispatch(setCartSummary(response?.data?.cart))
+      // dispatch(increaseCartCount())
+      console.log('cart products', products)
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
   return (
     <div className="flex flex-col card  h-auto items-center">
       <div
@@ -38,7 +65,7 @@ function Card({ product }) {
         {/* <img src={Farmer} alt="" className="bb" /> */}
 
         <div className="flex flex-col right-card-body">
-          <button className="btn btn-success mt-[24px] h-[56px]">ADD TO CART</button>
+          <button onClick={()=>addToCart(product?.id)} className="btn btn-success mt-[24px] h-[56px]">ADD TO CART</button>
         </div>
       </div>
     </div>
