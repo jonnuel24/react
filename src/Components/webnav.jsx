@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import "../asset/styles/webnav.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 //import { Link as ScrollLink } from "react-scroll";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 function Webnav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,9 +29,13 @@ function Webnav() {
 
   return (
     <div className="flex flex-row items-center justify-between w-full py-4 px-[16px] sm:px-[64px] mx-auto wnav sticky top-0 shadow-md z-40 bg-white  ">
-      <div>
-        <img src={Logo} alt="" className="w-full" />
-      </div>
+      <Link to={"/website"}>
+        {" "}
+        <div>
+          <img src={Logo} alt="" className="w-full" />
+        </div>
+        
+      </Link>
       <ul className="hidden md:flex flex-row items-center justify-center gap-12 mb-0 webnav-list">
         <a href="#websiteHeroSection" className="wl-link">
           <li>Home</li>
@@ -56,15 +60,14 @@ function Webnav() {
         <Icon icon="ic:round-arrow-back-ios" rotate={2} />
       </button> */}
       <div className="hidden md:flex flex-row items-center gap-4">
-        
         <Link to={"/login"}>
           {" "}
           <button className="wn-btn-2 text-[20px] font-bold hover:text-[#145C3F] hover:bg-[#4aa76148]">
-          Login
-        </button>
+            Login
+          </button>
         </Link>
 
-        <Link to={"/signup"}>
+        <Link to={"/createAccount"}>
           {" "}
           <button className="hidden md:flex flex-row items-center justify-center p-2 gap-4 hover:bg-[#145C3F] wn-btn">
             Get Started

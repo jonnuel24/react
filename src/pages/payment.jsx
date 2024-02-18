@@ -7,7 +7,7 @@ import gig from "../asset/images/gex.svg";
 import gex from "../asset/images/gig.svg";
 import axd from "../asset/images/axd_logo.svg";
 
-function delivery2() {
+function Payment() {
   return (
     <div>
       <Navbar />
@@ -16,7 +16,7 @@ function delivery2() {
           <div className="delivery-button-active">
             <button>Delivery</button>
           </div>
-          <div className="delivery-button">
+          <div className="delivery-button-active">
             <button>Payment</button>
           </div>
           <div className="delivery-button">
@@ -26,7 +26,7 @@ function delivery2() {
 
         <div className="row delivery2-div">
           <div className="col col-7 delivery-div2">
-            <div className="delivery-div2-label">Contact Details</div>
+            <div className="delivery-div2-label">Select payment method</div>
             <div className="delivery-div3">
               <div className="delivery-name">
                 <h1>Gasgos Gbenga koiki</h1>
@@ -90,24 +90,8 @@ function delivery2() {
             </div>
           </div>
 
-          <div className="col col-5 delivery-div2">
-            <div className="delivery2-div2">Total Cost</div>
-            <div className="delivery2-details">
-              <div>
-                <table>
-                  <tr>
-                    <th className="d2-summary text-[24px] font-normal text-white ">Subtotal : </th>
-                    <td className="text-[24px] font-medium text-white">N224,000</td>
-                  </tr>
-                  <tr>
-                    <th className="d2-summary text-[24px] font-normal text-white">Shipping : </th>
-                    <td className="text-[24px] font-medium text-white">N150,000</td>
-                  </tr>
-                </table>
-              </div>
-              <div className="delivery2-total">N 374,000</div>
-            </div>
-          </div>
+          <div className="col col-5 delivery-div2 h-[4px]  bg-[#EEEEEE]"></div>
+          
         </div>
         <div className="delivery-div04">
           <div className="delivery-div04-label">Logistics</div>
@@ -154,4 +138,4 @@ function delivery2() {
   );
 }
 
-export default delivery2;
+export default Payment;

@@ -47,19 +47,21 @@ function Navbar() {
 
       <div className="right-nav">
         <ul>
-          <Link to="/user">
+          <Link to={"/user"}>
             <li className="flex">
               <Icon icon="iconoir:home-simple" color="white" className="icon" />
               Home
             </li>
           </Link>
-          <Link to="#">
+
+          <Link>
             <li>
               <Icon icon="lucide:tag" color="white" className="icon" />
               Orders
             </li>
           </Link>
-          <a href="/">
+
+          <Link>
             <li>
               <Icon
                 icon="streamline:interface-help-question-message-bubble-help-mark-message-query-question-speech"
@@ -67,32 +69,36 @@ function Navbar() {
               />
               Support
             </li>
-          </a>
-          <Link to="/cart">
+          </Link>
+
+          <Link to={"/cart"}>
             <li className="relative">
               <Icon icon="lucide:shopping-cart" className="icon" />
               Cart
               <span
                 className={`absolute ${
-                  cartSummary
+                  cartItems
                     ? "bg-red-600 text-red-100"
                     : "bg-green-700 text-white"
                 } px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3`}
               >
-                {cartSummary ? cartSummary?.overallQuantity : 0}
+                {cartItems ? cartItems?.length : 0}
               </span>
             </li>
           </Link>
-          <a href="/">
+
+          <Link>
+            {" "}
             <li>
               <Icon icon="mdi:bell-notification-outline" className="icon" />
               Notification
             </li>
-          </a>
-          <Link to="/profile">
+          </Link>
+
+          <Link to={"/profile"}>
             <li>
-              <Icon icon="iconamoon:profile" className="icon" to={"/profile"} />
-              <Link to={"/profile"}>Profile</Link>
+              <Icon icon="iconamoon:profile" className="icon" />
+              Profile
             </li>
           </Link>
         </ul>
