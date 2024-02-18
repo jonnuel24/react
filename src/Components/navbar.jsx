@@ -9,23 +9,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-  const navigate=useNavigate()
-  const user=useSelector(state=>state.user?.currentUser)
-  const isAuthenticated=useSelector(state=>state.user?.isAuthenticated);
-  const cartCount=useSelector(state=>state.cart?.cartCount)
-  const cartItems=useSelector(state=>state.cart?.cartItems)
-  console.log('cart products',cartItems);
-  useEffect(()=>{
-    if(isAuthenticated===false) {
-      navigate("/login")
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user?.currentUser);
+  const isAuthenticated = useSelector((state) => state.user?.isAuthenticated);
+  const cartItems = useSelector((state) => state.cart?.items);
+  const cartSummary = useSelector((state) => state.cart?.summary);
+  console.log("cart products", cartItems);
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      navigate("/login");
     }
-  }, [user, isAuthenticated, navigate])
+  }, [user, isAuthenticated, navigate]);
   return (
     <nav className="w-full">
       <div className="left-nav">
-        <a href="/" className="">
+        <Link to="/user" className="">
           <img src={Logo} alt="Agripeller Logo" className="" />
-        </a>
+        </Link>
 
         <form action="submit" className="flex">
           <div className="search-input">
@@ -47,22 +47,18 @@ function Navbar() {
 
       <div className="right-nav">
         <ul>
-          <a href="/">
+          <Link to="/user">
             <li className="flex">
-              <Icon
-                icon="iconoir:home-simple"
-                color="white"
-                className="icon"
-              />
+              <Icon icon="iconoir:home-simple" color="white" className="icon" />
               Home
             </li>
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="#">
             <li>
               <Icon icon="lucide:tag" color="white" className="icon" />
               Orders
             </li>
-          </a>
+          </Link>
           <a href="/">
             <li>
               <Icon
@@ -72,25 +68,33 @@ function Navbar() {
               Support
             </li>
           </a>
-          <a href="/">
+          <Link to="/cart">
             <li className="relative">
               <Icon icon="lucide:shopping-cart" className="icon" />
-              Cart 
-              <span className={`absolute ${cartItems ? 'bg-red-600 text-red-100' : 'bg-green-700 text-white'} px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3`}>{cartItems ? cartItems?.length: 0}</span>
+              Cart
+              <span
+                className={`absolute ${
+                  cartSummary
+                    ? "bg-red-600 text-red-100"
+                    : "bg-green-700 text-white"
+                } px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3`}
+              >
+                {cartSummary ? cartSummary?.overallQuantity : 0}
+              </span>
             </li>
-          </a>
+          </Link>
           <a href="/">
             <li>
               <Icon icon="mdi:bell-notification-outline" className="icon" />
               Notification
             </li>
           </a>
-          <a href="/">
+          <Link to="/profile">
             <li>
               <Icon icon="iconamoon:profile" className="icon" to={"/profile"} />
               <Link to={"/profile"}>Profile</Link>
             </li>
-          </a>
+          </Link>
         </ul>
       </div>
     </nav>

@@ -8,10 +8,11 @@ import Card from "../Components/card";
 import { productServices } from "../services/product.service";
 import { useDispatch, useSelector } from "react-redux";
 import { userServices } from "../services/user.service";
-import { setCartItems, setCartSummary } from "../store/reducers/cartReducer";
+import { setItems, setSummary } from "../store/reducers/cartReducer";
+import ReactPaginate from "react-paginate";
 
 const Home = () => {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const [farmProducts, setFarmProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(10);
@@ -19,17 +20,15 @@ const Home = () => {
 
   useEffect(() => {
     fetchProducts();
-    fetchCartItems()
+    fetchCartItems();
   }, [page, size]);
 
   const fetchProducts = async () => {
     try {
       const products = await productServices.all(page, size);
-      console.log(products.products);
       if (products?.products) {
         setFarmProducts(products.products);
       }
-      
     } catch (e) {
       console.log(e);
     }
@@ -37,13 +36,9 @@ const Home = () => {
   const fetchCartItems = async () => {
     try {
       const response = await userServices.userCart(user.id);
-      console.log(response);
-      dispatch(setCartItems(response?.data?.cartItems))
-      dispatch(setCartSummary(response?.data?.cart))
-      // if (response) {
-      //   dispatch(products.products);
-      // }
-      
+      dispatch(setItems(response?.data?.cartItems));
+      dispatch(setSummary(response?.data?.cart));
+      console.log("cart items from home page", response.data.cartItems);
     } catch (e) {
       console.log(e);
     }
@@ -92,18 +87,15 @@ const Home = () => {
 
       <section className="card0">
         <div className="flex flex-wrap card1 justify-center">
-          {farmProducts.map((p) => (
-            <Card product={p} />
+          {farmProducts.map((p, i) => (
+            <Card key={i} product={p} />
           ))}
-          {/* <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card /> */}
         </div>
+        <ReactPaginate
+          className="justify-end flex flex-row gap-10 w-full text-black text-bold"
+          pageCount={ farmProducts ? Math.round(farmProducts?.length/ size) : 0}
+          shape="rounded"
+        />
       </section>
 
       <Footer />

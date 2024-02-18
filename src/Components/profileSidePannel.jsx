@@ -5,7 +5,7 @@ import "../asset/styles/profileSidePannel.css";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../store/reducers/userReducer";
-import { clearCart } from "../store/reducers/cartReducer";
+import { clear } from "../store/reducers/cartReducer";
 
 function ProfileSidePannel({user}) {
   // Initialize state to track whether the dropdown is open or closed
@@ -120,7 +120,7 @@ function ProfileSidePannel({user}) {
           <div
             onClick={()=>{
               dispatch(logOut())
-              dispatch(clearCart())
+              dispatch(clear())
             }}
             style={linkStyle}
             className="cursor-pointer p-logout pl-16 py-3 flex flex-1 w-full"

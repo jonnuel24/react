@@ -2,32 +2,50 @@ import React from "react";
 // import Farmer from "../asset/images/farmer.svg";
 import "../asset/styles/card.css";
 import { useDispatch, useSelector } from "react-redux";
-import { increaseCartCount, setCartItems, setCartSummary } from "../store/reducers/cartReducer";
+import {
+  increaseCount,
+  setItems,
+  setSummary,
+} from "../store/reducers/cartReducer";
 import { userServices } from "../services/user.service";
 
-function Card({ product }) {
+function Card({ product, cartId = null }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user?.currentUser);
-  const products=useSelector(state=>state.cart?.cartItems)
+  const products = useSelector((state) => state.cart?.cartItems);
   const addToCart = async (productId) => {
-    let cartProducts=products
     try {
-   
-      const payload={
+      const payload = {
         userId: user.id,
         productId: productId,
         quantity: 1,
-      }
-      const response=await userServices.addToCart(payload)
-      alert(response?.message)
-      dispatch(
-        setCartItems(response.data?.cartItems)
-      );
-      dispatch(setCartSummary(response?.data?.cart))
+      };
+      const response = await userServices.addToCart(payload);
+      alert(response?.message);
+      dispatch(setItems(response.data?.cartItems));
+      dispatch(setSummary(response?.data?.cart));
       // dispatch(increaseCartCount())
-      console.log('cart products', products)
+      console.log("cart products", products);
     } catch (e) {
       console.log(e.message);
+    }
+  };
+
+  const removeCart = async () => {
+    try {
+      const response = await userServices.removeCart({
+        userId: user.id,
+        cartItemId: cartId,
+      });
+      if(response && response.status==='success'){
+        alert(response?.message);
+        dispatch(setItems(response.data?.cartItems));
+        dispatch(setSummary(response?.data?.cart));
+      }else{
+        alert("something went wrong")
+      }
+    } catch (e) {
+      alert(e.message)
     }
   };
   return (
@@ -65,7 +83,22 @@ function Card({ product }) {
         {/* <img src={Farmer} alt="" className="bb" /> */}
 
         <div className="flex flex-col right-card-body">
-          <button onClick={()=>addToCart(product?.id)} className="btn btn-success mt-[24px] h-[56px]">ADD TO CART</button>
+          {!cartId && (
+            <button
+              onClick={() => addToCart(product?.id)}
+              className="btn btn-success mt-[24px] h-[56px]"
+            >
+              ADD TO CART
+            </button>
+          )}
+          {cartId && (
+            <button
+              onClick={() => removeCart()}
+              className="btn btn-success mt-[24px] h-[56px]"
+            >
+              REMOVE FROM CART
+            </button>
+          )}
         </div>
       </div>
     </div>
