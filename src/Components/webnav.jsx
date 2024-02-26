@@ -67,7 +67,7 @@ function Webnav() {
           </button>
         </Link>
 
-        <Link to={"/createAccount"}>
+        <Link to={"/signup"}>
           {" "}
           <button className="hidden md:flex flex-row items-center justify-center p-2 gap-4 hover:bg-[#145C3F] wn-btn">
             Get Started

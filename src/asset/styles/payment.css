@@ -1,0 +1,15 @@
+.payment-method {
+  border-radius: 10px;
+  
+}
+
+.pm-option {
+  background-color: #006838;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  padding: 16px;
+  border-radius: 4px;
+}
