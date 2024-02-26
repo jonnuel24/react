@@ -12,8 +12,8 @@ function Navbar() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user?.currentUser);
   const isAuthenticated = useSelector((state) => state.user?.isAuthenticated);
-  const cartCount = useSelector((state) => state.cart?.cartCount);
-  const cartItems = useSelector((state) => state.cart?.cartItems);
+  const cartItems = useSelector((state) => state.cart?.items);
+  const cartSummary = useSelector((state) => state.cart?.summary);
   console.log("cart products", cartItems);
   useEffect(() => {
     if (isAuthenticated === false) {
@@ -23,9 +23,9 @@ function Navbar() {
   return (
     <nav className="w-full">
       <div className="left-nav">
-        <a href="/" className="">
+        <Link to="/user" className="">
           <img src={Logo} alt="Agripeller Logo" className="" />
-        </a>
+        </Link>
 
         <form action="submit" className="flex">
           <div className="search-input">
