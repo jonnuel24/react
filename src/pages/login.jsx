@@ -7,8 +7,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 import { useDispatch } from "react-redux";
-import { setFarm, setToken, setCurrentUser, setIsAuthenticated } from "../store/reducers/userReducer";
-
+import {
+  setFarm,
+  setToken,
+  setCurrentUser,
+  setIsAuthenticated,
+} from "../store/reducers/userReducer";
+import { notification } from "../services/notification";
+import { BeatLoader } from "react-spinners";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,11 +22,13 @@ function Login() {
     email: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const {
     handleSubmit,
-    // register,
-    // reset,
-    // formState: { errors },
+    register,
+    reset,
+    formState: { errors },
   } = useForm();
 
   const handleInput = (event) => {
@@ -28,27 +36,35 @@ function Login() {
   };
 
   async function login() {
-    let result = await accountServices.login(post);
-    console.log("result", result);
-    if (typeof result == "string" || result == null || result === "") {
-      alert(result);
-    }else if (result.statusCode === 200) {
-      const { farm, token, ...rest } = result.data;
-      dispatch(setCurrentUser(rest))
-      dispatch(setFarm(farm))
-      dispatch(setToken(token))
-      dispatch(setIsAuthenticated(true))
-      localStorage.setItem("token", result.data.token);
-      localStorage.setItem("currentUser", JSON.stringify(result.data));
-      alert("login successful, click 'OK' to continue");
-      if (result.data.userType === "USER") {
-        navigate("/user");
+    setLoading(true)
+    try{
+      let result = await accountServices.login(post);
+      if (typeof result == "string" || result == null || result === "") {
+        notification(result, "error");
+      } else if (result.statusCode === 200) {
+        const { farm, token, ...rest } = result.data;
+        dispatch(setCurrentUser(rest));
+        dispatch(setFarm(farm));
+        dispatch(setToken(token));
+        dispatch(setIsAuthenticated(true));
+        localStorage.setItem("token", result.data.token);
+        localStorage.setItem("currentUser", JSON.stringify(result.data));
+        notification("login successful, click 'OK' to continue", "success");
+        if (result.data.userType === "USER") {
+          navigate("/user");
+        } else {
+          navigate("/farmer");
+        }
       } else {
-        navigate("/farmer");
+        // console.log(result);
+        notification(result?.message, "error");
       }
-    } else {
-      alert(result?.message);
+
+    }catch(e){
+      notification(e.message, 'info')
+      console.log(e);
     }
+    setLoading(false)
   }
 
   return (
@@ -92,7 +108,8 @@ function Login() {
               </div>
               <div className="flex login-div4">
                 {/* <Link to={"/home"}> */}
-                <button type="submit">Continue</button>
+                {!loading && <button type="submit">Continue</button>}
+                {loading && <BeatLoader color="#36d7b7" />}
                 {/* </Link> */}
                 <div className="text-right items-end flex w-100">
                   Don’t have an account? <Link to={"/signup"}> Sign Up</Link>

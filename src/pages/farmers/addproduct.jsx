@@ -7,15 +7,18 @@ import "../../asset/styles/addproduct.css";
 import UploadCard from "../../Components/uploadCard";
 import { productServices } from "../../services/product.service";
 import { useNavigate } from "react-router-dom";
+import { notification } from "../../services/notification";
+import { BeatLoader } from "react-spinners";
 function Addproduct() {
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [uploading, setUploading]=useState(false)
   // Function to update images array
   const addImage = async (image) => {
     // Create a new product object with updated images array
-    console.log("image url", image);
     product.images.push(image)
-    console.log(product)
   };
+  
   const uploadImages = [null, null, null, null, null];
   const navigate = useNavigate();
   const handleInput = (event) => {
@@ -45,19 +48,23 @@ function Addproduct() {
   });
   const setImage = (index, file) => {
     uploadImages[index] = file;
-    console.log("uploaded images though far", uploadImages);
   };
 
   const cloudUpload = () => {
+    setUploading(true)
     try {
-      console.log(process.env);
       setImages([]);
-      uploadImages.forEach(async (e) => {
+      uploadImages.forEach(async (e, index) => {
         if (e != null) await cloudinaryUpload(e);
+        if(index===uploadImages.length-1){
+          setUploading(false)
+        }
       });
     } catch (e) {
+      notification(e.message,'info');
       console.log(e);
     }
+
   };
 
   const cloudinaryUpload = async (file) => {
@@ -75,28 +82,32 @@ function Addproduct() {
       );
       let res = await response.json();
       await addImage(res.secure_url);
+      notification("File Uploaded successfully", 'success');
       // console.log(imagesURL);
     } catch (e) {
       console.log(e);
+      notification(e.message, 'info');
     }
   };
 
   const createProduct = async () => {
+    setLoading(true);
     try {
-      // await setProduct({ ...product, images: images });
 
-      // product.images=imagesURL
-      // console.log(imagesURL)
       console.log("images before submissions", product.images);
-      // return
-      // let payload = { ...product, images };
       const response = await productServices.add(product);
       if (response.statusCode === 200) {
-        alert("Product added successfully");
+        notification("Product added successfully",'success');
         navigate("/product");
+      }else{
+        notification(response?.message, 'error')
       }
       console.log(response);
-    } catch (e) {}
+    } catch (e) {
+      notification(e.message, 'info')
+      console.log(e);
+    }
+    setLoading(false)
   };
   return (
     <div>
@@ -132,12 +143,14 @@ function Addproduct() {
             </div>
 
             {/* end of card */}
+            {!uploading && 
             <button
               onClick={() => cloudUpload()}
               className="w-[170px] h-[50px] bg-[#6ABD45] text-white rounded-md"
             >
               Upload
-            </button>
+            </button>}
+            {uploading && <BeatLoader color="#36d7b7" />}
           </div>
           {/* end of add products */}
           {/* add details */}
@@ -166,7 +179,7 @@ function Addproduct() {
                       className="w-[230px] h-[45px] add-details-input"
                       onChange={handleInput}
                     >
-                      <option value="" selected select>
+                      <option value="" selected>
                         select a category
                       </option>
                       <option>Livestock</option>
@@ -255,13 +268,15 @@ function Addproduct() {
                 </div>
               </form>
             </div>
+            {!loading && 
             <button
               id="create-button"
               onClick={createProduct}
               className="w-[170px] h-[50px] bg-black text-white rounded-md"
             >
               Save Details
-            </button>
+            </button>}
+            {loading && <BeatLoader color="#36d7b7" />}
           </div>
           {/* end of add details */}
         </div>

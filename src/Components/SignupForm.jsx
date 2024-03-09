@@ -1,12 +1,15 @@
 import Checkbox from "../Components/checkbox";
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
-
+import { ErrorMessage } from "@hookform/error-message";
+import { notification } from "../services/notification";
+import { BeatLoader } from "react-spinners";
 function SignUpForm({ type }) {
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [post, setPost] = useState({
     firstName: "",
     lastName: "",
@@ -28,9 +31,9 @@ function SignUpForm({ type }) {
   });
   const {
     handleSubmit,
-    // register,
-    // reset,
-    // formState: { errors },
+    register,
+    reset,
+    formState: { errors },
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -44,32 +47,33 @@ function SignUpForm({ type }) {
 
   async function signup() {
     try {
+      setLoading(true);
       if (post.confirmPassword !== post.password) {
-        alert("Password and Confirm Password do not match.");
+        notification("Password and Confirm Password do not match.", "error");
         return;
       } else {
         const response = await accountServices.createAccount(post);
         if (response.status === "success") {
-          alert("Registration was successful");
+          notification("Registration was successful", "success");
           navigate("/login");
         } else {
           if (response.messages) {
             const messages = Object.values(response.messages);
             let msg = "";
             messages.forEach((e) => {
-              msg += e + "\n";
+              notification(e, "error");
             });
-            alert(msg);
           }
           if (response.message) {
-            alert(response.message);
+            notification(response.message, "error");
           }
         }
       }
     } catch (e) {
-      alert(e.message);
+      notification(e.message, "info");
       console.log(e);
     }
+    setLoading(false);
   }
   return (
     <>
@@ -116,10 +120,11 @@ function SignUpForm({ type }) {
                     type="email"
                     className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Email"
-                    value={post.email}
                     onChange={handleInput}
                     required
+                    pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"
                   />
+                  {errors.email && <label>{"Testing Testing"}</label>} {/* Error message */}
                 </div>
 
                 {/* gender */}
@@ -314,15 +319,22 @@ function SignUpForm({ type }) {
 
               <div className="flex flex-start">
                 <button
+                  disabled={loading}
                   onClick={() => setStep(0)}
                   className="mr-10 btn btn-success btn-lg button"
                   type="button"
                 >
                   Previous
                 </button>
-                <button className="btn btn-success btn-lg button" type="submit">
-                  Signup
-                </button>
+                {!loading && (
+                  <button
+                    className="btn btn-success btn-lg button"
+                    type="submit"
+                  >
+                    Signup
+                  </button>
+                )}
+                {loading && <BeatLoader color="#36d7b7" />}
               </div>
               <div className="flex flex-row w-full items-center justify-end">
                 <h5>
@@ -337,6 +349,7 @@ function SignUpForm({ type }) {
           {type === "FARMER" && step === 0 && (
             <div className="flex flex-start mt-10">
               <button
+                disabled={loading}
                 onClick={() => setStep(1)}
                 className="btn btn-success btn-lg button"
                 type="button"

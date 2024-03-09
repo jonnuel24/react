@@ -7,11 +7,10 @@ import HeroImg1 from "../asset/images/mobile-hero-img.png";
 import HeroImg from "../asset/images/new-hero-img.png";
 import "../asset/styles/website.css";
 import { Icon } from "@iconify/react";
-// import Ws4Img from "../asset/images/website_s4.svg";
-// import ProfileImg from "../asset/images/profile_img.png";
+
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
-// import { useNavigate } from "react-router-dom";
+
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -20,66 +19,10 @@ import WebsiteS4Icon1 from "../asset/images/website-s4-icon1.svg";
 import WebsiteS4Icon2 from "../asset/images/website-s4-icon2.svg";
 import WebsiteS4Icon3 from "../asset/images/website-s4-icon3.svg";
 import WebsiteS4Icon4 from "../asset/images/website-s4-icon4.svg";
-// import WebsiteS6FormImg from "../asset/images/website-s6-form-img.svg";
+
 import WebsiteS7Img1 from "../asset/images/Mask group.png";
 import WebsiteS7Img2 from "../asset/images/mask group 2.png";
-//import WebsiteS8Founder from "../asset/images/website-s8-founder.jpeg";
-// const animatedComponents = makeAnimated();
-// function Website() {
-//   // const navigate = useNavigate();
-//   const [selected, setSelected] = useState([]);
-//   const options = [
-//     { label: "Goat ", value: "goat" },
-//     { label: "Fish", value: "fish" },
-//     { label: "Pig", value: "pig" },
-//     { label: "Cow", value: "cow" },
-//     { label: "Chicken", value: "chicken" },
-//     { label: "Sheep", value: "sheep" },
-//     {label: "Snail", value: "snail"}
-//   ];
-//   const [post, setPost] = useState({
-//     email: "",
-//     fullName: "",
-//     farmName: "",
-//     location: "",
-//     productCategory: "",
-//     typesOfLivestock: [""],
-//   });
 
-//   const {
-//     handleSubmit,
-//     register,
-//     reset,
-//     formState: { errors },
-//   } = useForm();
-
-//   const handleInput = (event) => {
-
-//       setPost({ ...post, [event.target.name]: event.target.value });
-//     // }
-//   };
-
-//   const handleWaitingList = async () => {
-//     try {
-//       setPost({...post, typesOfLivestock: selected.map(e=>e.value)})
-//       // console.log(post)
-//       // return;
-//       const result = await accountServices.waitingList(post);
-//       setPost({
-//         email: "",
-//         fullName: "",
-//         farmName: "",
-//         location: "",
-//         productCategory: "",
-//         typesOfLivestock: [""],
-//       })
-//       setSelected([])
-//       alert("You have successfully joined the waitlist");
-//       return;;
-//     } catch (e) {
-//       alert(e.message);
-//     }
-//   };
 
 const animatedComponents = makeAnimated();
 

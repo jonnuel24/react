@@ -48,7 +48,7 @@ const Home = () => {
       <Navbar />
       <section className="section2">
         <header>
-          Welcome <strong>{user.firstName},</strong>
+          Welcome <strong>{user?.firstName},</strong>
         </header>
 
         <div className="section21 mt-[56px]">
