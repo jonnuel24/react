@@ -8,7 +8,7 @@ import { Icon } from "@iconify/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function Navbar() {
+function Navbar({ setSearch }) {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user?.currentUser);
   const isAuthenticated = useSelector((state) => state.user?.isAuthenticated);
@@ -29,7 +29,7 @@ function Navbar() {
 
         <form action="submit" className="flex">
           <div className="search-input">
-            <input className="" type="text" placeholder="Search..." />
+            <input onChange={(e)=>setSearch(e.target.value)} className="" type="text" placeholder="Search..." />
 
             <button type="button" className="text-[#fff] search">
               <Icon

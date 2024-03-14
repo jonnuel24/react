@@ -37,7 +37,7 @@ function Root() {
 
       <Route path="/user" Component={home} />
 
-      <Route path="/productDetails" Component={productDetails} />
+      <Route path="/user/product/:id" Component={productDetails} />
 
       <Route path="/cart" Component={cart} />
 

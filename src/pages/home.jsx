@@ -10,28 +10,38 @@ import { useDispatch, useSelector } from "react-redux";
 import { userServices } from "../services/user.service";
 import { setItems, setSummary } from "../store/reducers/cartReducer";
 import ReactPaginate from "react-paginate";
+import { BeatLoader } from "react-spinners";
 
 const Home = () => {
   const dispatch = useDispatch();
   const [farmProducts, setFarmProducts] = useState([]);
   const [page, setPage] = useState(1);
-  const [size, setSize] = useState(10);
+  const [pages, setPages] = useState(0);
+  const [size, setSize] = useState(15);
+  const [search, setSearch]=useState("");
+  const [loadingProducts, setLoadingProducts]=useState(false);
   const user = useSelector((state) => state.user?.currentUser);
-
+  const handlePageClick=(data)=>{
+    setPage(data.selected+1)
+  }
   useEffect(() => {
     fetchProducts();
     fetchCartItems();
   }, [page, size]);
 
   const fetchProducts = async () => {
+    setLoadingProducts(true)
+    setPages(0)
     try {
       const products = await productServices.all(page, size);
       if (products?.products) {
         setFarmProducts(products.products);
+        setPages(products?.noOfTotalPages)
       }
     } catch (e) {
       console.log(e);
     }
+    setLoadingProducts(false)
   };
   const fetchCartItems = async () => {
     try {
@@ -45,7 +55,7 @@ const Home = () => {
   };
   return (
     <div className="flex flex-col">
-      <Navbar />
+      <Navbar setSearch={setSearch}/>
       <section className="section2">
         <header>
           Welcome <strong>{user?.firstName},</strong>
@@ -87,14 +97,16 @@ const Home = () => {
 
       <section className="card0">
         <div className="flex flex-wrap card1 justify-center">
-          {farmProducts.map((p, i) => (
+          {loadingProducts && <BeatLoader color="#36d7b7" />}
+          {!loadingProducts && farmProducts.map((p, i) => (
             <Card key={i} product={p} />
           ))}
         </div>
         <ReactPaginate
           className="justify-end flex flex-row gap-10 w-full text-black text-bold"
-          pageCount={ farmProducts ? Math.round(farmProducts?.length/ size) : 0}
+          pageCount={pages}
           shape="rounded"
+          onPageChange={handlePageClick}
         />
       </section>
 

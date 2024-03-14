@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
-import { ErrorMessage } from "@hookform/error-message";
 import { notification } from "../services/notification";
 import { BeatLoader } from "react-spinners";
+
 function SignUpForm({ type }) {
+  const [agreed, setAgreed] = useState(false);
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -123,10 +124,13 @@ function SignUpForm({ type }) {
 
   async function signup() {
     try {
+      if(!agreed){
+        notification("You need to agree to the terms", 'error')
+        return
+      }
       setLoading(true);
       if (post.confirmPassword !== post.password) {
         notification("Password and Confirm Password do not match.", "error");
-
         return;
       } else {
         if (errors.email || errors.firstName || errors.lastName) {
@@ -415,7 +419,7 @@ function SignUpForm({ type }) {
           {(type === "FARMER" && step === 1) || type === "USER" ? (
             <div className="cta">
               <div>
-                <Checkbox />
+                <Checkbox  agreed={agreed} setAgreed={setAgreed}/>
               </div>
 
               <div className="flex flex-start">
