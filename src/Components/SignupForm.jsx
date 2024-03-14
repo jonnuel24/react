@@ -29,11 +29,86 @@ function SignUpForm({ type }) {
     noOfEmployees: 0,
     addresses: [],
   });
+  const [errors, setErrors] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    gender: "",
+    phoneNumber: "",
+  });
+  const validateInput = (name, value) => {
+    switch (name) {
+      case "email":
+        // Email validation regex pattern
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!value.match(emailRegex)) {
+          setErrors({
+            ...errors,
+            [name]: "Invalid email format",
+          });
+        } else {
+          setErrors({
+            ...errors,
+            [name]: "",
+          });
+        }
+        break;
+      case "age":
+        const minAge = 18;
+        const maxAge = 120;
+        if (value < minAge || value > maxAge) {
+          setErrors({
+            ...errors,
+            [name]: `Age must be between ${minAge} and ${maxAge}`,
+          });
+        } else {
+          setErrors({
+            ...errors,
+            [name]: "",
+          });
+        }
+        break;
+      case "firstName":
+      case "lastName":
+        const minLength = 2; // Change as per requirement
+        if (value.length < minLength) {
+          setErrors({
+            ...errors,
+            [name]: `${
+              name.charAt(0).toUpperCase() + name.slice(1)
+            } must be at least ${minLength} characters long`,
+          });
+        } else {
+          setErrors({
+            ...errors,
+            [name]: "",
+          });
+        }
+        break;
+      case "phoneNumber":
+        const phoneRegex = /^(7|8|9)[01]\d{8}$/;
+        if (!value.match(phoneRegex)) {
+          setErrors({
+            ...errors,
+            [name]:
+              "Invalid phone number format",
+          });
+        } else {
+          setErrors({
+            ...errors,
+            [name]: "",
+          });
+        }
+        break;
+      default:
+        break;
+    }
+  };
   const {
     handleSubmit,
     register,
     reset,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -43,6 +118,7 @@ function SignUpForm({ type }) {
   };
   const handleInput = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
+    validateInput(event.target.name, event.target.value);
   };
 
   async function signup() {
@@ -50,8 +126,16 @@ function SignUpForm({ type }) {
       setLoading(true);
       if (post.confirmPassword !== post.password) {
         notification("Password and Confirm Password do not match.", "error");
+
         return;
       } else {
+        if (errors.email || errors.firstName || errors.lastName) {
+          notification(
+            "Pleas fill out all field and in the appropriate format",
+            "error"
+          );
+        }
+        post.phoneNumber = "234" + post.phoneNumber;
         const response = await accountServices.createAccount(post);
         if (response.status === "success") {
           notification("Registration was successful", "success");
@@ -98,6 +182,7 @@ function SignUpForm({ type }) {
                     onChange={handleInput}
                     required
                   />
+                  {errors.firstName && <label>{errors.firstName}</label>}{" "}
                 </div>
                 {/* lastname */}
                 <div className="flex flex-col items-start">
@@ -121,10 +206,14 @@ function SignUpForm({ type }) {
                     className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Email"
                     onChange={handleInput}
-                    required
-                    pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"
+                    value={post.email}
                   />
-                  {errors.email && <label>{"Testing Testing"}</label>} {/* Error message */}
+                  {errors.email && (
+                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+                      {errors.email}
+                    </p>
+                  )}{" "}
+                  {/* Error message */}
                 </div>
 
                 {/* gender */}
@@ -147,15 +236,27 @@ function SignUpForm({ type }) {
 
                 <div className="flex flex-col items-start">
                   <label htmlFor="phoneNumber">Phone Number</label>
-                  <input
-                    name="phoneNumber"
-                    type="tel"
-                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Phone Number"
-                    value={post.phoneNumber}
-                    onChange={handleInput}
-                    required
-                  />
+                  <div class="relative mb-6">
+                    <div class="absolute top-0 bottom-[13px] start-0 flex items-center ps-1.5 pointer-events-none">
+                      234
+                    </div>
+                    <input
+                      name="phoneNumber"
+                      type="tel"
+                      className="w-full  ps-10 p-2.5 leading-tight focus:outline-none focus:shadow-outline"
+                      placeholder="80xxxxxxxx"
+                      value={post.phoneNumber}
+                      onChange={handleInput}
+                      required
+                    />
+                  </div>
+                  <div className="w-full">
+                    {errors.phoneNumber && (
+                      <p className="mt-4 w-3 text-sm text-red-600 dark:text-red-500">
+                        {errors.phoneNumber}
+                      </p>
+                    )}{" "}
+                  </div>
                 </div>
                 <div className="flex flex-col items-start">
                   <label htmlFor="phoneNumber">User Type</label>

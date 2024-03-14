@@ -23,21 +23,96 @@ function Login() {
   });
 
   const [loading, setLoading] = useState(false);
-
+  const [errors, setErrors] = useState({
+    email: "",
+  });
   const {
     handleSubmit,
     register,
     reset,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
+
+  const validateInput = (name, value) => {
+    switch (name) {
+      case "email":
+        // Email validation regex pattern
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!value.match(emailRegex)) {
+          setErrors({
+            ...errors,
+            [name]: "Invalid email format",
+          });
+        } else {
+          setErrors({
+            ...errors,
+            [name]: "",
+          });
+        }
+        break;
+      case "age":
+        const minAge = 18;
+        const maxAge = 120;
+        if (value < minAge || value > maxAge) {
+          setErrors({
+            ...errors,
+            [name]: `Age must be between ${minAge} and ${maxAge}`,
+          });
+        } else {
+          setErrors({
+            ...errors,
+            [name]: "",
+          });
+        }
+        break;
+      case "firstName":
+      case "lastName":
+        const minLength = 2; // Change as per requirement
+        if (value.length < minLength) {
+          setErrors({
+            ...errors,
+            [name]: `${
+              name.charAt(0).toUpperCase() + name.slice(1)
+            } must be at least ${minLength} characters long`,
+          });
+        } else {
+          setErrors({
+            ...errors,
+            [name]: "",
+          });
+        }
+        break;
+      case 'phoneNumber':
+        const phoneRegex= /^(7|8|9)[01]\d{8}$/
+        if(!value.match(phoneRegex)) {
+          setErrors({
+            ...errors,
+            [name]: "Invalid phone number format valid formats (80xxxxxxxx and 70xxxxxxxx and 90xxxxxxxx)",
+          });
+        }else{
+          setErrors({
+            ...errors,
+            [name]: "",
+          });
+        }
+        break;
+      default:
+        break;
+    }
+  };
 
   const handleInput = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
+    validateInput(event.target.name, event.target.value);
   };
 
   async function login() {
     setLoading(true)
     try{
+      if(errors.email) {
+        notification("Please fill out the form appropriately", 'error');
+        return;
+      }
       let result = await accountServices.login(post);
       if (typeof result == "string" || result == null || result === "") {
         notification(result, "error");
@@ -90,6 +165,11 @@ function Login() {
                   onChange={handleInput}
                   value={post.email}
                 />
+                  {errors.email && (
+                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+                      {errors.email}
+                    </p>
+                  )}
               </div>
 
               <div className="inputs">
