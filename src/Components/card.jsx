@@ -54,10 +54,10 @@ function Card({ product, cartId = null }) {
         style={{ "--image-url": `url(${product.images[0]})` }}
         className="cattle bg-[image:var(--image-url)] bg-cover bg-no-repeat h-screen"
       >
-        <div className="top-tag">
+        {/* <div className="top-tag">
           <div className="bg-[#006838] text-white">Forsale</div>
           <div className="bg-[#F91919] text-white">New</div>
-        </div>
+        </div> */}
       </div>
 
       <div className="flex information flex-col justify-between">
@@ -71,13 +71,13 @@ function Card({ product, cartId = null }) {
             <span>/ uniT</span>
           </h1>
 
-          <div className="flex justify-between gap-1 discount">
+          {/* <div className="flex justify-between gap-1 discount">
             <div className="bg-[#F91919] text-white">30% off</div>
 
             <div className="bg-[#155840] text-white">{product?.age} Years</div>
 
             <div className="bg-[#36454C] text-white">Sagamulga</div>
-          </div>
+          </div> */}
         </div>
 
         {/* <img src={Farmer} alt="" className="bb" /> */}

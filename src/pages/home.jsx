@@ -52,7 +52,7 @@ const Home = () => {
         </header>
 
         <div className="section21 mt-[56px]">
-          <div className="section22">
+          {/* <div className="section22">
             <a href="/" className="bg-[#006838] active">
               <div className="text-white">All</div>
             </a>
@@ -71,7 +71,7 @@ const Home = () => {
             <a href="/">
               <div>Lowest Price</div>
             </a>
-          </div>
+          </div> */}
 
           {/* <div className='section23'>
               <AnimalProfile />

@@ -1,7 +1,7 @@
 import "./App.css";
 import Root from "./routes/root";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BeatLoader, ClipLoader } from "react-spinners";
+// import { BeatLoader, ClipLoader } from "react-spinners";
 // Importing toastify module
 import { ToastContainer } from "react-toastify";
 
