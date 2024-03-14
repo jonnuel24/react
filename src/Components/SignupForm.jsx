@@ -252,7 +252,7 @@ function SignUpForm({ type }) {
                   </div>
                   <div className="w-full">
                     {errors.phoneNumber && (
-                      <p className="mt-4 w-3 text-sm text-red-600 dark:text-red-500">
+                      <p className="mt-4 text-sm text-red-600 dark:text-red-500">
                         {errors.phoneNumber}
                       </p>
                     )}{" "}
