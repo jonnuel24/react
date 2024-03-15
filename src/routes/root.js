@@ -5,7 +5,7 @@ import Login from "../pages/login";
 import createAccount from "../pages/createAccount";
 import home from "../pages/home";
 import { Route, Routes } from "react-router-dom";
-import productDetails from "../pages/productDetails";
+import ProductDetails from "../pages/productDetails";
 import Form from "../pages/form";
 import forgotPassword from "../pages/forgotPassword";
 import resetPassword from "../pages/resetPassword";
@@ -37,7 +37,7 @@ function Root() {
 
       <Route path="/user" Component={home} />
 
-      <Route path="/user/product/:id" Component={productDetails} />
+      <Route path="/user/product/:id" Component={ProductDetails} />
 
       <Route path="/cart" Component={cart} />
 

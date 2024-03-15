@@ -247,7 +247,7 @@ function SignUpForm({ type }) {
                     <input
                       name="phoneNumber"
                       type="tel"
-                      className="w-full  ps-10 p-2.5 leading-tight focus:outline-none focus:shadow-outline"
+                      className="w-full border-1 border-gray-600  ps-10 p-2.5 leading-tight focus:outline-none focus:shadow-outline"
                       placeholder="80xxxxxxxx"
                       value={post.phoneNumber}
                       onChange={handleInput}
