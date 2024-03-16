@@ -8,7 +8,7 @@ import { Icon } from "@iconify/react";
 import ProfileSidePannel from "../Components/profileSidePannel";
 import { useSelector } from "react-redux";
 function Profile() {
-  const user=useSelector(state=>state.user?.currentUser)
+  const user = useSelector((state) => state.user?.currentUser);
 
   console.log(user);
   return (
@@ -16,50 +16,62 @@ function Profile() {
       <Navbar />
       <div className="py-4 px-32 flex flex-row gap-4">
         <div className="flex flex-col flex-1 basis-2/5 ">
-          <ProfileSidePannel user={user}/>
+          <ProfileSidePannel user={user} />
         </div>
         {/* right div */}
-        <div className="flex flex-col flex-1 basis-3/5 gap-4 mt-24">
+
+        <div className="flex flex-col flex-1 basis-3/5 gap-4 mt-10">
+          <div className="w-100 text-right">
+          <button>
+            <Icon
+              icon="fluent:edit-12-regular"
+              color="#f91919"
+              width="18.3"
+              height="18"
+            />
+          </button>
+          </div>
+
           <div className="p-div4-right">
             {/* p-div4-right-nav */}
             <div className="flex flex-row justify-between items-center p-div4-right-nav px-8 py-3">
               <h3 className="">Customer Profile</h3>
-              <Icon
-                icon="fluent:edit-12-regular"
-                color="#f91919"
-                width="18.3"
-                height="18"
-              />
             </div>
             <div className="flex flex-row justify-between px-16 py-4 ">
-              <table className="table-auto pdr-table">
-                <tbody className="text-left">
-                  <tr className="">
-                    <td className=" px-4">First Name:</td>
-                    <td className=" px-4 ml-2">{user?.firstName}</td>
-                  </tr>
-                  <tr>
-                    <td className=" px-4">Last Name:</td>
-                    <td className=" px-4 ml-2">{user?.lastName}</td>
-                  </tr>
-                  <tr>
-                    <td className=" px-4">Email:</td>
-                    <td className=" px-4 ml-2">{user?.email}</td>
-                  </tr>
-                  <tr>
-                    <td className=" px-4">Birthday:</td>
-                    <td className=" px-4 ml-2">{user?.dateOfBirth}</td>
-                  </tr>
-                  <tr>
-                    <td className=" px-4">Phone Number:</td>
-                    <td className=" px-4 ml-2">{user?.phoneNumber}</td>
-                  </tr>
-                  <tr>
-                    <td className=" px-4">Gender:</td>
-                    <td className=" px-4 ml-2">{user?.gender}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="flex flex-col items-start gap-2 user-profile">
+                <div className="flex flex-col items-start">
+                  <label htmlFor="">First name</label>
+                  <div className="text-[20px] font-semibold">
+                    {user?.firstName}
+                  </div>
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="">Last name</label>
+                  <div className="text-[20px] font-semibold">
+                    {user?.lastName}
+                  </div>
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="">Email</label>
+                  <div className="text-[20px] font-semibold">{user?.email}</div>
+                </div>
+                {/* <div className="flex flex-col items-start">
+                  <label htmlFor="">Birthday</label>
+                  <div className="text-[20px] font-semibold">{user?.dateOfBirth}</div>
+                </div> */}
+                <div className="flex flex-col items-start">
+                  <label htmlFor="">Phone number</label>
+                  <div className="text-[20px] font-semibold">
+                    {user?.phoneNumber}
+                  </div>
+                </div>
+                <div className="flex flex-col items-start">
+                  <label htmlFor="">Gender</label>
+                  <div className="text-[20px] font-semibold">
+                    {user?.gender}
+                  </div>
+                </div>
+              </div>
               <div className="flex flex-col h-fit p-div4-right2 py-6 px-8 gap-2 box-border w-320">
                 <figure className="flex flex-col gap-3">
                   <figcaption>Profile Image</figcaption>
@@ -67,9 +79,9 @@ function Profile() {
                     <img src={profileImg} alt="" />
                   </div>
                 </figure>
-                <button type="button" className="py-3 px-4">
+                {/* <button type="button" className="py-3 px-4">
                   Upload New
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
@@ -78,30 +90,20 @@ function Profile() {
           <div className="p-div4-right">
             <div className="flex flex-row justify-between items-center p-div4-right-nav px-8 py-3">
               <h3 className="">Shipping Address </h3>
-              <Icon
-                icon="fluent:edit-12-regular"
-                color="#f91919"
-                width="18.3"
-                height="18"
-              />
             </div>
             <div className="px-16 py-8">
-              <table className="table-auto border-separate border-spacing-2 pdr-table">
-                <tbody className="text-left gap-2 ">
-                  <tr className="">
-                    <td className="px-4">Address:</td>
-                    <td className="px-4 ml-2 mt-2 border">River Park</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4">State:</td>
-                    <td className="px-4 ml-2 mt-2 border">FCT</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4">Country:</td>
-                    <td className="px-4 ml-2 border">Nigeria</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="flex flex-col items-start">
+                <label htmlFor="">Address</label>
+                <div className="text-[20px] font-semibold">{user?.address}</div>
+              </div>
+              <div className="flex flex-col items-start">
+                <label htmlFor="">State</label>
+                <div className="text-[20px] font-semibold">{user?.state}</div>
+              </div>
+              <div className="flex flex-col items-start">
+                <label htmlFor="">Country</label>
+                <div className="text-[20px] font-semibold">{user?.country}</div>
+              </div>
             </div>
           </div>
         </div>

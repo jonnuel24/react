@@ -13,6 +13,7 @@ import verificationCode from "../pages/verificationCode";
 import CheckMail from "../pages/checkMail";
 import PasswordChanged from "../pages/passwordChanged";
 import Profile from "../pages/profile";
+import Profile_edit from "../pages/profile_edit";
 import Wishlist from "../pages/wishlist";
 
 import cart from "../pages/cart";
@@ -52,6 +53,7 @@ function Root() {
       <Route path="/checkMail" Component={CheckMail} />
       <Route path="/passwordChanged" Component={PasswordChanged} />
       <Route path="/profile" Component={Profile} />
+      <Route path="/profile_edit" Component={Profile_edit} />
       <Route path="/wishlist" Component={Wishlist} />
       <Route path="/notification" Component={Notification} />
       <Route path="/payment" Component={Payment} />
