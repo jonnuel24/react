@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import Farmer from "../asset/images/farmer.svg";
 import "../asset/styles/card.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,12 +8,21 @@ import {
   setSummary,
 } from "../store/reducers/cartReducer";
 import { userServices } from "../services/user.service";
+import { BeatLoader } from "react-spinners";
+import { notification } from "../services/notification";
+import { useNavigate } from "react-router-dom";
 
 function Card({ product, cartId = null }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user?.currentUser);
   const products = useSelector((state) => state.cart?.cartItems);
+  const [processing, setProcessing]=useState(false);
+  const navigate=useNavigate()
+  const viewProduct=(productId)=>{
+    navigate(`/user/product/${productId}`)
+  }
   const addToCart = async (productId) => {
+    setProcessing(true)
     try {
       const payload = {
         userId: user.id,
@@ -21,24 +30,24 @@ function Card({ product, cartId = null }) {
         quantity: 1,
       };
       const response = await userServices.addToCart(payload);
-      alert(response?.message);
+      notification(response?.message, 'success');
       dispatch(setItems(response.data?.cartItems));
       dispatch(setSummary(response?.data?.cart));
-      // dispatch(increaseCartCount())
-      console.log("cart products", products);
     } catch (e) {
-      console.log(e.message);
+      notification(e.message, 'info')
     }
+    setProcessing(false)
   };
 
   const removeCart = async () => {
+    setProcessing(true)
     try {
       const response = await userServices.removeCart({
         userId: user.id,
         cartItemId: cartId,
       });
       if(response && response.status==='success'){
-        alert(response?.message);
+        notification(response?.message, 'success');
         dispatch(setItems(response.data?.cartItems));
         dispatch(setSummary(response?.data?.cart));
       }else{
@@ -47,11 +56,12 @@ function Card({ product, cartId = null }) {
     } catch (e) {
       alert(e.message)
     }
+    setProcessing(false)
   };
   return (
-    <div className="flex flex-col card  h-auto items-center">
+    <div onClick={()=>viewProduct(product?.id)} className="cursor-pointer flex flex-col card  h-auto items-center">
       <div
-        style={{ "--image-url": `url(${product.images[0]})` }}
+        style={{ "--image-url": `url(${product?.images[0]})` }}
         className="cattle bg-[image:var(--image-url)] bg-cover bg-no-repeat h-screen"
       >
         {/* <div className="top-tag">
@@ -83,7 +93,8 @@ function Card({ product, cartId = null }) {
         {/* <img src={Farmer} alt="" className="bb" /> */}
 
         <div className="flex flex-col right-card-body">
-          {!cartId && (
+        {processing && <BeatLoader color="#36d7b7" />}
+          {!cartId && !processing && (
             <button
               onClick={() => addToCart(product?.id)}
               className="btn btn-success mt-[24px] h-[56px]"
@@ -91,7 +102,7 @@ function Card({ product, cartId = null }) {
               ADD TO CART
             </button>
           )}
-          {cartId && (
+          {cartId && !processing && (
             <button
               onClick={() => removeCart()}
               className="btn btn-success mt-[24px] h-[56px]"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Components/navbar";
 import Footer from "../Components/footer";
 import Card from "../Components/card";
@@ -12,7 +12,6 @@ function Cart() {
   const cartCount=useSelector(state=>state.cart?.count)
   const cartItems=useSelector(state=>state.cart?.items)
   const cartSummary=useSelector(state=>state.cart?.summary)
-  console.log('cart summaries',cartItems)
   return (
     <div>
       <Navbar />
@@ -29,11 +28,11 @@ function Cart() {
           
             <img src={arrow} alt="" />
           </div>
-          <div className="price2">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'NGN' }).format(cartSummary.totalProductCost)}</div>
+          <div className="price2">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'NGN' }).format(cartSummary?.totalProductCost)}</div>
         </div>
 
         <div className="cart-div3">
-          <div className="font-medium flex items-start">Items in <span className="font-bold">cart ({cartSummary.overallQuantity})</span></div>
+          <div className="font-medium flex items-start">Items in <span className="font-bold">cart ({cartSummary?.overallQuantity})</span></div>
           <div className="  cart-items">
             {cartItems?.map(e=>{
               return (<Card cartId={e.id} product={e.product} />)

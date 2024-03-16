@@ -51,17 +51,19 @@ function Addproduct() {
   };
 
   const cloudUpload = () => {
-    setUploading(true)
+    // setUploading(true)
+    setLoading(true);
     try {
       setImages([]);
       uploadImages.forEach(async (e, index) => {
         if (e != null) await cloudinaryUpload(e);
         if(index===uploadImages.length-1){
-          setUploading(false)
+          // setUploading(false)
+         await createProduct();
         }
       });
     } catch (e) {
-      notification(e.message,'info');
+      // notification(e.message,'info');
       console.log(e);
     }
 
@@ -85,7 +87,6 @@ function Addproduct() {
       notification("File Uploaded successfully", 'success');
       // console.log(imagesURL);
     } catch (e) {
-      console.log(e);
       notification(e.message, 'info');
     }
   };
@@ -93,8 +94,6 @@ function Addproduct() {
   const createProduct = async () => {
     setLoading(true);
     try {
-
-      console.log("images before submissions", product.images);
       const response = await productServices.add(product);
       if (response.statusCode === 200) {
         notification("Product added successfully",'success');
@@ -143,14 +142,14 @@ function Addproduct() {
             </div>
 
             {/* end of card */}
-            {!uploading && 
+            {/* {!uploading && 
             <button
               onClick={() => cloudUpload()}
               className="w-[170px] h-[50px] bg-[#6ABD45] text-white rounded-md"
             >
               Upload
             </button>}
-            {uploading && <BeatLoader color="#36d7b7" />}
+            {uploading && <BeatLoader color="#36d7b7" />} */}
           </div>
           {/* end of add products */}
           {/* add details */}
@@ -271,7 +270,7 @@ function Addproduct() {
             {!loading && 
             <button
               id="create-button"
-              onClick={createProduct}
+              onClick={cloudUpload}
               className="w-[170px] h-[50px] bg-black text-white rounded-md"
             >
               Save Details
