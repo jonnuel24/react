@@ -364,7 +364,6 @@ function SignUpForm({ type }) {
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">Street</label>
                   <input
-                    className="form-select"
                     id="street"
                     onChange={handleInput}
                     name="street"
@@ -384,7 +383,7 @@ function SignUpForm({ type }) {
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">Farm Name</label>
                   <input
-                    className="form-select"
+                    
                     id="farmName"
                     onChange={handleInput}
                     name="farmName"
@@ -395,7 +394,6 @@ function SignUpForm({ type }) {
                   <label htmlFor="country">Date of Establishment</label>
                   <input
                     type="date"
-                    className="form-select"
                     id="dateOfEstablishment"
                     onChange={handleInput}
                     name="dateOfEstablishment"
@@ -406,7 +404,6 @@ function SignUpForm({ type }) {
                   <label htmlFor="country">Number of Employees</label>
                   <input
                     type="number"
-                    className="form-select"
                     id="noOfEmployees"
                     onChange={handleInput}
                     name="noOfEmployees"
