@@ -51,6 +51,8 @@ function ProductDetails() {
     setLoadingProducts(false);
   };
 
+ 
+
   const addToCart = async (productId) => {
     setProcessing(true);
     try {
@@ -69,6 +71,8 @@ function ProductDetails() {
     }
     setProcessing(false);
   };
+
+  
   return (
     <div>
       <Navbar />
@@ -87,7 +91,7 @@ function ProductDetails() {
                   style={{ "--image-url": `url(${product?.images[0]})` }}
                   className="product-img bg-[image:var(--image-url)]"
                 >
-                  <div className="new">New</div>
+                  {/* <div className="new">New</div> */}
                 </div>
 
                 <div className="product-details">
@@ -375,7 +379,7 @@ function ProductDetails() {
                 <a href="/" className="button1">
                   RELATED LISTINGS
                 </a>
-                <a href="/" className="button2">
+                <a href="#" className="button2">
                   NEARBY LISTINGS
                 </a>
               </div>

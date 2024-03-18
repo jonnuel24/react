@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar";
 import Footer from "../Components/footer";
 import profileImg from "../asset/images/profile_img.png";
@@ -22,14 +22,16 @@ function Profile() {
 
         <div className="flex flex-col flex-1 basis-3/5 gap-4 mt-10">
           <div className="w-100 text-right">
-          <button>
-            <Icon
-              icon="fluent:edit-12-regular"
-              color="#f91919"
-              width="18.3"
-              height="18"
-            />
-          </button>
+            <Link to="/profile_edit">
+              <button>
+                <Icon
+                  icon="fluent:edit-12-regular"
+                  color="#f91919"
+                  width="18.3"
+                  height="18"
+                />
+              </button>
+            </Link>
           </div>
 
           <div className="p-div4-right">
