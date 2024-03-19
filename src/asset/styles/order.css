@@ -1,0 +1,17 @@
+.button-active {
+  width: 197px;
+  height: 66px;
+  background-color: #006300;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.button-inactive{
+  width: 197px;
+  height: 66px;
+  background-color: white;
+  color: #5a5a5a;
+  font-size: 24px;
+  font-weight: bold;
+}

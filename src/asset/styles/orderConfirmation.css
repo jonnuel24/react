@@ -1,0 +1,12 @@
+.custom-order-button {
+  width: 340px;
+  height: 64px;
+}
+
+.custom-close-button {
+  width: 60px !important;
+  height: 60px !important;
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+}

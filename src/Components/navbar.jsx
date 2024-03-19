@@ -54,7 +54,7 @@ function Navbar({ setSearch }) {
             </li>
           </Link>
 
-          <Link>
+          <Link to={"/OrderConfirmation"}>
             <li>
               <Icon icon="lucide:tag" color="white" className="icon" />
               Orders

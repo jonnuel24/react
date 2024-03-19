@@ -15,6 +15,11 @@ import PasswordChanged from "../pages/passwordChanged";
 import Profile from "../pages/profile";
 import Profile_edit from "../pages/profile_edit";
 import Wishlist from "../pages/wishlist";
+import Order_Confirmation from "../pages/OrderConfirmation"
+import TrackOrder from "../pages/trackOrder";
+import Order from "../pages/order";
+import OrderPending from "../pages/orderPending"
+import OrderComplete from "../pages/orderComplete"
 
 import cart from "../pages/cart";
 import delivery from "../pages/delivery";
@@ -57,6 +62,11 @@ function Root() {
       <Route path="/wishlist" Component={Wishlist} />
       <Route path="/notification" Component={Notification} />
       <Route path="/payment" Component={Payment} />
+      <Route path="/OrderConfirmation" Component={Order_Confirmation} /> 
+      <Route path="/trackOrder" Component={TrackOrder} /> 
+      <Route path="/order" Component={Order} />
+      <Route path="/orderPending" Component={OrderPending} />
+      <Route path="/orderComplete" Component={OrderComplete} />
 
       {/* Farmer */}
       <Route path="/farmer" Component={Dashboard} />
