@@ -1,0 +1,8 @@
+.wishlist-status-active{
+  padding: 2px;
+  border: 1px solid green;
+  border-radius: 16px;
+  background-color: rgb(237, 255, 237);
+  color: green;
+  font-weight: 500;
+}

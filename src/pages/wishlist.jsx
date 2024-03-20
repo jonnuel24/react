@@ -9,6 +9,7 @@ import { Icon } from "@iconify/react";
 import ProfileSidePannel from "../Components/profileSidePannel";
 import WishlistCard from "../Components/wishlistCard";
 // import Picon from "../Components/p-icon";
+import "../asset/styles/wishlist.css";
 
 function Wishlist() {
   const linkStyle = {
@@ -31,77 +32,108 @@ function Wishlist() {
           <ProfileSidePannel />
         </div>
         {/* right-div */}
-        <div className="flex flex-col flex-1 basis-3/5 gap-4 mt-24">
-          <div className="flex flex-row gap-3 items-center">
-            <div className="p-pic">
-              <img src={profileImg} alt="" />
-            </div>
+        <div className="flex flex-col flex-1 basis-3/5 gap-4 mt-24 border-[1px] rounded-[10px] p-[16px]">
+          <div className="flex flex-row gap-2 items-center">
+            <div className="text-[24px] font-bold">Wishlist</div>
             <Icon
-              icon="icon-park-outline:like"
+              icon="flat-color-icons:like"
               color="black"
               width="16"
               height="16"
             />
-            <h3>Wishlist</h3>
           </div>
           <div>
-            <table className="w-full table-fixed border border-spacing-y-4">
-              <thead className="text-left">
-                <tr className="border border-slate-600 ...">
-                  <th className="px-6 py-4">Product</th>
-                  <th className="px-6 py-4">Date Added</th>
-                  <th className="px-6 py-4">Unit Price</th>
-                  <th className="px-6 py-4">Quantity</th>
-                  <th className="px-6 py-4">Stock</th>
-                </tr>
-              </thead>
-              <tbody className="text-left ">
-                <tr className="border border-slate-600 ...">
-                  <td className="px-6 py-4">
-                    <WishlistCard />{" "}
-                  </td>
-                  <td className="px-6 py-4">March 20,2013</td>
-                  <td className="px-6 py-4">#240,000</td>
-                  <td className="px-6 py-4">
-                    <select name="" id="num" className="" style={linkStyle}>
-                      {options.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                      {/* <option value="1" selected>
-                        1
-                      </option>
-                      <option value="2">2</option>
-                      <option value="3">3</option> */}
-                    </select>
-                  </td>
-                  <td className="px-6 py-4">#240,000</td>
-                </tr>
-              </tbody>
-            </table>
-            {/* <table className="table-auto pdr-table">
-              <thead className="text-left">
-                <tr className="gap-4">
-                  <th>Product</th>
-                  <th>Date Added</th>
-                  <th>Unit Price</th>
-                  <th>Quantity</th>
-                  <th>Stock</th>
-                </tr>
-              </thead>
-              <tbody className="text-left">
-                <tr className="flex items-center gap-16">
-                  <td>
+            <div className="flex flex-col gap-[16px]">
+              {/* Table Header */}
+              <div className="flex flex-row border-[1px] rounded-[10px] py-[8px] items-center">
+                <div className="w-[30%] py-2 text-center text-[18px] font-medium">
+                  Product
+                </div>
+                <div className="w-[20%] py-2 text-center text-[18px] font-medium">
+                  Date Added
+                </div>
+                <div className="w-[15%] py-2 text-center text-[18px] font-medium">
+                  Price
+                </div>
+                <div className="w-[15%] py-2 text-center text-[18px] font-medium">
+                  Status
+                </div>
+                <div className="w-[20%] py-2 text-center text-[18px] font-medium">
+                  Action
+                </div>
+              </div>
+
+              {/* Table Body */}
+              <div className="flex flex-col gap-[16px]">
+                {/* tb row1 */}
+                <div className="flex flex-row border-[1px] rounded-[10px] py-[8px] items-center">
+                  <div className="w-[30%] py-2 flex item justify-center">
                     <WishlistCard />
-                  </td>
-                  <td>March 20,2013</td>
-                  <td>#240,000</td>
-                  <td className="items-center flex"><Picon width={11} height={11} color="#3DB54A" />
-                  in stock</td>
-                </tr>
-              </tbody>
-            </table> */}
+                  </div>
+                  <div className="w-[20%] py-2 text-center">
+                    March 24th, 2024
+                  </div>
+                  <div className="w-[15%] py-2 text-center">N30,000</div>
+                  <div className="w-[15%] py-2 text-center">
+                    <div className="wishlist-status-active">In Stock</div>
+                  </div>
+                  <div className="w-[20%] py-2 flex justify-center">
+                    <div className="flex flex-row gap-[16px] items-center">
+                      <button>
+                        <Icon
+                          icon="fa-solid:cart-plus"
+                          width="64"
+                          height="64"
+                          style={{ color: "green" }}
+                        />
+                      </button>
+                      <button>
+                        <Icon
+                          icon="fluent:delete-32-regular"
+                          width="64"
+                          height="64"
+                          style={{ color: "red" }}
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                {/* tb row2 */}
+                <div className="flex flex-row border-[1px] rounded-[10px] py-[8px] items-center">
+                  <div className="w-[30%] py-2 flex item justify-center">
+                    <WishlistCard />
+                  </div>
+                  <div className="w-[20%] py-2 text-center">
+                    March 24th, 2024
+                  </div>
+                  <div className="w-[15%] py-2 text-center">N30,000</div>
+                  <div className="w-[15%] py-2 text-center">
+                    <div className="wishlist-status-active">In Stock</div>
+                  </div>
+                  <div className="w-[20%] py-2 flex justify-center">
+                    <div className="flex flex-row gap-[16px] items-center">
+                      <button>
+                        <Icon
+                          icon="fa-solid:cart-plus"
+                          width="64"
+                          height="64"
+                          style={{ color: "green" }}
+                        />
+                      </button>
+                      <button>
+                        <Icon
+                          icon="fluent:delete-32-regular"
+                          width="64"
+                          height="64"
+                          style={{ color: "red" }}
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>

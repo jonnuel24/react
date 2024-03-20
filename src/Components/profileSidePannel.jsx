@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import profileImg from "../asset/images/profile_img.png";
 import "../asset/styles/profileSidePannel.css";
 import { Icon } from "@iconify/react";
@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../store/reducers/userReducer";
 import { clear } from "../store/reducers/cartReducer";
 
-function ProfileSidePannel({user}) {
+function ProfileSidePannel({ user }) {
   // Initialize state to track whether the dropdown is open or closed
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const dispatch = useDispatch();
@@ -27,36 +27,30 @@ function ProfileSidePannel({user}) {
         <div className="text-left">
           <h3 className="sp-head">Customer Profile</h3>
         </div>
-        <Link to={'/profile'} style={linkStyle}>
+        <Link to={"/profile"} style={linkStyle}>
           <div className="flex h-fit items-center gap-2 p-div4">
             <div className="p-pic">
               <img src={profileImg} alt="" />
             </div>
-            <h3>{user?.firstName} {user?.lastName}</h3>
+            <h3>
+              {user?.firstName} {user?.lastName}
+            </h3>
           </div>
         </Link>
         <div className="profileSettings flex h-fit flex-col items-start py-4 gap-4">
           <div className="pl-16 flex flex-col items-start gap-4 profileSetting-div1 w-full">
-            <div className="">
-              <Icon
-                icon="majesticons:tag-line"
-                color="black"
-                width="32"
-                height="32"
-                className="ps-div-icon"
-              />
-              My Orders
-            </div>
-            <div>
-              <Icon
-                icon="mingcute:map-pin-fill"
-                color="black"
-                width="32"
-                height="32"
-                className="ps-div-icon"
-              />{" "}
-              Wishlist
-            </div>
+            <Link to={"/wishlist"} style={linkStyle}>
+              <div>
+                <Icon
+                  icon="mingcute:map-pin-fill"
+                  color="black"
+                  width="32"
+                  height="32"
+                  className="ps-div-icon"
+                />{" "}
+                Wishlist
+              </div>
+            </Link>
             <div>
               <Icon
                 icon="iconamoon:notification"
@@ -105,22 +99,22 @@ function ProfileSidePannel({user}) {
                       flex flex-col items-end dropDownMenu"
                 >
                   <li>
-                    <Link >Change Password</Link>
+                    <Link>Change Password</Link>
                   </li>
                   <li>
-                    <Link >Pin Settings</Link>
+                    <Link>Pin Settings</Link>
                   </li>
                   <li>
-                    <Link >Delete Account</Link>
+                    <Link>Delete Account</Link>
                   </li>
                 </ul>
               )}
             </div>
           </div>
           <div
-            onClick={()=>{
-              dispatch(logOut())
-              dispatch(clear())
+            onClick={() => {
+              dispatch(logOut());
+              dispatch(clear());
             }}
             style={linkStyle}
             className="cursor-pointer p-logout pl-16 py-3 flex flex-1 w-full"
