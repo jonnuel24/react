@@ -99,14 +99,10 @@ function ProfileSidePannel({ user }) {
                       flex flex-col items-end dropDownMenu"
                 >
                   <li>
-                    <Link>Change Password</Link>
+                    <Link to={"/changePassword"}>Change Password</Link>
                   </li>
-                  <li>
-                    <Link>Pin Settings</Link>
-                  </li>
-                  <li>
-                    <Link>Delete Account</Link>
-                  </li>
+                  
+                  
                 </ul>
               )}
             </div>
