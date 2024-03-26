@@ -1,16 +1,24 @@
 import Checkbox from "../Components/checkbox";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 import { notification } from "../services/notification";
 import { BeatLoader } from "react-spinners";
+import "react-country-state-city/dist/react-country-state-city.css";
+import { GetCountries, GetState, GetCity } from "react-country-state-city";
+import { getStatesOfCountry } from "country-state-city/lib/state";
+import data from '../asset/countries+states+cities.json'
 
 function SignUpForm({ type }) {
   const [agreed, setAgreed] = useState(false);
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
   const [post, setPost] = useState({
     firstName: "",
     lastName: "",
@@ -36,6 +44,7 @@ function SignUpForm({ type }) {
     email: "",
     gender: "",
     phoneNumber: "",
+    terms:""
   });
   const validateInput = (name, value) => {
     switch (name) {
@@ -91,8 +100,7 @@ function SignUpForm({ type }) {
         if (!value.match(phoneRegex)) {
           setErrors({
             ...errors,
-            [name]:
-              "Invalid phone number format",
+            [name]: "Invalid phone number format",
           });
         } else {
           setErrors({
@@ -105,15 +113,31 @@ function SignUpForm({ type }) {
         break;
     }
   };
+  const handleCountryChange = (event) => {
+    const { value, name } = event.target;
+    let selectCountry = {};
+    if (name == "country") {
+      const result=data.find(c=>c.name==value)
+      // console.log('STATES', result);
+      setStates(result.states)
+    }
+    if (name == "state") {
+      const result=states.find(s=>s.name==value)
+      setCities(result.cities)
+    }
+
+    setPost({ ...post, [name]: value });
+    // validateInput(event.target.name, event.target.value);
+  };
   const {
     handleSubmit,
-    register,
-    reset,
+    // register,
+    // reset,
     // formState: { errors },
   } = useForm();
 
-  const [showPassword, setShowPassword] = useState(false);
-
+  useEffect(() => {
+  }, []);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -124,23 +148,29 @@ function SignUpForm({ type }) {
 
   async function signup() {
     try {
-      if(!agreed){
-        notification("You need to agree to the terms", 'error')
-        return
+      if (!agreed) {
+        notification("You need to agree to the terms", "error");
+        return;
       }
       setLoading(true);
       if (post.confirmPassword !== post.password) {
         notification("Password and Confirm Password do not match.", "error");
         return;
       } else {
-        if (errors.email || errors.firstName || errors.lastName) {
+        if (
+          errors.email ||
+          errors.firstName ||
+          errors.lastName ||
+          errors.phoneNumber
+        ) {
           notification(
             "Pleas fill out all field and in the appropriate format",
             "error"
           );
         }
-        post.phoneNumber = "234" + post.phoneNumber;
-        const response = await accountServices.createAccount(post);
+        const payload = post;
+        payload.phoneNumber = "234" + post.phoneNumber;
+        const response = await accountServices.createAccount(payload);
         if (response.status === "success") {
           notification("Registration was successful", "success");
           navigate("/login");
@@ -184,6 +214,7 @@ function SignUpForm({ type }) {
                     placeholder="Firstname"
                     value={post.firstName}
                     onChange={handleInput}
+                    pattern="[a-zA-Z\s']{1,45}"
                     required
                   />
                   {errors.firstName && <label>{errors.firstName}</label>}{" "}
@@ -199,6 +230,7 @@ function SignUpForm({ type }) {
                     value={post.lastName}
                     onChange={handleInput}
                     required
+                    pattern="[a-zA-Z\s']{1,45}"
                   />
                 </div>
                 {/* email */}
@@ -206,6 +238,7 @@ function SignUpForm({ type }) {
                   <label htmlFor="email">Email</label>
                   <input
                     name="email"
+                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     type="email"
                     className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Email"
@@ -252,6 +285,7 @@ function SignUpForm({ type }) {
                       value={post.phoneNumber}
                       onChange={handleInput}
                       required
+                      pattern="^(7|8|9)[01]\d{8}$"
                     />
                   </div>
                   <div className="w-full">
@@ -265,12 +299,11 @@ function SignUpForm({ type }) {
                 <div className="flex flex-col items-start">
                   <label htmlFor="phoneNumber">User Type</label>
                   <input
-                    name="phoneNumber"
-                    type="tel"
+                    name="userType"
+                    type="text"
                     className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Phone Number"
+                    placeholder="User Type"
                     value={post.userType}
-                    onChange={handleInput}
                     readOnly
                   />
                 </div>
@@ -329,37 +362,59 @@ function SignUpForm({ type }) {
               <>
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">Country</label>
-                  <input
+
+                  <select
                     name="country"
-                    type="tel"
-                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Phone Number"
-                    value={post.country}
-                    onChange={handleInput}
+                    className="form-select"
+                    onChange={handleCountryChange}
                     required
-                  />
+                  >
+                    <option disabled selected hidden>
+                      Select a country...
+                    </option>
+                    {data?.map((c) => (
+                      <option key={c.id} value={c.name}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">State</label>
-                  <input
+                  <select
                     type="text"
                     className="form-select"
                     id="state"
-                    onChange={handleInput}
+                    onChange={handleCountryChange}
                     name="state"
-                    value={post.state}
-                  />
+                  >
+                    <option defaultValue>
+                      Choose State/Province/Region...
+                    </option>
+                    {states.map((state) => (
+                      <option key={state.id} value={state.name}>
+                        {state.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">city</label>
-                  <input
-                    type="text"
+                  <select
                     className="form-select"
                     id="city"
-                    onChange={handleInput}
+                    onChange={handleCountryChange}
                     name="city"
-                    value={post.city}
-                  />
+                  >
+                         <option defaultValue>
+                      Choose State/Province/Region...
+                    </option>
+                    {cities.map((city) => (
+                      <option key={city.id} value={city.name}>
+                        {city.name}
+                      </option>
+                    ))}
+                    </select>
                 </div>
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">Street</label>
@@ -373,7 +428,7 @@ function SignUpForm({ type }) {
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">Local Government Area</label>
                   <input
-                    className="form-select"
+                    className=""
                     id="localGovtArea"
                     onChange={handleInput}
                     name="localGovtArea"
@@ -383,7 +438,6 @@ function SignUpForm({ type }) {
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">Farm Name</label>
                   <input
-                    
                     id="farmName"
                     onChange={handleInput}
                     name="farmName"
@@ -416,18 +470,20 @@ function SignUpForm({ type }) {
           {(type === "FARMER" && step === 1) || type === "USER" ? (
             <div className="cta">
               <div>
-                <Checkbox  agreed={agreed} setAgreed={setAgreed}/>
+                <Checkbox agreed={agreed} setAgreed={setAgreed} />
               </div>
 
               <div className="flex flex-start">
-                <button
-                  disabled={loading}
-                  onClick={() => setStep(0)}
-                  className="mr-10 btn btn-success btn-lg button"
-                  type="button"
-                >
-                  Previous
-                </button>
+                {type === "FARMER" && (
+                  <button
+                    disabled={loading}
+                    onClick={() => setStep(0)}
+                    className="mr-10 btn btn-success btn-lg button"
+                    type="button"
+                  >
+                    Previous
+                  </button>
+                )}
                 {!loading && (
                   <button
                     className="btn btn-success btn-lg button"
