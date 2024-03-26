@@ -124,7 +124,7 @@ function Login() {
         dispatch(setIsAuthenticated(true));
         localStorage.setItem("token", result.data.token);
         localStorage.setItem("currentUser", JSON.stringify(result.data));
-        notification("login successful, click 'OK' to continue", "success");
+        notification("login successful", "success");
         if (result.data.userType === "USER") {
           navigate("/user");
         } else {
