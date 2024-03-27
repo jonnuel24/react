@@ -21,6 +21,7 @@ import Order from "../pages/order";
 import OrderPending from "../pages/orderPending"
 import OrderComplete from "../pages/orderComplete"
 import ChangePassword from "../pages/changePassword"
+import Faq from "../pages/faq"
 
 import cart from "../pages/cart";
 import delivery from "../pages/delivery";
@@ -69,6 +70,7 @@ function Root() {
       <Route path="/orderPending" Component={OrderPending} />
       <Route path="/orderComplete" Component={OrderComplete} />
       <Route path="/changePassword" Component={ChangePassword} />
+      <Route path="/faq" Component={Faq} />
 
       {/* Farmer */}
       <Route path="/farmer" Component={Dashboard} />

@@ -61,7 +61,7 @@ function Navbar({ setSearch }) {
             </li>
           </Link>
 
-          <Link>
+          <Link to={"/faq"}>
             <li>
               <Icon
                 icon="streamline:interface-help-question-message-bubble-help-mark-message-query-question-speech"
@@ -87,13 +87,13 @@ function Navbar({ setSearch }) {
             </li>
           </Link>
 
-          <Link>
+          {/* <Link>
             {" "}
             <li>
               <Icon icon="mdi:bell-notification-outline" className="icon" />
               Notification
             </li>
-          </Link>
+          </Link> */}
 
           <Link to={"/profile"}>
             <li>
