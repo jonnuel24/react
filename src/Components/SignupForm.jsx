@@ -150,11 +150,12 @@ function SignUpForm({ type }) {
     try {
       if (!agreed) {
         notification("You need to agree to the terms", "error");
+        setLoading(false);
         return;
       }
-      setLoading(true);
       if (post.confirmPassword !== post.password) {
         notification("Password and Confirm Password do not match.", "error");
+        setLoading(false);
         return;
       } else {
         if (
@@ -167,9 +168,12 @@ function SignUpForm({ type }) {
             "Pleas fill out all field and in the appropriate format",
             "error"
           );
+          setLoading(false);
+          return 
         }
-        const payload = post;
-        payload.phoneNumber = "234" + post.phoneNumber;
+        setLoading(true);
+        const payload = {...post };
+        payload.phoneNumber = "+234" + payload.phoneNumber;
         const response = await accountServices.createAccount(payload);
         if (response.status === "success") {
           notification("Registration was successful", "success");
