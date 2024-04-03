@@ -63,7 +63,7 @@ border: 0.9px solid #000;
 .signup-signup input {
   height: 50px;
   border-radius: 9.004px;
-  border: 0.9px solid #000;
+  border: 0.9px solid #000 !important;
   width: 100%; /* Add this line to make the input fields expand to their container's width */
 }
 

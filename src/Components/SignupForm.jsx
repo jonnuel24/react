@@ -237,6 +237,8 @@ function SignUpForm({ type }) {
                     pattern="[a-zA-Z\s']{1,45}"
                   />
                 </div>
+                
+                
                 {/* email */}
                 <div className="flex flex-col items-start">
                   <label htmlFor="email">Email</label>
@@ -305,7 +307,7 @@ function SignUpForm({ type }) {
                   <input
                     name="userType"
                     type="text"
-                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline border rounded-[4px] border-color-black!important"
                     placeholder="User Type"
                     value={post.userType}
                     readOnly
