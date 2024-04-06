@@ -20,7 +20,7 @@
 
 .addproductdiv {
   border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
   background: rgba(64, 64, 64, 0.1);
 }
 
@@ -31,6 +31,6 @@
 
 .add-details-input {
   border-radius: 9.494px;
-  border: 0.949px solid #000;
+  border: 0.949px solid #000 !important;
   background: #f4f4f4;
 }
