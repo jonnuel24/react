@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import "../asset/styles/card.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  increaseCount,
   setItems,
   setSummary,
 } from "../store/reducers/cartReducer";
@@ -59,8 +58,8 @@ function Card({ product, cartId = null }) {
     setProcessing(false)
   };
   return (
-    <div onClick={()=>viewProduct(product?.id)} className="cursor-pointer flex flex-col card  h-auto items-center">
-      <div
+    <div className="cursor-pointer flex flex-col card  h-auto items-center">
+      <div onClick={()=>viewProduct(product?.id)}
         style={{ "--image-url": `url(${product?.images[0]})` }}
         className="cattle bg-[image:var(--image-url)] bg-cover bg-no-repeat h-screen"
       >
@@ -71,7 +70,7 @@ function Card({ product, cartId = null }) {
       </div>
 
       <div className="flex information flex-col justify-between">
-        <div className="left-card-body">
+        <div onClick={()=>viewProduct(product?.id)} className="left-card-body">
           <h3 className="description text-start">{product?.description}</h3>
           <h1 className="price">
             {new Intl.NumberFormat("en-us", {
