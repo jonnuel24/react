@@ -6,9 +6,8 @@ import accountServices from "../services/auth.service";
 import { notification } from "../services/notification";
 import { BeatLoader } from "react-spinners";
 import "react-country-state-city/dist/react-country-state-city.css";
-import { GetCountries, GetState, GetCity } from "react-country-state-city";
-import { getStatesOfCountry } from "country-state-city/lib/state";
-import data from '../asset/countries+states+cities.json'
+import data from "../asset/countries+states+cities.json";
+import stateLgas from "../asset/state_lgas.json";
 
 function SignUpForm({ type }) {
   const [agreed, setAgreed] = useState(false);
@@ -16,9 +15,9 @@ function SignUpForm({ type }) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
+  const [lgas, setLGAs] = useState([]);
   const [post, setPost] = useState({
     firstName: "",
     lastName: "",
@@ -27,7 +26,7 @@ function SignUpForm({ type }) {
     userType: type,
     phoneNumber: "",
     password: "",
-    country: "",
+    country: "Nigeria",
     state: "",
     city: "",
     street: "",
@@ -44,7 +43,7 @@ function SignUpForm({ type }) {
     email: "",
     gender: "",
     phoneNumber: "",
-    terms:""
+    terms: "",
   });
   const validateInput = (name, value) => {
     switch (name) {
@@ -115,20 +114,21 @@ function SignUpForm({ type }) {
   };
   const handleCountryChange = (event) => {
     const { value, name } = event.target;
-    let selectCountry = {};
     if (name == "country") {
-      const result=data.find(c=>c.name==value)
-      // console.log('STATES', result);
-      setStates(result.states)
+      const result = data.find((c) => c.name == value);
+      setStates(result.states);
     }
     if (name == "state") {
-      const result=states.find(s=>s.name==value)
-      setCities(result.cities)
+      const result = states.find((s) => s.name == value);
+      const lgaList = stateLgas.find((s) => s.state === value);
+      setLGAs(lgaList.lgas);
+      setCities(result.cities);
     }
 
     setPost({ ...post, [name]: value });
     // validateInput(event.target.name, event.target.value);
   };
+
   const {
     handleSubmit,
     // register,
@@ -137,6 +137,8 @@ function SignUpForm({ type }) {
   } = useForm();
 
   useEffect(() => {
+    const result = data.find((c) => c.name == "Nigeria");
+    setStates(result.states);
   }, []);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -169,10 +171,10 @@ function SignUpForm({ type }) {
             "error"
           );
           setLoading(false);
-          return 
+          return;
         }
         setLoading(true);
-        const payload = {...post };
+        const payload = { ...post };
         payload.phoneNumber = "+234" + payload.phoneNumber;
         const response = await accountServices.createAccount(payload);
         if (response.status === "success") {
@@ -181,7 +183,6 @@ function SignUpForm({ type }) {
         } else {
           if (response.messages) {
             const messages = Object.values(response.messages);
-            let msg = "";
             messages.forEach((e) => {
               notification(e, "error");
             });
@@ -374,6 +375,8 @@ function SignUpForm({ type }) {
                     className="form-select"
                     onChange={handleCountryChange}
                     required
+                    value={post.country || ""}
+                    disabled
                   >
                     <option disabled selected hidden>
                       Select a country...
@@ -393,6 +396,7 @@ function SignUpForm({ type }) {
                     id="state"
                     onChange={handleCountryChange}
                     name="state"
+                    value={post.state || ""}
                   >
                     <option defaultValue>
                       Choose State/Province/Region...
@@ -411,8 +415,9 @@ function SignUpForm({ type }) {
                     id="city"
                     onChange={handleCountryChange}
                     name="city"
+                    value={post.city}
                   >
-                         <option defaultValue>
+                    <option defaultValue>
                       Choose State/Province/Region...
                     </option>
                     {cities.map((city) => (
@@ -420,7 +425,7 @@ function SignUpForm({ type }) {
                         {city.name}
                       </option>
                     ))}
-                    </select>
+                  </select>
                 </div>
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">Street</label>
@@ -433,13 +438,26 @@ function SignUpForm({ type }) {
                 </div>
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">Local Government Area</label>
-                  <input
+                  <select
+                    className="form-select"
+                    id="localGovtArea"
+                    onChange={handleInput}
+                    name="localGovtArea"
+                    value={post.localGovtArea}
+                  >
+                    <option value="" selected>
+                      Select Local Government Area
+                    </option>
+                    {lgas &&
+                      lgas.map((lga) => <option value={lga}>{lga}</option>)}
+                  </select>
+                  {/* <input
                     className=""
                     id="localGovtArea"
                     onChange={handleInput}
                     name="localGovtArea"
                     value={post.localGovtArea}
-                  />
+                  /> */}
                 </div>
                 <div className="flex flex-col items-start">
                   <label htmlFor="country">Farm Name</label>
