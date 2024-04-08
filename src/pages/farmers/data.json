@@ -1,0 +1,6 @@
+[
+  { "month": "Jan", "income": 0, "expense": 0, "soldTransit": 0, "soldRemainder": 0 },
+
+  { "month": "Dec", "income": 0, "expense": 0, "soldTransit": 0, "soldRemainder": 0 }
+]
+
