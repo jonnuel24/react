@@ -59,19 +59,24 @@ function Cart() {
         street: "Broad street",
         placeId: "hbh9976adnbgh980bsds5r56",
       };
-      OrderServices.checkout(orderDetails).then(response=>{
-        notification(response.message, 'success');
-      }).catch(error=>{
-        notification("An error occurred", 'error')
-      })
-      userServices.userCart(user.id).then(response=>{
-        dispatch(setItems(response?.data?.cartItems));
-        dispatch(setSummary(response?.data?.cart));
-      }).catch(error=>{
-        console.log(error)
-      })
+      OrderServices.checkout(orderDetails)
+        .then((response) => {
+          notification(response.message, "success");
+        })
+        .catch((error) => {
+          notification("An error occurred", "error");
+        });
+      userServices
+        .userCart(user.id)
+        .then((response) => {
+          dispatch(setItems(response?.data?.cartItems));
+          dispatch(setSummary(response?.data?.cart));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-    onClose: () => notification("Transaction cancelled :(", 'info'),
+    onClose: () => notification("Transaction cancelled :(", "info"),
   };
   return (
     <div>
@@ -117,10 +122,12 @@ function Cart() {
             <Card /> */}
           </div>
           <div>
-            <PaystackButton
-              className="btn btn-success btn-lg cart-div41"
-              {...componentProps}
-            />
+            {cartItems?.overallQuantity && (
+              <PaystackButton
+                className="btn btn-success btn-lg cart-div41"
+                {...componentProps}
+              />
+            )}
             {/* <button className="btn btn-success btn-lg cart-div41">Proceed</button> */}
           </div>
         </div>
