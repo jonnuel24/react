@@ -7,6 +7,8 @@ import arrow from "../asset/images/Arrow 2.svg";
 import { useSelector } from "react-redux";
 import { PaystackButton } from "react-paystack";
 import { v4 as uuid } from "uuid";
+import { notification } from "../services/notification";
+import { OrderServices } from "../services/order.service";
 
 function Cart() {
   const user = useSelector((state) => state.user?.currentUser);
@@ -14,13 +16,13 @@ function Cart() {
   const cartCount = useSelector((state) => state.cart?.count);
   const cartItems = useSelector((state) => state.cart?.items);
   const cartSummary = useSelector((state) => state.cart?.summary);
-  const { email, phoneNumber, lastName, firstName } = user;
-  const [ref, setRef]=useState("");
+  const { email, phoneNumber, lastName, firstName, id } = user;
+  const [ref, setRef] = useState("");
 
-  useEffect(()=>{
+  useEffect(() => {
     const unique_id = uuid();
     setRef(unique_id);
-  }, [])
+  }, []);
   const componentProps = {
     email,
     amount: parseFloat(cartSummary?.totalProductCost * 100), // the transaction amount in kobo.
@@ -28,15 +30,37 @@ function Cart() {
       name: `${firstName} ${lastName}`,
       phone: phoneNumber,
     },
-    reference:ref,
-    publicKey: "pk_test_02bb5629ae0de1fbd3750583af1d9e4375c78494",
-    text: "Pay "+ new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "NGN",
-    }).format(cartSummary?.totalProductCost),
-    onSuccess: () =>
-      alert("Thanks for doing business with us! Come back soon!!"),
-    onClose: () => alert("Wait! Don't leave :("),
+    reference: ref,
+    // publicKey: "pk_test_02bb5629ae0de1fbd3750583af1d9e4375c78494",
+    publicKey: process.env.REACT_APP_PAYSTACK_KEY,
+    text:
+      "Pay " +
+      new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "NGN",
+      }).format(cartSummary?.totalProductCost),
+    onSuccess: async () => {
+      const orderDetails = {
+        paymentType: "TRANSFER",
+        deliveryCost: 200.0,
+        orderDate: new Date().toISOString()?.substring(0, 10),
+        orderStatus: "COMPLETED",
+        reference: ref,
+        totalProductCost: cartSummary?.totalProductCost,
+        userId: id,
+        paymentChannel: "Paystack",
+        country: "Nigeria",
+        state: "Lagos",
+        city: "Ikeja",
+        localGovtArea: "Lagos Mainland",
+        street: "Broad street",
+        placeId: "hbh9976adnbgh980bsds5r56",
+      };
+      const response=await OrderServices.checkout(orderDetails)
+      console.log(response);
+      notification("Thanks for doing business with us! Come back soon!!", 'success');
+    },
+    onClose: () => notification("Transaction cancelled :(", 'info'),
   };
   return (
     <div>
