@@ -4,13 +4,16 @@ import Footer from "../Components/footer";
 import Card from "../Components/card";
 import "../asset/styles/cart.css";
 import arrow from "../asset/images/Arrow 2.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { PaystackButton } from "react-paystack";
 import { v4 as uuid } from "uuid";
 import { notification } from "../services/notification";
 import { OrderServices } from "../services/order.service";
+import { userServices } from "../services/user.service";
+import { setItems, setSummary } from "../store/reducers/cartReducer";
 
 function Cart() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user?.currentUser);
   const isAuthenticated = useSelector((state) => state.user?.isAuthenticated);
   const cartCount = useSelector((state) => state.cart?.count);
@@ -39,7 +42,7 @@ function Cart() {
         style: "currency",
         currency: "NGN",
       }).format(cartSummary?.totalProductCost),
-    onSuccess: async () => {
+    onSuccess: () => {
       const orderDetails = {
         paymentType: "TRANSFER",
         deliveryCost: 200.0,
@@ -56,9 +59,17 @@ function Cart() {
         street: "Broad street",
         placeId: "hbh9976adnbgh980bsds5r56",
       };
-      const response=await OrderServices.checkout(orderDetails)
-      console.log(response);
-      notification("Thanks for doing business with us! Come back soon!!", 'success');
+      OrderServices.checkout(orderDetails).then(response=>{
+        notification(response.message, 'success');
+      }).catch(error=>{
+        notification("An error occurred", 'error')
+      })
+      userServices.userCart(user.id).then(response=>{
+        dispatch(setItems(response?.data?.cartItems));
+        dispatch(setSummary(response?.data?.cart));
+      }).catch(error=>{
+        console.log(error)
+      })
     },
     onClose: () => notification("Transaction cancelled :(", 'info'),
   };
