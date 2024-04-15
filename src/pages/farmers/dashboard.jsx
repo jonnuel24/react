@@ -57,7 +57,7 @@ function Dashboard() {
                     </div>
                   </div>
                   <div>
-                    <Barchart />
+                    {/* <Barchart /> */}
                   </div>
                 </div>
                 {/*01. right - Livestocks Statistics*/}
