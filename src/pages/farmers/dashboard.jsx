@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import Fpanel from "./component/fpanel";
 import "../../asset/styles/farmersdashboard.css";
 import pic from "../../asset/images/animal_profile.png";
+import Barchart from "./component/barchart";
 
 function Dashboard() {
   // const YearSelector = () => {
@@ -55,7 +56,9 @@ function Dashboard() {
                       <button className="fd-overview-button">Monthly</button>
                     </div>
                   </div>
-                  <div></div>
+                  <div>
+                    {/* <Barchart /> */}
+                  </div>
                 </div>
                 {/*01. right - Livestocks Statistics*/}
                 <div className="fd-right-upper-div">
