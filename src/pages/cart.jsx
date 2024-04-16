@@ -122,7 +122,7 @@ function Cart() {
             <Card /> */}
           </div>
           <div>
-            {cartItems?.overallQuantity && (
+            {cartItems?.length && (
               <PaystackButton
                 className="btn btn-success btn-lg cart-div41"
                 {...componentProps}
