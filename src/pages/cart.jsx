@@ -62,19 +62,21 @@ function Cart() {
       OrderServices.checkout(orderDetails)
         .then((response) => {
           notification(response.message, "success");
+          userServices
+          .userCart(user.id)
+          .then((response) => {
+            dispatch(setItems(response?.data?.cartItems));
+            dispatch(setSummary(response?.data?.cart));
+          })
+          .catch((error) => {
+            notification("An error occurred", "error");
+            console.log(error);
+          });
         })
         .catch((error) => {
           notification("An error occurred", "error");
         });
-      userServices
-        .userCart(user.id)
-        .then((response) => {
-          dispatch(setItems(response?.data?.cartItems));
-          dispatch(setSummary(response?.data?.cart));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+
     },
     onClose: () => notification("Transaction cancelled :(", "info"),
   };
