@@ -142,6 +142,13 @@ function Order_Confirmation() {
             Confirm Order
           </button>
 
+          {/* {cartItems?.length && (
+              <PaystackButton
+                className="btn btn-success btn-lg cart-div41"
+                {...componentProps}
+              />
+            )} */}
+
           {/* success modal */}
           {isOpen && (
             <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">

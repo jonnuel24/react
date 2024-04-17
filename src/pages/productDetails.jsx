@@ -24,7 +24,7 @@ function ProductDetails() {
   const [farmProducts, setFarmProducts] = useState([]);
   useEffect(() => {
     fetchProduct(id);
-    fetchProducts()
+    fetchProducts();
   }, [id]);
 
   const fetchProduct = async (id) => {
@@ -51,8 +51,6 @@ function ProductDetails() {
     setLoadingProducts(false);
   };
 
- 
-
   const addToCart = async (productId) => {
     setProcessing(true);
     try {
@@ -72,7 +70,6 @@ function ProductDetails() {
     setProcessing(false);
   };
 
-  
   return (
     <div>
       <Navbar />
@@ -131,11 +128,37 @@ function ProductDetails() {
                 </p>
                 <div className="body21">
                   <div className="btable">
-                    <table className="table">
-                      <tr itemScope="row">
-                        <td>breed</td>
-                        <th>{product?.category}</th>
-                      </tr>
+                    {/*  */}
+                    <div className="border p-[16px] w-full">
+                      {/* breed */}
+                      <div className="flex flex-row justify-between">
+                        <div>Breed</div>
+                        <div className="font-medium">{product?.category}Goat</div>
+                      </div>
+                      {/* weight */}
+                      <div className="flex flex-row justify-between">
+                        <div>Weight</div>
+                        <div className="font-medium">{product?.weight}kg Plus</div>
+                      </div>
+                      {/* color */}
+                      <div className="flex flex-row justify-between">
+                        <div>Color</div>
+                        <div className="font-medium">White</div>
+                      </div>
+                      {/* lifespan */}
+                      <div className="flex flex-row justify-between">
+                        <div>Lifespan</div>
+                        <div className="font-medium">{product?.age}kg Plus</div>
+                      </div>
+                      {/* gender */}
+                      <div className="flex flex-row justify-between">
+                        <div>Gender</div>
+                        <div className="font-medium">{product?.gender}kg Plus</div>
+                      </div>
+                    </div>
+                    {/*  */}
+                    {/* <table className="table">
+                      
                       <tr>
                         <td>Weight</td>
                         <th>{product?.weight}kg plus</th>
@@ -152,7 +175,7 @@ function ProductDetails() {
                         <td>Gender</td>
                         <th>{product?.gender}</th>
                       </tr>
-                    </table>
+                    </table> */}
                   </div>
 
                   <div className="body22">
@@ -391,7 +414,9 @@ function ProductDetails() {
               </div>
               {loadingProducts && <BeatLoader color="#36d7b7" />}
               {!loadingProducts &&
-                farmProducts.map((p, i) => <Card className="right-div-img pd-card" key={i} product={p} />)}
+                farmProducts.map((p, i) => (
+                  <Card className="right-div-img pd-card" key={i} product={p} />
+                ))}
               {/* <Card className="right-div-img pd-card" />
               <Card />
               <Card /> */}

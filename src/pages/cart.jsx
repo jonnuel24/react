@@ -11,6 +11,7 @@ import { notification } from "../services/notification";
 import { OrderServices } from "../services/order.service";
 import { userServices } from "../services/user.service";
 import { setItems, setSummary } from "../store/reducers/cartReducer";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -63,20 +64,19 @@ function Cart() {
         .then((response) => {
           notification(response.message, "success");
           userServices
-          .userCart(user.id)
-          .then((response) => {
-            dispatch(setItems(response?.data?.cartItems));
-            dispatch(setSummary(response?.data?.cart));
-          })
-          .catch((error) => {
-            notification("An error occurred", "error");
-            console.log(error);
-          });
+            .userCart(user.id)
+            .then((response) => {
+              dispatch(setItems(response?.data?.cartItems));
+              dispatch(setSummary(response?.data?.cart));
+            })
+            .catch((error) => {
+              notification("An error occurred", "error");
+              console.log(error);
+            });
         })
         .catch((error) => {
           notification("An error occurred", "error");
         });
-
     },
     onClose: () => notification("Transaction cancelled :(", "info"),
   };
@@ -124,13 +124,17 @@ function Cart() {
             <Card /> */}
           </div>
           <div>
-            {cartItems?.length && (
+            {/* {cartItems?.length && (
               <PaystackButton
                 className="btn btn-success btn-lg cart-div41"
                 {...componentProps}
               />
-            )}
-            {/* <button className="btn btn-success btn-lg cart-div41">Proceed</button> */}
+            )} */}
+            <Link to="/delivery2">
+              <button className="btn btn-success btn-lg cart-div41">
+                Proceed
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ import OrderConfirmed from "../asset/images/order-confirmed.svg";
 import OrderShipped from "../asset/images/order-shipped.svg";
 import OutforDelivery from "../asset/images/order-out-for-delivery.svg";
 import OrderDelivered from "../asset/images/order-delivered.svg";
+import { Link } from "react-router-dom";
 
 function TrackOrder() {
   // const user = useSelector((state) => state.user?.currentUser);
@@ -52,9 +53,11 @@ function TrackOrder() {
               </div>
             </div>
             <div>
-              <button className="mt-4 bg-[#006838] text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:ring-blue-400 custom-order-button">
-                Re-order
-              </button>
+              <Link to="/user">
+                <button className="mt-4 bg-[#006838] text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:ring-blue-400 custom-order-button">
+                  Re-order
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -97,8 +100,8 @@ function TrackOrder() {
                 Pending
               </div>
             </div>
-           {/* 1.4 */}
-           <div className="flex flex-col items-center gap-4">
+            {/* 1.4 */}
+            <div className="flex flex-col items-center gap-4">
               <label htmlFor="" className="text-[24px] font-normal">
                 Out for delivery
               </label>

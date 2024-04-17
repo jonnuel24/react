@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react";
 import gig from "../asset/images/gex.svg";
 import gex from "../asset/images/gig.svg";
 import axd from "../asset/images/axd_logo.svg";
+import { Link } from "react-router-dom";
 
 function delivery() {
   return (
@@ -126,7 +127,9 @@ function delivery() {
         </div>
 
         <div className="delivery-div5">
-          <button>Proceed to payment</button>
+          <Link to="/delivery2">
+            <button>Proceed to payment</button>
+          </Link>
         </div>
       </div>
       <Footer />

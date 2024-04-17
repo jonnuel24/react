@@ -6,13 +6,14 @@ import { Icon } from "@iconify/react";
 import gig from "../asset/images/gex.svg";
 import gex from "../asset/images/gig.svg";
 import axd from "../asset/images/axd_logo.svg";
+import { Link } from "react-router-dom";
 
 function delivery2() {
   return (
     <div>
       <Navbar />
       <div>
-        <div className="delivery-div1">
+        {/* <div className="delivery-div1">
           <div className="delivery-button-active">
             <button>Delivery</button>
           </div>
@@ -22,7 +23,7 @@ function delivery2() {
           <div className="delivery-button">
             <button>Summary</button>
           </div>
-        </div>
+        </div> */}
 
         <div className="row delivery2-div">
           <div className="col col-7 delivery-div2">
@@ -96,12 +97,20 @@ function delivery2() {
               <div>
                 <table>
                   <tr>
-                    <th className="d2-summary text-[24px] font-normal text-white ">Subtotal : </th>
-                    <td className="text-[24px] font-medium text-white">N224,000</td>
+                    <th className="d2-summary text-[24px] font-normal text-white ">
+                      Subtotal :{" "}
+                    </th>
+                    <td className="text-[24px] font-medium text-white">
+                      N224,000
+                    </td>
                   </tr>
                   <tr>
-                    <th className="d2-summary text-[24px] font-normal text-white">Shipping : </th>
-                    <td className="text-[24px] font-medium text-white">N150,000</td>
+                    <th className="d2-summary text-[24px] font-normal text-white">
+                      Shipping :{" "}
+                    </th>
+                    <td className="text-[24px] font-medium text-white">
+                      N150,000
+                    </td>
                   </tr>
                 </table>
               </div>
@@ -146,7 +155,10 @@ function delivery2() {
         </div>
 
         <div className="delivery-div5">
-          <button>Proceed to payment</button>
+          <Link to="/OrderConfirmation">
+            {" "}
+            <button>Proceed to payment</button>
+          </Link>
         </div>
       </div>
       <Footer />
