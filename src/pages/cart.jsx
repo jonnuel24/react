@@ -110,7 +110,7 @@ function Cart() {
         <div className="cart-div3">
           <div className="font-medium flex items-start">
             Items in{" "}
-            <span className="font-bold">
+            <span className="font-bold ml-2">
               cart ({cartSummary?.overallQuantity})
             </span>
           </div>
@@ -124,17 +124,21 @@ function Cart() {
             <Card /> */}
           </div>
           <div>
-            {/* {cartItems?.length && (
+
+            {/* paystack button */}
+            {cartItems?.length && (
               <PaystackButton
                 className="btn btn-success btn-lg cart-div41"
                 {...componentProps}
               />
-            )} */}
-            <Link to="/delivery2">
+            )}
+
+            {/* proceed button */}
+            {/* <Link to="/delivery2">
               <button className="btn btn-success btn-lg cart-div41">
                 Proceed
               </button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
