@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Components/navbar";
 import Footer from "../Components/footer";
 import "../asset/styles/order.css";
@@ -6,8 +6,18 @@ import OrderCard from "../Components/orderCard";
 import Orderpending from "../asset/images/order-pending.svg";
 import Ordercomplete from "../asset/images/oder-complete.svg";
 import { Link } from "react-router-dom";
+import { OrderServices } from "../services/order.service";
 
 function Order() {
+
+  const [orders, setOrders] = React.useState([])
+  useEffect(()=>{
+    OrderServices.orders().then((res)=>{
+        console.log(res)
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }, [])
   return (
     <div>
       <Navbar />

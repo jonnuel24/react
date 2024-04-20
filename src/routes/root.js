@@ -25,7 +25,7 @@ import Faq from "../pages/faq"
 
 import cart from "../pages/cart";
 import delivery from "../pages/delivery";
-import delivery2 from "../pages/delivery2";
+import preview from "../pages/preview";
 import Notification from "../pages/notification";
 import Website from "../pages/website";
 import Dashboard from "../pages/farmers/dashboard";
@@ -51,7 +51,7 @@ function Root() {
 
       <Route path="/delivery" Component={delivery} />
 
-      <Route path="/delivery2" Component={delivery2} />
+      <Route path="/preview" Component={preview} />
 
       <Route path="/form" Component={Form} />
       <Route path="/forgotPassword" Component={forgotPassword} />

@@ -14,7 +14,6 @@ function Navbar({ setSearch }) {
   const isAuthenticated = useSelector((state) => state.user?.isAuthenticated);
   const cartItems = useSelector((state) => state.cart?.items);
   const cartSummary = useSelector((state) => state.cart?.summary);
-  console.log("cart products", cartItems);
   useEffect(() => {
     if (isAuthenticated === false) {
       navigate("/login");
