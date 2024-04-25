@@ -65,7 +65,7 @@ function Root() {
       <Route path="/notification" Component={Notification} />
       <Route path="/payment" Component={Payment} />
       <Route path="/OrderConfirmation" Component={Order_Confirmation} /> 
-      <Route path="/trackOrder" Component={TrackOrder} /> 
+      <Route path="/order/track/:id" Component={TrackOrder} /> 
       <Route path="/order" Component={Order} />
       <Route path="/orderPending" Component={OrderPending} />
       <Route path="/orderComplete" Component={OrderComplete} />

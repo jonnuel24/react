@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Components/navbar";
 import Footer from "../Components/footer";
 import "../asset/styles/delivery2.css";
@@ -13,9 +13,24 @@ import OrderConfirmed from "../asset/images/order-confirmed.svg";
 import OrderShipped from "../asset/images/order-shipped.svg";
 import OutforDelivery from "../asset/images/order-out-for-delivery.svg";
 import OrderDelivered from "../asset/images/order-delivered.svg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { OrderServices } from "../services/order.service";
 
 function TrackOrder() {
+  const [order, setOrder] = React.useState([]);
+  const [items, setItems] = React.useState([]);
+  const { id } = useParams();
+  useEffect(() => {
+    OrderServices.order(id)
+      .then((res) => {
+        console.log(res);
+        setOrder(res?.data?.order);
+        setItems(res?.data?.items);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   // const user = useSelector((state) => state.user?.currentUser);
   return (
     <div>
@@ -28,19 +43,25 @@ function TrackOrder() {
             htmlFor=""
             className="text-[24px] text-[#F93636] font-semibold"
           >
-            Order #90897
+            Order {order.orderNumber}
           </label>
           {/*  */}
           <div className="track-order-div1-details">
             <div className="flex flex-col items-start gap-6 ">
-              <div className="font-semibold">Placed on July 16th 2023</div>
+              <div className="font-semibold">Placed on {order.orderDate}</div>
               <div className="flex flex-row gap-4">
                 <label htmlFor="">Items :</label>
-                <div className="font-semibold">3</div>
+                <div className="font-semibold">{order.noOfItems}</div>
               </div>
               <div className="flex flex-row gap-4">
                 <label htmlFor="">Price:</label>
-                <div className="font-semibold">N400,000</div>
+                <div className="font-semibold">
+                  {" "}
+                  {new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "NGN",
+                  }).format(order?.totalCost)}
+                </div>
               </div>
               <div className="flex flex-row gap-4">
                 <label htmlFor="">Estimated Delivery Time:</label>
@@ -134,31 +155,48 @@ function TrackOrder() {
           </label>
           {/*  */}
           <div className="flex flex-col w-full gap-6">
-            <div className="flex flex-col items-start gap-6 w-full ">
-              <div className="flex flex-row justify-between w-full">
-                <label htmlFor="">Product Name</label>
-                <div className="font-semibold">The Main Large Cow</div>
-              </div>
-              <div className="flex flex-row justify-between w-full">
-                <label htmlFor="">Price</label>
-                <div className="font-semibold">N400,000</div>
-              </div>
-              <div className="flex flex-row justify-between w-full">
-                <label htmlFor="">Discount</label>
-                <div className="font-semibold">NIL</div>
-              </div>
-              <div className="flex flex-row justify-between w-full">
-                <label htmlFor="">Shipping</label>
-                <div className="font-semibold">N3,000</div>
-              </div>
-            </div>
+            {items &&
+              items.map((item) => {
+                return (
+                  <div className="flex flex-col items-start gap-6 w-full ">
+                    <div className="flex flex-row justify-between w-full">
+                      <label htmlFor="">Product Name</label>
+                      <div className="font-semibold">{item.product.name}</div>
+                    </div>
+                    <div className="flex flex-row justify-between w-full">
+                      <label htmlFor="">Price</label>
+                      <div className="font-semibold">
+                        {new Intl.NumberFormat("en-US", {
+                          style: "currency",
+                          currency: "NGN",
+                        }).format(item?.product.price)}
+                      </div>
+                    </div>
+                    <div className="flex flex-row justify-between w-full">
+                      <label htmlFor="">Discount</label>
+                      <div className="font-semibold">NIL</div>
+                    </div>
+                    <div className="flex flex-row justify-between w-full">
+                      <label htmlFor="">Shipping</label>
+                      <div className="font-semibold">N0</div>
+                    </div>
+                  </div>
+                );
+              })}
+
             {/* line */}
             <div className="h-[1.5px] bg-[#00000017]"></div>
             <div className="flex flex-row justify-between w-full items-end">
               <label htmlFor="" className="text-[32px] font-semibold">
                 Total
               </label>
-              <div className=" text-[32px] font-semibold">N400,000</div>
+              <div className=" text-[32px] font-semibold">
+                {" "}
+                {new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "NGN",
+                }).format(order?.totalCost)}
+              </div>
             </div>
           </div>
         </div>

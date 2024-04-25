@@ -14,9 +14,22 @@ export const OrderServices={
             }
         }
     },
-    orders:async ()=>{
+    orders:async (id, page=1, limit=10)=>{
         try{
-            const response=await axios.get(`${baseUrl}/user`);
+            const response=await axios.get(`${baseUrl}/user/${id}?page=${page}&limit=${limit}`);
+            return response;
+        }catch(e){
+            return {
+                status:500,
+                data:{
+                    error:"something went wrong"
+                }
+            }
+        }
+    }, 
+    order:async (id)=>{
+        try{
+            const response=await axios.get(`${baseUrl}/${id}`);
             return response;
         }catch(e){
             return {
