@@ -140,6 +140,7 @@ function SignUpForm({ type }) {
     const result = data.find((c) => c.name == "Nigeria");
     setStates(result.states);
   }, []);
+  const today = new Date().toISOString().split('T')[0];
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -476,6 +477,7 @@ function SignUpForm({ type }) {
                     onChange={handleInput}
                     name="dateOfEstablishment"
                     value={post.dateOfEstablishment}
+                    max={today}
                   />
                 </div>
                 <div className="flex flex-col items-start">

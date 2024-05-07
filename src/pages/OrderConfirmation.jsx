@@ -15,7 +15,7 @@ import { PaystackButton } from "react-paystack";
 import { notification } from "../services/notification";
 import { OrderServices } from "../services/order.service";
 import { userServices } from "../services/user.service";
-import { setItems, setSummary } from "../store/reducers/cartReducer";
+import { setItems, setSummary, setDelivery } from "../store/reducers/cartReducer";
 import { v4 as uuid } from "uuid";
 
 function Order_Confirmation() {
@@ -28,6 +28,8 @@ function Order_Confirmation() {
   const { email, phoneNumber, lastName, firstName, id } = user;
   const cartSummary = useSelector((state) => state.cart?.summary);
   const [ref, setRef] = useState("");
+  const [editAddress, setEditAddress]=useState(false)
+  const [deliveryAddress, setDeliveryAddress]=useState(userDelivery ?? {name:`${firstName} ${lastName}`, address:"", phone:phoneNumber})
   useEffect(() => {
     const unique_id = uuid();
     setRef(unique_id);
@@ -35,12 +37,25 @@ function Order_Confirmation() {
   const openModal = () => {
     setIsOpen(true);
   };
+
+  const handleInput = async (event) => {
+    await setDeliveryAddress({ ...deliveryAddress, [event.target.name]: event.target.value });
+  };
+
+  const toggleAddressEdit=async (value)=>{
+    await setEditAddress(value)
+    if(value==false){
+      dispatch(setDelivery(deliveryAddress))
+    }else{
+      await setDeliveryAddress(userDelivery)
+    }
+  }
   const componentProps = {
     email,
     amount: parseFloat(cartSummary?.totalProductCost * 100), // the transaction amount in kobo.
     metadata: {
-      name: `${firstName} ${lastName}`,
-      phone: phoneNumber,
+      name: userDelivery.name ?? `${firstName} ${lastName}`,
+      phone: userDelivery.phone ?? phoneNumber,
     },
     reference: ref,
     // publicKey: "pk_test_02bb5629ae0de1fbd3750583af1d9e4375c78494",
@@ -65,7 +80,7 @@ function Order_Confirmation() {
         state: "Lagos",
         city: "Ikeja",
         localGovtArea: "Lagos Mainland",
-        street: "Broad street",
+        street: userDelivery.address ?? "",
         placeId: "hbh9976adnbgh980bsds5r56",
       };
       OrderServices.checkout(orderDetails)
@@ -147,23 +162,52 @@ function Order_Confirmation() {
           <div className="flex flex-col items-start  gap-[24px]">
             <div className="px-[200px] py-[32px] flex flex-row justify-between w-full bg-[#E0ECE0]">
               <div className="font-bold text-[30px]">Address</div>
-              <button className="font-semibold text-[20px] text-[#006838]">
-                Change
+              <button onClick={()=>toggleAddressEdit(!editAddress)} className="font-semibold text-[20px] text-[#006838]">
+                {editAddress ? 'Save' : 'Change' } 
               </button>
             </div>
 
             <div className=" px-[200px] py-[32px] w-full flex flex-col gap-[16px]">
               <div className="flex flex-col items-start gap-[24px] w-full">
-                <div className="text-[20px] font-medium">
-                  {userDelivery?.name}
+                <div className="text-[20px] font-medium flex flex-row gap-2">
+    
+                <Icon icon="ic:round-phone" />
+                  {editAddress && (
+                    <input 
+                      type="text"  
+                      name="name"
+                      onChange={handleInput} 
+                      placeholder="Name" 
+                      value={deliveryAddress?.name}  
+                    />
+                  )}
+                  {!editAddress && userDelivery?.name}
                 </div>
                 <div className="text-[20px] font-medium flex flex-row gap-2">
                   <Icon icon="material-symbols:my-location" />
-                  {userDelivery?.address}
+                  {editAddress && (
+                    <textarea 
+                      onChange={handleInput} 
+                      name="address" 
+                      placeholder="Delivery Address"  
+                    >
+                      {deliveryAddress?.address}
+                    </textarea>
+                  )}
+                  {!editAddress && userDelivery?.address}
                 </div>
                 <div className="text-[20px] font-medium flex flex-row gap-2">
                   <Icon icon="ic:round-phone" />
-                  {userDelivery?.phone}
+                  {editAddress && (
+                    <input 
+                      type="text" 
+                      onChange={handleInput} 
+                      name="phone" 
+                      placeholder="234**********" 
+                      value={deliveryAddress?.phone} 
+                    />
+                  )}
+                  {!editAddress && userDelivery?.phone}
                 </div>
               </div>
             </div>
