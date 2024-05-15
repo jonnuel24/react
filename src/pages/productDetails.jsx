@@ -93,6 +93,10 @@ function ProductDetails() {
 
                 <div className="product-details">
                   <ul className="flex gap-2 items-center justify-center">
+                    {/* previous */}
+                    <button className="border-[1px] border-gray-300 p-2 rounded-lg">
+                      Previous
+                    </button>
                     {product?.images?.map((e, i) => (
                       <li>
                         <img key={i} src={e} alt="" className="inactive" />
@@ -110,6 +114,11 @@ function ProductDetails() {
                   <li>
                     <img src={Cattle} alt="" className="inactive" />
                   </li> */}
+
+                  {/* next button */}
+                    <button className="border-[1px] border-gray-300 p-2 rounded-lg">
+                      Next
+                    </button>
                   </ul>
                 </div>
               </div>
@@ -133,12 +142,16 @@ function ProductDetails() {
                       {/* breed */}
                       <div className="flex flex-row justify-between">
                         <div>Breed</div>
-                        <div className="font-medium">{product?.category}Goat</div>
+                        <div className="font-medium">
+                          {product?.category}Goat
+                        </div>
                       </div>
                       {/* weight */}
                       <div className="flex flex-row justify-between">
                         <div>Weight</div>
-                        <div className="font-medium">{product?.weight}kg Plus</div>
+                        <div className="font-medium">
+                          {product?.weight}kg Plus
+                        </div>
                       </div>
                       {/* color */}
                       <div className="flex flex-row justify-between">
@@ -153,7 +166,9 @@ function ProductDetails() {
                       {/* gender */}
                       <div className="flex flex-row justify-between">
                         <div>Gender</div>
-                        <div className="font-medium">{product?.gender}kg Plus</div>
+                        <div className="font-medium">
+                          {product?.gender}kg Plus
+                        </div>
                       </div>
                     </div>
                     {/*  */}
