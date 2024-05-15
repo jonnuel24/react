@@ -119,9 +119,10 @@ function SignUpForm({ type }) {
       setStates(result.states);
     }
     if (name == "state") {
+      console.log(value)
       const result = states.find((s) => s.name == value);
       const lgaList = stateLgas.find((s) => s.state === value);
-      setLGAs(lgaList.lgas);
+      lgaList.lgas ? setLGAs(lgaList.lgas) : console.log(lgaList);
       setCities(result.cities);
     }
 
@@ -450,7 +451,7 @@ function SignUpForm({ type }) {
                       Select Local Government Area
                     </option>
                     {lgas &&
-                      lgas.map((lga) => <option value={lga}>{lga}</option>)}
+                      lgas.map((lga) => <option key={lga} value={lga}>{lga}</option>)}
                   </select>
                   {/* <input
                     className=""
