@@ -22,6 +22,7 @@ function ProductDetails() {
   const user = useSelector((state) => state.user?.currentUser);
   const [loadingProducts, setLoadingProducts] = useState(false);
   const [farmProducts, setFarmProducts] = useState([]);
+  const cartItems = useSelector((state) => state.cart?.items);
   useEffect(() => {
     fetchProduct(id);
     fetchProducts();
@@ -115,7 +116,7 @@ function ProductDetails() {
                     <img src={Cattle} alt="" className="inactive" />
                   </li> */}
 
-                  {/* next button */}
+                    {/* next button */}
                     <button className="border-[1px] border-gray-300 p-2 rounded-lg">
                       Next
                     </button>
@@ -142,9 +143,7 @@ function ProductDetails() {
                       {/* breed */}
                       <div className="flex flex-row justify-between">
                         <div>Breed</div>
-                        <div className="font-medium">
-                          {product?.category}Goat
-                        </div>
+                        <div className="font-medium">{product?.category}</div>
                       </div>
                       {/* weight */}
                       <div className="flex flex-row justify-between">
@@ -161,14 +160,12 @@ function ProductDetails() {
                       {/* lifespan */}
                       <div className="flex flex-row justify-between">
                         <div>Lifespan</div>
-                        <div className="font-medium">{product?.age}kg Plus</div>
+                        <div className="font-medium">{product?.age}</div>
                       </div>
                       {/* gender */}
                       <div className="flex flex-row justify-between">
                         <div>Gender</div>
-                        <div className="font-medium">
-                          {product?.gender}kg Plus
-                        </div>
+                        <div className="font-medium">{product?.gender}</div>
                       </div>
                     </div>
                     {/*  */}
@@ -380,8 +377,26 @@ function ProductDetails() {
               </div>
 
               <div className="right-div2">
-                {processing && <BeatLoader color="#36d7b7" />}
-                {!processing && (
+                {!processing && cartItems?.some(e=>{
+                  return e.product?.id === product?.id
+                }) &&
+                <div className="inline-flex justify-center items-center">
+                  <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                    -
+                  </button>
+                  <span className="w-1/4">
+                    {cartItems?.find(e=>{return e?.product?.id === product?.id})?.quantity}
+
+                  </span>
+                  <button  onClick={() => addToCart(product?.id)} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                    +
+                  </button>
+                </div>
+                }
+                `{processing && <BeatLoader color="#36d7b7" />}
+                {!processing && !cartItems?.some(e=>{
+                  return e?.product?.id === product?.id
+                }) && (
                   <button
                     onClick={() => addToCart(product?.id)}
                     className="btn btn-danger btn-lg button-red"
