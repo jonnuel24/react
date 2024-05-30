@@ -27,13 +27,13 @@ const Home = () => {
   useEffect(() => {
     fetchProducts();
     fetchCartItems();
-  }, [page, size]);
+  }, [page, size, search]);
 
   const fetchProducts = async () => {
     setLoadingProducts(true)
     setPages(0)
     try {
-      const products = await productServices.all(page, size);
+      const products = await productServices.all(page, size, search);
       if (products?.products) {
         setFarmProducts(products.products);
         setPages(products?.noOfTotalPages)
