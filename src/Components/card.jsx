@@ -2,10 +2,7 @@ import React, { useState } from "react";
 // import Farmer from "../asset/images/farmer.svg";
 import "../asset/styles/card.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setItems,
-  setSummary,
-} from "../store/reducers/cartReducer";
+import { setItems, setSummary } from "../store/reducers/cartReducer";
 import { userServices } from "../services/user.service";
 import { BeatLoader } from "react-spinners";
 import { notification } from "../services/notification";
@@ -15,13 +12,14 @@ function Card({ product, cartId = null }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user?.currentUser);
   const products = useSelector((state) => state.cart?.cartItems);
-  const [processing, setProcessing]=useState(false);
-  const navigate=useNavigate()
-  const viewProduct=(productId)=>{
-    navigate(`/user/product/${productId}`)
-  }
+  const [processing, setProcessing] = useState(false);
+  const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cart?.items);
+  const viewProduct = (productId) => {
+    navigate(`/user/product/${productId}`);
+  };
   const addToCart = async (productId) => {
-    setProcessing(true)
+    setProcessing(true);
     try {
       const payload = {
         userId: user.id,
@@ -29,37 +27,38 @@ function Card({ product, cartId = null }) {
         quantity: 1,
       };
       const response = await userServices.addToCart(payload);
-      notification(response?.message, 'success');
+      notification(response?.message, "success");
       dispatch(setItems(response.data?.cartItems));
       dispatch(setSummary(response?.data?.cart));
     } catch (e) {
-      notification(e.message, 'info')
+      notification(e.message, "info");
     }
-    setProcessing(false)
+    setProcessing(false);
   };
 
   const removeCart = async () => {
-    setProcessing(true)
+    setProcessing(true);
     try {
       const response = await userServices.removeCart({
         userId: user.id,
         cartItemId: cartId,
       });
-      if(response && response.status==='success'){
-        notification(response?.message, 'success');
+      if (response && response.status === "success") {
+        notification(response?.message, "success");
         dispatch(setItems(response.data?.cartItems));
         dispatch(setSummary(response?.data?.cart));
-      }else{
-        alert("something went wrong")
+      } else {
+        alert("something went wrong");
       }
     } catch (e) {
-      alert(e.message)
+      alert(e.message);
     }
-    setProcessing(false)
+    setProcessing(false);
   };
   return (
     <div className="cursor-pointer flex flex-col card  h-auto items-center">
-      <div onClick={()=>viewProduct(product?.id)}
+      <div
+        onClick={() => viewProduct(product?.id)}
         style={{ "--image-url": `url(${product?.images[0]})` }}
         className="cattle bg-[image:var(--image-url)] bg-cover bg-no-repeat h-screen"
       >
@@ -70,7 +69,10 @@ function Card({ product, cartId = null }) {
       </div>
 
       <div className="flex information flex-col justify-between">
-        <div onClick={()=>viewProduct(product?.id)} className="left-card-body">
+        <div
+          onClick={() => viewProduct(product?.id)}
+          className="left-card-body"
+        >
           <h3 className="description text-start">{product?.description}</h3>
           <h1 className="price">
             {new Intl.NumberFormat("en-us", {
@@ -92,8 +94,33 @@ function Card({ product, cartId = null }) {
         {/* <img src={Farmer} alt="" className="bb" /> */}
 
         <div className="flex flex-col right-card-body">
-        {processing && <BeatLoader color="#36d7b7" />}
-          {!cartId && !processing && (
+          {!cartId && !processing &&
+            cartItems?.some((e) => {
+              return e.product?.id === product?.id;
+            }) && (
+              <div className="inline-flex justify-center items-center">
+                <button className="bg-green-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                  -
+                </button>
+                <span className="w-1/4">
+                  {
+                    cartItems?.find((e) => {
+                      return e?.product?.id === product?.id;
+                    })?.quantity
+                  }
+                </span>
+                <button
+                  onClick={() => addToCart(product?.id)}
+                  className="bg-green-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                >
+                  +
+                </button>
+              </div>
+            )}
+          {processing && <BeatLoader color="#36d7b7" />}
+          {!cartId && !processing && !cartItems?.some((e) => {
+              return e.product?.id === product?.id;
+            }) && (
             <button
               onClick={() => addToCart(product?.id)}
               className="btn btn-success mt-[24px] h-[56px]"
