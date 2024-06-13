@@ -1,49 +1,76 @@
-import React, { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto'; // Assuming Chart.js is installed
-import chartData from '../data.json';
+import React, { useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
 
-const Barchart = ({ chartData }) => {
+const BarChart = () => {
   const chartRef = useRef(null);
+  let myChart = null; // Variable to store the chart instance
 
   useEffect(() => {
-    const ctx = chartRef.current.getContext('2d');
-    new Chart(ctx, {
-      type: 'bar', // Chart type (bar in this case)
+    const ctx = chartRef.current.getContext("2d");
+
+    // Create the chart
+    myChart = new Chart(ctx, {
+      type: "bar",
       data: {
-        labels: chartData.map((data) => data.month),
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ],
         datasets: [
           {
-            label: 'Income',
-            data: chartData.map((data) => data.income),
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            label: "Price",
+            data: [100, 150, 200, 250, 300, 350, 400, 100, 150, 200, 250, 300], // Dummy price data
+            backgroundColor:
+              "rgba(106, 189, 69)",
+
             borderWidth: 1,
+            borderRadius: 25,
           },
-          {
-            label: 'Expense',
-            data: chartData.map((data) => data.expense),
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-          },
-          // Add datasets for soldTransit and soldRemainder if needed
         ],
       },
       options: {
         scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: "Price",
             },
-          ],
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Month",
+            },
+          },
         },
       },
     });
-  }, [chartData]);
 
-  return <canvas ref={chartRef} width={600} height={400} />;
+    // Return a cleanup function to destroy the chart when the component unmounts
+    return () => {
+      if (myChart) {
+        myChart.destroy();
+      }
+    };
+  }, []);
+
+  return (
+    <div className="h-fit">
+      <h4>Bar Chart: Price vs Month</h4>
+      <canvas ref={chartRef} width={400} height={200}></canvas>
+    </div>
+  );
 };
 
-export default Barchart;
+export default BarChart;

@@ -67,28 +67,7 @@ function ManageOrders() {
                         <Option />
                       </td>
                     </tr>
-                    {/* drop down */}
-                    <div className="flex flex-row items-center gap-[24px]">
-                      <div className="flex flex-col items-start">
-                        <h5>Product</h5>
-                        <div className="flex flex-row items-center gap-[8px]">
-                          <div className="fn-profile">
-                            <img
-                              src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
-                              alt=""
-                              className="animal"
-                            />
-                          </div>
-                          Sarah Johnson
-                        </div>
-                      </div>
-                      {/* divider */}
-                      <div></div>
-                      <div className="flex flex-col items-start">
-                        <h5>Product</h5>
-                        <p className="mb-0">Sarah Johnson</p>
-                      </div>
-                    </div>
+                    
                     {/* 02 */}
                     <tr>
                       <td className="">102938</td>

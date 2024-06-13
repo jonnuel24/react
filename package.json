@@ -22,7 +22,7 @@
     "axios": "^1.5.0",
     "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.3.1",
-    "chart.js": "^4.4.2",
+    "chart.js": "^4.4.3",
     "cloudinary": "^1.41.2",
     "countries-list": "^2.6.1",
     "country-state-city": "^3.2.1",
@@ -32,6 +32,7 @@
     "flowbite-react": "^0.6.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
+    "react-chartjs-2": "^5.2.0",
     "react-country-state-city": "^1.1.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
@@ -77,12 +78,12 @@
   },
   "devDependencies": {
     "@iconify/react": "^4.1.1",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.19",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-react": "^7.33.2",
-    "postcss": "^8.4.31",
+    "postcss": "^8.4.38",
     "react-scripts": "^5.0.1",
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.4"
   },
   "browser": {
     "fs": false,

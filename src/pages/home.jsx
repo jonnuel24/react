@@ -18,30 +18,30 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(0);
   const [size, setSize] = useState(15);
-  const [search, setSearch]=useState("");
-  const [loadingProducts, setLoadingProducts]=useState(false);
+  const [search, setSearch] = useState("");
+  const [loadingProducts, setLoadingProducts] = useState(false);
   const user = useSelector((state) => state.user?.currentUser);
-  const handlePageClick=(data)=>{
-    setPage(data.selected+1)
-  }
+  const handlePageClick = (data) => {
+    setPage(data.selected + 1);
+  };
   useEffect(() => {
     fetchProducts();
     fetchCartItems();
   }, [page, size, search]);
 
   const fetchProducts = async () => {
-    setLoadingProducts(true)
-    setPages(0)
+    setLoadingProducts(true);
+    setPages(0);
     try {
       const products = await productServices.all(page, size, search);
       if (products?.products) {
         setFarmProducts(products.products);
-        setPages(products?.noOfTotalPages)
+        setPages(products?.noOfTotalPages);
       }
     } catch (e) {
       console.log(e);
     }
-    setLoadingProducts(false)
+    setLoadingProducts(false);
   };
   const fetchCartItems = async () => {
     try {
@@ -55,7 +55,7 @@ const Home = () => {
   };
   return (
     <div className="flex flex-col">
-      <Navbar setSearch={setSearch}/>
+      <Navbar setSearch={setSearch} />
       <section className="section2">
         <header>
           Welcome <strong>{user?.firstName},</strong>
@@ -95,15 +95,14 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="card0">
-        <div className="flex flex-wrap card1 justify-center">
+      <section className="card0 w-fit">
+        <div className="flex flex-wrap card1 justify-center items-center space-x-6 space-y-6">
           {loadingProducts && <BeatLoader color="#36d7b7" />}
-          {!loadingProducts && farmProducts.map((p, i) => (
-            <Card key={i} product={p} />
-          ))}
+          {!loadingProducts &&
+            farmProducts.map((p, i) => <Card key={i} product={p} />)}
         </div>
         <ReactPaginate
-          className="justify-end flex flex-row gap-10 w-full text-black text-bold"
+          className="justify-end flex flex-row gap-10 w-full text-black font-bold"
           pageCount={pages}
           shape="rounded"
           onPageChange={handlePageClick}

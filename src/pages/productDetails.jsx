@@ -169,25 +169,7 @@ function ProductDetails() {
                       </div>
                     </div>
                     {/*  */}
-                    {/* <table className="table">
-                      
-                      <tr>
-                        <td>Weight</td>
-                        <th>{product?.weight}kg plus</th>
-                      </tr>
-                      <tr>
-                        <td>Color</td>
-                        <th>White</th>
-                      </tr>
-                      <tr>
-                        <td>Lifespan</td>
-                        <th>{product?.age} years</th>
-                      </tr>
-                      <tr>
-                        <td>Gender</td>
-                        <th>{product?.gender}</th>
-                      </tr>
-                    </table> */}
+
                   </div>
 
                   <div className="body22">

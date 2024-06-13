@@ -13,15 +13,9 @@
 
 /* farmers dashboard divider */
 
-.fd-divider {
-  width: 2px;
-  height: 932px;
-  border-radius: 0px;
-  background: #d9d9d9;
-}
+
 
 .fd-rightdiv-second-div-bg {
-  width: 100%;
   height: 100%;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -32,18 +26,14 @@
   border-radius: 5px;
   border: 1.241px solid rgba(0, 0, 0, 0.2);
   background: #fff;
-  height: 343.694px;
 }
-
+  
 .fd-overview {
-  width: 100%;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   background: var(--color-primary-60, #fff);
 }
 
 .fd-right-upper-div {
-  width: 456px;
-  height: 341.97px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   background: #fff;
 }
@@ -56,7 +46,6 @@
 }
 
 .fd-overview-right {
-  width: 100%;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   background: var(--color-primary-60, #fff);
 }
