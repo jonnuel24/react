@@ -40,8 +40,8 @@ function Dashboard() {
           {/* 01 Total */}
           <div className="fd-rightdiv-second-div-bg px-[29px] py-[37px] flex flex-col gap-[16px]">
             {/* -=======total rvenue/ livestock statistics======= */}
-            <div className="flex flex-row w-full gap-[16px]">
-              <div className="dashboard-box1 w-4/5">
+            <div className="flex flex-row gap-[16px]">
+              <div className="dashboard-box1 w-3/5">
                 {" "}
                 {/* Adjusted width to 4/5 or 80% */}
                 <div className="fd-overview flex flex-row justify-between px-[24px] py-[16px]">

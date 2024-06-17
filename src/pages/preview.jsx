@@ -12,7 +12,11 @@ import { v4 as uuid } from "uuid";
 import { notification } from "../services/notification";
 import { OrderServices } from "../services/order.service";
 import { userServices } from "../services/user.service";
-import { setItems, setSummary, setDelivery } from "../store/reducers/cartReducer";
+import {
+  setItems,
+  setSummary,
+  setDelivery,
+} from "../store/reducers/cartReducer";
 
 function Preview() {
   const dispatch = useDispatch();
@@ -31,11 +35,14 @@ function Preview() {
   const nameRef = useRef(null);
   const phoneRef = useRef(null);
   const addressRef = useRef(null);
-  const handleInputChange=(event)=>{
-    setDeliveryAddress({...deliveryAddress, [event.target.name]: event.target.value})
-    dispatch(setDelivery(deliveryAddress))
-    console.log(deliveryAddress)
-  }
+  const handleInputChange = (event) => {
+    setDeliveryAddress({
+      ...deliveryAddress,
+      [event.target.name]: event.target.value,
+    });
+    dispatch(setDelivery(deliveryAddress));
+    console.log(deliveryAddress);
+  };
   useEffect(() => {
     const unique_id = uuid();
     setRef(unique_id);
@@ -110,7 +117,6 @@ function Preview() {
       default:
         break;
     }
-   
   };
   return (
     <div>
@@ -137,7 +143,7 @@ function Preview() {
                   type="text"
                   readOnly={!editName}
                   ref={nameRef}
-                  onChange={(event)=>handleInputChange(event)}
+                  onChange={(event) => handleInputChange(event)}
                   name="name"
                   className="text-white delivery-name bg-green-700"
                   defaultValue={firstName + " " + lastName}
@@ -166,7 +172,7 @@ function Preview() {
                   <input
                     ref={addressRef}
                     name="address"
-                    onChange={(event)=>handleInputChange(event)}
+                    onChange={(event) => handleInputChange(event)}
                     readonly={!editAddress}
                     className="text-white bg-green-700"
                     type="text"
@@ -198,7 +204,7 @@ function Preview() {
                     readonly={!editPhone}
                     name="phone"
                     ref={phoneRef}
-                    onChange={(event)=>handleInputChange(event)}
+                    onChange={(event) => handleInputChange(event)}
                     className="text-white bg-green-700"
                     type="text"
                     defaultValue={phoneNumber}
@@ -252,28 +258,28 @@ function Preview() {
           </div>
         </div>
         <div className="delivery-div04">
-          <div className="delivery-div04-label">Logistics</div>
+          <div className="delivery-div04-label">Items</div>
           <div className="delivery-div4">
             {cartItems?.map((e) => {
               return (
                 <div className="delivery-div40">
                   <div className="delivery-div41">
-                    <input type="radio" />
-                    <h4>
+                    {/* <input type="radio" /> */}
+                    <h6>
                       <img
                         style={{ width: "80px", height: "50px" }}
                         src={e.product.images[0]}
                         alt=""
                       />
                       {e.product.name}
-                    </h4>
+                    </h6>
                   </div>
-                  <h2>
+                  <h4>
                     {new Intl.NumberFormat("en-US", {
                       style: "currency",
                       currency: "NGN",
                     }).format(e?.product.price)}
-                  </h2>
+                  </h4>
                 </div>
               );
             })}
