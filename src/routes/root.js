@@ -59,7 +59,7 @@ function Root() {
       <Route path="/forgotPassword" Component={forgotPassword} />
       <Route path="/resetPassword" Component={resetPassword} />
       <Route path="/verificationCode" Component={verificationCode} />
-      <Route path="/checkMail" Component={CheckMail} />
+      <Route path="/verify-account" Component={CheckMail} />
       <Route path="/passwordChanged" Component={PasswordChanged} />
       <Route path="/profile" Component={Profile} />
       <Route path="/profile_edit" Component={Profile_edit} />

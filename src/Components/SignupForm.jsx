@@ -119,7 +119,6 @@ function SignUpForm({ type }) {
       setStates(result.states);
     }
     if (name == "state") {
-      console.log(value)
       const result = states.find((s) => s.name == value);
       const lgaList = stateLgas.find((s) => s.state === value);
       lgaList.lgas ? setLGAs(lgaList.lgas) : console.log(lgaList);
@@ -180,8 +179,11 @@ function SignUpForm({ type }) {
         payload.phoneNumber = "+234" + payload.phoneNumber;
         const response = await accountServices.createAccount(payload);
         if (response.status === "success") {
-          notification("Registration was successful", "success");
-          navigate("/login");
+          notification("Registration was successful and OTP was sent to "+post.email, "success");
+          localStorage.setItem('email', post.email)
+          localStorage.setItem('userType', post.userType)
+
+          navigate("/verify-account");
         } else {
           if (response.messages) {
             const messages = Object.values(response.messages);
