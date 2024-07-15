@@ -33,6 +33,7 @@ import Addproduct from "../pages/farmers/addproduct";
 import MyProduct from "../pages/farmers/myProduct";
 import ManageOrders from "../pages/farmers/manageOrders";
 import Payment from "../pages/payment";
+import EmailTemplate from '../Components/emailTemplate'
 
 
 
@@ -82,6 +83,9 @@ function Root() {
 
       {/* website */}
       <Route path="/website" Component={Website} />
+
+      {/* email template */}
+      <Route path="/emailTemplate" Component={EmailTemplate} />
 
     </Routes>
   );
