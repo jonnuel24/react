@@ -33,6 +33,15 @@ const accountServices = {
     let response = await axios.post(`${baseUrls}waiting-list`, data);
     return response;
   },
+
+  verifyEmail:async function(data){
+    let response=await axios.post(`${baseUrls}verify-signup-otp`, data)
+    return response
+  },
+  resendOTP:async function(data){
+    let response=await axios.post(`${baseUrls}resend-signup-otp`, data)
+    return response
+  }
 };
 
 export default accountServices;
