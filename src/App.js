@@ -1,6 +1,7 @@
 import "./App.css";
 import Root from "./routes/root";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { AxiosInterceptor } from './interceptors/AxiosInterceptors.js'
 // import { BeatLoader, ClipLoader } from "react-spinners";
 // Importing toastify module
 import { ToastContainer } from "react-toastify";
@@ -13,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 // toast.configure();
 
 function App() {
+  AxiosInterceptor()
   return (
     <div className="App">
       <Root />

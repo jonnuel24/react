@@ -115,6 +115,8 @@ function Login() {
       }
       let result = await accountServices.login(post);
       if (typeof result == "string" || result == null || result === "") {
+        console.log('execution to this length')
+        console.log(result)
         notification(result, "error");
       } else if (result.statusCode === 200) {
         const { farm, token, ...rest } = result.data;
@@ -132,6 +134,7 @@ function Login() {
         }
       } else {
         // console.log(result);
+       
         notification(result?.message, "error");
       }
 
