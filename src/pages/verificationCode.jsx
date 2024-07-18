@@ -111,7 +111,7 @@ function VerificationCode() {
         </div>
         <div className="flex login-div4 vc-div3 items-start">
           <button type="submit" className="vc-button">
-            Recover Password
+            Submit
           </button>
           <h5 className="vc-resend mt-4">
             Did not get OTP?{" "}

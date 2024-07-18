@@ -31,6 +31,7 @@ axios.interceptors.response.use(
     return response.data;
   },
   (error) => {
+    
     console.log(error);
     if (error === null) {
       error = {
@@ -43,7 +44,7 @@ axios.interceptors.response.use(
       };
     }
     if (typeof error?.response?.data == "object") {
-      console.log(error.response);
+      // console.log(error.response);
       error.response.data.statusCode = error.response.status;
     } else {
       error = {
