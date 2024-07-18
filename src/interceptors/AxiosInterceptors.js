@@ -7,8 +7,14 @@ export const AxiosInterceptor = () => {
 
   axios.interceptors.response.use(
     (response) => {
+    if(response?.data){
       response.data.statusCode = 200;
       return response.data;
+    }
+    return {
+      statusCode: 500,
+      message: "Something went wrong",
+    }
     },
     (error) => {
       console.log(error);
