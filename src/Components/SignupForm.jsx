@@ -9,7 +9,7 @@ import "react-country-state-city/dist/react-country-state-city.css";
 import data from "../asset/countries+states+cities.json";
 import stateLgas from "../asset/state_lgas.json";
 
-function SignUpForm({ type }) {
+function SignUpForm({ type, setStage, setUserData }) {
   const [agreed, setAgreed] = useState(false);
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
@@ -140,7 +140,7 @@ function SignUpForm({ type }) {
     const result = data.find((c) => c.name == "Nigeria");
     setStates(result.states);
   }, []);
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -151,6 +151,7 @@ function SignUpForm({ type }) {
 
   async function signup() {
     try {
+      setUserData(post);
       if (!agreed) {
         notification("You need to agree to the terms", "error");
         setLoading(false);
@@ -175,15 +176,20 @@ function SignUpForm({ type }) {
           return;
         }
         setLoading(true);
-        const payload = { ...post };
-        payload.phoneNumber = "+234" + payload.phoneNumber;
+        const payload = {
+          email: post.email,
+          userType: post.userType,
+        };
         const response = await accountServices.createAccount(payload);
         if (response.status === "success") {
-          notification("Registration was successful and OTP was sent to "+post.email, "success");
-          localStorage.setItem('email', post.email)
-          localStorage.setItem('userType', post.userType)
-
-          navigate("/verify-account");
+          notification(
+            "Registration was successful and OTP was sent to " + post.email,
+            "success"
+          );
+          localStorage.setItem("email", post.email);
+          localStorage.setItem("userType", post.userType);
+          setStage("OTP");
+          // navigate("/verify-account");
         } else {
           if (response.messages) {
             const messages = Object.values(response.messages);
@@ -242,8 +248,7 @@ function SignUpForm({ type }) {
                     pattern="[a-zA-Z\s']{1,45}"
                   />
                 </div>
-                
-                
+
                 {/* email */}
                 <div className="flex flex-col items-start">
                   <label htmlFor="email">Email</label>
@@ -453,7 +458,11 @@ function SignUpForm({ type }) {
                       Select Local Government Area
                     </option>
                     {lgas &&
-                      lgas.map((lga) => <option key={lga} value={lga}>{lga}</option>)}
+                      lgas.map((lga) => (
+                        <option key={lga} value={lga}>
+                          {lga}
+                        </option>
+                      ))}
                   </select>
                   {/* <input
                     className=""

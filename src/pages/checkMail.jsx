@@ -8,9 +8,8 @@ import { useForm } from "react-hook-form";
 import accountServices from "../services/auth.service";
 import { notification } from "../services/notification";
 
-function CheckMail() {
+function CheckMail({ type, setStage }) {
   const [email, setEmail] = useState("");
-  const [type, setType] = useState("");
 
   const navigate = useNavigate();
   const [post, setPost] = useState({
@@ -24,16 +23,14 @@ function CheckMail() {
 
   useEffect(() => {
     const userEmail = localStorage.getItem("email");
-    const userType = localStorage.getItem("userType");
-
     setEmail(userEmail);
-    setType(userType);
+
   }, []);
 
   const handleResendOTP = () => {
     const payload = {
       email: email,
-      userType: type !=='undefined' ? type : 'FARMER',
+      userType: type !== "undefined" ? type : "FARMER",
     };
     accountServices.resendOTP(payload).then((response) => {
       if (response.statusCode && response.statusCode == 200) {
@@ -56,15 +53,15 @@ function CheckMail() {
       .then((response) => {
         if (response.statusCode && response.statusCode == 200) {
           notification("Account verify successfully", "success");
-          navigate("/login");
+          setStage('completeProfile')
         } else {
+          notification(response?.message, "error");
         }
       })
       .catch((error) => {
         console.log("error block", error);
+        notification(error.message, 'error')
       });
-    console.log(otp);
-    console.log(email);
     // setShowMessage(true);
   };
 
@@ -183,7 +180,11 @@ function CheckMail() {
           <div className="flex login-div4 vc-div3 items-start">
             <h5 className="vc-resend mt-4">
               Did not get OTP?{" "}
-              <button onClick={()=>handleResendOTP()} type="button" className="text-[#006838]">
+              <button
+                onClick={() => handleResendOTP()}
+                type="button"
+                className="text-[#006838]"
+              >
                 Resend
               </button>
             </h5>
