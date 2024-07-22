@@ -65,7 +65,7 @@ function MyProduct() {
                   </thead>
                   <tbody>
                     {/* 01 */}
-                    {farmProducts.map((p) => (
+                    {farmProducts?.map((p) => (
                       <tr>
                         <td className="">
                           <div className="fn-profile">

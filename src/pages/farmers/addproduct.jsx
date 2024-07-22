@@ -12,14 +12,20 @@ import { BeatLoader } from "react-spinners";
 function Addproduct() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [uploading, setUploading]=useState(false)
+  const [uploading, setUploading] = useState(false);
   // Function to update images array
   const addImage = async (image) => {
     // Create a new product object with updated images array
-    product.images.push(image)
+    product.images.push(image);
   };
-  
-  const uploadImages = [null, null, null, null, null];
+
+  const [uploadImages, setUploadImages] = useState([
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
   const navigate = useNavigate();
   const handleInput = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
@@ -30,7 +36,7 @@ function Addproduct() {
       // user = JSON.stringify(user);
       user = JSON.parse(user);
       // console.log(user)
-      setProduct({...product, farmId : user.farm.id})
+      setProduct({ ...product, farmId: user.farm.id });
     }
   }, []);
   const [product, setProduct] = useState({
@@ -47,26 +53,47 @@ function Addproduct() {
     unit: null,
   });
   const setImage = (index, file) => {
-    uploadImages[index] = file;
+    const updatedImages = [...uploadImages];
+
+    // Insert the new file at the specified position
+    updatedImages.splice(index, 0, file);
+
+    // Update the state with the new array
+    setUploadImages(updatedImages);
   };
 
-  const cloudUpload = () => {
-    // setUploading(true)
-    setLoading(true);
+  const processProduct = async () => {
+    setUploading(true);
+    try {
+      const result = await cloudUpload();
+      console.log(result);
+      console.log("after cloud upload we here");
+      console.log("here are all the images", product.images);
+      await createProduct();
+    } catch (error) {
+      notification(error.message, "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const cloudUpload = async () => {
     try {
       setImages([]);
-      uploadImages.forEach(async (e, index) => {
-        if (e != null) await cloudinaryUpload(e);
-        if(index===uploadImages.length-1){
-          // setUploading(false)
-         await createProduct();
-        }
-      });
+      const result = await Promise.all(
+        uploadImages.map(async (e, index) => {
+          if (e == null) return "no images";
+          const response = await cloudinaryUpload(e);
+          console.log(response);
+          return response;
+        })
+      );
+      return result;
     } catch (e) {
       // notification(e.message,'info');
       console.log(e);
+      return [];
     }
-
   };
 
   const cloudinaryUpload = async (file) => {
@@ -83,30 +110,32 @@ function Addproduct() {
         }
       );
       let res = await response.json();
+      notification("File Uploaded successfully", "success");
       await addImage(res.secure_url);
-      notification("File Uploaded successfully", 'success');
-      // console.log(imagesURL);
+      return res.secure_url;
     } catch (e) {
-      notification(e.message, 'info');
+      notification(e.message, "info");
+      return e.message;
     }
   };
 
   const createProduct = async () => {
     setLoading(true);
     try {
+      console.log("product before upload", product.images);
       const response = await productServices.add(product);
       if (response.statusCode === 200) {
-        notification("Product added successfully",'success');
+        notification("Product added successfully", "success");
         navigate("/product");
-      }else{
-        notification(response?.message, 'error')
+      } else {
+        notification(response?.message, "error");
       }
       console.log(response);
     } catch (e) {
-      notification(e.message, 'info')
+      notification(e.message, "info");
       console.log(e);
     }
-    setLoading(false)
+    setLoading(false);
   };
   return (
     <div>
@@ -267,14 +296,15 @@ function Addproduct() {
                 </div>
               </form>
             </div>
-            {!loading && 
-            <button
-              id="create-button"
-              onClick={cloudUpload}
-              className="w-[170px] h-[50px] bg-black text-white rounded-md"
-            >
-              Save Details
-            </button>}
+            {!loading && (
+              <button
+                id="create-button"
+                onClick={processProduct}
+                className="w-[170px] h-[50px] bg-black text-white rounded-md"
+              >
+                Save Details
+              </button>
+            )}
             {loading && <BeatLoader color="#36d7b7" />}
           </div>
           {/* end of add details */}
