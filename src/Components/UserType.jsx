@@ -1,6 +1,7 @@
-function UserType({ setType }) {
+function UserType({ setType, setStage }) {
   const handleUserTypeSelection = (selectedType) => {
     setType(selectedType);
+    setStage('form')
   };
   return (
     <div className="flex flex-col w-full h-fit my-24">

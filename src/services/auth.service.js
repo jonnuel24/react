@@ -38,6 +38,10 @@ const accountServices = {
     let response=await axios.post(`${baseUrls}verify-signup-otp`, data)
     return response
   },
+  completeProfile:async function(data){
+    let response=await axios.post(`${baseUrls}complete-profile`, data)
+    return response
+  },
   resendOTP:async function(data){
     let response=await axios.post(`${baseUrls}resend-signup-otp`, data)
     return response

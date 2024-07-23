@@ -12,19 +12,7 @@ import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 let persistor = persistStore(store);
 
-// axios.interceptors.request.use(
-//   (request) => {
-//     request.headers.ContertType = "application/json";
-//     request.headers.Accept = "application/json";
-//     if (!request.url.includes("login") && !request.url.includes("auth")) {
-//       request.headers.Authorization = "Bearer " + localStorage.getItem("token");
-//     }
-//     return request;
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   }
-// );
+
 // axios.interceptors.response.use(
 //   (response) => {
 //     response.data.statusCode = 200;

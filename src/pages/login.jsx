@@ -119,15 +119,27 @@ function Login() {
         console.log(result)
         notification(result, "error");
       } else if (result.statusCode === 200) {
-        const { farm, token, ...rest } = result.data;
-        dispatch(setCurrentUser(rest));
-        dispatch(setFarm(farm));
-        dispatch(setToken(token));
-        dispatch(setIsAuthenticated(true));
-        localStorage.setItem("token", result.data.token);
-        localStorage.setItem("currentUser", JSON.stringify(result.data));
-        notification("login successful", "success");
-        if (result.data.userType === "USER") {
+        console.log('login response',result)
+        if(result.data){
+          const { farm, token, ...rest } = result.data;
+          dispatch(setCurrentUser(rest));
+          dispatch(setFarm(farm));
+          dispatch(setToken(token));
+          dispatch(setIsAuthenticated(true));
+          localStorage.setItem("token", token);
+          localStorage.setItem("currentUser", JSON.stringify(result.data));
+          notification("login successful", "success");
+        }else{
+          const { farm, token, ...rest } = result;
+          dispatch(setCurrentUser(rest));
+          dispatch(setFarm(farm));
+          dispatch(setToken(token));
+          dispatch(setIsAuthenticated(true));
+          localStorage.setItem("token", token);
+          localStorage.setItem("currentUser", JSON.stringify(result));
+          notification("login successful", "success");
+        }
+        if (result.userType === "USER") {
           navigate("/user");
         } else {
           navigate("/farmer");
