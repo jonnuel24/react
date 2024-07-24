@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
+
 let persistor = persistStore(store);
 
 
@@ -52,8 +53,6 @@ let persistor = persistStore(store);
 //     return error.response.data;
 //   }
 // );
-
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>

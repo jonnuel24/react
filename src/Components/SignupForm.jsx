@@ -9,7 +9,7 @@ import "react-country-state-city/dist/react-country-state-city.css";
 import data from "../asset/countries+states+cities.json";
 import stateLgas from "../asset/state_lgas.json";
 
-function SignUpForm({ type, setStage, setUserData }) {
+function SignUpForm({ type, setStage, setUserData, stage, userData }) {
   const [agreed, setAgreed] = useState(false);
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
@@ -18,25 +18,7 @@ function SignUpForm({ type, setStage, setUserData }) {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [lgas, setLGAs] = useState([]);
-  const [post, setPost] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    gender: "",
-    userType: type,
-    phoneNumber: "",
-    password: "",
-    country: "Nigeria",
-    state: "",
-    city: "",
-    street: "",
-    localGovtArea: "",
-    placeId: "64cy-u8df940u-7899e6cd",
-    farmName: "",
-    dateOfEstablishment: "",
-    noOfEmployees: 0,
-    addresses: [],
-  });
+  const [post, setPost] = useState(userData);
   const [errors, setErrors] = useState({
     firstName: "",
     lastName: "",
@@ -152,6 +134,10 @@ function SignUpForm({ type, setStage, setUserData }) {
   async function signup() {
     try {
       setUserData(post);
+      if(stage==='editData'){
+        setStage('completeProfile')
+        return
+      }
       if (!agreed) {
         notification("You need to agree to the terms", "error");
         setLoading(false);
@@ -181,7 +167,8 @@ function SignUpForm({ type, setStage, setUserData }) {
           userType: post.userType,
         };
         const response = await accountServices.createAccount(payload);
-        if (response.status === "success") {
+        console.log('backend response data',response);
+        if (response.status == "success") {
           notification(
             "Registration was successful and OTP was sent to " + post.email,
             "success"

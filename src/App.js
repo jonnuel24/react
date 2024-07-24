@@ -1,20 +1,20 @@
 import "./App.css";
 import Root from "./routes/root";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { AxiosInterceptor } from './interceptors/AxiosInterceptors.js'
+
 // import { BeatLoader, ClipLoader } from "react-spinners";
 // Importing toastify module
 import { ToastContainer } from "react-toastify";
-
+import {useEffect} from 'react'
 // Import toastify css file
 import "react-toastify/dist/ReactToastify.css";
-
+import { AxiosInterceptor } from './interceptors/AxiosInterceptors.js'
 // toast-configuration method,
 // it is compulsory method.
 // toast.configure();
 
 function App() {
-  AxiosInterceptor()
+    AxiosInterceptor()
   return (
     <div className="App">
       <Root />
