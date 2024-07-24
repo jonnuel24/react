@@ -5,21 +5,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { BeatLoader, ClipLoader } from "react-spinners";
 // Importing toastify module
 import { ToastContainer } from "react-toastify";
-import {useEffect} from 'react'
 // Import toastify css file
 import "react-toastify/dist/ReactToastify.css";
-import { AxiosInterceptor } from './interceptors/AxiosInterceptors.js'
 // toast-configuration method,
 // it is compulsory method.
 // toast.configure();
 
 function App() {
-    AxiosInterceptor()
   return (
     <div className="App">
       <Root />
       <ToastContainer />
-    
     </div>
   );
 }

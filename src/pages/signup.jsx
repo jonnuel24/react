@@ -14,27 +14,25 @@ function Signup() {
   // show and hide password
   const [type, setType] = useState(null);
   const [stage, setStage] = useState("selectType");
-  const [userData, setUserData] = useState(
-    {
-      firstName: "",
-      lastName: "",
-      email: "",
-      gender: "",
-      userType: type,
-      phoneNumber: "",
-      password: "",
-      country: "Nigeria",
-      state: "",
-      city: "",
-      street: "",
-      localGovtArea: "",
-      placeId: "64cy-u8df940u-7899e6cd",
-      farmName: "",
-      dateOfEstablishment: "",
-      noOfEmployees: 0,
-      addresses: [],
-    }
-  );
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    gender: "",
+    userType: type,
+    phoneNumber: "",
+    password: "",
+    country: "Nigeria",
+    state: "",
+    city: "",
+    street: "",
+    localGovtArea: "",
+    placeId: "64cy-u8df940u-7899e6cd",
+    farmName: "",
+    dateOfEstablishment: "",
+    noOfEmployees: 0,
+    addresses: [],
+  });
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -49,8 +47,8 @@ function Signup() {
     payload.dateOfBirth = "1999-19-02";
     if (payload.userType === "FARMER") {
       payload.dateOfEstablishment = payload.dateOfEstablishment + " 00:00:00";
-    }else{
-      payload.dateOfEstablishment =  "1979-01-01 00:00:00";
+    } else {
+      delete payload.dateOfEstablishment;
     }
     console.log(payload);
     const response = await accountServices.completeProfile(payload);
