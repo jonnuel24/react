@@ -10,49 +10,49 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-
+import axios from "axios";
 let persistor = persistStore(store);
 
 
-// axios.interceptors.response.use(
-//   (response) => {
-//     response.data.statusCode = 200;
-//     return response.data;
-//   },
-//   (error) => {
-//     console.log(error);
-//     if (error === null) {
-//       error = {
-//         response: {
-//           data: {
-//             statusCode: 500,
-//             message: "Something went wrong",
-//           },
-//         },
-//       };
-//     }
-//     if (typeof error?.response?.data == "object") {
-//       console.log(error.response);
-//       error.response.data.statusCode = error.response.status;
-//     } else {
-//       error = {
-//         response: {
-//           data: {
-//             statusCode: 500,
-//             message: "Something went wrong",
-//           },
-//         },
-//       };
-//     }
+axios.interceptors.response.use(
+  (response) => {
+    response.data.statusCode = 200;
+    return response.data;
+  },
+  (error) => {
+    console.log(error);
+    if (error === null) {
+      error = {
+        response: {
+          data: {
+            statusCode: 500,
+            message: "Something went wrong",
+          },
+        },
+      };
+    }
+    if (typeof error?.response?.data == "object") {
+      console.log(error.response);
+      error.response.data.statusCode = error.response.status;
+    } else {
+      error = {
+        response: {
+          data: {
+            statusCode: 500,
+            message: "Something went wrong",
+          },
+        },
+      };
+    }
 
-//     if (error.response.status === 403) {
+    if (error.response.status === 403) {
   
-//       navigate("/login");
-//       return;
-//     }
-//     return error.response.data;
-//   }
-// );
+      window.location.href = "/login";
+      return;
+    }
+    return error.response.data;
+  }
+);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
