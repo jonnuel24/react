@@ -18,7 +18,7 @@ function SignUpForm({ type, setStage, setUserData, stage, userData }) {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [lgas, setLGAs] = useState([]);
-  const [post, setPost] = useState(userData);
+  const [post, setPost] = useState({ ...userData, userType: type });
   const [errors, setErrors] = useState({
     firstName: "",
     lastName: "",
@@ -134,9 +134,9 @@ function SignUpForm({ type, setStage, setUserData, stage, userData }) {
   async function signup() {
     try {
       setUserData(post);
-      if(stage==='editData'){
-        setStage('completeProfile')
-        return
+      if (stage === "editData") {
+        setStage("completeProfile");
+        return;
       }
       if (!agreed) {
         notification("You need to agree to the terms", "error");
@@ -167,7 +167,7 @@ function SignUpForm({ type, setStage, setUserData, stage, userData }) {
           userType: post.userType,
         };
         const response = await accountServices.createAccount(payload);
-        console.log('backend response data',response);
+        console.log("backend response data", response);
         if (response.status == "success") {
           notification(
             "Registration was successful and OTP was sent to " + post.email,
