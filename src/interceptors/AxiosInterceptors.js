@@ -5,20 +5,7 @@ export const AxiosInterceptor = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  axios.interceptors.request.use(
-    (request) => {
-      request.headers.ContentType = "application/json";
-      request.headers.Accept = "application/json";
-      if (!request.url.includes("login") && !request.url.includes("auth")) {
-        request.headers.Authorization =
-          "Bearer " + localStorage.getItem("token");
-      }
-      return request;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
+
   axios.interceptors.response.use(
     (response) => {
       console.log("from the interceptors", response);
