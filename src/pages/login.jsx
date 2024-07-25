@@ -129,6 +129,11 @@ function Login() {
           localStorage.setItem("token", token);
           localStorage.setItem("currentUser", JSON.stringify(result.data));
           notification("login successful", "success");
+          if (result.data.userType === "USER") {
+            navigate("/user");
+          } else {
+            navigate("/farmer");
+          }
         }else{
           const { farm, token, ...rest } = result;
           dispatch(setCurrentUser(rest));
@@ -138,11 +143,11 @@ function Login() {
           localStorage.setItem("token", token);
           localStorage.setItem("currentUser", JSON.stringify(result));
           notification("login successful", "success");
-        }
-        if (result.userType === "USER") {
-          navigate("/user");
-        } else {
-          navigate("/farmer");
+          if (result.data.userType === "USER") {
+            navigate("/user");
+          } else {
+            navigate("/farmer");
+          }
         }
       } else {
         // console.log(result);
