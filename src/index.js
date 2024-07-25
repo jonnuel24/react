@@ -12,7 +12,20 @@ import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import axios from "axios";
 let persistor = persistStore(store);
-
+axios.interceptors.request.use(
+  (request) => {
+    request.headers.ContentType = "application/json";
+    request.headers.Accept = "application/json";
+    if (!request.url.includes("login") && !request.url.includes("auth")) {
+      request.headers.Authorization =
+        "Bearer " + localStorage.getItem("token");
+    }
+    return request;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 axios.interceptors.response.use(
   (response) => {
@@ -45,8 +58,8 @@ axios.interceptors.response.use(
       };
     }
     if (error.response.status === 403 && window.location.pathname !== '/login') {
-      window.location.href = "/login";
-      return;
+      // window.location.href = "/login";
+      // return;
     }
     return error.response.data;
   }
