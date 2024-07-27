@@ -82,14 +82,15 @@ function Login() {
           });
         }
         break;
-      case 'phoneNumber':
-        const phoneRegex= /^(7|8|9)[01]\d{8}$/
-        if(!value.match(phoneRegex)) {
+      case "phoneNumber":
+        const phoneRegex = /^(7|8|9)[01]\d{8}$/;
+        if (!value.match(phoneRegex)) {
           setErrors({
             ...errors,
-            [name]: "Invalid phone number format valid formats (80xxxxxxxx and 70xxxxxxxx and 90xxxxxxxx)",
+            [name]:
+              "Invalid phone number format valid formats (80xxxxxxxx and 70xxxxxxxx and 90xxxxxxxx)",
           });
-        }else{
+        } else {
           setErrors({
             ...errors,
             [name]: "",
@@ -107,20 +108,20 @@ function Login() {
   };
 
   async function login() {
-    setLoading(true)
-    try{
-      if(errors.email) {
-        notification("Please fill out the form appropriately", 'error');
+    setLoading(true);
+    try {
+      if (errors.email) {
+        notification("Please fill out the form appropriately", "error");
         return;
       }
       let result = await accountServices.login(post);
       if (typeof result == "string" || result == null || result === "") {
-        console.log('execution to this length')
-        console.log(result)
+        console.log("execution to this length");
+        console.log(result);
         notification(result, "error");
       } else if (result.statusCode === 200) {
-        console.log('login response',result)
-        if(result.data){
+        console.log("login response", result);
+        if (result.data) {
           const { farm, token, ...rest } = result.data;
           dispatch(setCurrentUser(rest));
           dispatch(setFarm(farm));
@@ -134,7 +135,7 @@ function Login() {
           } else {
             navigate("/farmer");
           }
-        }else{
+        } else {
           const { farm, token, ...rest } = result;
           dispatch(setCurrentUser(rest));
           dispatch(setFarm(farm));
@@ -151,72 +152,79 @@ function Login() {
         }
       } else {
         // console.log(result);
-       
+
         notification(result?.message, "error");
       }
-
-    }catch(e){
-      notification(e.message, 'info')
+    } catch (e) {
+      notification(e.message, "info");
       console.log(e);
     }
-    setLoading(false)
+    setLoading(false);
   }
 
   return (
-    <div className="row">
-      <div className="login-div1 col col-5">
-        {/* <img src={LoginBg} alt="" /> */}
+    <div className="border-2 border-gray-100 bg-white shadow-sm p-8 rounded-3xl w-[25%] max-w-[35%] mt-[3%] mx-auto space-y-6">
+      <div className="">
+        <img src={logo} alt="" />
       </div>
-      <div className="login-div2 col col-7">
-        <div className="login-div20">
-          <img src={logo} alt="" />
-          <header>
-            Sign in to <strong>Agripeller,</strong>
-          </header>
-          <div className="login-form">
-            <div className="form-header">Welcome back!</div>
-            <form action="" onSubmit={handleSubmit(login)}>
-              <div className="inputs">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter Email"
-                  onChange={handleInput}
-                  value={post.email}
-                />
-                  {errors.email && (
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
-                      {errors.email}
-                    </p>
-                  )}
-              </div>
+      <div className="">
+        <header>Login to Agripeller </header>
+        <div className="flex flex-col gap-4">
+          <div className="form-header">Welcome back!</div>
+          <form
+            action=""
+            onSubmit={handleSubmit(login)}
+            className="flex flex-col gap-4"
+          >
+            <div className="flex flex-col items-start gap-2 w-full">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter Email"
+                onChange={handleInput}
+                value={post.email}
+                className="py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-[56px] w-full rounded-xl border border-gray-300"
+              />
+              {errors.email && (
+                <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+                  {errors.email}
+                </p>
+              )}
+            </div>
 
-              <div className="inputs">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  onChange={handleInput}
-                  placeholder="Enter Password "
-                  value={post.password}
-                />
-              </div>
+            <div className="flex flex-col items-start gap-2 w-full">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                onChange={handleInput}
+                placeholder="Enter Password "
+                value={post.password}
+                className="py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-[56px] w-full rounded-xl border border-gray-300"
+              />
+            </div>
 
-              <div className="forgot-password">
-                <Link to={"/forgotPassword"}>Forgot Password?</Link>
+            <div className="forgot-password">
+              <Link to={"/forgotPassword"}>Forgot Password?</Link>
+            </div>
+            <div className="flex flex-col gap-2 w-full">
+              {/* <Link to={"/home"}> */}
+              {!loading && (
+                <button
+                  type="submit"
+                  className="bg-[#006838] w-full text-white px-16 py-3 rounded-xl"
+                >
+                  Continue
+                </button>
+              )}
+              {loading && <BeatLoader color="#36d7b7" />}
+              {/* </Link> */}
+              <div className="text-right justify-end items-end flex w-full">
+                Don’t have an account? <Link to={"/signup"}> Sign Up</Link>
               </div>
-              <div className="flex login-div4">
-                {/* <Link to={"/home"}> */}
-                {!loading && <button type="submit">Continue</button>}
-                {loading && <BeatLoader color="#36d7b7" />}
-                {/* </Link> */}
-                <div className="text-right items-end flex w-100">
-                  Don’t have an account? <Link to={"/signup"}> Sign Up</Link>
-                </div>
-              </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

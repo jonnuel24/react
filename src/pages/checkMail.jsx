@@ -24,7 +24,6 @@ function CheckMail({ type, setStage }) {
   useEffect(() => {
     const userEmail = localStorage.getItem("email");
     setEmail(userEmail);
-
   }, []);
 
   const handleResendOTP = () => {
@@ -53,14 +52,14 @@ function CheckMail({ type, setStage }) {
       .then((response) => {
         if (response.statusCode && response.statusCode == 200) {
           notification("Account verify successfully", "success");
-          setStage('completeProfile')
+          setStage("completeProfile");
         } else {
           notification(response?.message, "error");
         }
       })
       .catch((error) => {
         console.log("error block", error);
-        notification(error.message, 'error')
+        notification(error.message, "error");
       });
     // setShowMessage(true);
   };
@@ -82,26 +81,32 @@ function CheckMail({ type, setStage }) {
   };
 
   return (
-    <div className="flex justify-center align-middle fp-main-div">
+    <div className="flex flex-col justify-start border-2 border-gray-100 bg-white shadow-sm p-8 rounded-3xl gap-6">
+      <div>
+        {" "}
+        <img src={Logo} alt="" className=" w-[15%]" />
+      </div>
       <form
         action=""
-        className="flex flex-col fp-form"
+        className="flex flex-col items-center"
         onSubmit={handleFormSubmit}
       >
-        <img src={Logo} alt="" />
         <header>Check your email</header>{" "}
-        <h6>We sent a verification code to {email}</h6>
-        <div className="flex login-div4">
-          <div className="vc-otp">
+        <h6 className="text-gray-500">
+          We sent a verification code to{" "}
+          <span className="text-[#006838] font-medium"> {email}</span>
+        </h6>
+        <div className="flex flex-col gap-12       ">
+          <div className="space-x-4 flex">
             {Object.keys(post).map((key, index) => (
-              <div className="inputs items-start" key={key}>
+              <div className="items-start" key={key}>
                 <input
                   type="text"
                   name={key}
                   maxLength="1"
                   onChange={(e) => handleInput(e, index)}
                   value={post[key]}
-                  className="mt-2 text-center"
+                  className="text-center w-14 h-14 border-2 border-gray-300 rounded-xl"
                   ref={(el) => (inputRefs.current[index] = el)}
                 />
               </div>
@@ -172,21 +177,21 @@ function CheckMail({ type, setStage }) {
               />
             </div> */}
           </div>
-          <div className="mt-3 flex login-div4 vc-div3 items-start">
-            <button type="submit" className="vc-button">
-              Recover Password
-            </button>
-          </div>
-          <div className="flex login-div4 vc-div3 items-start">
-            <h5 className="vc-resend mt-4">
+          <button
+            type="submit"
+            className="bg-[#006838] text-white px-16 py-3 rounded-xl text-lg font-medium"
+          >
+            Verify
+          </button>
+          <div className="flex items-start">
+            <h5 className="text-gray-500">
               Did not get OTP?{" "}
-              <button
+              <span
                 onClick={() => handleResendOTP()}
-                type="button"
-                className="text-[#006838]"
+                className="cursor-pointer text-[#006838]"
               >
                 Resend
-              </button>
+              </span>
             </h5>
           </div>
         </div>

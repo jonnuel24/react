@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Checkbox({agreed, setAgreed}) {
   return (
-    <div className="form-check">
+    <div className="flex items-center gap-2">
       <input
         checked={agreed}
         onChange={() => setAgreed(!agreed)}   
@@ -12,7 +12,7 @@ function Checkbox({agreed, setAgreed}) {
         type="checkbox" 
         value="" 
         id="flexCheckIndeterminate"/>
-      <label className="form-check-label" for="flexCheckIndeterminate">
+      <label className="form-check-label font-medium text-start" for="flexCheckIndeterminate">
        I Agree to Agripeller's Policy. <Link className='text-[#006838] '>Read Policies</Link>
       </label>
     </div>

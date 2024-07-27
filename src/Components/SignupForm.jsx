@@ -8,6 +8,7 @@ import { BeatLoader } from "react-spinners";
 import "react-country-state-city/dist/react-country-state-city.css";
 import data from "../asset/countries+states+cities.json";
 import stateLgas from "../asset/state_lgas.json";
+import Logo from "../asset/images/logo.svg";
 
 function SignUpForm({ type, setStage, setUserData, stage, userData }) {
   const [agreed, setAgreed] = useState(false);
@@ -18,7 +19,7 @@ function SignUpForm({ type, setStage, setUserData, stage, userData }) {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [lgas, setLGAs] = useState([]);
-  const [post, setPost] = useState({ email:'', userType: type });
+  const [post, setPost] = useState({ email: "", userType: type });
   const [errors, setErrors] = useState({
     email: "",
   });
@@ -96,11 +97,8 @@ function SignUpForm({ type, setStage, setUserData, stage, userData }) {
         notification("You need to agree to the terms", "error");
         setLoading(false);
         return;
-      }
-      else {
-        if (
-          errors.email 
-        ) {
+      } else {
+        if (errors.email) {
           notification(
             "Pleas fill out all field and in the appropriate format",
             "error"
@@ -143,62 +141,76 @@ function SignUpForm({ type, setStage, setUserData, stage, userData }) {
     setLoading(false);
   }
   return (
-    <>
-      <h1 className="signup-header">
-        <strong>{type} Personal</strong> Information
-      </h1>
-      <div className="signup-divider"></div>
-      <div className="w-full pr-48 signup-form-div">
+    <div className="border-2 border-gray-100 bg-white shadow-sm p-8 rounded-3xl max-w-[25%] ">
+      <div className="w-full space-y-6">
+        <img src={Logo} alt="" className="w-[20%]" />
+        <div>
+          <h1 className="text-3xl font-medium text-gray-600 text-left ">
+            Signup as a {type}{" "}
+          </h1>
+          <p className="text-left text-lg text-gray-400 break-words">
+            <span className="text-red-600 text-lg font-extrabold">* </span>{" "}
+            Before signing up on Agripeller, please provide your email so we can
+            verify it.
+            <span className="text-red-600 text-lg font-extrabold">* </span>
+          </p>
+        </div>
+      </div>
+      <div className="w-full">
         {/* formData */}
-        <form action="" onSubmit={handleSubmit(signup)} className="signup-form">
-          <div className="grid gap-4 grid-cols-1 w-full signup-signup">
-                {/* email */}
-                <div className="flex flex-col items-start">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    name="email"
-                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                    type="email"
-                    className="w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Email"
-                    onChange={handleInput}
-                    value={post.email}
-                  />
-                  {errors.email && (
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
-                      {errors.email}
-                    </p>
-                  )}{" "}
-                  {/* Error message */}
-                </div>
+        <form
+          action=""
+          onSubmit={handleSubmit(signup)}
+          className="flex flex-col w-full gap-8"
+        >
+          <div className="grid gap-4 grid-cols-1 w-full">
+            {/* email */}
+            <div className="flex flex-col items-start gap-2">
+              <label htmlFor="email">Email</label>
+              <input
+                name="email"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                type="email"
+                className="py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-[56px] w-full rounded-xl border border-gray-300"
+                placeholder="enter a valid email address"
+                onChange={handleInput}
+                value={post.email}
+              />
+              {errors.email && (
+                <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+                  {errors.email}
+                </p>
+              )}{" "}
+              {/* Error message */}
+            </div>
           </div>
 
-            <div className="cta">
-              <div>
-                <Checkbox agreed={agreed} setAgreed={setAgreed} />
-              </div>
-              <div className="flex flex-start">
-                  <button
-                    className="btn btn-success btn-lg button"
-                    type="submit"
-                  >
-                    Signup
-                  </button>
-                {loading && <BeatLoader color="#36d7b7" />}
-              </div>
-              <div className="flex flex-row w-full items-center justify-end">
-                <h5>
-                  Already have an Account?{" "}
-                  <Link to="/login" className="text-[green]">
-                    Login.
-                  </Link>
-                </h5>
-              </div>
+          <div className="w-full space-y-6">
+            <div>
+              <Checkbox agreed={agreed} setAgreed={setAgreed} />
             </div>
+            <div className="flex flex-start w-full">
+              <button
+                className="bg-[#006838] w-full text-white px-16 py-3 rounded-xl"
+                type="submit"
+              >
+                Signup
+              </button>
+              {loading && <BeatLoader color="#36d7b7" />}
+            </div>
+            <div className="w-full ml-auto">
+              <h5 className="text-right">
+                Already have an Account?{" "}
+                <Link to="/login" className="text-[green]">
+                  Login.
+                </Link>
+              </h5>
+            </div>
+          </div>
         </form>
         {/* {response && <div>Response from API: {response}</div>} */}
       </div>
-    </>
+    </div>
   );
 }
 

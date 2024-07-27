@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../asset/images/logo.svg";
 import Drop from "../asset/images/drop-img.svg";
 import { Link } from "react-router-dom";
-import "../asset/styles/createAccount.css"
+import "../asset/styles/createAccount.css";
 
 function createAccount() {
   return (

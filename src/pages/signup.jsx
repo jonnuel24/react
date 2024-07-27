@@ -41,13 +41,13 @@ function Signup() {
 
 
   return (
-    <div className="flex h-screen overall-div">
-      <div className="w-3/12 su-left">
+    <div className=" w-full">
+      {/* <div className="w-3/12 su-left">
         {type && <img src={SignupImg} alt="" className="h-screen signup-img" />}
-      </div>
+      </div> */}
 
-      <div className="flex flex-col items-start w-3/12 signup-right-div">
-        <img src={Logo} alt="" />
+      <div className="flex flex-col items-center justify-center w-full h-full gap-8 mt-[3%]">
+        
         {stage === "selectType" && (
           <UserType setType={setType} setStage={setStage} />
         )}
