@@ -34,7 +34,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
     payload.phoneNumber = "+234" + payload.phoneNumber;
     // payload.dateOfBirth = "1999-01-01";
     if (payload.userType === "FARMER") {
-      payload.dateOfEstablishment = payload.dateOfEstablishment + " 00:00:00";
+      
     } else {
       delete payload.dateOfEstablishment;
     }
