@@ -141,7 +141,7 @@ function SignUpForm({ type, setStage, setUserData, stage, userData }) {
     setLoading(false);
   }
   return (
-    <div className="border-2 border-gray-100 bg-white shadow-sm p-8 rounded-3xl max-w-[25%] ">
+    <div className="border-2 border-gray-100 bg-white shadow-sm p-8 rounded-3xl max-w-[95%] sm:max-w-[35%] mt-[30%] sm:mt-[3%]">
       <div className="w-full space-y-6">
         <img src={Logo} alt="" className="w-[20%]" />
         <div>

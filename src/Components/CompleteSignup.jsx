@@ -510,7 +510,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
                   <button
                     disabled={loading}
                     onClick={() => setStep(0)}
-                    className="border-gray-300 border rounded-xl w-full py-3 px-4 h-[56px]"
+                    className="border-gray-300 border hover:bg-gray-100 hover:shadow-sm rounded-xl w-full py-3 px-4 h-[56px]"
                     type="button"
                   >
                     Previous
@@ -518,7 +518,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
                 )}
                 {!loading && (
                   <button
-                    className="text-white bg-[#006838] hover:bg-[055E35] border rounded-xl h-[56px] w-full px-4"
+                    className="text-white bg-[#006838] hover:bg-[#055E35] hover:shadow-sm border rounded-xl h-[56px] w-full px-4"
                     type="submit"
                   >
                     Signup
@@ -541,7 +541,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
               <button
                 disabled={loading}
                 onClick={() => setStep(1)}
-                className="text-white bg-[#006838] hover:bg-[055E35] h-[56px] border rounded-xl w-full px-4"
+                className="text-white bg-[#006838] hover:bg-[#055E35] hover:shadow-sm h-[56px] border rounded-xl w-full px-4"
                 type="button"
               >
                 Next

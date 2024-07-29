@@ -163,14 +163,16 @@ function Login() {
   }
 
   return (
-    <div className="border-2 border-gray-100 bg-white shadow-sm p-8 rounded-3xl w-[25%] max-w-[35%] mt-[3%] mx-auto space-y-6">
+    <div className="border-2 border-gray-100 bg-white shadow-sm p-8 rounded-3xl w-full sm:w-[30%] max-w-[95%] sm:max-w-[35%] mt-[30%] sm:mt-[3%] mx-auto space-y-6">
       <div className="">
-        <img src={logo} alt="" />
+        <img src={logo} alt="" className="w-[20%]" />
       </div>
       <div className="">
-        <header>Login to Agripeller </header>
+        <header className="text-3xl font-medium text-gray-600">
+          Login to Agripeller{" "}
+        </header>
         <div className="flex flex-col gap-4">
-          <div className="form-header">Welcome back!</div>
+          <div className="text-[#055E35]">Welcome back!</div>
           <form
             action=""
             onSubmit={handleSubmit(login)}
@@ -205,8 +207,10 @@ function Login() {
               />
             </div>
 
-            <div className="forgot-password">
-              <Link to={"/forgotPassword"}>Forgot Password?</Link>
+            <div className="w-full">
+              <Link to={"/forgotPassword"} className="w-full mr-auto">
+                Forgot Password?
+              </Link>
             </div>
             <div className="flex flex-col gap-2 w-full">
               {/* <Link to={"/home"}> */}
