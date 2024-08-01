@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Cart() {
-
   const user = useSelector((state) => state.user?.currentUser);
   const isAuthenticated = useSelector((state) => state.user?.isAuthenticated);
   const cartCount = useSelector((state) => state.cart?.count);
@@ -42,14 +41,14 @@ function Cart() {
           </div>
         </div>
 
-        <div className="cart-div3">
+        <div className="px-16 py-8 space-y-6">
           <div className="font-medium flex items-start">
             Items in{" "}
             <span className="font-bold ml-2">
               cart ({cartSummary?.overallQuantity})
             </span>
           </div>
-          <div className="  cart-items">
+          <div className="  cart-items grid grid-cols-3 ">
             {cartItems?.map((e) => {
               return <Card cartId={e.id} product={e.product} />;
             })}
@@ -59,7 +58,6 @@ function Cart() {
             <Card /> */}
           </div>
           <div>
-
             {/* paystack button */}
             {/* {cartItems?.length && (
               <PaystackButton

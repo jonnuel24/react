@@ -76,12 +76,11 @@ function ProductDetails() {
       <Navbar />
       <div className="main">
         <div className="header1 ">
-          Product <strong>Details</strong>
+          <strong>Product Details</strong>
         </div>
-
         {/* left div */}
 
-        <div className="body row">
+        <div className="body flex">
           {product && (
             <div className="col left-div col-8">
               <div>
@@ -126,16 +125,7 @@ function ProductDetails() {
 
               <div className="body2">
                 <h1>livestock Description</h1>
-                <p>
-                  {/* The Jamunapari Goat or Jamnapari is a breed of goat. They are
-                basically originated from Indian subcontinent & have are
-                basically a mixture of local goat called “PE” peranakan Etawa or
-                Etawa mix. Apart from this they have been a great source for
-                meat. The breed has good weight & mass & the breeds yield large
-                quantity of milk. Further they can be used to give good meat.
-                They are available at an affordable price point */}
-                  {product?.description}
-                </p>
+                <p className="text-gray-700">{product?.description}</p>
                 <div className="body21">
                   <div className="btable">
                     {/*  */}
@@ -169,157 +159,81 @@ function ProductDetails() {
                       </div>
                     </div>
                     {/*  */}
-
                   </div>
 
-                  <div className="body22">
-                    <h1>
+                  <div className=" flex flex-col h-full justify-between items-end">
+                    <div className="text-4xl font-bold">
                       {new Intl.NumberFormat("en-us", {
                         style: "currency",
                         currency: "NGN",
                       }).format(product?.price)}{" "}
                       <small>/UNIT</small>
-                    </h1>
-                  </div>
-                </div>
-              </div>
-
-              <div className="body23">
-                <div className="body230">
-                  <div className="body231">
-                    <h3>CUSTOMER FEEDBACK</h3>
-                    <div className="body236">
-                      <h6>Ratings bar</h6>
-                      <div className="body232">
-                        <div className="body234">4.5/5</div>
-                        <div className="body235"></div>
-                      </div>
                     </div>
-                  </div>
-
-                  <div className="body24">
-                    <img src={Prof} alt="" />
-                    <div className="body241">
-                      <header>
-                        GASGOS <br />
-                        FARMS
-                      </header>
-                      <div className=" body240">
-                        <h4>Agripeller verified</h4>
-                        <Icon
-                          icon="codicon:verified-filled"
-                          color="white"
-                          className="verified"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="body25">
-                  <header>Comments</header>
-                  <div className="body250">
-                    <div className="body251">
-                      <div className="star">
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#EC5858"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#EC5858"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#EC5858"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#D9D9D9"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#D9D9D9"
-                        />
-                      </div>
-                      <h4>This is an interesting farmer </h4>
-                      <label htmlFor="">
-                        12/07/2023 by <strong>James</strong>
-                      </label>
-                    </div>
-                    <div className="body251">
-                      <div className="star">
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#EC5858"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#EC5858"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#EC5858"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#D9D9D9"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#D9D9D9"
-                        />
-                      </div>
-                      <h4>This is an interesting farmer </h4>
-                      <label htmlFor="">
-                        12/07/2023 by <strong>James</strong>
-                      </label>
-                    </div>
-                    <div className="body251">
-                      <div className="star">
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#EC5858"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#EC5858"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#EC5858"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#D9D9D9"
-                        />
-                        <Icon
-                          className="star-icon"
-                          icon="bi:star-fill"
-                          color="#D9D9D9"
-                        />
-                      </div>
-                      <h4>This is an interesting farmer </h4>
-                      <label htmlFor="">
-                        12/07/2023 by <strong>James</strong>
-                      </label>
+                    {/* button */}
+                    <div className="">
+                      {!processing &&
+                        cartItems?.some((e) => {
+                          return e.product?.id === product?.id;
+                        }) && (
+                          <div className="inline-flex justify-center gap-4 items-center">
+                            <button className="bg-green-700 hover:bg-green-900 text-white h-[40px] flex items-center px-3 border-green-700 rounded text-[40px]">
+                              -
+                            </button>
+                            <span className="w-1/4">
+                              {
+                                cartItems?.find((e) => {
+                                  return e?.product?.id === product?.id;
+                                })?.quantity
+                              }
+                            </span>
+                            <button
+                              onClick={() => addToCart(product?.id)}
+                              className="bg-green-700 hover:bg-green-900 text-white h-[40px] flex items-center px-3 border-green-700 rounded text-[40px]"
+                            >
+                              +
+                            </button>
+                          </div>
+                        )}
+                      `{processing && <BeatLoader color="#36d7b7" />}
+                      {!processing &&
+                        !cartItems?.some((e) => {
+                          return e?.product?.id === product?.id;
+                        }) && (
+                          <button
+                            onClick={() => addToCart(product?.id)}
+                            className="py-2 h-[44px] px-4 rounded-xl bg-green-700 hover:bg-green-900 text-white font-medium"
+                          >
+                            add to cart
+                          </button>
+                        )}
+                      <Link to="/cart" className="ml-6">
+                        <button className="py-2 px-4 h-[44px] rounded-xl bg-transaparent hover:bg-gray-100 border-2 text-gray-700 font-medium">
+                          view cart
+                        </button>{" "}
+                      </Link>
                     </div>
                   </div>
                 </div>
+                {/* <div className="right-div1">
+                  <div>
+                    <Icon icon="ci:tag" />
+                    Listed days ago
+                  </div>
+
+                  <div>
+                    <Icon icon="formkit:people" />
+                    2,045 VIEWS
+                  </div>
+
+                  <div>
+                    <Icon icon="fluent-emoji-high-contrast:star" />
+                    {product?.age ? product?.age / 12 : 0} MONTHS old
+                  </div>
+                  <div>
+                    <Icon icon="akar-icons:location" />
+                    Ogun State
+                  </div>
+                </div> */}
               </div>
             </div>
           )}
@@ -327,111 +241,135 @@ function ProductDetails() {
 
           {/* right-div...... */}
 
-          <div className="col right-div0 col-4">
-            <div className="right-div01">
-              <div>
-                <header>for sale</header>
-                <p>
-                  100 Pedigree Lleyn Breeding Gimmers, Shearlings 100 Pedigree
-                  Lleyn Breeding Gimmers, Shearlings{" "}
-                </p>
-              </div>
+          <div className="w-full">
+            {/* profile */}
+            <div className="body23">
+              <div className="body230">
+               
 
-              <div className="right-div1">
-                <div>
-                  <Icon icon="ci:tag" />
-                  Listed days ago
-                </div>
-
-                <div>
-                  <Icon icon="formkit:people" />
-                  2,045 VIEWS
-                </div>
-
-                <div>
-                  <Icon icon="fluent-emoji-high-contrast:star" />
-                  {product?.age ? product?.age / 12 : 0} MONTHS old
-                </div>
-                <div>
-                  <Icon icon="akar-icons:location" />
-                  Ogun State
+                <div className="body24">
+                  <img src={Prof} alt="" />
+                  <div className="body241">
+                    <header>
+                      GASGOS <br />
+                      FARMS
+                    </header>
+                    <div className=" body240">
+                      <h4>Agripeller verified</h4>
+                      <Icon
+                        icon="codicon:verified-filled"
+                        color="white"
+                        className="verified"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="right-div2">
-                {!processing && cartItems?.some(e=>{
-                  return e.product?.id === product?.id
-                }) &&
-                <div className="inline-flex justify-center items-center">
-                  <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-                    -
-                  </button>
-                  <span className="w-1/4">
-                    {cartItems?.find(e=>{return e?.product?.id === product?.id})?.quantity}
-
-                  </span>
-                  <button  onClick={() => addToCart(product?.id)} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-                    +
-                  </button>
+              {/* <div className="body25">
+                <header>Comments</header>
+                <div className="body250">
+                  <div className="body251">
+                    <div className="star">
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#EC5858"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#EC5858"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#EC5858"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#D9D9D9"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#D9D9D9"
+                      />
+                    </div>
+                    <h4>This is an interesting farmer </h4>
+                    <label htmlFor="">
+                      12/07/2023 by <strong>James</strong>
+                    </label>
+                  </div>
+                  <div className="body251">
+                    <div className="star">
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#EC5858"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#EC5858"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#EC5858"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#D9D9D9"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#D9D9D9"
+                      />
+                    </div>
+                    <h4>This is an interesting farmer </h4>
+                    <label htmlFor="">
+                      12/07/2023 by <strong>James</strong>
+                    </label>
+                  </div>
+                  <div className="body251">
+                    <div className="star">
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#EC5858"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#EC5858"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#EC5858"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#D9D9D9"
+                      />
+                      <Icon
+                        className="star-icon"
+                        icon="bi:star-fill"
+                        color="#D9D9D9"
+                      />
+                    </div>
+                    <h4>This is an interesting farmer </h4>
+                    <label htmlFor="">
+                      12/07/2023 by <strong>James</strong>
+                    </label>
+                  </div>
                 </div>
-                }
-                `{processing && <BeatLoader color="#36d7b7" />}
-                {!processing && !cartItems?.some(e=>{
-                  return e?.product?.id === product?.id
-                }) && (
-                  <button
-                    onClick={() => addToCart(product?.id)}
-                    className="btn btn-danger btn-lg button-red"
-                  >
-                    ADD TO CART
-                  </button>
-                )}
-                <Link
-                  to="/cart"
-                  className="btn btn-secondary btn-lg button-grey"
-                >
-                  VIEW CART
-                </Link>
-              </div>
-              <div className="right-div3">
-                <div>
-                  <Icon icon="ri:share-line" />
-                  SHARE
-                </div>
-                <div>
-                  <Icon icon="tdesign:location-1" />
-                  WATCH
-                </div>
-                <div>
-                  <Icon icon="solar:chat-dots-linear" />
-                  REPORT
-                </div>
-              </div>
-            </div>
-
-            <div className="right-div04">
-              <div>
-                <a href="/" className="button1">
-                  RELATED LISTINGS
-                </a>
-                <a href="#" className="button2">
-                  NEARBY LISTINGS
-                </a>
-              </div>
-
-              <div>
-                <div className="bottom-switch">
-                  <div className="top-switch"></div>
-                </div>
-              </div>
-              {loadingProducts && <BeatLoader color="#36d7b7" />}
-              {!loadingProducts &&
-                farmProducts.map((p, i) => (
-                  <Card className="right-div-img pd-card" key={i} product={p} />
-                ))}
-              {/* <Card className="right-div-img pd-card" />
-              <Card />
-              <Card /> */}
+              </div> */}
             </div>
           </div>
         </div>

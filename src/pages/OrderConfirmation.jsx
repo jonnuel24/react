@@ -15,7 +15,11 @@ import { PaystackButton } from "react-paystack";
 import { notification } from "../services/notification";
 import { OrderServices } from "../services/order.service";
 import { userServices } from "../services/user.service";
-import { setItems, setSummary, setDelivery } from "../store/reducers/cartReducer";
+import {
+  setItems,
+  setSummary,
+  setDelivery,
+} from "../store/reducers/cartReducer";
 import { v4 as uuid } from "uuid";
 
 function Order_Confirmation() {
@@ -28,8 +32,14 @@ function Order_Confirmation() {
   const { email, phoneNumber, lastName, firstName, id } = user;
   const cartSummary = useSelector((state) => state.cart?.summary);
   const [ref, setRef] = useState("");
-  const [editAddress, setEditAddress]=useState(false)
-  const [deliveryAddress, setDeliveryAddress]=useState(userDelivery ?? {name:`${firstName} ${lastName}`, address:"", phone:phoneNumber})
+  const [editAddress, setEditAddress] = useState(false);
+  const [deliveryAddress, setDeliveryAddress] = useState(
+    userDelivery ?? {
+      name: `${firstName} ${lastName}`,
+      address: "",
+      phone: phoneNumber,
+    }
+  );
   useEffect(() => {
     const unique_id = uuid();
     setRef(unique_id);
@@ -39,17 +49,20 @@ function Order_Confirmation() {
   };
 
   const handleInput = async (event) => {
-    await setDeliveryAddress({ ...deliveryAddress, [event.target.name]: event.target.value });
+    await setDeliveryAddress({
+      ...deliveryAddress,
+      [event.target.name]: event.target.value,
+    });
   };
 
-  const toggleAddressEdit=async (value)=>{
-    await setEditAddress(value)
-    if(value==false){
-      dispatch(setDelivery(deliveryAddress))
-    }else{
-      await setDeliveryAddress(userDelivery)
+  const toggleAddressEdit = async (value) => {
+    await setEditAddress(value);
+    if (value == false) {
+      dispatch(setDelivery(deliveryAddress));
+    } else {
+      await setDeliveryAddress(userDelivery);
     }
-  }
+  };
   const componentProps = {
     email,
     amount: parseFloat(cartSummary?.totalProductCost * 100), // the transaction amount in kobo.
@@ -109,14 +122,12 @@ function Order_Confirmation() {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-col">
-        <header className="text-left px-[64px] pt-[32px]">
-          <label htmlFor="" className="">
-            Hello Rabi, here's your cost summary
-          </label>
+      <div className="flex flex-col px-12 py-8 gap-4">
+        <header className="text-left ">
+          Hello Rabi, here's your cost summary
         </header>
-        <div className="">
-          <div className="delivery-div1 mb-[48px]">
+        <div className="bg-white border shadow-lg rounded-lg">
+          {/* <div className="delivery-div1 mb-[48px]">
             <div className="delivery-button-active">
               <button>Delivery</button>
             </div>
@@ -126,7 +137,7 @@ function Order_Confirmation() {
             <div className="delivery-button-active">
               <button>Summary</button>
             </div>
-          </div>
+          </div> */}
 
           {/* order summary */}
           <div className="flex flex-col items-start px-[200px] py-[32px] gap-[24px]">
@@ -159,26 +170,29 @@ function Order_Confirmation() {
           </div>
 
           {/* address */}
-          <div className="flex flex-col items-start  gap-[24px]">
-            <div className="px-[200px] py-[32px] flex flex-row justify-between w-full bg-[#E0ECE0]">
+          <div className="flex flex-col items-start  gap-[24px] border-t-4 py-8">
+            <div className="px-[200px] flex flex-row justify-between w-full">
               <div className="font-bold text-[30px]">Address</div>
-              <button onClick={()=>toggleAddressEdit(!editAddress)} className="font-semibold text-[20px] text-[#006838]">
-                {editAddress ? 'Save' : 'Change' } 
+              <button
+                onClick={() => toggleAddressEdit(!editAddress)}
+                className="font-semibold text-[20px] text-[#006838]"
+              >
+                {editAddress ? "Save" : "Change"}
               </button>
             </div>
 
-            <div className=" px-[200px] py-[32px] w-full flex flex-col gap-[16px]">
+            <div className=" px-[200px] w-full flex flex-col gap-[16px]">
               <div className="flex flex-col items-start gap-[24px] w-full">
                 <div className="text-[20px] font-medium flex flex-row gap-2">
-    
-                <Icon icon="ic:round-phone" />
+                  <Icon icon="ic:round-phone" />
                   {editAddress && (
-                    <input 
-                      type="text"  
+                    <input
+                      type="text"
                       name="name"
-                      onChange={handleInput} 
-                      placeholder="Name" 
-                      value={deliveryAddress?.name}  
+                      onChange={handleInput}
+                      placeholder="Name"
+                      value={deliveryAddress?.name}
+                      className="rounded-lg border border-gray-300"
                     />
                   )}
                   {!editAddress && userDelivery?.name}
@@ -186,10 +200,11 @@ function Order_Confirmation() {
                 <div className="text-[20px] font-medium flex flex-row gap-2">
                   <Icon icon="material-symbols:my-location" />
                   {editAddress && (
-                    <textarea 
-                      onChange={handleInput} 
-                      name="address" 
-                      placeholder="Delivery Address"  
+                    <textarea
+                      onChange={handleInput}
+                      name="address"
+                      placeholder="Delivery Address"
+                      className="rounded-lg border border-gray-300"
                     >
                       {deliveryAddress?.address}
                     </textarea>
@@ -199,12 +214,13 @@ function Order_Confirmation() {
                 <div className="text-[20px] font-medium flex flex-row gap-2">
                   <Icon icon="ic:round-phone" />
                   {editAddress && (
-                    <input 
-                      type="text" 
-                      onChange={handleInput} 
-                      name="phone" 
-                      placeholder="234**********" 
-                      value={deliveryAddress?.phone} 
+                    <input
+                      type="text"
+                      onChange={handleInput}
+                      name="phone"
+                      placeholder="234**********"
+                      value={deliveryAddress?.phone}
+                      className="rounded-lg border border-gray-300"
                     />
                   )}
                   {!editAddress && userDelivery?.phone}
@@ -214,16 +230,16 @@ function Order_Confirmation() {
           </div>
 
           {/* payment method */}
-          <div className="flex flex-col items-start  gap-[24px]">
-            <div className="px-[200px] py-[32px] flex flex-row justify-between w-full bg-[#E0ECE0]">
+          <div className="flex flex-col items-start  gap-4 border-t-4 py-8">
+            <div className="px-[200px] flex flex-row justify-between w-full">
               <div className="font-bold text-[30px]">Payment Method</div>
-              <button className="font-semibold text-[20px] text-[#006838]">
+              {/* <button className="font-semibold text-[20px] text-[#006838]">
                 Change
-              </button>
+              </button> */}
             </div>
 
-            <div className=" px-[200px] py-[32px] w-full flex flex-col gap-[16px]">
-              <button className="font-medium flex flex-row justify-between items-center w-full hover:bg-[#E0ECE0] border hover:border-[#006838] p-[16px] rounded-[8px]">
+            <div className=" px-[200px] w-full flex flex-col gap-[16px]">
+              <button className="font-medium flex flex-row justify-between items-center cursor-default w-full p-[16px] rounded-[8px]">
                 <div className="text-[20px] font-medium flex flex-row gap-2 items-center">
                   <Icon
                     icon="mdi:bank-outline"
@@ -231,25 +247,23 @@ function Order_Confirmation() {
                   />
                   Paystack
                 </div>
-                <Icon icon="akar-icons:radio" />
               </button>
             </div>
           </div>
 
-          {/* Logistics */}
-          <div className="flex flex-col items-start  gap-[24px]">
-            <div className="px-[200px] py-[32px] flex flex-row justify-between w-full bg-[#E0ECE0]">
-              <div className="font-bold text-[30px]">Logistics</div>
-              <button className="font-semibold text-[20px] text-[#006838]">
+          {/* Items */}
+          <div className="flex flex-col items-start  gap-[24px] border-t-4 py-8">
+            <div className="px-[200px] flex flex-row justify-between w-full">
+              <div className="font-bold text-[30px]">Items</div>
+              {/* <button className="font-semibold text-[20px] text-[#006838]">
                 Change
-              </button>
+              </button> */}
             </div>
 
             {cartItems?.map((e) => {
               return (
                 <div className=" px-[200px] py-[32px] w-full flex flex-col gap-[16px]">
-                  <button className="font-medium flex flex-row justify-between items-center w-full hover:bg-[#E0ECE0] border hover:border-[#006838] p-[16px] rounded-[8px]">
-                    <div className="text-[20px] font-medium flex flex-row gap-2 items-center">
+                  <div className="text-[20px] font-medium flex flex-row gap-2 items-center">
                       <img
                         style={{ width: "80px", height: "50px" }}
                         src={e.product.images[0]}
@@ -257,8 +271,6 @@ function Order_Confirmation() {
                       />
                       {e.product.name}
                     </div>
-                    <Icon icon="akar-icons:radio" />
-                  </button>
                 </div>
               );
             })}

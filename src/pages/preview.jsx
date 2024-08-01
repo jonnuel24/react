@@ -122,36 +122,31 @@ function Preview() {
     <div>
       <Navbar />
       <div>
-        {/* <div className="delivery-div1">
-          <div className="delivery-button-active">
-            <button>Delivery</button>
-          </div>
-          <div className="delivery-button">
-            <button>Payment</button>
-          </div>
-          <div className="delivery-button">
-            <button>Summary</button>
-          </div>
-        </div> */}
-
-        <div className="row delivery2-div">
-          <div className="col col-7 delivery-div2">
-            <div className="delivery-div2-label">Contact Details</div>
-            <div className="delivery-div3">
-              <div className="delivery-name">
-                <input
-                  type="text"
-                  readOnly={!editName}
-                  ref={nameRef}
-                  onChange={(event) => handleInputChange(event)}
-                  name="name"
-                  className="text-white delivery-name bg-green-700"
-                  defaultValue={firstName + " " + lastName}
-                />
+        <div className="flex w-full px-12 p-6">
+          {/* left div */}
+          <div className="flex flex-col items-start gap-2 w-[50%]">
+            <div className="text-[32px] font-medium">Contact Details</div>
+            <div className="border bg-white shadow-md rounded-xl py-6 pl-8 pr-12 space-y-4 w-full">
+              {/* name */}
+              <div className=" flex gap-2">
+                <div>
+                  <label htmlFor="" className="flex flex-col items-start gap-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    readOnly={!editName}
+                    ref={nameRef}
+                    onChange={(event) => handleInputChange(event)}
+                    name="name"
+                    className="text-gray-700 text-[24px] border rounded-lg"
+                    defaultValue={firstName + " " + lastName}
+                  />
+                </div>
                 <button onClick={() => edit("name")}>
                   <Icon
                     icon="clarity:edit-line"
-                    color="white"
+                    color="green"
                     width="32"
                     rotate={2}
                     hFlip={true}
@@ -159,30 +154,25 @@ function Preview() {
                   />
                 </button>
               </div>
-              <div className="delivery-address">
-                <h4>
-                  <Icon
-                    icon="material-symbols:location-searching"
-                    color="white"
-                    width="32"
-                    rotate={2}
-                    hFlip={true}
-                    vFlip={true}
-                  />
+              {/* address */}
+              <div className="flex gap-2">
+                <div className="flex flex-col items-start gap-2">
+                  <label htmlFor="">Address</label>
                   <input
                     ref={addressRef}
                     name="address"
                     onChange={(event) => handleInputChange(event)}
                     readonly={!editAddress}
-                    className="text-white bg-green-700"
+                    className="text-gray-700 text-[24px] border rounded-lg"
                     type="text"
                     defaultValue={deliveryAddress?.address}
                   />
-                </h4>
+                </div>
+
                 <button onClick={() => edit("address")}>
                   <Icon
                     icon="clarity:edit-line"
-                    color="white"
+                    color="green"
                     width="32"
                     rotate={2}
                     hFlip={true}
@@ -190,30 +180,25 @@ function Preview() {
                   />
                 </button>
               </div>
-              <div className="delivery-number">
-                <h4>
-                  <Icon
-                    icon="mingcute:phone-line"
-                    color="white"
-                    width="32"
-                    rotate={2}
-                    hFlip={true}
-                    vFlip={true}
-                  />
+              {/* phone */}
+              <div className="flex gap-2">
+                <div className="flex flex-col items-start gap-2">
+                  <label htmlFor="">Phone</label>
+
                   <input
                     readonly={!editPhone}
                     name="phone"
                     ref={phoneRef}
                     onChange={(event) => handleInputChange(event)}
-                    className="text-white bg-green-700"
+                    className="text-gray-700 text-[24px] border rounded-lg"
                     type="text"
                     defaultValue={phoneNumber}
                   />
-                </h4>
+                </div>
                 <button onClick={() => edit("phone")}>
                   <Icon
                     icon="clarity:edit-line"
-                    color="white"
+                    color="green"
                     width="32"
                     rotate={2}
                     hFlip={true}
@@ -224,73 +209,71 @@ function Preview() {
             </div>
           </div>
 
-          <div className="col col-5 delivery-div2">
-            <div className="delivery2-div2">Total Cost</div>
-            <div className="delivery2-details">
-              <div>
-                <table>
-                  <tr>
-                    <th className="d2-summary text-[24px] font-normal text-white ">
-                      Subtotal :{" "}
-                    </th>
-                    <td className="text-[24px] font-medium text-white">
+          {/* right div */}
+          <div className="flex flex-col px-12 items-start w-[60%]">
+            <div className="text-[32px] font-medium">Items</div>
+            <div className="border bg-white shadow-md rounded-xl p-2 w-full">
+              <div className="bg-white p-4 rounded-lg space-y-6">
+                {cartItems?.map((e) => {
+                  return (
+                    <div className="delivery-div40">
+                      <div className="delivery-div41">
+                        {/* <input type="radio" /> */}
+                        <h6>
+                          <img
+                            style={{ width: "80px", height: "50px" }}
+                            src={e.product.images[0]}
+                            alt=""
+                          />
+                          {e.product.name}
+                        </h6>
+                      </div>
+                      <h4>
+                        {new Intl.NumberFormat("en-US", {
+                          style: "currency",
+                          currency: "NGN",
+                        }).format(e?.product.price)}
+                      </h4>
+                    </div>
+                  );
+                })}
+              </div>
+              {/* button */}
+              <div className="mt-4 w-full flex flex-col gap-4">
+                <div className=" border-t-2 border-b-2">
+                  <div>
+                    <table>
+                      <tr className="flex justify-between">
+                        <th className="d2-summary text-[24px] font-normal text-[#006838] ">
+                          Subtotal :{" "}
+                        </th>
+                        <td className="text-[24px] font-medium text-[#006838]">
+                          {new Intl.NumberFormat("en-US", {
+                            style: "currency",
+                            currency: "NGN",
+                          }).format(cartSummary?.totalProductCost)}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <Link to="/OrderConfirmation">
+                  {" "}
+                  <button className="bg-[#006838] h-[64px] px-8 py-2 font-medium text-white rounded-xl">
+                    Proceed to pay
+                    <span className="ml-2">
+                      (
                       {new Intl.NumberFormat("en-US", {
                         style: "currency",
                         currency: "NGN",
                       }).format(cartSummary?.totalProductCost)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="d2-summary text-[24px] font-normal text-white">
-                      Shipping :{" "}
-                    </th>
-                    <td className="text-[24px] font-medium text-white">N0</td>
-                  </tr>
-                </table>
-              </div>
-              <div className="delivery2-total">
-                {new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "NGN",
-                }).format(cartSummary?.totalProductCost)}
+                    </span>
+                    )
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
-        </div>
-        <div className="delivery-div04">
-          <div className="delivery-div04-label">Items</div>
-          <div className="delivery-div4">
-            {cartItems?.map((e) => {
-              return (
-                <div className="delivery-div40">
-                  <div className="delivery-div41">
-                    {/* <input type="radio" /> */}
-                    <h6>
-                      <img
-                        style={{ width: "80px", height: "50px" }}
-                        src={e.product.images[0]}
-                        alt=""
-                      />
-                      {e.product.name}
-                    </h6>
-                  </div>
-                  <h4>
-                    {new Intl.NumberFormat("en-US", {
-                      style: "currency",
-                      currency: "NGN",
-                    }).format(e?.product.price)}
-                  </h4>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="delivery-div5">
-          <Link to="/OrderConfirmation">
-            {" "}
-            <button>Proceed to payment</button>
-          </Link>
         </div>
       </div>
       <Footer />
