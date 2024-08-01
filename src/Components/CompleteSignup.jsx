@@ -374,7 +374,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
                     className="h-[56px] w-full rounded-xl border border-gray-300"
                     onChange={handleCountryChange}
                     required
-                    value={post.country || ""}
+                    value={post.country || "Nigeria"}
                     disabled
                   >
                     <option disabled hidden>
