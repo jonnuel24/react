@@ -80,7 +80,7 @@ function ProductDetails() {
         </div>
         {/* left div */}
 
-        <div className="body flex">
+        <div className="body flex h-screen">
           {product && (
             <div className="col left-div col-8">
               <div>

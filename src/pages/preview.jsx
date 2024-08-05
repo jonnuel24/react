@@ -121,7 +121,7 @@ function Preview() {
   return (
     <div>
       <Navbar />
-      <div>
+      <div className="h-screen">
         <div className="flex w-full px-12 p-6">
           {/* left div */}
           <div className="flex flex-col items-start gap-2 w-[50%]">
