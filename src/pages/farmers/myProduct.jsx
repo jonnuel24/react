@@ -81,7 +81,33 @@ function MyProduct() {
                         <td>{p.quantity}</td>
                         <td>₦{p.price}</td>
                         <td>
-                          <Option />
+                          <div className="flex items-center gap-4">
+                            <button>
+                              <Icon
+                                icon="mage:edit"
+                                width="64"
+                                height="64"
+                                className="text-gray-700 hover:text-green-900"
+                                
+                              />
+                            </button>
+                            <button>
+                              <Icon
+                                icon="lets-icons:view"
+                                width="64"
+                                height="64"
+                                className="text-gray-700 hover:text-green-900"
+                              />
+                            </button>
+                            <button>
+                              <Icon
+                                icon="fluent:delete-24-regular"
+                                width="64"
+                                height="64"
+                                className="text-gray-700 hover:text-green-900"
+                              />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
