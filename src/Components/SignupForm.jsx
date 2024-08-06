@@ -190,13 +190,17 @@ function SignUpForm({ type, setStage, setUserData, stage, userData }) {
               <Checkbox agreed={agreed} setAgreed={setAgreed} />
             </div>
             <div className="flex flex-start w-full">
-              <button
+             {!loading && <button
                 className="bg-[#006838] w-full text-white px-16 py-3 rounded-xl"
                 type="submit"
               >
                 Signup
-              </button>
-              {loading && <BeatLoader color="#36d7b7" />}
+              </button>}
+              {loading && 
+                <dir className="flex flex-row justify-center w-full">
+                    <BeatLoader color="#36d7b7" />
+                </dir>
+               }
             </div>
             <div className="w-full ml-auto">
               <h5 className="text-right">

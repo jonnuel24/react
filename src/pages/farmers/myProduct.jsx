@@ -59,7 +59,7 @@ function MyProduct() {
         <div className="p-[24px] flex flex-col items-start w-full gap-[64px]">
           <h2 className="text-left">My products</h2>
           <div className="w-full h-fit">
-            <h5 className="text-left">120 items</h5>
+            <h5 className="text-left">{farmProducts?.length || 0} items</h5>
             <div className="addProduct-rd w-full h-full">
               <div className="flex gap-[16px] p-[16px]">
                 {/* search bar */}
@@ -106,12 +106,12 @@ function MyProduct() {
                   </thead>
                   <tbody>
                     {/* 01 */}
-                    {farmProducts?.map((p) => (
-                      <tr className="cursor-pointer hover:bg-gray-100">
+                    {farmProducts?.map((p, index) => (
+                      <tr key={index}>
                         <td className="">
                           <div className="fn-profile">
                             <img
-                              src={p.images.length ? p.images[0] : ""}
+                              src={p.images?.length ? p.images[0] : ""}
                               alt=""
                               className="animal"
                             />
