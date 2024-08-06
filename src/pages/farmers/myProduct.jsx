@@ -27,6 +27,23 @@ function MyProduct() {
       console.log(e);
     }
   };
+
+  // Defining filter state
+  const [isProductFilterOpen, setIsProductFilterOpen] = useState(false);
+
+  // Function to toggle filter visibility
+  const toggleProductFilter = () => {
+    setIsProductFilterOpen((prev) => !prev);
+  };
+
+  // Filter
+  const productFilter = [
+    { id: 1, label: "newest" },
+    { id: 2, label: "oldest" },
+    { id: 3, label: "lowest price" },
+    { id: 4, label: "highest price" },
+  ];
+
   return (
     <div>
       <FNavbar />
@@ -48,7 +65,31 @@ function MyProduct() {
                 {/* search bar */}
                 <Searchbar />
                 {/* sortby */}
-                <Sortby />
+                <div className="relative">
+                  <Sortby
+                    onClick={toggleProductFilter}
+                    aria-expanded={isProductFilterOpen}
+                    aria-controls="product-filter"
+                  />
+
+                  {isProductFilterOpen && (
+                    <div
+                      id="product-filter"
+                      className="border rounded-md shadow-xl p-2 flex justify-start mt-2 absolute inset-0 z-20 bg-white top-[100%] h-fit w-fit min-w-[200px]"
+                    >
+                      <ul className="flex flex-col items-start gap-2 w-full pl-0">
+                        {productFilter.map((product) => (
+                          <li
+                            key={product.id}
+                            className="hover:bg-gray-100 cursor-pointer w-full text-left py-2 pl-2 pr-8 rounded-sm"
+                          >
+                            {product.label}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div>
@@ -66,7 +107,7 @@ function MyProduct() {
                   <tbody>
                     {/* 01 */}
                     {farmProducts?.map((p) => (
-                      <tr>
+                      <tr className="cursor-pointer hover:bg-gray-100">
                         <td className="">
                           <div className="fn-profile">
                             <img
@@ -81,163 +122,55 @@ function MyProduct() {
                         <td>{p.quantity}</td>
                         <td>₦{p.price}</td>
                         <td>
-                          <div className="flex items-center gap-4">
-                            <button>
+                          <div className="flex items-center justify-start w-full gap-4">
+                            {/* <button>
                               <Icon
                                 icon="mage:edit"
                                 width="64"
                                 height="64"
-                                className="text-gray-700 hover:text-green-900"
-                                
+                                className="text-gray-700 hover:text-green-700"
                               />
-                            </button>
+                            </button> */}
                             <button>
                               <Icon
                                 icon="lets-icons:view"
                                 width="64"
                                 height="64"
-                                className="text-gray-700 hover:text-green-900"
+                                className="text-gray-700 hover:text-green-700"
                               />
                             </button>
-                            <button>
+                            {/* <button>
                               <Icon
                                 icon="fluent:delete-24-regular"
                                 width="64"
                                 height="64"
-                                className="text-gray-700 hover:text-green-900"
-                              />
-                            </button>
+                                className="text-gray-700 hover:text-green-700"
+                              /></button> */}
                           </div>
                         </td>
                       </tr>
                     ))}
-                    {/* 02 */}
-                    {/* <tr>
-                      <td className="">
-                        <div className="fn-profile">
-                          <img
-                            src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
-                            alt=""
-                            className="animal"
-                          />
-                        </div>
-                      </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
-                      <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
-                      </td>
-                    </tr> */}
-                    {/* 03 */}
-                    {/* <tr>
-                      <td className="">
-                        <div className="fn-profile">
-                          <img
-                            src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
-                            alt=""
-                            className="animal"
-                          />
-                        </div>
-                      </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
-                      <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
-                      </td>
-                    </tr> */}
-                    {/* 04 */}
-                    {/* <tr>
-                      <td className="">
-                        <div className="fn-profile">
-                          <img
-                            src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
-                            alt=""
-                            className="animal"
-                          />
-                        </div>
-                      </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
-                      <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
-                      </td>
-                    </tr> */}
-                    {/* 05 */}
-                    {/* <tr>
-                      <td className="">
-                        <div className="fn-profile">
-                          <img
-                            src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
-                            alt=""
-                            className="animal"
-                          />
-                        </div>
-                      </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
-                      <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
-                      </td>
-                    </tr> */}
-                    {/* 06 */}
-                    {/* <tr>
-                      <td className="">
-                        <div className="fn-profile">
-                          <img
-                            src="https://imgs.search.brave.com/9H0-mUVGmmzqTU9AM9qiNEzDsupKvLlKiEDZ2efNb98/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE5MTgyNzY4L3Iv/aWwvNmE4ZTc5LzM3/MDEwNDE1MjgvaWxf/NjAweDYwMC4zNzAx/MDQxNTI4X21kNzcu/anBn"
-                            alt=""
-                            className="animal"
-                          />
-                        </div>
-                      </td>
-                      <td>Meadow Belle</td>
-                      <td>Dairy Cow</td>
-                      <td>15</td>
-                      <td>₦20,000</td>
-                      <td>
-                        <Icon
-                          icon="iwwa:option-horizontal"
-                          color="#909090"
-                          width="24"
-                          height="24"
-                          rotate={1}
-                        />
-                      </td>
-                    </tr> */}
+                    
                   </tbody>
                 </table>
+                    {/* view product modal */}
+                <div className="w-[60%] bg-white border border-gray-200 rounded-3xl shadow-lg max-h-[60%]">
+                  <div>
+                    <div>Product Name</div>
+                    <div>
+                      <div>
+                        <label htmlFor="">Product Image</label>
+                        <div>
+                          <div></div>
+                          <button type="submit" className="bg-green-900 hover:bg-green-700 text-white font-medium flex items-center gap-2 rounded-xl px-4 py-3"><Icon icon="fluent:add-16-regular" width="64" height="64"  style={{color: 'white'}} /> add image</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                </div>
+
+
                 {/*  */}
                 <div className="flex flex-row justify-between items-center p-[24px] mp-pagination">
                   <div className="">Page 1 of 10</div>
