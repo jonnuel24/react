@@ -7,6 +7,7 @@ import "../asset/styles/productDetails.css";
 import Prof from "../asset/images/Group 604.svg";
 import { Link, useParams } from "react-router-dom";
 import { productServices } from "../services/product.service";
+import farmServices from "../services/farm.service";
 import { notification } from "../services/notification";
 import { userServices } from "../services/user.service";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +24,7 @@ function ProductDetails() {
   const [loadingProducts, setLoadingProducts] = useState(false);
   const [farmProducts, setFarmProducts] = useState([]);
   const cartItems = useSelector((state) => state.cart?.items);
+  const [selectedImage, setSelectedImage] = useState(0);
   useEffect(() => {
     fetchProduct(id);
     fetchProducts();
@@ -33,6 +35,7 @@ function ProductDetails() {
       const result = await productServices.one(id);
       if (result?.statusCode === 200) {
         setProduct(result?.product);
+        fetchFarm(result?.product?.farmId);
         setProductSummary(result?.productSummary);
       }
       console.log(result);
@@ -50,6 +53,11 @@ function ProductDetails() {
       console.log(e);
     }
     setLoadingProducts(false);
+  };
+
+  const fetchFarm = async (farmId) => {
+    const result = await farmServices.farm(farmId);
+    console.log(result);
   };
 
   const addToCart = async (productId) => {
@@ -85,7 +93,9 @@ function ProductDetails() {
             <div className="col left-div col-8">
               <div>
                 <div
-                  style={{ "--image-url": `url(${product?.images[0]})` }}
+                  style={{
+                    "--image-url": `url(${product?.images[selectedImage]})`,
+                  }}
                   className="product-img bg-[image:var(--image-url)]"
                 >
                   {/* <div className="new">New</div> */}
@@ -94,7 +104,14 @@ function ProductDetails() {
                 <div className="product-details">
                   <ul className="flex gap-2 items-center justify-center">
                     {/* previous */}
-                    <button className="border-[1px] border-gray-300 p-2 rounded-lg">
+                    <button
+                      onClick={() => {
+                        selectedImage > 0
+                          ? setSelectedImage(selectedImage - 1)
+                          : setSelectedImage(0);
+                      }}
+                      className="border-[1px] border-gray-300 p-2 rounded-lg"
+                    >
                       Previous
                     </button>
                     {product?.images?.map((e, i) => (
@@ -116,7 +133,14 @@ function ProductDetails() {
                   </li> */}
 
                     {/* next button */}
-                    <button className="border-[1px] border-gray-300 p-2 rounded-lg">
+                    <button
+                      onClick={() => {
+                        selectedImage < product?.images?.length-1
+                          ? setSelectedImage(selectedImage + 1)
+                          : console.log("");
+                      }}
+                      className="border-[1px] border-gray-300 p-2 rounded-lg"
+                    >
                       Next
                     </button>
                   </ul>
@@ -244,16 +268,11 @@ function ProductDetails() {
           <div className="w-full">
             {/* profile */}
             <div className="body23">
-              <div className="body230">
-               
-
+              {/* <div className="body230">
                 <div className="body24">
                   <img src={Prof} alt="" />
                   <div className="body241">
-                    <header>
-                      GASGOS <br />
-                      FARMS
-                    </header>
+                    <header></header>
                     <div className=" body240">
                       <h4>Agripeller verified</h4>
                       <Icon
@@ -264,7 +283,7 @@ function ProductDetails() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* <div className="body25">
                 <header>Comments</header>

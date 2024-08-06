@@ -19,7 +19,11 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [lgas, setLGAs] = useState([]);
-  const [post, setPost] = useState({ ...userData, userType: type });
+  const [post, setPost] = useState({
+    ...userData,
+    userType: type,
+    country: "Nigeria",
+  });
   const [errors, setErrors] = useState({
     firstName: "",
     lastName: "",
@@ -34,7 +38,6 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
     payload.phoneNumber = "+234" + payload.phoneNumber;
     // payload.dateOfBirth = "1999-01-01";
     if (payload.userType === "FARMER") {
-      
     } else {
       delete payload.dateOfEstablishment;
     }
@@ -205,7 +208,11 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
           {type}'s Personal Information
         </h1>
         {/* formData */}
-        <form action="" onSubmit={handleSubmit(signup)} className="w-full flex flex-col">
+        <form
+          action=""
+          onSubmit={handleSubmit(signup)}
+          className="w-full flex flex-col"
+        >
           <div className="grid grid-cols-2 gap-3 w-full">
             {(type === "FARMER" && step === 0) || type === "USER" ? (
               <>
@@ -471,7 +478,6 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
                     value={post.farmName}
                     className="h-[56px] w-full rounded-xl border border-gray-300"
                   />
-
                 </div>
                 <div className="flex flex-col gap-2  items-start">
                   <label htmlFor="country">Date of Establishment</label>

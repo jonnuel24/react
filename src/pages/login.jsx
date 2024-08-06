@@ -222,7 +222,11 @@ function Login() {
                   Continue
                 </button>
               )}
-              {loading && <BeatLoader color="#36d7b7" />}
+              {loading && 
+              <div className="flex flex-row justify-center w-full">
+                <BeatLoader color="#36d7b7" />
+              </div>
+              }
               {/* </Link> */}
               <div className="text-right justify-end items-end flex w-full">
                 Don’t have an account? <Link to={"/signup"}> Sign Up</Link>
