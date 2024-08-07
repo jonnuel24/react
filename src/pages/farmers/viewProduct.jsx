@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Fpanel from "./component/fpanel";
 import FNavbar from "./component/farmersNavbar";
 import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 
 function ViewProduct() {
   // List of image URLs (replace with your actual image URLs)
@@ -47,8 +48,12 @@ function ViewProduct() {
         </div>
         <div className="w-full px-8 py-12 space-y-4">
           <div className="flex justify-between w-full">
-            <strong className="flex justify-start">View Products</strong>{" "}
-            <button className="px-4 py-2 border-2 border-gray-300 rounded-xl flex gap-2 items-center hover:bg-green-100 hover:text-green-800"><Icon icon="ep:edit" width="64" height="64"  style={{color: 'black'}} /> Edit</button>
+            <strong className="flex justify-start">View Products</strong>
+            <Link to="/productEdit">
+              <button className="px-4 py-2 border-2 border-gray-300 rounded-xl flex gap-2 items-center hover:bg-green-100 hover:text-green-800">
+                <Icon icon="ep:edit" width="24" height="24" style={{ color: 'black' }} /> Edit
+              </button>
+            </Link>
           </div>
           <div className="flex bg-gray-100 h-100 w-full p-4 gap-4">
             <div className="flex flex-col w-[60%]">

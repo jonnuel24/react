@@ -35,6 +35,7 @@ import ManageOrders from "../pages/farmers/manageOrders";
 import Payment from "../pages/payment";
 import EmailTemplate from "../Components/emailTemplate";
 import ViewProduct from "../pages/farmers/viewProduct";
+import ProductEdit from "../pages/farmers/productEdit";
 
 function Root() {
   return (
@@ -79,6 +80,7 @@ function Root() {
       <Route path="/product/create" Component={Addproduct} />
       <Route path="/product" Component={MyProduct} />
       <Route path="/viewProduct" Component={ViewProduct} />
+      <Route path="/productEdit" Component={ProductEdit} />
 
       <Route path="/manageOrders" Component={ManageOrders} />
 
