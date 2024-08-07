@@ -8,6 +8,8 @@ import "../../asset/styles/myProduct.css";
 import Option from "./component/optionMyProduct";
 import { productServices } from "../../services/product.service";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 function MyProduct() {
   const [farmProducts, setFarmProducts] = useState([]);
   const user = useSelector((state) => state.user?.currentUser);
@@ -59,7 +61,7 @@ function MyProduct() {
         <div className="p-[24px] flex flex-col items-start w-full gap-[64px]">
           <h2 className="text-left">My products</h2>
           <div className="w-full h-fit">
-            <h5 className="text-left">{farmProducts?.length || 0} items</h5>
+            <h5 className="text-left">{farmProducts?.length || 0} item(s)</h5>
             <div className="addProduct-rd w-full h-full">
               <div className="flex gap-[16px] p-[16px]">
                 {/* search bar */}
@@ -123,53 +125,22 @@ function MyProduct() {
                         <td>₦{p.price}</td>
                         <td>
                           <div className="flex items-center justify-start w-full gap-4">
-                            {/* <button>
-                              <Icon
-                                icon="mage:edit"
-                                width="64"
-                                height="64"
-                                className="text-gray-700 hover:text-green-700"
-                              />
-                            </button> */}
-                            <button>
-                              <Icon
-                                icon="lets-icons:view"
-                                width="64"
-                                height="64"
-                                className="text-gray-700 hover:text-green-700"
-                              />
-                            </button>
-                            {/* <button>
-                              <Icon
-                                icon="fluent:delete-24-regular"
-                                width="64"
-                                height="64"
-                                className="text-gray-700 hover:text-green-700"
-                              /></button> */}
+                            <Link to="/viewProduct">
+                              <button>
+                                <Icon
+                                  icon="lets-icons:view"
+                                  width="64"
+                                  height="64"
+                                  className="text-gray-700 hover:text-green-700"
+                                />
+                              </button>
+                            </Link>
                           </div>
                         </td>
                       </tr>
                     ))}
-                    
                   </tbody>
                 </table>
-                    {/* view product modal */}
-                <div className="w-[60%] bg-white border border-gray-200 rounded-3xl shadow-lg max-h-[60%]">
-                  <div>
-                    <div>Product Name</div>
-                    <div>
-                      <div>
-                        <label htmlFor="">Product Image</label>
-                        <div>
-                          <div></div>
-                          <button type="submit" className="bg-green-900 hover:bg-green-700 text-white font-medium flex items-center gap-2 rounded-xl px-4 py-3"><Icon icon="fluent:add-16-regular" width="64" height="64"  style={{color: 'white'}} /> add image</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                
-                </div>
-
 
                 {/*  */}
                 <div className="flex flex-row justify-between items-center p-[24px] mp-pagination">

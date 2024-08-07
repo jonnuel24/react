@@ -88,67 +88,76 @@ function ProductDetails() {
         </div>
         {/* left div */}
 
-        <div className="body flex h-screen">
+        <div className="body flex w-[100%]">
           {product && (
-            <div className="col left-div col-8">
-              <div>
+            <div className="col col-8 space-y-4">
+              <div className="bg-white rounded-xl p-2">
                 <div
                   style={{
-                    "--image-url": `url(${product?.images[selectedImage]})`,
+                    backgroundImage: `url(${product?.images[selectedImage]})`,
                   }}
-                  className="product-img bg-[image:var(--image-url)]"
+                  className="product-img bg-cover bg-no-repeat bg-center w-full h-[640px] border border-gray-50"
                 >
-                  {/* <div className="new">New</div> */}
+                  {/* Optional content inside the image frame */}
                 </div>
 
-                <div className="product-details">
-                  <ul className="flex gap-2 items-center justify-center">
-                    {/* previous */}
+                <div className="w-full mx-auto mt-4 pb-6">
+                  <ul className="flex gap-2 items-center justify-between w-full m-0 p-0">
+                    {/* Previous button */}
                     <button
                       onClick={() => {
-                        selectedImage > 0
-                          ? setSelectedImage(selectedImage - 1)
-                          : setSelectedImage(0);
+                        setSelectedImage((prev) => (prev > 0 ? prev - 1 : 0));
                       }}
                       className="border-[1px] border-gray-300 p-2 rounded-lg"
                     >
-                      Previous
+                      <Icon
+                        icon="ooui:next-rtl"
+                        width="64"
+                        height="64"
+                        style={{ color: "black" }}
+                      />
                     </button>
-                    {product?.images?.map((e, i) => (
-                      <li>
-                        <img key={i} src={e} alt="" className="inactive" />
+
+                    {/* Thumbnails */}
+                    {product?.images?.map((image, index) => (
+                      <li key={index} className="flex-shrink-0">
+                        <img
+                          src={image}
+                          alt={`Product ${index}`}
+                          className={`cursor-pointer border ${
+                            selectedImage === index
+                              ? "border-blue-500"
+                              : "border-gray-300"
+                          } p-1 rounded w-40 h-40 object-cover`}
+                          onClick={() => setSelectedImage(index)}
+                        />
                       </li>
                     ))}
-                    {/* <li>
-                    <img src={Cattle} alt="" className="inactive" />
-                  </li>
-                  <li>
-                    <img src={Cattle} alt="" className="" />
-                  </li>
-                  <li>
-                    <img src={Cattle} alt="" className="inactive" />
-                  </li>
-                  <li>
-                    <img src={Cattle} alt="" className="inactive" />
-                  </li> */}
 
-                    {/* next button */}
+                    {/* Next button */}
                     <button
                       onClick={() => {
-                        selectedImage < product?.images?.length-1
-                          ? setSelectedImage(selectedImage + 1)
-                          : console.log("");
+                        setSelectedImage((prev) =>
+                          prev < product.images.length - 1
+                            ? prev + 1
+                            : product.images.length - 1
+                        );
                       }}
                       className="border-[1px] border-gray-300 p-2 rounded-lg"
                     >
-                      Next
+                      <Icon
+                        icon="ooui:next-ltr"
+                        width="64"
+                        height="64"
+                        style={{ color: "black" }}
+                      />
                     </button>
                   </ul>
                 </div>
               </div>
 
-              <div className="body2">
-                <h1>livestock Description</h1>
+              <div className=" bg-white rounded-xl p-4">
+                <h1 className="w-full text-left ">{product?.name}</h1>
                 <p className="text-gray-700">{product?.description}</p>
                 <div className="body21">
                   <div className="btable">
@@ -184,80 +193,7 @@ function ProductDetails() {
                     </div>
                     {/*  */}
                   </div>
-
-                  <div className=" flex flex-col h-full justify-between items-end">
-                    <div className="text-4xl font-bold">
-                      {new Intl.NumberFormat("en-us", {
-                        style: "currency",
-                        currency: "NGN",
-                      }).format(product?.price)}{" "}
-                      <small>/UNIT</small>
-                    </div>
-                    {/* button */}
-                    <div className="">
-                      {!processing &&
-                        cartItems?.some((e) => {
-                          return e.product?.id === product?.id;
-                        }) && (
-                          <div className="inline-flex justify-center gap-4 items-center">
-                            <button className="bg-green-700 hover:bg-green-900 text-white h-[40px] flex items-center px-3 border-green-700 rounded text-[40px]">
-                              -
-                            </button>
-                            <span className="w-1/4">
-                              {
-                                cartItems?.find((e) => {
-                                  return e?.product?.id === product?.id;
-                                })?.quantity
-                              }
-                            </span>
-                            <button
-                              onClick={() => addToCart(product?.id)}
-                              className="bg-green-700 hover:bg-green-900 text-white h-[40px] flex items-center px-3 border-green-700 rounded text-[40px]"
-                            >
-                              +
-                            </button>
-                          </div>
-                        )}
-                      `{processing && <BeatLoader color="#36d7b7" />}
-                      {!processing &&
-                        !cartItems?.some((e) => {
-                          return e?.product?.id === product?.id;
-                        }) && (
-                          <button
-                            onClick={() => addToCart(product?.id)}
-                            className="py-2 h-[44px] px-4 rounded-xl bg-green-700 hover:bg-green-900 text-white font-medium"
-                          >
-                            add to cart
-                          </button>
-                        )}
-                      <Link to="/cart" className="ml-6">
-                        <button className="py-2 px-4 h-[44px] rounded-xl bg-transaparent hover:bg-gray-100 border-2 text-gray-700 font-medium">
-                          view cart
-                        </button>{" "}
-                      </Link>
-                    </div>
-                  </div>
                 </div>
-                {/* <div className="right-div1">
-                  <div>
-                    <Icon icon="ci:tag" />
-                    Listed days ago
-                  </div>
-
-                  <div>
-                    <Icon icon="formkit:people" />
-                    2,045 VIEWS
-                  </div>
-
-                  <div>
-                    <Icon icon="fluent-emoji-high-contrast:star" />
-                    {product?.age ? product?.age / 12 : 0} MONTHS old
-                  </div>
-                  <div>
-                    <Icon icon="akar-icons:location" />
-                    Ogun State
-                  </div>
-                </div> */}
               </div>
             </div>
           )}
@@ -265,9 +201,64 @@ function ProductDetails() {
 
           {/* right-div...... */}
 
-          <div className="w-full">
+          <div className="w-full ml-6">
             {/* profile */}
             <div className="body23">
+              <div className="w-full flex items-start font-medium text-lg pb-2 border-b-2">
+                Item Price
+              </div>
+              <div className=" flex flex-col h-32 justify-between items-start mt-4">
+                <div className="text-4xl font-bold">
+                  {new Intl.NumberFormat("en-us", {
+                    style: "currency",
+                    currency: "NGN",
+                  }).format(product?.price)}{" "}
+                  <small>/UNIT</small>
+                </div>
+                {/* button */}
+                <div className="">
+                  {!processing &&
+                    cartItems?.some((e) => {
+                      return e.product?.id === product?.id;
+                    }) && (
+                      <div className="inline-flex justify-center gap-4 items-center">
+                        <button className="bg-green-700 hover:bg-green-900 text-white h-[40px] flex items-center px-3 border-green-700 rounded text-[40px]">
+                          -
+                        </button>
+                        <span className="w-1/4">
+                          {
+                            cartItems?.find((e) => {
+                              return e?.product?.id === product?.id;
+                            })?.quantity
+                          }
+                        </span>
+                        <button
+                          onClick={() => addToCart(product?.id)}
+                          className="bg-green-700 hover:bg-green-900 text-white h-[40px] flex items-center px-3 border-green-700 rounded text-[40px]"
+                        >
+                          +
+                        </button>
+                      </div>
+                    )}
+                  `{processing && <BeatLoader color="#36d7b7" />}
+                  {!processing &&
+                    !cartItems?.some((e) => {
+                      return e?.product?.id === product?.id;
+                    }) && (
+                      <button
+                        onClick={() => addToCart(product?.id)}
+                        className="py-2 h-[44px] px-4 rounded-xl bg-green-700 hover:bg-green-900 text-white font-medium"
+                      >
+                        add to cart
+                      </button>
+                    )}
+                  <Link to="/cart" className="ml-6">
+                    <button className="py-2 px-4 h-[44px] rounded-xl bg-transaparent hover:bg-gray-100 border-2 text-gray-700 font-medium">
+                      view cart
+                    </button>{" "}
+                  </Link>
+                </div>
+              </div>
               {/* <div className="body230">
                 <div className="body24">
                   <img src={Prof} alt="" />

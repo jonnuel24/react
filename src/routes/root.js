@@ -15,13 +15,13 @@ import PasswordChanged from "../pages/passwordChanged";
 import Profile from "../pages/profile";
 import Profile_edit from "../pages/profile_edit";
 import Wishlist from "../pages/wishlist";
-import Order_Confirmation from "../pages/OrderConfirmation"
+import Order_Confirmation from "../pages/OrderConfirmation";
 import TrackOrder from "../pages/trackOrder";
 import Order from "../pages/order";
-import OrderPending from "../pages/orderPending"
-import OrderComplete from "../pages/orderComplete"
-import ChangePassword from "../pages/changePassword"
-import Faq from "../pages/faq"
+import OrderPending from "../pages/orderPending";
+import OrderComplete from "../pages/orderComplete";
+import ChangePassword from "../pages/changePassword";
+import Faq from "../pages/faq";
 
 import cart from "../pages/cart";
 import delivery from "../pages/delivery";
@@ -33,9 +33,8 @@ import Addproduct from "../pages/farmers/addproduct";
 import MyProduct from "../pages/farmers/myProduct";
 import ManageOrders from "../pages/farmers/manageOrders";
 import Payment from "../pages/payment";
-import EmailTemplate from '../Components/emailTemplate'
-
-
+import EmailTemplate from "../Components/emailTemplate";
+import ViewProduct from "../pages/farmers/viewProduct";
 
 function Root() {
   return (
@@ -67,8 +66,8 @@ function Root() {
       <Route path="/wishlist" Component={Wishlist} />
       <Route path="/notification" Component={Notification} />
       <Route path="/payment" Component={Payment} />
-      <Route path="/OrderConfirmation" Component={Order_Confirmation} /> 
-      <Route path="/order/track/:id" Component={TrackOrder} /> 
+      <Route path="/OrderConfirmation" Component={Order_Confirmation} />
+      <Route path="/order/track/:id" Component={TrackOrder} />
       <Route path="/order" Component={Order} />
       <Route path="/orderPending" Component={OrderPending} />
       <Route path="/orderComplete" Component={OrderComplete} />
@@ -79,6 +78,8 @@ function Root() {
       <Route path="/farmer" Component={Dashboard} />
       <Route path="/product/create" Component={Addproduct} />
       <Route path="/product" Component={MyProduct} />
+      <Route path="/viewProduct" Component={ViewProduct} />
+
       <Route path="/manageOrders" Component={ManageOrders} />
 
       {/* website */}
@@ -86,7 +87,6 @@ function Root() {
 
       {/* email template */}
       <Route path="/emailTemplate" Component={EmailTemplate} />
-
     </Routes>
   );
 }
