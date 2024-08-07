@@ -97,6 +97,7 @@ function Fpanel() {
                 </label>
               </div>
               {/*  */}
+              <Link to="/notifications" style={linkStyle} className="cursor-pointer">
               <div className="flex flex-row items-center gap-[14px]">
                 <Icon icon="solar:bell-linear" className="fd-leftdiv-icon" />
                 <label
@@ -105,7 +106,7 @@ function Fpanel() {
                 >
                   Notification
                 </label>
-              </div>
+              </div></Link>
             </div>
           </div>
           {/* end product */}
@@ -118,14 +119,15 @@ function Fpanel() {
 
             <div className="fd-account flex flex-col gap-[20px] px-[24px] py-[26px]">
               {/*  */}
-              <div className="flex flex-row items-center gap-[14px]">
+              <div className="flex flex-row items-center gap-[14px] cursor-pointer">
+                <Link to="/settings" className="flex gap-2 " style={linkStyle}>
                 <Icon icon="carbon:settings" className="fd-leftdiv-icon" />
                 <label
                   htmlFor=""
                   className="text-[16px] font-normal leading-normal text-black"
                 >
                   Settings
-                </label>
+                </label></Link>
               </div>
               {/*  */}
 
