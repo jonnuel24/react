@@ -122,7 +122,7 @@ function Order_Confirmation() {
   return (
     <div>
       <Navbar />
-      <div className="h-screen flex flex-col px-12 py-8 gap-4">
+      <div className=" flex flex-col px-12 py-8 gap-4">
         <header className="text-left ">
           Hello Rabi, here's your cost summary
         </header>

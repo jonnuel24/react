@@ -125,6 +125,12 @@ function MyProduct() {
                         <td>₦{p.price}</td>
                         <td>
                           <div className="flex items-center justify-start w-full gap-4">
+                            <Icon
+                              icon="fluent:delete-24-regular"
+                              width="64"
+                              height="64"
+                              style={{ color: 'black' }}
+                            />
                             <Link to="/viewProduct">
                               <button>
                                 <Icon
