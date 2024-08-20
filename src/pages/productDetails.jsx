@@ -103,14 +103,14 @@ function ProductDetails() {
                   {/* Optional content inside the image frame */}
                 </div>
 
-                <div className="w-full mx-auto mt-4 pb-6">
+                <div className="w-full flex items-center justify-center mt-4 pb-6">
                   <ul className="flex gap-2 items-center justify-between w-full m-0 p-0">
                     {/* Previous button */}
                     <button
                       onClick={() => {
                         setSelectedImage((prev) => (prev > 0 ? prev - 1 : 0));
                       }}
-                      className="border-[1px] border-gray-300 p-2 rounded-lg"
+                      className="border-[1px] border-gray-300 p-1 rounded-lg"
                     >
                       <Icon
                         icon="ooui:next-rtl"
@@ -130,7 +130,7 @@ function ProductDetails() {
                             selectedImage === index
                               ? "border-blue-500"
                               : "border-gray-300"
-                          } p-1 rounded w-40 h-40 object-cover`}
+                          } p-1 rounded w-36 h-36 object-cover`}
                           onClick={() => setSelectedImage(index)}
                         />
                       </li>
@@ -145,7 +145,7 @@ function ProductDetails() {
                             : product.images.length - 1
                         );
                       }}
-                      className="border-[1px] border-gray-300 p-2 rounded-lg"
+                      className="border-[1px] border-gray-300 p-1 rounded-lg"
                     >
                       <Icon
                         icon="ooui:next-ltr"
@@ -203,14 +203,14 @@ function ProductDetails() {
 
           {/* right-div...... */}
 
-          <div className="w-full ml-6">
+          <div className="flex flex-col gap-6 w-full ml-6">
             {/* profile */}
             <div className="body23">
               <div className="w-full flex items-start font-medium text-lg pb-2 border-b-2">
                 Item Price
               </div>
               <div className=" flex flex-col h-32 justify-between items-start mt-4">
-                <div className="text-4xl font-bold">
+                <div className="text-3xl font-bold">
                   {new Intl.NumberFormat("en-us", {
                     style: "currency",
                     currency: "NGN",
@@ -261,111 +261,137 @@ function ProductDetails() {
                   </Link>
                 </div>
               </div>
-
-              {/* <div className="body25">
-                <header>Comments</header>
-                <div className="body250">
-                  <div className="body251">
-                    <div className="star">
+            </div>
+            <div className="rounded-lg  bg-white w-full border shadow-xl overflow-clip">
+              <div className="p-4 flex flex-col">
+                <div className="flex items-center gap-2">
+                  <img src={Prof} alt="" />
+                  <div className="flex flex-col">
+                    <header>Paul's Farm</header>
+                    <div className=" body240 flex items-center">
+                      <h4>Agripeller verified</h4>
                       <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#EC5858"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#EC5858"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#EC5858"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#D9D9D9"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#D9D9D9"
+                        icon="codicon:verified-filled"
+                        color="white"
+                        className="verified"
                       />
                     </div>
-                    <h4>This is an interesting farmer </h4>
-                    <label htmlFor="">
-                      12/07/2023 by <strong>James</strong>
-                    </label>
-                  </div>
-                  <div className="body251">
-                    <div className="star">
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#EC5858"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#EC5858"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#EC5858"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#D9D9D9"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#D9D9D9"
-                      />
-                    </div>
-                    <h4>This is an interesting farmer </h4>
-                    <label htmlFor="">
-                      12/07/2023 by <strong>James</strong>
-                    </label>
-                  </div>
-                  <div className="body251">
-                    <div className="star">
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#EC5858"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#EC5858"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#EC5858"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#D9D9D9"
-                      />
-                      <Icon
-                        className="star-icon"
-                        icon="bi:star-fill"
-                        color="#D9D9D9"
-                      />
-                    </div>
-                    <h4>This is an interesting farmer </h4>
-                    <label htmlFor="">
-                      12/07/2023 by <strong>James</strong>
-                    </label>
                   </div>
                 </div>
-              </div> */}
+                <div className="body241">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Rerum eos, debitis voluptatibus, mollitia nihil cupiditate
+                    voluptatum consequatur quis molestiae non consectetur modi
+                    voluptate tempora. Vitae, laborum! Ad ipsam nam
+                    consequunturj?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="body25">
+          <header>Comments</header>
+          <div className="body250">
+            <div className="body251">
+              <div className="star">
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#EC5858"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#EC5858"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#EC5858"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#D9D9D9"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#D9D9D9"
+                />
+              </div>
+              <h4>This is an interesting farmer </h4>
+              <label htmlFor="">
+                12/07/2023 by <strong>James</strong>
+              </label>
+            </div>
+            <div className="body251">
+              <div className="star">
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#EC5858"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#EC5858"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#EC5858"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#D9D9D9"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#D9D9D9"
+                />
+              </div>
+              <h4>This is an interesting farmer </h4>
+              <label htmlFor="">
+                12/07/2023 by <strong>James</strong>
+              </label>
+            </div>
+            <div className="body251">
+              <div className="star">
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#EC5858"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#EC5858"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#EC5858"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#D9D9D9"
+                />
+                <Icon
+                  className="star-icon"
+                  icon="bi:star-fill"
+                  color="#D9D9D9"
+                />
+              </div>
+              <h4>This is an interesting farmer </h4>
+              <label htmlFor="">
+                12/07/2023 by <strong>James</strong>
+              </label>
             </div>
             <div className="mt-3 body23">
               <div className="body230">

@@ -96,7 +96,7 @@ const Home = () => {
       </section>
 
       <section className="card0 w-full mx-auto">
-        <div className="grid grid-cols-3 card1 items-center space-x-6 space-y-6">
+        <div className="grid grid-cols-4 card1 items-center space-x-6 space-y-6">
           {loadingProducts && <BeatLoader color="#36d7b7" />}
           {!loadingProducts &&
             farmProducts.map((p, i) => <Card key={i} product={p} />)}
