@@ -22,7 +22,6 @@ function MyProduct() {
   const fetchProducts = async (farmId) => {
     try {
       const products = await productServices.farmProduct(farmId);
-      console.log(products);
       setFarmProducts(products.farmProducts);
       console.log("farm products", farmProducts);
     } catch (e) {
@@ -125,7 +124,7 @@ function MyProduct() {
                         <td>₦{p.price}</td>
                         <td>
                           <div className="flex items-center justify-start w-full gap-4">
-                            <Link to={`/farmer/product/${ p.id }}`}>
+                            <Link to={`/farmer/product/${ p.id }`}>
                               <button>
                                 <Icon
                                   icon="lets-icons:view"

@@ -22,6 +22,12 @@ export const productServices = {
       return response;
     } catch (e) {}
   },
+  edit: async (data) => {
+    try {
+      let response = await axios.patch(`${baseUrl}`, data);
+      return response;
+    } catch (e) {}
+  },
   one: async (id) => {
     try {
       let response = await axios.get(`${baseUrl}one/${id}`);

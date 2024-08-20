@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Components/navbar";
 import Footer from "../Components/footer";
 import { Icon } from "@iconify/react";
-import Card from "../Components/card";
+// import Card from "../Components/card";
 import "../asset/styles/productDetails.css";
 import Prof from "../asset/images/Group 604.svg";
 import { Link, useParams } from "react-router-dom";
@@ -25,6 +25,7 @@ function ProductDetails() {
   const [farmProducts, setFarmProducts] = useState([]);
   const cartItems = useSelector((state) => state.cart?.items);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [farm, setFarm] = useState({});
   useEffect(() => {
     fetchProduct(id);
     fetchProducts();
@@ -35,10 +36,11 @@ function ProductDetails() {
       const result = await productServices.one(id);
       if (result?.statusCode === 200) {
         setProduct(result?.product);
-        fetchFarm(result?.product?.farmId);
+        setFarm(result?.farm);
+        // fetchFarm(result?.product?.farmId);
         setProductSummary(result?.productSummary);
       }
-      console.log(result);
+      console.log("product", result);
     } catch (e) {}
   };
 
@@ -259,22 +261,6 @@ function ProductDetails() {
                   </Link>
                 </div>
               </div>
-              {/* <div className="body230">
-                <div className="body24">
-                  <img src={Prof} alt="" />
-                  <div className="body241">
-                    <header></header>
-                    <div className=" body240">
-                      <h4>Agripeller verified</h4>
-                      <Icon
-                        icon="codicon:verified-filled"
-                        color="white"
-                        className="verified"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div> */}
 
               {/* <div className="body25">
                 <header>Comments</header>
@@ -380,6 +366,24 @@ function ProductDetails() {
                   </div>
                 </div>
               </div> */}
+            </div>
+            <div className="mt-3 body23">
+              <div className="body230">
+                <div className="body24">
+                  <img src={farm.logoUrl || Prof} alt="" />
+                  <div className="body241">
+                    <header>{farm?.farmName}</header>
+                    <div className=" body240">
+                      <h4>Agripeller verified</h4>
+                      <Icon
+                        icon="codicon:verified-filled"
+                        color="white"
+                        className="verified"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

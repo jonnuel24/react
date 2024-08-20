@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Fpanel from "./component/fpanel";
 import FNavbar from "./component/farmersNavbar";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { productServices } from "../../services/product.service";
 
 function ViewProduct() {
+  const { id } = useParams();
   // List of image URLs (replace with your actual image URLs)
   const images = [
     "https://via.placeholder.com/640x480.png?text=Image+1",
     "https://via.placeholder.com/640x480.png?text=Image+2",
     "https://via.placeholder.com/640x480.png?text=Image+3",
   ];
-
+  // const [selectedImage, setSelectedImage] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [product, setProduct] = useState(null);
   const handleThumbnailClick = (index) => {
     setCurrentIndex(index);
   };
@@ -28,6 +30,24 @@ function ViewProduct() {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
+  };
+
+  useEffect(() => {
+    fetchProduct(id);
+  }, [id]);
+
+
+  const fetchProduct = async (productId) => {
+    try {
+      const result = await productServices.one(productId);
+      if (result?.statusCode === 200) {
+        setProduct(result?.product);
+        // setFarm(result?.farm);
+        // fetchFarm(result?.product?.farmId);
+        // setProductSummary(result?.productSummary);
+      }
+      console.log("product", result);
+    } catch (e) {}
   };
 
   const livestockDescriptions = [
@@ -49,7 +69,7 @@ function ViewProduct() {
         <div className="w-full px-8 py-12 space-y-4">
           <div className="flex justify-between w-full">
             <strong className="flex justify-start">View Products</strong>
-            <Link to="/productEdit">
+            <Link to={`/farmer/product/edit/${product?.id}`}>
               <button className="px-4 py-2 border-2 border-gray-300 rounded-xl flex gap-2 items-center hover:bg-green-100 hover:text-green-800">
                 <Icon icon="ep:edit" width="24" height="24" style={{ color: 'black' }} /> Edit
               </button>
@@ -61,7 +81,7 @@ function ViewProduct() {
                 {/* Main Image */}
                 <div className="w-fit h-[640px] rounded-xl overflow-clip">
                   <img
-                    src={images[currentIndex]}
+                    src={product?.images[currentIndex]}
                     alt="Product"
                     className="w-full h-full object-cover"
                   />
@@ -79,7 +99,7 @@ function ViewProduct() {
                   </button>
                   {/* Thumbnails */}
                   <div className="flex space-x-2">
-                    {images.map((image, index) => (
+                    {product?.images.map((image, index) => (
                       <img
                         key={index}
                         src={image}
@@ -106,25 +126,45 @@ function ViewProduct() {
               </div>
               <div className="bg-white rounded-xl p-2 mt-4 flex flex-col items-start gap-4">
                 <strong className="">Product Information</strong>
-                <div className="flex flex-col items-start">
-                  {/* Product name */}
-                  <div className="text-[40px]">British African Goat</div>
-                  {/* Product description */}
-                  <p>Caramel blue eyes, rich kid, and fun boy</p>
-                  <div className="border p-4 rounded-md w-full">
-                    {livestockDescriptions.map((livestockDescription) => (
-                      <div
-                        key={livestockDescription.id}
-                        className="flex justify-between"
-                      >
-                        <div className="font-bold mr-2">
-                          {livestockDescription.title}:
-                        </div>
-                        <div>{livestockDescription.response}</div>
+                <div className=" bg-white rounded-xl p-4">
+                <h1 className="w-full text-left ">{product?.name}</h1>
+                <p className="text-gray-700">{product?.description}</p>
+                <div className="body21">
+                  <div className="btable">
+                    {/*  */}
+                    <div className="border p-[16px] w-full">
+                      {/* breed */}
+                      <div className="flex flex-row justify-between">
+                        <div>Breed</div>
+                        <div className="font-medium">{product?.category}</div>
                       </div>
-                    ))}
+                      {/* weight */}
+                      <div className="flex flex-row justify-between">
+                        <div>Weight</div>
+                        <div className="font-medium">
+                          {product?.weight}kg Plus
+                        </div>
+                      </div>
+                      {/* color */}
+                      <div className="flex flex-row justify-between">
+                        <div>Color</div>
+                        <div className="font-medium">White</div>
+                      </div>
+                      {/* lifespan */}
+                      <div className="flex flex-row justify-between">
+                        <div>Lifespan</div>
+                        <div className="font-medium">{product?.age}</div>
+                      </div>
+                      {/* gender */}
+                      <div className="flex flex-row justify-between">
+                        <div>Gender</div>
+                        <div className="font-medium">{product?.gender}</div>
+                      </div>
+                    </div>
+                    {/*  */}
                   </div>
                 </div>
+              </div>
               </div>
             </div>
             <div className="w-[40%] p-4 bg-white rounded-xl h-fit flex flex-col items-start gap-4">
@@ -132,7 +172,11 @@ function ViewProduct() {
                 Item Price
               </div>
               <div className="text-[36px] font-semibold">
-                NGN 70,000.00/UNIT
+              {new Intl.NumberFormat("en-us", {
+                    style: "currency",
+                    currency: "NGN",
+                  }).format(product?.price)}{" "}
+                  <small>/UNIT</small>
               </div>
             </div>
           </div>

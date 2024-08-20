@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FNavbar from "./component/farmersNavbar";
 import { Icon } from "@iconify/react";
 import Fpanel from "./component/fpanel";
@@ -6,18 +6,35 @@ import "../../asset/styles/farmersdashboard.css";
 import pic from "../../asset/images/animal_profile.png";
 import BarChart from "./component/barchart";
 import DoughnutChart from "./component/doughnutChart";
+import { OrderServices } from "../../services/order.service";
 import Option from "./component/optionMyProduct";
+import { useSelector } from "react-redux";
 
 function Dashboard() {
-  // const YearSelector = () => {
-  //   // Generate an array of years from 2001 to the current year
-  //   const startYear = 2001;
-  //   const currentYear = new Date().getFullYear();
-  //   const years = Array.from(
-  //     { length: currentYear - startYear + 1 },
-  //     (_, index) => startYear + index
-  //   ).reverse();
-  // };
+  const [orders, setOrders] = useState([]);
+  const user = useSelector((state) => state.user?.currentUser);
+  const farm = useSelector((state) => state.user?.farm);
+  const [page, setPage] = useState(1);
+  const [size, setSize] = useState(10);
+  useEffect(() => {
+    fetchFarmOrder();
+  }, []);
+
+  const fetchFarmOrder = async () => {
+    try {
+      const response = await OrderServices.farmOrders(
+        { page: page, size: size },
+        farm.id
+      );
+      console.log(response);
+      if (response.statusCode == 200) {
+        setOrders(response.totalOrders);
+      }
+      // setOrders(response.orders);
+    } catch (error) {
+      console.log("error from fetch product", error);
+    }
+  };
   return (
     <div className="">
       <FNavbar />
@@ -95,17 +112,28 @@ function Dashboard() {
                       </tr>
                     </thead>
                     <tbody>
+                      {orders.map((order, index) => {
+                        <tr
+                          key={index}
+                          className="cursor-pointer hover:bg-gray-50 w-full"
+                        >
+                          <td className="">{index + 1}</td>
+                          <td>{order.orderNumber}</td>
+                          <td>{order?.quantity}</td>
+                          <td>{order?.orderStatus}</td>
+                          <td>{order?.orderDate}</td>
+                          <td>
+                            {" "}
+                            {new Intl.NumberFormat("en-us", {
+                              style: "currency",
+                              currency: "NGN",
+                            }).format(order?.totalCost)}
+                          </td>
+
+                          <td>{order?.reference} </td>
+                        </tr>;
+                      })}
                       {/* 01 */}
-                      <tr className="cursor-pointer hover:bg-gray-50 w-full">
-                        <td className="">1</td>
-                        <td>French Cow</td>
-                        <td>2</td>
-                        <td>Pending</td>
-                        <td>24/06/24</td>
-                        <td>230,000</td>
-                        
-                        <td>2483829bbh8 </td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>

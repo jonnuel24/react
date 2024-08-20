@@ -3,90 +3,114 @@ import Fpanel from "./component/fpanel";
 import FNavbar from "./component/farmersNavbar";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { productServices } from "../../services/product.service";
+import { notification } from "../../services/notification";
+import {
+  cloudinaryDelete,
+  cloudinaryUpload,
+} from "../../services/cloudinary.service";
 
 function ProductEdit() {
   const navigate = useNavigate();
-
+  const { id } = useParams();
+  const [product, setProduct] = useState({});
   // Load initial data from localStorage or use default values
-  const initialImages = JSON.parse(localStorage.getItem("images")) || [
-    "https://via.placeholder.com/640x480.png?text=Image+1",
-    "https://via.placeholder.com/640x480.png?text=Image+2",
-    "https://via.placeholder.com/640x480.png?text=Image+3",
-  ];
+  // const initialImages = JSON.parse(localStorage.getItem("images")) || [
+  //   "https://via.placeholder.com/640x480.png?text=Image+1",
+  //   "https://via.placeholder.com/640x480.png?text=Image+2",
+  //   "https://via.placeholder.com/640x480.png?text=Image+3",
+  // ];
 
-  const initialProductName =
-    localStorage.getItem("productName") || "British African Goat";
-  const initialProductDescription =
-    localStorage.getItem("productDescription") ||
-    "Caramel blue eyes, rich kid, and fun boy";
-  const initialProductPrice =
-    localStorage.getItem("productPrice") || "70,000.00";
-  const initialDescriptions = JSON.parse(
-    localStorage.getItem("livestockDescriptions")
-  ) || [
-    { id: 1, title: "Breed", response: "Livestock" },
-    { id: 2, title: "Weight", response: "4kg" },
-    { id: 3, title: "Color", response: "Black" },
-    { id: 4, title: "Lifespan", response: "7 months" },
-    { id: 5, title: "Gender", response: "Male" },
-  ];
+  useEffect(() => {
+    fetchProduct(id);
+  }, [id]);
 
-  const [images, setImages] = useState(initialImages);
-  const [productName, setProductName] = useState(initialProductName);
-  const [productDescription, setProductDescription] = useState(
-    initialProductDescription
-  );
-  const [productPrice, setProductPrice] = useState(initialProductPrice);
-  const [livestockDescriptions, setLivestockDescriptions] =
-    useState(initialDescriptions);
-  const [newImageUrl, setNewImageUrl] = useState("");
+  const fetchProduct = async (productId) => {
+    try {
+      const result = await productServices.one(productId);
+      if (result?.statusCode === 200) {
+        setProduct(result?.product);
+        // setFarm(result?.farm);
+        // fetchFarm(result?.product?.farmId);
+        // setProductSummary(result?.productSummary);
+      }
+      console.log("product", result);
+    } catch (e) {}
+  };
+
+  const [images, setImages] = useState([]);
+  const [productName, setProductName] = useState("");
+  const [productDescription, setProductDescription] = useState("");
+  const [productPrice, setProductPrice] = useState(0);
+  const [breed, setBreed] = useState("");
+  const [unit, setUnit] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [lifespan, setLifespan] = useState("");
+  const [gender, setGender] = useState("");
 
   useEffect(() => {
     // Save data to localStorage whenever it changes
-    localStorage.setItem("images", JSON.stringify(images));
-    localStorage.setItem("productName", productName);
-    localStorage.setItem("productDescription", productDescription);
-    localStorage.setItem("productPrice", productPrice);
-    localStorage.setItem(
-      "livestockDescriptions",
-      JSON.stringify(livestockDescriptions)
-    );
-  }, [
-    images,
-    productName,
-    productDescription,
-    productPrice,
-    livestockDescriptions,
-  ]);
+    setProductName(product?.name);
+    setProductDescription(product?.description);
+    setProductPrice(product?.price);
+    setImages(product?.images);
+    setBreed(product?.category);
+    setQuantity(product?.quantity);
+    setLifespan(product?.age);
+    setUnit(product?.unit);
+  }, [product]);
 
   const handleSave = () => {
     // Navigate to the view product page
     navigate("/viewProduct");
   };
 
-  const handleDescriptionChange = (id, newValue) => {
-    setLivestockDescriptions((prevDescriptions) =>
-      prevDescriptions.map((description) =>
-        description.id === id
-          ? { ...description, response: newValue }
-          : description
-      )
-    );
-  };
-
-  const handleAddImage = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImages([...images, reader.result]);
-      };
-      reader.readAsDataURL(file);
+  const updateProduct = async () => {
+    const payload = {
+      farmId: product.farmId,
+      productId: id,
+      quantity: quantity,
+      images: images,
+      description: productDescription,
+      // unit: unit,
+      price: productPrice,
+    };
+    const result=await productServices.edit(payload);
+    if(result.statusCode===200){
+      notification(result.message, 'success')
+      navigate(`/farmer/product/${id}`);
     }
   };
 
-  const handleDeleteImage = (index) => {
-    setImages(images.filter((_, imgIndex) => imgIndex !== index));
+  const handleAddImage = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Set the image to be displayed before upload
+      const result = await cloudinaryUpload(file);
+      setImages([...images, result]);
+      // const reader = new FileReader();
+      // reader.onloadend = () => {
+      //   setImages([...images, reader.result]);
+      // };
+      // reader.readAsDataURL(file);
+    }
+  };
+
+  const handleDeleteImage = async (index) => {
+    if (images[index].includes("https://res.cloudinary.com/")) {
+      const urlParts = images[index].split("/");
+
+      // The `public_id` is the part after the version number and before the file extension
+      const versionIndex = urlParts.indexOf("upload") + 2;
+      const fileName = urlParts[versionIndex];
+
+      // Remove the file extension to get the `public_id`
+      const publicId = fileName.split(".")[0];
+      await cloudinaryDelete(publicId);
+      // alert(`The public_id is: ${publicId}`);
+      setImages(images.filter((_, imgIndex) => imgIndex !== index));
+    }
   };
 
   return (
@@ -101,7 +125,7 @@ function ProductEdit() {
           <div className="flex justify-between w-full">
             <strong className="flex justify-start">Edit Products</strong>
             <button
-              onClick={handleSave}
+              onClick={updateProduct}
               className="px-4 py-2 border-2 border-gray-300 rounded-xl flex gap-2 items-center hover:bg-green-100 hover:text-green-800"
             >
               <Icon
@@ -118,11 +142,11 @@ function ProductEdit() {
               <div className="flex flex-col bg-white rounded-xl p-2 ">
                 {/* Image List */}
                 <div className="w-full flex flex-wrap gap-4">
-                  {images.map((image, index) => (
+                  {images?.map((image, index) => (
                     <div key={index} className="relative">
                       <img
                         src={image}
-                        alt={`Image ${index}`}
+                        alt={`${index}`}
                         className="w-24 h-24 object-cover rounded-md"
                       />
                       <button
@@ -159,27 +183,44 @@ function ProductEdit() {
                     className="border p-2 rounded-md w-full"
                   />
                   <div className="border p-4 rounded-md w-full">
-                    {livestockDescriptions.map((livestockDescription) => (
-                      <div
-                        key={livestockDescription.id}
-                        className="flex justify-between"
-                      >
-                        <div className="font-bold mr-2">
-                          {livestockDescription.title}:
-                        </div>
-                        <input
-                          type="text"
-                          value={livestockDescription.response}
-                          onChange={(e) =>
-                            handleDescriptionChange(
-                              livestockDescription.id,
-                              e.target.value
-                            )
-                          }
-                          className="border p-2 rounded-md w-full"
-                        />
-                      </div>
-                    ))}
+                    {/* {livestockDescriptions.map((livestockDescription) => ( */}
+                    <div className="flex justify-between">
+                      <div className="font-bold mr-2">Breed:</div>
+                      <input
+                        type="text"
+                        value={breed}
+                        onChange={(e) => setBreed(e.target.value)}
+                        className="border p-2 rounded-md w-full"
+                      />
+                    </div>
+                    <div className="flex justify-between">
+                      <div className="font-bold mr-2">Quantity:</div>
+                      <input
+                        type="text"
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                        className="border p-2 rounded-md w-full"
+                      />
+                    </div>
+                    {/* <div className="flex justify-between">
+                      <div className="font-bold mr-2">Unit:</div>
+                      <input
+                        type="text"
+                        value={unit}
+                        onChange={(e) => setUnit(e.target.value)}
+                        className="border p-2 rounded-md w-full"
+                      />
+                    </div> */}
+                    {/* <div className="flex justify-between">
+                      <div className="font-bold mr-2">Lifespan:</div>
+                      <input
+                        type="text"
+                        value={lifespan}
+                        onChange={(e) => setColor(e.target.value)}
+                        className="border p-2 rounded-md w-full"
+                      />
+                    </div> */}
+                    {/* ))} */}
                   </div>
                 </div>
               </div>
