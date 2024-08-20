@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/navbar";
 import Footer from "../Components/footer";
-import AnimalProfile from "../Components/animalProfile";
+// import AnimalProfile from "../Components/animalProfile";
 import "../asset/styles/home.css";
 import Card from "../Components/card";
 import { productServices } from "../services/product.service";

@@ -81,7 +81,7 @@ function Root() {
       <Route path="/farmer" Component={Dashboard} />
       <Route path="/product/create" Component={Addproduct} />
       <Route path="/product" Component={MyProduct} />
-      <Route path="/viewProduct" Component={ViewProduct} />
+      <Route path="/farmer/product/:id" Component={ViewProduct} />
       <Route path="/productEdit" Component={ProductEdit} />
       <Route path="/settings" Component={Settings} />
       <Route path="/manageOrders" Component={ManageOrders} />
