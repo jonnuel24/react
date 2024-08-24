@@ -43,6 +43,7 @@ function Order_Confirmation() {
   useEffect(() => {
     const unique_id = uuid();
     setRef(unique_id);
+    console.log('paystack key',process.env.REACT_APP_PAYSTACK_KEY)
   }, []);
   const openModal = () => {
     setIsOpen(true);

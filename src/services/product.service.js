@@ -42,4 +42,12 @@ export const productServices = {
       return response;
     } catch (e) {}
   },
+  delete:async (productId)=>{
+    try{
+      let response = await axios.delete(`${baseUrl}delete/${productId}`)
+      return response
+    }catch(e){
+
+    }
+  }
 };

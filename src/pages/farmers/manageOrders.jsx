@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Fpanel from "./component/fpanel";
 import { Icon } from "@iconify/react";
 import FNavbar from "./component/farmersNavbar";
@@ -6,8 +6,37 @@ import Searchbar from "./component/searchbar";
 import Sortby from "./component/sortBy";
 import "../../asset/styles/manageOrders.css";
 import Option from "./component/optionMyProduct";
+import OrderTable from "../../Components/order.table";
+import { useSelector } from "react-redux";
+import { OrderServices } from "../../services/order.service";
 
 function ManageOrders() {
+
+  const [orders, setOrders] = useState([]);
+  const user = useSelector((state) => state.user?.currentUser);
+  const farm = useSelector((state) => state.user?.farm);
+  const [page, setPage] = useState(1);
+  const [size, setSize] = useState(10);
+  useEffect(() => {
+    fetchFarmOrder();
+  }, []);
+
+  const fetchFarmOrder = async () => {
+    try {
+      const response = await OrderServices.farmOrders(
+        { page: page, size: size },
+        farm.id
+      );
+      console.log(response.totalOrders);
+      if (response.statusCode == 200) {
+        console.log('INSIDE THE IF BLOCK ',response.totalOrders);
+        setOrders(response.totalOrders);
+      }
+      // setOrders(response.orders);
+    } catch (error) {
+      console.log("error from fetch product", error);
+    }
+  };
   return (
     <div>
       <FNavbar />
@@ -33,7 +62,8 @@ function ManageOrders() {
               </div>
 
               <div>
-                <table className="mb-[32px]">
+                <OrderTable  orders={orders} />
+                {/* <table className="mb-[32px]">
                   <thead>
                     <tr className="">
                       <th className="">Order no</th>
@@ -46,7 +76,6 @@ function ManageOrders() {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* 01 */}
                     <tr>
                       <td className="">102938</td>
                       <td>
@@ -67,8 +96,7 @@ function ManageOrders() {
                         <Option />
                       </td>
                     </tr>
-                    
-                    {/* 02 */}
+                  
                     <tr>
                       <td className="">102938</td>
                       <td>
@@ -89,7 +117,6 @@ function ManageOrders() {
                         <Option />
                       </td>
                     </tr>
-                    {/* 03 */}
                     <tr>
                       <td className="">102938</td>
                       <td>
@@ -110,7 +137,6 @@ function ManageOrders() {
                         <Option />
                       </td>
                     </tr>
-                    {/* 04 */}
                     <tr>
                       <td className="">102938</td>
                       <td>
@@ -131,7 +157,6 @@ function ManageOrders() {
                         <Option />
                       </td>
                     </tr>
-                    {/* 05 */}
                     <tr>
                       <td className="">102938</td>
                       <td>
@@ -152,7 +177,6 @@ function ManageOrders() {
                         <Option />
                       </td>
                     </tr>
-                    {/* 06 */}
                     <tr>
                       <td className="">102938</td>
                       <td>
@@ -174,7 +198,7 @@ function ManageOrders() {
                       </td>
                     </tr>
                   </tbody>
-                </table>
+                </table> */}
                 {/*  */}
                 <div className="flex flex-row justify-between items-center p-[24px] mp-pagination">
                   <div className="">Page 1 of 10</div>

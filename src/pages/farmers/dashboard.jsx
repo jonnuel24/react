@@ -9,6 +9,7 @@ import DoughnutChart from "./component/doughnutChart";
 import { OrderServices } from "../../services/order.service";
 import Option from "./component/optionMyProduct";
 import { useSelector } from "react-redux";
+import OrderTable from "../../Components/order.table";
 
 function Dashboard() {
   const [orders, setOrders] = useState([]);
@@ -26,8 +27,9 @@ function Dashboard() {
         { page: page, size: size },
         farm.id
       );
-      console.log(response);
+      console.log(response.totalOrders);
       if (response.statusCode == 200) {
+        console.log('INSIDE THE IF BLOCK ',response.totalOrders);
         setOrders(response.totalOrders);
       }
       // setOrders(response.orders);
@@ -98,44 +100,7 @@ function Dashboard() {
                   <h4>Sales History</h4>
                 </div>
                 <div>
-                  <table className="mb-[32px]">
-                    <thead>
-                      <tr className="">
-                        <th className="">S/N</th>
-                        <th className="">Livestock</th>
-                        <th>Units</th>
-                        <th className="">Delivery status</th>
-                        <th>Date</th>
-
-                        <th>Price</th>
-                        <th className="">Order ID</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {orders.map((order, index) => {
-                        <tr
-                          key={index}
-                          className="cursor-pointer hover:bg-gray-50 w-full"
-                        >
-                          <td className="">{index + 1}</td>
-                          <td>{order.orderNumber}</td>
-                          <td>{order?.quantity}</td>
-                          <td>{order?.orderStatus}</td>
-                          <td>{order?.orderDate}</td>
-                          <td>
-                            {" "}
-                            {new Intl.NumberFormat("en-us", {
-                              style: "currency",
-                              currency: "NGN",
-                            }).format(order?.totalCost)}
-                          </td>
-
-                          <td>{order?.reference} </td>
-                        </tr>;
-                      })}
-                      {/* 01 */}
-                    </tbody>
-                  </table>
+                  <OrderTable orders={orders} />
                 </div>
               </div>
               {/*Top products on demand*/}

@@ -37,6 +37,11 @@ function MyProduct() {
     setIsProductFilterOpen((prev) => !prev);
   };
 
+  const deleteProduct=async(productId)=>{
+    await productServices.delete(productId)
+    fetchProducts(farm.id)
+  }
+
   // Filter
   const productFilter = [
     { id: 1, label: "newest" },
@@ -124,7 +129,7 @@ function MyProduct() {
                         <td>₦{p.price}</td>
                         <td>
                           <div className="flex items-center justify-start w-full gap-4">
-                            <Link to={`/farmer/product/${ p.id }`}>
+                            <Link to={`/farmer/product/${p.id}`}>
                               <button>
                                 <Icon
                                   icon="lets-icons:view"
@@ -134,6 +139,15 @@ function MyProduct() {
                                 />
                               </button>
                             </Link>
+                            <button
+                            onClick={()=>deleteProduct(p.id)}>
+                              <Icon
+                                icon="fluent:delete-24-regular"
+                                width="64"
+                                height="64"
+                                style={{ color: "black" }}
+                              />
+                            </button>
                           </div>
                         </td>
                       </tr>
