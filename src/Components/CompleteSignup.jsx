@@ -21,6 +21,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
   const [lgas, setLGAs] = useState([]);
   const [post, setPost] = useState({
     ...userData,
+    phoneNumber:"",
     userType: type,
     country: "Nigeria",
   });
