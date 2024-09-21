@@ -21,7 +21,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
   const [lgas, setLGAs] = useState([]);
   const [post, setPost] = useState({
     ...userData,
-    phoneNumber:"",
+    phoneNumber: "",
     userType: type,
     country: "Nigeria",
   });
@@ -42,10 +42,9 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
     } else {
       delete payload.dateOfEstablishment;
     }
-    console.log(payload);
     const response = await accountServices.completeProfile(payload);
     if (response.statusCode === 200) {
-      notification("Profile Updated Successfully");
+      notification("Profile Updated Successfully", 'success');
       navigate("/login");
     } else {
       if (response.messages) {
@@ -57,6 +56,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
       if (response.message) {
         notification(response.message, "error");
       }
+      setLoading(false);
     }
   };
   const validateInput = (name, value) => {
@@ -165,6 +165,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
 
   async function signup() {
     try {
+      setLoading(true);
       if (!agreed) {
         notification("You need to agree to the terms", "error");
         setLoading(false);
@@ -196,7 +197,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
       notification(e.message, "info");
       console.log(e);
     }
-    setLoading(false);
+    // setLoading(false);
   }
   return (
     <div className="flex flex-col justify-center w-full max-w-[40%] items-center border-2 border-gray-100 bg-white shadow-sm p-8 rounded-3xl gap-6">
@@ -210,6 +211,7 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
         </h1>
         {/* formData */}
         <form
+          autoComplete="off"
           action=""
           onSubmit={handleSubmit(signup)}
           className="w-full flex flex-col"
@@ -251,11 +253,13 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
                   <label htmlFor="email">Email</label>
                   <input
                     name="email"
+                    disabled
                     pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     type="email"
                     className="w-full py-2 px-3 h-[56px] leading-tight focus:outline-none focus:shadow-outline rounded-xl border border-gray-300"
                     placeholder="Email"
                     onChange={handleInput}
+                    readOnly
                     value={post.email}
                   />
                   {errors.email && (
@@ -295,10 +299,11 @@ function CompleteSignup({ type, setStage, setUserData, stage, userData }) {
                       type="text"
                       className="w-full border-none"
                       placeholder="80xxxxxxxx"
+                      defaultValue={""}
                       value={post.phoneNumber}
                       onChange={handleInput}
                       required
-                      autoComplete="off"
+                      autoComplete="tel" // Change this to "tel" for phone number
                       pattern="^(7|8|9)[01]\d{8}$"
                     />
                   </div>
