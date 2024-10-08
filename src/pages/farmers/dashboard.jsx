@@ -10,6 +10,7 @@ import { OrderServices } from "../../services/order.service";
 import Option from "./component/optionMyProduct";
 import { useSelector } from "react-redux";
 import OrderTable from "../../Components/order.table";
+import dashboardService from "../../services/dashboard.service";
 
 function Dashboard() {
   const [orders, setOrders] = useState([]);
@@ -17,8 +18,25 @@ function Dashboard() {
   const farm = useSelector((state) => state.user?.farm);
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(10);
+  const [year, setYear]=useState(new Date().getFullYear())
+  const [labels, setLabels]=useState([
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ])
+  const [data, setData]=useState([0,0,0,0,0,0,0,0,0,0,0,0])
   useEffect(() => {
     fetchFarmOrder();
+    dashboardChart()
   }, []);
 
   const fetchFarmOrder = async () => {
@@ -29,7 +47,6 @@ function Dashboard() {
       );
       console.log(response.totalOrders);
       if (response.statusCode == 200) {
-        console.log('INSIDE THE IF BLOCK ',response.totalOrders);
         setOrders(response.totalOrders);
       }
       // setOrders(response.orders);
@@ -37,6 +54,24 @@ function Dashboard() {
       console.log("error from fetch product", error);
     }
   };
+
+  const dashboardChart=async ()=>{
+    try{
+      const response = await dashboardService.dashboardData(farm.id)
+      const dataMapped = response?.totalOrderValuePerMonth?.map((orderValues)=>{
+        return orderValues.totalOrderValue
+      })
+      const labelMapped = response?.totalOrderValuePerMonth?.map((orderValues)=>{
+        return orderValues.month
+      })
+      setData(dataMapped)
+      setLabels(labelMapped)
+      setYear(response?.totalOrderValuePerMonth[0].year)
+      console.log('dash board data charts',response.totalOrderValuePerMonth)
+    }catch(error){
+      console.log("error from fetch dashboard chart", error);
+    }
+  }
   return (
     <div className="">
       <FNavbar />
@@ -69,12 +104,12 @@ function Dashboard() {
                     <label htmlFor="">Total Revenue</label>
                   </div>
                   <div className="flex flex-row items-center gap-[8px]">
-                    <button className="fd-overview-button">2023</button>
+                    <button className="fd-overview-button">{year}</button>
                     <button className="fd-overview-button">Monthly</button>
                   </div>
                 </div>
                 <div className="p-4 w-full">
-                  <BarChart />
+                  <BarChart data={data} labels={labels} />
                 </div>
               </div>
               <div className="fd-right-upper-div w-[30%]">

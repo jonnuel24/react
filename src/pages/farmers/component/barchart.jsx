@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
-const BarChart = () => {
+const BarChart = ({data, labels }) => {
   const chartRef = useRef(null);
   let myChart = null; // Variable to store the chart instance
 
@@ -12,24 +12,12 @@ const BarChart = () => {
     myChart = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ],
+        labels: labels,
         datasets: [
           {
             label: "Price",
-            data: [100, 150, 200, 250, 300, 350, 400, 100, 150, 200, 250, 300], // Dummy price data
+            data:data,
+            // data: [100, 150, 200, 250, 300, 350, 400, 100, 150, 200, 250, 300], // Dummy price data
             backgroundColor:
               "rgba(106, 189, 69)",
 
