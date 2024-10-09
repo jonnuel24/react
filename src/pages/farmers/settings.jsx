@@ -8,11 +8,15 @@ function Setting() {
     email: "",
     notification: true,
     theme: "light",
+    address: "",
   });
-  
+
   const [profileImage, setProfileImage] = useState(
     "https://via.placeholder.com/150"
-  ); // Default profile image URL
+  );
+  const [isVerified, setIsVerified] = useState(false);
+  const [nin, setNin] = useState("");
+  const [showNinInput, setShowNinInput] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -29,31 +33,33 @@ function Setting() {
     }
   };
 
-  const handleSave = () => {
-    console.log("Settings saved:", settings);
+  const handleVerify = () => {
+    if (nin) {
+      setIsVerified(true);
+      setNin("");
+      setShowNinInput(false);
+    }
   };
 
   return (
     <div>
       <FNavbar />
       <div className="pl-[64px] pr-[32px] flex flex-row w-full">
-        {/* Side panel */}
         <div>
           <Fpanel />
         </div>
         <div className="w-full px-8 py-12 space-y-4">
           <div className="flex justify-between w-full">
-            <strong className="flex justify-start text-2xl">Settings</strong>
+            <strong className="text-2xl">Settings</strong>
             <button
-              onClick={handleSave}
+              onClick={() => console.log("Settings saved:", settings)}
               className="px-4 py-2 border-2 border-gray-300 rounded-xl flex gap-2 items-center hover:bg-green-100 hover:text-green-800"
             >
               Save
             </button>
           </div>
-          <div className="flex bg-gray-100 h-100 w-full p-4 gap-4">
+          <div className="flex bg-gray-100 w-full p-4 gap-4">
             <div className="flex flex-col bg-white rounded-xl p-4 space-y-4 w-[50%]">
-              
               {/* Profile Picture */}
               <div className="flex flex-col items-center">
                 <div className="relative">
@@ -75,14 +81,43 @@ function Setting() {
                 <div className="text-sm text-gray-500 mt-2">Profile Picture</div>
               </div>
 
+              {/* Verification Badge */}
+              <div className="flex items-center">
+                <span className={`font-bold text-lg ${isVerified ? 'text-green-600' : 'text-red-600'}`}>
+                  {isVerified ? 'Verified' : 'Unverified'}
+                </span>
+                {!isVerified && (
+                  <button
+                    onClick={() => setShowNinInput(!showNinInput)}
+                    className="ml-4 text-blue-500 underline"
+                  >
+                    {showNinInput ? 'Cancel' : 'Verify Profile'}
+                  </button>
+                )}
+              </div>
+              {showNinInput && (
+                <div className="flex flex-col items-start">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">National ID Number (NIN)</label>
+                  <div className="flex space-x-2">
+                    <input
+                      type="text"
+                      value={nin}
+                      onChange={(e) => setNin(e.target.value)}
+                      className="border p-2 rounded-md w-full"
+                    />
+                    <button
+                      onClick={handleVerify}
+                      className="px-4 py-2 bg-blue-500 text-white rounded-md"
+                    >
+                      Verify
+                    </button>
+                  </div>
+                </div>
+              )}
+
               {/* Username */}
               <div className="flex flex-col items-start">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="username"
-                >
-                  Username
-                </label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">Username</label>
                 <input
                   type="text"
                   name="username"
@@ -94,12 +129,7 @@ function Setting() {
 
               {/* Email */}
               <div className="flex flex-col items-start">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="email"
-                >
-                  Email
-                </label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -111,12 +141,7 @@ function Setting() {
 
               {/* Notification */}
               <div className="flex flex-col items-start">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="notification"
-                >
-                  Notifications
-                </label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">Notifications</label>
                 <input
                   type="checkbox"
                   name="notification"
@@ -128,29 +153,21 @@ function Setting() {
               
               {/* Address */}
               <div className="flex flex-col items-start">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="address"
-                >
-                  Address
-                </label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">Address</label>
                 <input
                   type="text"
                   name="address"
-                  value={settings.address || ""}
+                  value={settings.address}
                   onChange={handleChange}
                   className="border p-2 rounded-md w-full"
                 />
               </div>
 
+              
+
               {/* Theme */}
               <div className="flex flex-col items-start">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="theme"
-                >
-                  Theme
-                </label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">Theme</label>
                 <select
                   name="theme"
                   value={settings.theme}
