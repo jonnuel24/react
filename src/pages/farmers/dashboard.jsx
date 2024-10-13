@@ -89,7 +89,7 @@ function Dashboard() {
         </div>
 
         {/* right div */}
-        <div className="py-[64px] pr-[32px] flex flex-col overflow-clip w-full sm:w-[85%] gap-[21px]">
+        <div className="py-[64px] pr-[32px] flex flex-col overflow-clip w-full sm:w-[85%] gap-[20px]">
           <div className="w-full">
             <div>
               <h4 className="text-black text-[20px] font-semibold leading-normal text-left px-[32px]">
