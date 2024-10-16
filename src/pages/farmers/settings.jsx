@@ -1,20 +1,33 @@
 import React, { useState } from "react";
 import Fpanel from "./component/fpanel";
 import FNavbar from "./component/farmersNavbar";
+import { useSelector } from "react-redux";
+import { farmerService } from "../../services/farmer.service";
+import { notification } from "../../services/notification";
 
 function Setting() {
+  const user = useSelector((state) => state.user?.currentUser);
+  const farm = useSelector((state) => state.user?.farm);
   const [settings, setSettings] = useState({
-    username: "",
-    email: "",
+    username: user.email,
+    email: user.email,
     notification: true,
     theme: "light",
-    address: "",
+    address: user.address,
   });
 
+  const handleVerification = async () => {
+    try {
+      const result = await farmerService.verifyDocument(user.id, "nin", nin);
+      console.log(result);
+    } catch (e) {
+      console.error(e);
+    }
+  };
   const [profileImage, setProfileImage] = useState(
     "https://via.placeholder.com/150"
   );
-  const [isVerified, setIsVerified] = useState(false);
+  const [isVerified, setIsVerified] = useState(user.isVerified);
   const [nin, setNin] = useState("");
   const [showNinInput, setShowNinInput] = useState(false);
 
@@ -33,11 +46,25 @@ function Setting() {
     }
   };
 
-  const handleVerify = () => {
-    if (nin) {
-      setIsVerified(true);
-      setNin("");
-      setShowNinInput(false);
+  const handleVerify = async () => {
+    try {
+      if (nin) {
+        const result = await farmerService.verifyDocument(user.id, "nin", nin);
+        if (result.statusCode == 200) {
+          setIsVerified(true);
+          setNin("");
+          setShowNinInput(false);
+          notification("Verification successful", "success");
+        } else {
+          console.log('from the page',result)
+          notification(result.message, "error");
+        }
+      }else{
+        notification('Please Enter Your NIN Number', 'error')
+      }
+    } catch (e) {
+      notification(e.message, "error");
+      console.error(e);
     }
   };
 
@@ -78,26 +105,34 @@ function Setting() {
                     <span className="text-gray-600">Change</span>
                   </label>
                 </div>
-                <div className="text-sm text-gray-500 mt-2">Profile Picture</div>
+                <div className="text-sm text-gray-500 mt-2">
+                  Profile Picture
+                </div>
               </div>
 
               {/* Verification Badge */}
               <div className="flex items-center">
-                <span className={`font-bold text-lg ${isVerified ? 'text-green-600' : 'text-red-600'}`}>
-                  {isVerified ? 'Verified' : 'Unverified'}
+                <span
+                  className={`font-bold text-lg ${
+                    isVerified ? "text-green-600" : "text-red-600"
+                  }`}
+                >
+                  {isVerified ? "Verified" : "Unverified"}
                 </span>
                 {!isVerified && (
                   <button
                     onClick={() => setShowNinInput(!showNinInput)}
                     className="ml-4 text-blue-500 underline"
                   >
-                    {showNinInput ? 'Cancel' : 'Verify Profile'}
+                    {showNinInput ? "Cancel" : "Verify Profile"}
                   </button>
                 )}
               </div>
               {showNinInput && (
                 <div className="flex flex-col items-start">
-                  <label className="block text-gray-700 text-sm font-bold mb-2">National ID Number (NIN)</label>
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    National ID Number (NIN)
+                  </label>
                   <div className="flex space-x-2">
                     <input
                       type="text"
@@ -117,7 +152,9 @@ function Setting() {
 
               {/* Username */}
               <div className="flex flex-col items-start">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Username
+                </label>
                 <input
                   type="text"
                   name="username"
@@ -129,7 +166,9 @@ function Setting() {
 
               {/* Email */}
               <div className="flex flex-col items-start">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Email
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -141,7 +180,9 @@ function Setting() {
 
               {/* Notification */}
               <div className="flex flex-col items-start">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Notifications</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Notifications
+                </label>
                 <input
                   type="checkbox"
                   name="notification"
@@ -150,10 +191,12 @@ function Setting() {
                   className="border p-2 rounded-md"
                 />
               </div>
-              
+
               {/* Address */}
               <div className="flex flex-col items-start">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Address</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Address
+                </label>
                 <input
                   type="text"
                   name="address"
@@ -163,11 +206,11 @@ function Setting() {
                 />
               </div>
 
-              
-
               {/* Theme */}
               <div className="flex flex-col items-start">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Theme</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Theme
+                </label>
                 <select
                   name="theme"
                   value={settings.theme}

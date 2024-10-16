@@ -45,7 +45,6 @@ function Dashboard() {
         { page: page, size: size },
         farm.id
       );
-      console.log(response.totalOrders);
       if (response.statusCode == 200) {
         setOrders(response.totalOrders);
       }
