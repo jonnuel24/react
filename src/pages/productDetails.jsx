@@ -262,13 +262,13 @@ function ProductDetails() {
                 </div>
               </div>
             </div>
-            <div className="rounded-lg  bg-white w-full border shadow-xl overflow-clip">
-              <div className="p-4 flex flex-col">
-                <div className="flex items-center gap-2">
-                  <img src={Prof} alt="" />
-                  <div className="flex flex-col">
-                    <header>Paul's Farm</header>
-                    <div className=" body240 flex items-center">
+            <div className="mt-3 body23">
+              <div className="body230">
+                <div className="body24">
+                  <img src={farm.logoUrl || Prof} alt="" />
+                  <div className="body241">
+                    <div className="text-[32px] font-semibold">{farm?.farmName}</div>
+                    <div className=" body240">
                       <h4>Agripeller verified</h4>
                       <Icon
                         icon="codicon:verified-filled"
@@ -278,19 +278,12 @@ function ProductDetails() {
                     </div>
                   </div>
                 </div>
-                <div className="body241">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Rerum eos, debitis voluptatibus, mollitia nihil cupiditate
-                    voluptatum consequatur quis molestiae non consectetur modi
-                    voluptate tempora. Vitae, laborum! Ad ipsam nam
-                    consequunturj?
-                  </p>
-                </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/*  */}
         <div className="body25">
           <header>Comments</header>
           <div className="body250">
@@ -392,24 +385,6 @@ function ProductDetails() {
               <label htmlFor="">
                 12/07/2023 by <strong>James</strong>
               </label>
-            </div>
-            <div className="mt-3 body23">
-              <div className="body230">
-                <div className="body24">
-                  <img src={farm.logoUrl || Prof} alt="" />
-                  <div className="body241">
-                    <header>{farm?.farmName}</header>
-                    <div className=" body240">
-                      <h4>Agripeller verified</h4>
-                      <Icon
-                        icon="codicon:verified-filled"
-                        color="white"
-                        className="verified"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

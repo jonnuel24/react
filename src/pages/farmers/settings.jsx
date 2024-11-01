@@ -50,7 +50,7 @@ function Setting() {
     try {
       if (nin) {
         const result = await farmerService.verifyDocument(user.id, "nin", nin);
-        if (result.statusCode == 200) {
+        if (result.statusCode === 200) {
           setIsVerified(true);
           setNin("");
           setShowNinInput(false);
