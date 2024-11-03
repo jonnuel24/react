@@ -104,7 +104,7 @@ function MyProduct() {
                     <tr className="">
                       <th>Images</th>
                       <th>Product name</th>
-                      <th>Category</th>
+                      {/* <th>Category</th> */}
                       <th>In stock</th>
                       <th>Price (₦)</th>
                       <th className=""></th>
@@ -124,7 +124,7 @@ function MyProduct() {
                           </div>
                         </td>
                         <td>{p.name}</td>
-                        <td>{p.category}</td>
+                        {/* <td>{p.category}</td> */}
                         <td>{p.quantity}</td>
                         <td>₦{p.price}</td>
                         <td>
