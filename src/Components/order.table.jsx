@@ -52,7 +52,7 @@ const OrderTable = ({ orders, updateOrderStatus }) => {
                 }).format(order?.totalCost)}
               </td>
               <td className="relative">
-                <button onClick={() => toggleManage(index)}>Manage</button>
+                <button onClick={() => toggleManage(index)} className="p-2 rounded-lg border hover:bg-gray-50">Manage</button>
               </td>
             </tr>
           ))}
