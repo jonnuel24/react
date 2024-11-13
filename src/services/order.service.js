@@ -44,7 +44,16 @@ export const OrderServices = {
   },
   farmOrders: async (params, farmId) => {
     try {
-      const response = await axios.get(`${baseUrl}/farm/${farmId}`, { params });
+      const response = await axios.put(`${baseUrl}/farm/${farmId}`, { params });
+      return response;
+    } catch (error) {
+      console.error("Error fetching orders:", error);
+      throw error; // Re-throw error for further handling
+    }
+  },
+  updateOrderStatus: async (params) => {
+    try {
+      const response = await axios.get(`${baseUrl}/status`, { params });
       return response;
     } catch (error) {
       console.error("Error fetching orders:", error);

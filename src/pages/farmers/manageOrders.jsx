@@ -9,36 +9,39 @@ import Option from "./component/optionMyProduct";
 import OrderTable from "../../Components/order.table";
 import { useSelector } from "react-redux";
 import { OrderServices } from "../../services/order.service";
+import ReactPaginate from "react-paginate";
 
 function ManageOrders() {
-
   const [orders, setOrders] = useState([]);
   const user = useSelector((state) => state.user?.currentUser);
   const farm = useSelector((state) => state.user?.farm);
   const [page, setPage] = useState(1);
+  const [pages, setPages] = useState(0);
   const [size, setSize] = useState(10);
   useEffect(() => {
     fetchFarmOrder();
-  }, []);
+  }, [page]);
 
+  const handlePageClick = (data) => {
+    setPage(data.selected + 1);
+  };
   const fetchFarmOrder = async () => {
     try {
       const response = await OrderServices.farmOrders(
         { page: page, size: size },
         farm.id
       );
-      console.log(response.totalOrders);
+      // console.log(response.totalOrders);
       if (response.statusCode == 200) {
-        console.log('INSIDE THE IF BLOCK ',response.totalOrders);
+        console.log("INSIDE THE IF BLOCK ", response.totalOrders);
         setOrders(response.totalOrders);
+        setPages(response.noOfTotalPages);
       }
       // setOrders(response.orders);
     } catch (error) {
       console.log("error from fetch product", error);
     }
   };
-
-
 
   return (
     <div>
@@ -65,16 +68,23 @@ function ManageOrders() {
               </div>
 
               <div>
-                <OrderTable  orders={orders} />
-                
+                <OrderTable orders={orders} />
+
                 {/*  */}
-                <div className="flex flex-row justify-between items-center p-[24px] mp-pagination">
+                <ReactPaginate
+                  className="justify-end flex flex-row gap-10 w-full text-black text-bold"
+                  pageCount={pages}
+                  shape="rounded"
+                  onPageChange={handlePageClick}
+                />
+                {/* </div> */}
+                {/* <div className="flex flex-row justify-between items-center p-[24px] mp-pagination">
                   <div className="">Page 1 of 10</div>
                   <div className="flex gap-[8px]">
                     <button>Previous</button>
                     <button>Next</button>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

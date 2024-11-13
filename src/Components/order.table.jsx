@@ -1,11 +1,15 @@
 import { useState } from "react";
 import Option from "../pages/farmers/component/optionMyProduct";
+import { OrderServices } from "../services/order.service";
+import { useSelector } from "react-redux";
+import { notification } from "../services/notification";
 
 const OrderTable = ({ orders, updateOrderStatus }) => {
   const [isOpenManage, setIsOpenManage] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [newStatus, setNewStatus] = useState("");
-
+  const user = useSelector((state) => state.user?.currentUser);
+  console.log('the user is ', user)
   const orderStatuses = [
     "Pending",
     "Processing",
@@ -20,8 +24,23 @@ const OrderTable = ({ orders, updateOrderStatus }) => {
     setIsOpenManage(!isOpenManage);
   };
 
-  const handleStatusChange = () => {
-    updateOrderStatus(selectedOrder, newStatus);
+  const handleStatusChange = (status) => {
+    // updateOrderStatus(selectedOrder, newStatus);
+    const payload = {
+      orderId: selectedOrder.id,
+      orderStatus: status,
+      reason: "TEST REASON",
+      // cancelledby: "668722af011d9b4dcba44bd6",
+      UserType: user.UserType,
+    };
+    OrderServices.updateOrderStatus(payload).then((res) => {
+      console.log("Status updated successfully", res);
+      if(res.statusCode==200){
+        notification('order updated successfully', 'success')
+      }else{
+        notification(res.message, 'error')
+      }
+    })
     setIsOpenManage(false); // Close the modal
   };
 
@@ -52,7 +71,12 @@ const OrderTable = ({ orders, updateOrderStatus }) => {
                 }).format(order?.totalCost)}
               </td>
               <td className="relative">
-                <button onClick={() => toggleManage(index)} className="p-2 rounded-lg border hover:bg-gray-50">Manage</button>
+                <button
+                  onClick={() => toggleManage(index)}
+                  className="p-2 rounded-lg border hover:bg-gray-50"
+                >
+                  Manage
+                </button>
               </td>
             </tr>
           ))}
@@ -106,7 +130,7 @@ const OrderTable = ({ orders, updateOrderStatus }) => {
               </label>
               <select
                 value={newStatus}
-                onChange={(e) => setNewStatus(e.target.value)}
+                onChange={(e) => handleStatusChange(e.target.value)}
                 className="w-full border border-gray-300 rounded px-3 py-2"
               >
                 {orderStatuses.map((status) => (
