@@ -11,12 +11,13 @@ const OrderTable = ({ orders, updateOrderStatus }) => {
   const user = useSelector((state) => state.user?.currentUser);
   console.log('the user is ', user)
   const orderStatuses = [
-    "Pending",
-    "Processing",
-    "Shipped",
-    "Delivered",
-    "Cancelled",
+    "PENDING",
+    // "Processing",
+    "CONFIRMED",
+    "COMPLETED",
+    "CANCELLED",
   ];
+
 
   const toggleManage = (orderIndex) => {
     setSelectedOrder(orderIndex);
