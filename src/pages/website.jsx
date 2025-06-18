@@ -274,10 +274,10 @@ function Website() {
                       value={post.location}
                     >
                       <option value="">Select a location</option>
-                      <option value="ogun">Ogun</option>
-                      <option value="ibadan">Ibadan</option>
-                      <option value="lagos">Lagos</option>
-                      <option value="abuja">Abuja</option>
+                      <option value="ontario">Ontario</option>
+                      <option value="quebec">Quebec</option>
+                      <option value="british-columbia">British Columbia</option>
+                      <option value="alberta">Alberta</option>
                     </select>
                   </div>
 
@@ -398,7 +398,7 @@ function Website() {
             <div className="flex flex-col gap-2 sm:gap-8 w-full items-start mt-[8px] lg:mb-24">
               <h5 className="text-[32px] sm:text-[40px] text-[#4D4D4D] leading-normal font-medium ">About Us</h5>
               <h3 className="text-left text-[#690D00] text-[24px] sm:text-[48px] font-semibold sm:font-bold leading-normal">
-                "NIGERIA’s TRUSTED  DIGITAL LIVESTOCK MARKETPLACE."
+                "CANADA'S TRUSTED  DIGITAL LIVESTOCK MARKETPLACE."
               </h3>
               <p className="text-left text-[16px] sm:text-[20px]">
                 Agripeller is a digital marketplace that helps automate and
@@ -408,15 +408,15 @@ function Website() {
                 buyers who get quality livestock in return. 
                 <br />
                 Our team of experts are dedicated to revolutionizing the
-                Nigerian livestock sector with data analytics. By closely
+                Canadian livestock sector with data analytics. By closely
                 monitoring livestock production, consumption, and market trends,
                 we aim to generate comprehensive data that can empower farmers,
                 buyers, and policymakers with valuable insights. 
                 <br />
                 With our online farmers market tool, we're confident that we can
-                build a thriving tech solution for agriculture in Nigeria. We're
+                build a thriving tech solution for agriculture in Canada. We're
                 thrilled at the potential of our platform to make a positive
-                impact on the agricultural industry in Nigeria and look forward
+                impact on the agricultural industry in Canada and look forward
                 to working with stakeholders to drive this ambitious goal
                 forward.
               </p>
@@ -457,7 +457,7 @@ function Website() {
               <Icon icon="heroicons:cube-transparent-solid" color="#6ABD45" className="ws3-icon" />
               <h5 className="">Transparency</h5>
               <p>
-                 We’re committed to making the livestock retail process a
+                 We're committed to making the livestock retail process a
                 transparent one.
               </p>
             </div>
@@ -485,7 +485,7 @@ function Website() {
               <h5>Innovation</h5>
               <p>
                 We are constantly looking for ways to improve the livestock
-                sector in Nigeria through technology.
+                sector in Canada through technology.
               </p>
             </div>
           </div>
@@ -627,7 +627,7 @@ function Website() {
                 {isOpen && (
                   <div className="w-full sm:w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
-                      Agripeller is a cutting-edge platform in the Nigerian
+                      Agripeller is a cutting-edge platform in the Canadian
                       livestock industry. It is a digital marketplace for
                       livestock farmers and buyers.
                     </p>
@@ -683,7 +683,7 @@ function Website() {
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
                       Farmers create a profile and an online stall on the
                       website to showcase the variety of livestock they have
-                      available for sale. Once you’ve created an account, you
+                      available for sale. Once you've created an account, you
                       can start using the platform to connect with buyers,
                       manage inventory, track your shipment, and more.
                     </p>
@@ -776,7 +776,7 @@ function Website() {
                   data-dropdown-toggle="dropdown"
                   onClick={() => setIsOpen6(!isOpen6)}
                 >
-                  Can I order from anywhere in Nigeria ?
+                  Can I order from anywhere in Canada ?
                   <Icon
                     icon="ic:round-arrow-back-ios"
                     color="black"
@@ -788,8 +788,8 @@ function Website() {
                 {isOpen6 && (
                   <div className="w-full sm:w-[705px] py-[16px] pr-[32px]">
                     <p className="text-left text-[#4D4D4D] font-normal leading-normal text-[16px]">
-                      No, we’re currently only operating within Lagos, Ogun,
-                      Ibadan and Abuja. We’re working on expansion very soon, so
+                      No, we're currently only operating within Ontario, Quebec,
+                      British Columbia and Alberta. We're working on expansion very soon, so
                       keep your fingers crossed.
                     </p>
                   </div>
